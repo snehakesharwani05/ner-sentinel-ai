@@ -1,0 +1,255 @@
+/**
+ * Intelligent Routing Service
+ * Builds dynamic Graph from SQLite database records and active disruptions,
+ * then computes Fastest vs Safest routes using Dijkstra & A* pathfinding algorithms.
+ */
+
+const db = require('../config/db');
+const { evaluateSegmentRisk } = require('./riskService');
+
+/**
+ * Builds in-memory Graph representation from database
+ */
+function buildGraph() {
+  const locationsList = db.prepare(`SELECT * FROM locations`).all();
+  const locationsMap = new Map();
+  locationsList.forEach(loc => locationsMap.set(loc.id, loc));
+
+  const roadSegments = db.prepare(`SELECT * FROM road_segments WHERE is_active = 1`).all();
+  const activeDisruptions = db.prepare(`SELECT * FROM disruptions WHERE status = 'active'`).all();
+  const weatherRecords = db.prepare(`SELECT * FROM weather_data`).all();
+
+  const disruptionsMap = new Map();
+  activeDisruptions.forEach(d => disruptionsMap.set(d.road_segment_id, d));
+
+  const weatherMap = new Map();
+  weatherRecords.forEach(w => weatherMap.set(w.location_id, w));
+
+  const adjacencyList = new Map();
+  locationsList.forEach(loc => adjacencyList.set(loc.id, []));
+
+  roadSegments.forEach(segment => {
+    const disruption = disruptionsMap.get(segment.id) || null;
+    const originWeather = weatherMap.get(segment.origin_location_id) || null;
+    const destWeather = weatherMap.get(segment.destination_location_id) || null;
+
+    const weather = originWeather || destWeather;
+    const riskEval = evaluateSegmentRisk(segment, disruption, weather);
+
+    const edgeData = {
+      segmentId: segment.id,
+      highwayCode: segment.highway_code,
+      originId: segment.origin_location_id,
+      destinationId: segment.destination_location_id,
+      distanceKm: segment.distance_km,
+      baseTransitTimeMin: segment.base_transit_time_min,
+      terrainType: segment.terrain_type,
+      roadCondition: segment.road_condition,
+      riskScore: riskEval.riskScore,
+      severityBand: riskEval.severityBand,
+      isBlocked: riskEval.isBlocked,
+      disruption: disruption ? {
+        id: disruption.id,
+        type: disruption.disruption_type,
+        severity: disruption.severity,
+        description: disruption.description
+      } : null
+    };
+
+    if (adjacencyList.has(segment.origin_location_id)) {
+      adjacencyList.get(segment.origin_location_id).push(edgeData);
+    }
+
+    if (segment.is_bidirectional) {
+      const reverseEdge = { ...edgeData, originId: segment.destination_location_id, destinationId: segment.origin_location_id };
+      if (adjacencyList.has(segment.destination_location_id)) {
+        adjacencyList.get(segment.destination_location_id).push(reverseEdge);
+      }
+    }
+  });
+
+  return { locationsMap, adjacencyList };
+}
+
+/**
+ * Calculates Euclidean/Haversine distance for A* heuristic
+ */
+function calculateHeuristic(nodeA, nodeB) {
+  if (!nodeA || !nodeB) return 0;
+  const R = 6371; // Earth radius km
+  const dLat = (nodeB.latitude - nodeA.latitude) * Math.PI / 180;
+  const dLon = (nodeB.longitude - nodeA.longitude) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(nodeA.latitude * Math.PI / 180) * Math.cos(nodeB.latitude * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+/**
+ * Core Pathfinding implementation (Dijkstra / A*)
+ * @param {number} originId
+ * @param {number} destinationId
+ * @param {'fastest'|'safest'} mode
+ */
+function findPath(originId, destinationId, mode = 'fastest') {
+  const { locationsMap, adjacencyList } = buildGraph();
+
+  if (!locationsMap.has(originId) || !locationsMap.has(destinationId)) {
+    throw new Error('Invalid origin or destination location ID');
+  }
+
+  const destNode = locationsMap.get(destinationId);
+  const distances = new Map();
+  const previous = new Map();
+  const edgeUsed = new Map();
+  const openSet = new Set();
+
+  locationsMap.forEach((_, id) => {
+    distances.set(id, Infinity);
+    previous.set(id, null);
+    edgeUsed.set(id, null);
+  });
+
+  distances.set(originId, 0);
+  openSet.add(originId);
+
+  while (openSet.size > 0) {
+    let currentId = null;
+    let minCost = Infinity;
+
+    for (const id of openSet) {
+      const gCost = distances.get(id);
+      const hCost = mode === 'safest' ? calculateHeuristic(locationsMap.get(id), destNode) * 0.1 : 0;
+      const fCost = gCost + hCost;
+
+      if (fCost < minCost) {
+        minCost = fCost;
+        currentId = id;
+      }
+    }
+
+    if (currentId === null || currentId === destinationId) {
+      break;
+    }
+
+    openSet.delete(currentId);
+    const neighbors = adjacencyList.get(currentId) || [];
+
+    for (const edge of neighbors) {
+      if (edge.isBlocked) {
+        continue; // Skip closed roads completely
+      }
+
+      // Calculate cost per mode
+      let edgeCost;
+      if (mode === 'fastest') {
+        // Base transit time + delay penalty
+        const delayPenalty = edge.disruption ? (edge.disruption.severity === 'high' ? 60 : 30) : 0;
+        edgeCost = edge.baseTransitTimeMin + delayPenalty;
+      } else {
+        // Safest mode: distance * (1.0 + 3.0 * normalizedRiskScore)
+        edgeCost = edge.distanceKm * (1.0 + edge.riskScore * 3.0);
+      }
+
+      const newDist = distances.get(currentId) + edgeCost;
+      if (newDist < distances.get(edge.destinationId)) {
+        distances.set(edge.destinationId, newDist);
+        previous.set(edge.destinationId, currentId);
+        edgeUsed.set(edge.destinationId, edge);
+        openSet.add(edge.destinationId);
+      }
+    }
+  }
+
+  if (distances.get(destinationId) === Infinity) {
+    return null; // No available path found (e.g. all routes blocked)
+  }
+
+  // Reconstruct path
+  const pathNodes = [];
+  const pathEdges = [];
+  let curr = destinationId;
+
+  while (curr !== null) {
+    pathNodes.unshift(locationsMap.get(curr));
+    const edge = edgeUsed.get(curr);
+    if (edge) {
+      pathEdges.unshift(edge);
+    }
+    curr = previous.get(curr);
+  }
+
+  let totalDistanceKm = 0;
+  let totalTransitTimeMin = 0;
+  let totalRiskScoreSum = 0;
+  const hazardsEncountered = [];
+
+  pathEdges.forEach(edge => {
+    totalDistanceKm += edge.distanceKm;
+    totalTransitTimeMin += edge.baseTransitTimeMin;
+    totalRiskScoreSum += edge.riskScore;
+    if (edge.disruption) {
+      hazardsEncountered.push({
+        highway: edge.highwayCode,
+        segment: `${locationsMap.get(edge.originId).name} -> ${locationsMap.get(edge.destinationId).name}`,
+        disruption: edge.disruption
+      });
+    }
+  });
+
+  const avgRiskScore = pathEdges.length > 0 ? Number((totalRiskScoreSum / pathEdges.length).toFixed(2)) : 0.0;
+
+  return {
+    mode,
+    origin: locationsMap.get(originId),
+    destination: locationsMap.get(destinationId),
+    totalDistanceKm: Number(totalDistanceKm.toFixed(1)),
+    totalTransitTimeMin,
+    averageRiskScore: avgRiskScore,
+    severityBand: evaluateSegmentRisk({}, null, null).severityBand ? evaluateSegmentRisk({}).severityBand : 'Low',
+    nodesCount: pathNodes.length,
+    pathNodes: pathNodes.map(n => ({ id: n.id, name: n.name, state: n.state, lat: n.latitude, lng: n.longitude, type: n.location_type })),
+    pathSegments: pathEdges.map(e => ({
+      highway: e.highwayCode,
+      from: locationsMap.get(e.originId).name,
+      to: locationsMap.get(e.destinationId).name,
+      distanceKm: e.distanceKm,
+      transitTimeMin: e.baseTransitTimeMin,
+      terrain: e.terrainType,
+      riskScore: e.riskScore,
+      severityBand: e.severityBand,
+      disruption: e.disruption
+    })),
+    hazardsEncountered
+  };
+}
+
+/**
+ * Compares Fastest vs Safest route options for a given origin/destination
+ */
+function analyzeRoutes(originId, destinationId) {
+  const fastestRoute = findPath(originId, destinationId, 'fastest');
+  const safestRoute = findPath(originId, destinationId, 'safest');
+
+  let recommendation = 'Both fastest and safest routes follow the optimal corridor.';
+  if (!fastestRoute && !safestRoute) {
+    recommendation = 'CRITICAL ALERT: No accessible road routes available due to active road blockages.';
+  } else if (fastestRoute && safestRoute) {
+    if (fastestRoute.averageRiskScore > safestRoute.averageRiskScore) {
+      recommendation = `Safest route reduces hazard risk from ${fastestRoute.averageRiskScore} (${fastestRoute.severityBand}) to ${safestRoute.averageRiskScore} (${safestRoute.severityBand}) by choosing resilient bypass roads.`;
+    }
+  }
+
+  return {
+    fastestRoute,
+    safestRoute,
+    recommendation
+  };
+}
+
+module.exports = {
+  buildGraph,
+  findPath,
+  analyzeRoutes
+};

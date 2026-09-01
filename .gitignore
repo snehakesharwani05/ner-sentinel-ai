@@ -1,7 +1,33 @@
+# Dependencies
+node_modules/
 **/node_modules/
-dist/
+
+# Environment Variables & Secrets
 .env
-__pycache__/
-*.pyc
-venv/
-.venv/
+**/.env
+**/.env.*
+
+# Local Database Files
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+**/*.sqlite
+
+# Build & Dist Artifacts
+dist/
+**/dist/
+build/
+**/build/
+
+# Logs
+*.log
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
