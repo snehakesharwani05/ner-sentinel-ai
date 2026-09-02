@@ -72,7 +72,7 @@ function buildGraph() {
 }
 
 /**
- * Calculates Euclidean/Haversine distance for A* heuristic
+ * Calculates Haversine distance for A* heuristic
  */
 function calculateHeuristic(nodeA, nodeB) {
   if (!nodeA || !nodeB) return 0;
@@ -100,31 +100,39 @@ function findPath(originId, destinationId, mode = 'fastest') {
   }
 
   const destNode = locationsMap.get(destinationId);
-  const distances = new Map();
+  const gScores = new Map();
   const previous = new Map();
   const edgeUsed = new Map();
   const openSet = new Set();
 
   locationsMap.forEach((_, id) => {
-    distances.set(id, Infinity);
+    gScores.set(id, Infinity);
     previous.set(id, null);
     edgeUsed.set(id, null);
   });
 
-  distances.set(originId, 0);
+  gScores.set(originId, 0);
   openSet.add(originId);
 
   while (openSet.size > 0) {
     let currentId = null;
-    let minCost = Infinity;
+    let minFCost = Infinity;
 
     for (const id of openSet) {
-      const gCost = distances.get(id);
-      const hCost = mode === 'safest' ? calculateHeuristic(locationsMap.get(id), destNode) * 0.1 : 0;
-      const fCost = gCost + hCost;
+      const g = gScores.get(id);
+      let h = 0;
+      
+      if (mode === 'safest') {
+        // Safe lower bound: straight-line distance (since weight >= distanceKm * 1.0)
+        h = calculateHeuristic(locationsMap.get(id), destNode);
+      } else {
+        // Assuming an upper highway speed bound of 120 km/h (2 km/min)
+        h = (calculateHeuristic(locationsMap.get(id), destNode) / 120) * 60;
+      }
 
-      if (fCost < minCost) {
-        minCost = fCost;
+      const f = g + h;
+      if (f < minFCost) {
+        minFCost = f;
         currentId = id;
       }
     }
@@ -137,24 +145,23 @@ function findPath(originId, destinationId, mode = 'fastest') {
     const neighbors = adjacencyList.get(currentId) || [];
 
     for (const edge of neighbors) {
-      if (edge.isBlocked) {
-        continue; // Skip closed roads completely
-      }
+      if (edge.isBlocked) continue;
 
-      // Calculate cost per mode
       let edgeCost;
       if (mode === 'fastest') {
-        // Base transit time + delay penalty
         const delayPenalty = edge.disruption ? (edge.disruption.severity === 'high' ? 60 : 30) : 0;
         edgeCost = edge.baseTransitTimeMin + delayPenalty;
       } else {
-        // Safest mode: distance * (1.0 + 3.0 * normalizedRiskScore)
-        edgeCost = edge.distanceKm * (1.0 + edge.riskScore * 3.0);
+        const SAFETY_RISK_WEIGHT = 10;
+
+edgeCost =
+  edge.distanceKm +
+  (edge.distanceKm * edge.riskScore * SAFETY_RISK_WEIGHT);
       }
 
-      const newDist = distances.get(currentId) + edgeCost;
-      if (newDist < distances.get(edge.destinationId)) {
-        distances.set(edge.destinationId, newDist);
+      const tentativeG = gScores.get(currentId) + edgeCost;
+      if (tentativeG < gScores.get(edge.destinationId)) {
+        gScores.set(edge.destinationId, tentativeG);
         previous.set(edge.destinationId, currentId);
         edgeUsed.set(edge.destinationId, edge);
         openSet.add(edge.destinationId);
@@ -162,8 +169,8 @@ function findPath(originId, destinationId, mode = 'fastest') {
     }
   }
 
-  if (distances.get(destinationId) === Infinity) {
-    return null; // No available path found (e.g. all routes blocked)
+  if (gScores.get(destinationId) === Infinity) {
+    return null;
   }
 
   // Reconstruct path
@@ -182,13 +189,17 @@ function findPath(originId, destinationId, mode = 'fastest') {
 
   let totalDistanceKm = 0;
   let totalTransitTimeMin = 0;
-  let totalRiskScoreSum = 0;
+  let weightedRiskSum = 0;
   const hazardsEncountered = [];
 
   pathEdges.forEach(edge => {
     totalDistanceKm += edge.distanceKm;
-    totalTransitTimeMin += edge.baseTransitTimeMin;
-    totalRiskScoreSum += edge.riskScore;
+
+    const delay = edge.disruption ? (edge.disruption.severity === 'high' ? 60 : 30) : 0;
+    totalTransitTimeMin += edge.baseTransitTimeMin + delay;
+
+    weightedRiskSum += edge.riskScore * edge.distanceKm;
+
     if (edge.disruption) {
       hazardsEncountered.push({
         highway: edge.highwayCode,
@@ -198,7 +209,14 @@ function findPath(originId, destinationId, mode = 'fastest') {
     }
   });
 
-  const avgRiskScore = pathEdges.length > 0 ? Number((totalRiskScoreSum / pathEdges.length).toFixed(2)) : 0.0;
+  const avgRiskScore = totalDistanceKm > 0
+    ? Number((weightedRiskSum / totalDistanceKm).toFixed(2))
+    : 0;
+
+  const severityBand =
+    avgRiskScore >= 0.75 ? 'Critical' :
+    avgRiskScore >= 0.50 ? 'High' :
+    avgRiskScore >= 0.25 ? 'Moderate' : 'Low';
 
   return {
     mode,
@@ -207,9 +225,16 @@ function findPath(originId, destinationId, mode = 'fastest') {
     totalDistanceKm: Number(totalDistanceKm.toFixed(1)),
     totalTransitTimeMin,
     averageRiskScore: avgRiskScore,
-    severityBand: evaluateSegmentRisk({}, null, null).severityBand ? evaluateSegmentRisk({}).severityBand : 'Low',
+    severityBand,
     nodesCount: pathNodes.length,
-    pathNodes: pathNodes.map(n => ({ id: n.id, name: n.name, state: n.state, lat: n.latitude, lng: n.longitude, type: n.location_type })),
+    pathNodes: pathNodes.map(n => ({ 
+      id: n.id, 
+      name: n.name, 
+      state: n.state, 
+      lat: n.latitude, 
+      lng: n.longitude, 
+      type: n.location_type 
+    })),
     pathSegments: pathEdges.map(e => ({
       highway: e.highwayCode,
       from: locationsMap.get(e.originId).name,

@@ -6,6 +6,7 @@ import AIInsight from '../components/AIInsight';
 import { mockLocations } from '../data/mockData';
 import { Navigation, Clock, ShieldAlert, AlertTriangle, ArrowRight } from 'lucide-react';
 
+
 export function RouteIntelligence() {
   const [locations, setLocations] = useState([]);
   const [originId, setOriginId] = useState(2); // Guwahati default
@@ -207,7 +208,11 @@ export function RouteIntelligence() {
           {/* Interactive Map with Active Route Highlight */}
           <div className="glass-card">
             <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#20231F', marginBottom: '1rem' }}>Visualized Route Corridor</h3>
-            <MapComponent locations={locations} activeRoute={analysis.safestRoute || analysis.fastestRoute} />
+            <MapComponent
+  locations={locations}
+  fastestRoute={analysis.fastestRoute}
+  safestRoute={analysis.safestRoute}
+/>
           </div>
         </div>
       )}
