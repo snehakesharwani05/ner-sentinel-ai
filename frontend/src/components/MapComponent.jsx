@@ -20,11 +20,11 @@ export function MapComponent({ locations = [], disruptions = [], activeRoute = n
         position: 'relative',
         width: '100%',
         height: '420px',
-        backgroundColor: '#0a0f1d',
+        backgroundColor: '#CBD0C0',
         borderRadius: 'var(--radius-lg)',
         border: '1px solid var(--border-color)',
         overflow: 'hidden',
-        boxShadow: 'inset 0 0 40px rgba(0,0,0,0.8)'
+        boxShadow: 'inset 0 0 20px rgba(48, 72, 59, 0.1)'
       }}
     >
       {/* Background Grid Pattern */}
@@ -32,9 +32,9 @@ export function MapComponent({ locations = [], disruptions = [], activeRoute = n
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(48, 72, 59, 0.25) 1px, transparent 1px)',
           backgroundSize: '24px 24px',
-          opacity: 0.5
+          opacity: 0.6
         }}
       />
 
@@ -48,15 +48,15 @@ export function MapComponent({ locations = [], disruptions = [], activeRoute = n
           display: 'flex',
           gap: '0.5rem',
           alignItems: 'center',
-          backgroundColor: 'rgba(17, 24, 39, 0.85)',
+          backgroundColor: '#EDE8DC',
           padding: '6px 14px',
           borderRadius: '9999px',
-          border: '1px solid var(--border-color)',
+          border: '1px solid rgba(32, 35, 31, 0.15)',
           fontSize: '0.8rem',
           fontWeight: '600'
         }}
       >
-        <span style={{ color: 'var(--accent-cyan)' }}>North Eastern Region (NER) Road Network Topology</span>
+        <span style={{ color: '#20231F' }}>North Eastern Region (NER) Road Network Topology</span>
       </div>
 
       {/* Render Location Nodes */}
@@ -66,10 +66,10 @@ export function MapComponent({ locations = [], disruptions = [], activeRoute = n
         const isCapital = loc.location_type === 'state_capital';
         const isPass = loc.location_type === 'mountain_pass';
 
-        let nodeColor = '#3b82f6';
-        if (isCapital) nodeColor = '#10b981';
-        if (isPass) nodeColor = '#f59e0b';
-        if (isActiveInRoute) nodeColor = '#6366f1';
+        let nodeColor = '#30483B';
+        if (isCapital) nodeColor = '#20231F';
+        if (isPass) nodeColor = '#B8944A';
+        if (isActiveInRoute) nodeColor = '#A9573F';
 
         return (
           <div
@@ -93,19 +93,19 @@ export function MapComponent({ locations = [], disruptions = [], activeRoute = n
                 height: isActiveInRoute ? '14px' : (isCapital ? '12px' : '8px'),
                 borderRadius: '50%',
                 backgroundColor: nodeColor,
-                border: '2px solid #fff',
-                boxShadow: isActiveInRoute ? '0 0 12px #6366f1' : '0 0 6px rgba(0,0,0,0.5)'
+                border: '2px solid #EDE8DC',
+                boxShadow: isActiveInRoute ? '0 0 10px #A9573F' : '0 1px 4px rgba(32, 35, 31, 0.3)'
               }}
             />
             {(isCapital || isPass || isActiveInRoute) && (
               <span
                 style={{
                   fontSize: '0.65rem',
-                  fontWeight: '600',
-                  color: isActiveInRoute ? '#fff' : 'var(--text-secondary)',
+                  fontWeight: '700',
+                  color: isActiveInRoute ? '#A9573F' : '#20231F',
                   marginTop: '2px',
                   whiteSpace: 'nowrap',
-                  textShadow: '0 1px 3px rgba(0,0,0,0.9)'
+                  textShadow: '0 1px 2px rgba(237, 232, 220, 0.9)'
                 }}
               >
                 {loc.name}
@@ -117,7 +117,6 @@ export function MapComponent({ locations = [], disruptions = [], activeRoute = n
 
       {/* Disruption Alert Badges on Map */}
       {disruptions.map(d => {
-        // Approximate placement on map
         return (
           <div
             key={`disrupt-${d.id}`}

@@ -38,23 +38,23 @@ export function Simulation() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <h1 className="page-title">
-          Hazard <span className="gradient-text">Simulation Studio</span>
+        <h1 className="page-title" style={{ color: '#A9573F' }}>
+          Hazard Simulation Studio
         </h1>
-        <p className="page-subtitle">
+        <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
           Simulate torrential monsoons, high rainfall, and mountain pass disruptions using real backend APIs
         </p>
       </div>
 
       <div className="grid-two-col">
         <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Sliders size={20} color="var(--accent-indigo)" /> Environmental Simulation Parameters
+          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#20231F', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Sliders size={20} color="#30483B" /> Environmental Simulation Parameters
           </h3>
 
           <form onSubmit={handleRunSimulation} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label">Target Mountain Location / Pass</label>
+              <label className="form-label" style={{ color: '#20231F' }}>Target Mountain Location / Pass</label>
               <select
                 className="form-select"
                 value={selectedLocationId}
@@ -69,7 +69,7 @@ export function Simulation() {
             </div>
 
             <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label">Simulated 24h Rainfall: {rainfall} mm</label>
+              <label className="form-label" style={{ color: '#20231F' }}>Simulated 24h Rainfall: {rainfall} mm</label>
               <input
                 type="range"
                 min="0"
@@ -77,12 +77,12 @@ export function Simulation() {
                 step="10"
                 value={rainfall}
                 onChange={(e) => setRainfall(Number(e.target.value))}
-                style={{ width: '100%', accentColor: 'var(--accent-indigo)' }}
+                style={{ width: '100%', accentColor: '#30483B' }}
               />
             </div>
 
             <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label">Landslide Risk Index: {landslideIndex}</label>
+              <label className="form-label" style={{ color: '#20231F' }}>Landslide Risk Index: {landslideIndex}</label>
               <input
                 type="range"
                 min="0.0"
@@ -90,7 +90,7 @@ export function Simulation() {
                 step="0.05"
                 value={landslideIndex}
                 onChange={(e) => setLandslideIndex(Number(e.target.value))}
-                style={{ width: '100%', accentColor: 'var(--accent-rose)' }}
+                style={{ width: '100%', accentColor: '#A9573F' }}
               />
             </div>
 
@@ -102,27 +102,27 @@ export function Simulation() {
         </div>
 
         <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CloudRain size={20} color="var(--accent-cyan)" /> Simulation Response & Impact
+          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#20231F', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <CloudRain size={20} color="#30483B" /> Simulation Response & Impact
           </h3>
 
           {simResult ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Calculated Route Status</span>
+                <span style={{ fontSize: '0.9rem', color: '#20231F', opacity: 0.8 }}>Calculated Route Status</span>
                 <RiskBadge severity={simResult.severityBand} score={simResult.averageRiskScore} />
               </div>
 
-              <div style={{ padding: '1rem', borderRadius: '12px', background: 'rgba(15,23,42,0.8)', border: '1px solid var(--border-color)' }}>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Destination Target</div>
-                <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#fff' }}>{simResult.destination.name}</div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+              <div style={{ padding: '1rem', borderRadius: '12px', background: '#EDE8DC', border: '1px solid #CBD0C0' }}>
+                <div style={{ fontSize: '0.85rem', color: '#20231F', opacity: 0.7 }}>Destination Target</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: '700', color: '#20231F' }}>{simResult.destination.name}</div>
+                <div style={{ fontSize: '0.85rem', color: '#20231F', opacity: 0.6, marginTop: '4px' }}>
                   Distance: {simResult.totalDistanceKm} km | Time: {simResult.totalTransitTimeMin} min
                 </div>
               </div>
             </div>
           ) : (
-            <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+            <div style={{ padding: '2rem', textAlign: 'center', color: '#20231F', opacity: 0.6 }}>
               Click 'Run Simulation' to evaluate live hazard impact using backend APIs.
             </div>
           )}

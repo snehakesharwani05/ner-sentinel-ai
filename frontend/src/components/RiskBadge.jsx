@@ -5,14 +5,36 @@ export function RiskBadge({ severity = 'Low', score }) {
     switch ((sev || '').toLowerCase()) {
       case 'critical':
       case 'critical_blocked':
-        return { bg: 'rgba(239, 68, 68, 0.15)', text: '#f87171', border: 'rgba(239, 68, 68, 0.4)' };
+        return { 
+          bg: '#A9573F', 
+          text: '#EDE8DC', 
+          dot: '#EDE8DC',
+          border: '#A9573F' 
+        };
       case 'high':
-        return { bg: 'rgba(245, 158, 11, 0.15)', text: '#fbbf24', border: 'rgba(245, 158, 11, 0.4)' };
+      case 'warning':
+        return { 
+          bg: '#B8944A', 
+          text: '#20231F', 
+          dot: '#20231F',
+          border: '#B8944A' 
+        };
       case 'moderate':
-        return { bg: 'rgba(59, 130, 246, 0.15)', text: '#60a5fa', border: 'rgba(59, 130, 246, 0.4)' };
+        return { 
+          bg: '#CBD0C0', 
+          text: '#20231F', 
+          dot: '#30483B',
+          border: 'rgba(32, 35, 31, 0.15)' 
+        };
       case 'low':
+      case 'info':
       default:
-        return { bg: 'rgba(16, 185, 129, 0.15)', text: '#34d399', border: 'rgba(16, 185, 129, 0.4)' };
+        return { 
+          bg: '#30483B', 
+          text: '#EDE8DC', 
+          dot: '#EDE8DC',
+          border: '#30483B' 
+        };
     }
   };
 
@@ -38,7 +60,7 @@ export function RiskBadge({ severity = 'Low', score }) {
           width: '6px',
           height: '6px',
           borderRadius: '50%',
-          backgroundColor: style.text
+          backgroundColor: style.dot
         }}
       />
       {severity.toUpperCase()} {score !== undefined ? `(${score})` : ''}

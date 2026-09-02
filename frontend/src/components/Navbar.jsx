@@ -8,7 +8,7 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
       style={{
         height: '70px',
         borderBottom: '1px solid var(--border-color)',
-        backgroundColor: 'rgba(10, 14, 26, 0.8)',
+        backgroundColor: 'rgba(237, 232, 220, 0.85)',
         backdropFilter: 'blur(12px)',
         display: 'flex',
         alignItems: 'center',
@@ -20,10 +20,11 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '-0.02em' }}>
-          <span className="gradient-text">NER SENTINEL</span> AI
+        <h2 style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '-0.02em', color: '#30483B' }}>
+          <span style={{ color: '#30483B' }}>NER SENTINEL</span>{' '}
+          <span style={{ color: '#A9573F' }}>AI</span>
         </h2>
-        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', borderLeft: '1px solid #374151', paddingLeft: '0.75rem' }}>
+        <span style={{ fontSize: '0.75rem', color: '#20231F', opacity: 0.6, borderLeft: '1px solid #CBD0C0', paddingLeft: '0.75rem' }}>
           SIH Problem Statement 002
         </span>
       </div>
@@ -36,10 +37,10 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
             gap: '8px',
             padding: '6px 12px',
             borderRadius: '9999px',
-            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-            border: '1px solid rgba(16, 185, 129, 0.3)',
+            backgroundColor: '#CBD0C0',
+            border: '1px solid rgba(48, 72, 59, 0.2)',
             fontSize: '0.8rem',
-            color: '#34d399',
+            color: '#20231F',
             fontWeight: '600'
           }}
         >

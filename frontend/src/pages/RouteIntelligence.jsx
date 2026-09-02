@@ -54,10 +54,10 @@ export function RouteIntelligence() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <h1 className="page-title">
-          Route <span className="gradient-text">Intelligence Engine</span>
+        <h1 className="page-title" style={{ color: '#A9573F' }}>
+          Route Intelligence Engine
         </h1>
-        <p className="page-subtitle">
+        <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
           Compare Fastest vs Hazard-Mitigated Safest routes using backend Dijkstra & A* pathfinders
         </p>
       </div>
@@ -66,7 +66,7 @@ export function RouteIntelligence() {
       <div className="glass-card" style={{ marginBottom: '2rem' }}>
         <form onSubmit={handleAnalyze} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: '1.25rem', alignItems: 'flex-end' }}>
           <div className="form-group" style={{ margin: 0 }}>
-            <label className="form-label">Origin Location</label>
+            <label className="form-label" style={{ color: '#20231F' }}>Origin Location</label>
             <select
               className="form-select"
               value={originId}
@@ -81,7 +81,7 @@ export function RouteIntelligence() {
           </div>
 
           <div className="form-group" style={{ margin: 0 }}>
-            <label className="form-label">Destination Location</label>
+            <label className="form-label" style={{ color: '#20231F' }}>Destination Location</label>
             <select
               className="form-select"
               value={destId}
@@ -102,7 +102,7 @@ export function RouteIntelligence() {
         </form>
 
         {error && (
-          <div style={{ marginTop: '1rem', color: '#f87171', fontSize: '0.88rem' }}>
+          <div style={{ marginTop: '1rem', color: '#A9573F', fontSize: '0.88rem', fontWeight: '600' }}>
             {error}
           </div>
         )}
@@ -120,45 +120,45 @@ export function RouteIntelligence() {
             {analysis.fastestRoute ? (
               <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#60a5fa', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Clock size={20} /> Fastest Route (Dijkstra)
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#30483B', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Clock size={20} color="#30483B" /> Fastest Route (Dijkstra)
                   </h3>
                   <RiskBadge severity={analysis.fastestRoute.severityBand} score={analysis.fastestRoute.averageRiskScore} />
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                   <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Distance</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>
+                    <div style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.7 }}>Distance</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#20231F' }}>
                       {analysis.fastestRoute.totalDistanceKm} km
                     </div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Estimated Time</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>
+                    <div style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.7 }}>Estimated Time</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#20231F' }}>
                       {Math.floor(analysis.fastestRoute.totalTransitTimeMin / 60)}h {analysis.fastestRoute.totalTransitTimeMin % 60}m
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: '#20231F', opacity: 0.8, marginBottom: '0.5rem' }}>
                     Route Path Nodes ({analysis.fastestRoute.nodesCount})
                   </div>
-                  <div style={{ fontSize: '0.9rem', color: '#fff', lineHeight: '1.6' }}>
+                  <div style={{ fontSize: '0.9rem', color: '#20231F', lineHeight: '1.6' }}>
                     {analysis.fastestRoute.pathNodes.map(n => n.name).join(' → ')}
                   </div>
                 </div>
 
                 {analysis.fastestRoute.hazardsEncountered?.length > 0 && (
-                  <div style={{ padding: '0.75rem', borderRadius: '8px', background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', fontSize: '0.82rem', color: '#fbbf24' }}>
-                    <AlertTriangle size={14} style={{ display: 'inline', marginRight: '6px' }} />
+                  <div style={{ padding: '0.75rem', borderRadius: '8px', background: '#EDE8DC', border: '1px solid #B8944A', fontSize: '0.82rem', color: '#20231F' }}>
+                    <AlertTriangle size={14} color="#B8944A" style={{ display: 'inline', marginRight: '6px' }} />
                     Hazards Encountered: {analysis.fastestRoute.hazardsEncountered.map(h => `${h.highway} (${h.disruption.type})`).join(', ')}
                   </div>
                 )}
               </div>
             ) : (
-              <div className="glass-card" style={{ color: '#f87171', padding: '2rem', textAlign: 'center' }}>
+              <div className="glass-card" style={{ color: '#A9573F', padding: '2rem', textAlign: 'center' }}>
                 No accessible fastest route available (Blocked).
               </div>
             )}
@@ -167,38 +167,38 @@ export function RouteIntelligence() {
             {analysis.safestRoute ? (
               <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#34d399', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <ShieldAlert size={20} /> Safest Resilient Route (A*)
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#30483B', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <ShieldAlert size={20} color="#30483B" /> Safest Resilient Route (A*)
                   </h3>
                   <RiskBadge severity={analysis.safestRoute.severityBand} score={analysis.safestRoute.averageRiskScore} />
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                   <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Distance</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>
+                    <div style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.7 }}>Distance</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#20231F' }}>
                       {analysis.safestRoute.totalDistanceKm} km
                     </div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Estimated Time</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff' }}>
+                    <div style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.7 }}>Estimated Time</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#20231F' }}>
                       {Math.floor(analysis.safestRoute.totalTransitTimeMin / 60)}h {analysis.safestRoute.totalTransitTimeMin % 60}m
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '600', color: '#20231F', opacity: 0.8, marginBottom: '0.5rem' }}>
                     Route Path Nodes ({analysis.safestRoute.nodesCount})
                   </div>
-                  <div style={{ fontSize: '0.9rem', color: '#fff', lineHeight: '1.6' }}>
+                  <div style={{ fontSize: '0.9rem', color: '#20231F', lineHeight: '1.6' }}>
                     {analysis.safestRoute.pathNodes.map(n => n.name).join(' → ')}
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="glass-card" style={{ color: '#f87171', padding: '2rem', textAlign: 'center' }}>
+              <div className="glass-card" style={{ color: '#A9573F', padding: '2rem', textAlign: 'center' }}>
                 No accessible safest route available (Blocked).
               </div>
             )}
@@ -206,7 +206,7 @@ export function RouteIntelligence() {
 
           {/* Interactive Map with Active Route Highlight */}
           <div className="glass-card">
-            <h3 style={{ fontSize: '1.1rem', fontWeight: '700', marginBottom: '1rem' }}>Visualized Route Corridor</h3>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#20231F', marginBottom: '1rem' }}>Visualized Route Corridor</h3>
             <MapComponent locations={locations} activeRoute={analysis.safestRoute || analysis.fastestRoute} />
           </div>
         </div>

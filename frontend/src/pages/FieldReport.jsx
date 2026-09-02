@@ -66,10 +66,10 @@ export function FieldReport() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <h1 className="page-title">
-          Field Disruption <span className="gradient-text">Reporting Hub</span>
+        <h1 className="page-title" style={{ color: '#A9573F' }}>
+          Field Disruption Reporting Hub
         </h1>
-        <p className="page-subtitle">
+        <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
           Submit real-time road hazard reports (landslides, flash floods, blockages) to trigger dynamic rerouting
         </p>
       </div>
@@ -77,13 +77,13 @@ export function FieldReport() {
       <div className="grid-two-col">
         {/* Form to submit new disruption */}
         <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <PlusCircle size={20} color="var(--accent-cyan)" /> Submit New Field Hazard Report
+          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#20231F', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <PlusCircle size={20} color="#B8944A" /> Submit New Field Hazard Report
           </h3>
 
           <form onSubmit={handleSubmitReport}>
             <div className="form-group">
-              <label className="form-label">Road Segment ID (1-47)</label>
+              <label className="form-label" style={{ color: '#20231F' }}>Road Segment ID (1-47)</label>
               <input
                 type="number"
                 className="form-input"
@@ -94,7 +94,7 @@ export function FieldReport() {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Disruption Type</label>
+              <label className="form-label" style={{ color: '#20231F' }}>Disruption Type</label>
               <select className="form-select" value={disruptionType} onChange={(e) => setDisruptionType(e.target.value)}>
                 <option value="landslide">Landslide / Mudslide</option>
                 <option value="flash_flood">Flash Flood / Waterlogging</option>
@@ -106,7 +106,7 @@ export function FieldReport() {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Severity Level</label>
+              <label className="form-label" style={{ color: '#20231F' }}>Severity Level</label>
               <select className="form-select" value={severity} onChange={(e) => setSeverity(e.target.value)}>
                 <option value="low">Low (Minor Delay)</option>
                 <option value="moderate">Moderate (+30m Delay)</option>
@@ -116,7 +116,7 @@ export function FieldReport() {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Hazard Description / Field Notes</label>
+              <label className="form-label" style={{ color: '#20231F' }}>Hazard Description / Field Notes</label>
               <textarea
                 className="form-textarea"
                 rows="3"
@@ -132,7 +132,7 @@ export function FieldReport() {
             </button>
 
             {message && (
-              <div style={{ marginTop: '1rem', padding: '0.75rem', borderRadius: '8px', background: 'rgba(16,185,129,0.15)', color: '#34d399', fontSize: '0.85rem' }}>
+              <div style={{ marginTop: '1rem', padding: '0.75rem', borderRadius: '8px', background: '#CBD0C0', color: '#20231F', fontSize: '0.85rem', border: '1px solid rgba(48, 72, 59, 0.2)' }}>
                 {message}
               </div>
             )}
@@ -141,13 +141,13 @@ export function FieldReport() {
 
         {/* Live Active Reports */}
         <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <ShieldAlert size={20} color="var(--accent-rose)" /> Active Field Reports
+          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#20231F', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <ShieldAlert size={20} color="#A9573F" /> Active Field Reports
           </h3>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', maxHeight: '450px', overflowY: 'auto' }}>
             {disruptions.length === 0 ? (
-              <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+              <div style={{ padding: '2rem', textAlign: 'center', color: '#20231F', opacity: 0.6 }}>
                 No active field disruption reports currently registered.
               </div>
             ) : (
@@ -157,21 +157,21 @@ export function FieldReport() {
                   style={{
                     padding: '1rem',
                     borderRadius: '12px',
-                    backgroundColor: 'rgba(15,23,42,0.8)',
-                    border: '1px solid var(--border-color)',
+                    backgroundColor: '#EDE8DC',
+                    border: '1px solid #CBD0C0',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '0.5rem'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontWeight: '700', color: '#fff', fontSize: '0.95rem' }}>
+                    <span style={{ fontWeight: '700', color: '#20231F', fontSize: '0.95rem' }}>
                       {d.highway_code || 'NH Highway'} ({d.origin_name} &rarr; {d.destination_name})
                     </span>
                     <RiskBadge severity={d.severity} />
                   </div>
 
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
+                  <p style={{ fontSize: '0.85rem', color: '#20231F', opacity: 0.8, margin: 0 }}>
                     {d.description}
                   </p>
                 </div>

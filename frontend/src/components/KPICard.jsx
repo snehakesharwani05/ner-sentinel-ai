@@ -2,11 +2,11 @@ import React from 'react';
 
 export function KPICard({ title, value, icon: Icon, subtitle, color = 'cyan' }) {
   const colorMap = {
-    cyan: '#06b6d4',
-    indigo: '#6366f1',
-    emerald: '#10b981',
-    amber: '#f59e0b',
-    rose: '#f43f5e'
+    cyan: '#30483B',      // Forest
+    indigo: '#30483B',    // Forest
+    emerald: '#30483B',   // Forest
+    amber: '#B8944A',     // Mustard
+    rose: '#A9573F'       // Terracotta
   };
 
   const accentColor = colorMap[color] || colorMap.cyan;
@@ -22,7 +22,7 @@ export function KPICard({ title, value, icon: Icon, subtitle, color = 'cyan' }) 
             style={{
               padding: '8px',
               borderRadius: '10px',
-              backgroundColor: `${accentColor}18`,
+              backgroundColor: `${accentColor}20`,
               color: accentColor,
               display: 'flex',
               alignItems: 'center',
@@ -34,7 +34,7 @@ export function KPICard({ title, value, icon: Icon, subtitle, color = 'cyan' }) 
         )}
       </div>
 
-      <div style={{ fontSize: '2rem', fontWeight: '800', letterSpacing: '-0.03em', color: '#fff' }}>
+      <div style={{ fontSize: '2rem', fontWeight: '800', letterSpacing: '-0.03em', color: '#20231F' }}>
         {value}
       </div>
 

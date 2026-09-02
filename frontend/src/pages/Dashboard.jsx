@@ -49,16 +49,16 @@ export function Dashboard() {
   return (
     <div className="page-container">
       <div className="page-header">
-        <h1 className="page-title">
-          NER <span className="gradient-text">Logistics Control Dashboard</span>
+        <h1 className="page-title" style={{ color: '#A9573F' }}>
+          NER Logistics Control Dashboard
         </h1>
-        <p className="page-subtitle">
+        <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
           Real-time intelligent accessibility monitoring across 8 North Eastern Indian states
         </p>
       </div>
 
       {error && (
-        <div style={{ padding: '1rem', borderRadius: '12px', background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#f87171', marginBottom: '1.5rem' }}>
+        <div style={{ padding: '1rem', borderRadius: '12px', background: 'rgba(169, 87, 63, 0.15)', border: '1px solid #A9573F', color: '#20231F', marginBottom: '1.5rem' }}>
           Backend sync notice: {error} (Using cached seed data)
         </div>
       )}
@@ -99,8 +99,8 @@ export function Dashboard() {
       <div className="grid-two-col">
         <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: '700' }}>Live Network Graph Map</h3>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#20231F' }}>Live Network Graph Map</h3>
+            <span style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.7 }}>
               {locations.length} Connected Locations
             </span>
           </div>
@@ -109,15 +109,15 @@ export function Dashboard() {
 
         <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: '700' }}>Active Disruption Feeds</h3>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: '700', color: '#20231F' }}>Active Disruption Feeds</h3>
+            <span style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.7 }}>
               Real-time Field Reports
             </span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', maxHeight: '420px', overflowY: 'auto' }}>
             {disruptions.length === 0 ? (
-              <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)' }}>
+              <div style={{ padding: '2rem', textAlign: 'center', color: '#20231F', opacity: 0.6 }}>
                 No active disruptions reported on the road network.
               </div>
             ) : (
@@ -127,25 +127,25 @@ export function Dashboard() {
                   style={{
                     padding: '1rem',
                     borderRadius: 'var(--radius-md)',
-                    backgroundColor: 'rgba(15, 23, 42, 0.6)',
-                    border: '1px solid var(--border-color)',
+                    backgroundColor: '#EDE8DC',
+                    border: '1px solid #CBD0C0',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '0.5rem'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontWeight: '700', fontSize: '0.95rem', color: '#fff' }}>
+                    <span style={{ fontWeight: '700', fontSize: '0.95rem', color: '#20231F' }}>
                       {d.highway_code || 'Highway'} Segment ({d.origin_name} &rarr; {d.destination_name})
                     </span>
                     <RiskBadge severity={d.severity} />
                   </div>
 
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
+                  <p style={{ fontSize: '0.85rem', color: '#20231F', opacity: 0.85, margin: 0 }}>
                     {d.description || 'Active road hazard impacting transit times.'}
                   </p>
 
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', gap: '1rem' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#20231F', opacity: 0.6, display: 'flex', gap: '1rem' }}>
                     <span>Type: {d.disruption_type}</span>
                     <span>Status: {d.status}</span>
                   </div>

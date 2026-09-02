@@ -13,7 +13,7 @@ export function Sidebar({ activeTab, setActiveTab }) {
     <aside
       style={{
         width: '260px',
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: '#EDE8DC',
         borderRight: '1px solid var(--border-color)',
         padding: '1.5rem 1rem',
         display: 'flex',
@@ -21,7 +21,17 @@ export function Sidebar({ activeTab, setActiveTab }) {
         gap: '0.5rem'
       }}
     >
-      <div style={{ padding: '0 0.75rem 1rem', fontSize: '0.75rem', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+      <div 
+        style={{ 
+          padding: '0 0.75rem 1rem', 
+          fontSize: '0.75rem', 
+          fontWeight: '700', 
+          color: '#20231F', 
+          opacity: 0.6,
+          textTransform: 'uppercase', 
+          letterSpacing: '0.08em' 
+        }}
+      >
         Navigation
       </div>
 
@@ -39,8 +49,8 @@ export function Sidebar({ activeTab, setActiveTab }) {
               padding: '0.85rem 1rem',
               borderRadius: 'var(--radius-md)',
               border: 'none',
-              backgroundColor: isActive ? 'rgba(99, 102, 241, 0.15)' : 'transparent',
-              color: isActive ? '#818cf8' : 'var(--text-secondary)',
+              backgroundColor: isActive ? '#30483B' : 'transparent',
+              color: isActive ? '#EDE8DC' : '#20231F',
               fontWeight: isActive ? '700' : '500',
               fontSize: '0.9rem',
               cursor: 'pointer',
@@ -48,7 +58,7 @@ export function Sidebar({ activeTab, setActiveTab }) {
               transition: 'all 0.15s ease'
             }}
           >
-            <Icon size={18} />
+            <Icon size={18} color={isActive ? '#EDE8DC' : '#20231F'} />
             <span>{item.label}</span>
           </button>
         );
