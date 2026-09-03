@@ -1,0 +1,232 @@
+[
+  {
+    "id": 2,
+    "name": "Guwahati",
+    "state": "Assam",
+    "latitude": 26.1445,
+    "longitude": 91.7362,
+    "elevation_m": 55,
+    "location_type": "state_capital",
+    "terrain": "plain"
+  },
+  {
+    "id": 3,
+    "name": "Dispur",
+    "state": "Assam",
+    "latitude": 26.1433,
+    "longitude": 91.7898,
+    "elevation_m": 55,
+    "location_type": "state_capital",
+    "terrain": "plain"
+  },
+  {
+    "id": 4,
+    "name": "Tezpur",
+    "state": "Assam",
+    "latitude": 26.6528,
+    "longitude": 92.7926,
+    "elevation_m": 48,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 5,
+    "name": "Nagaon",
+    "state": "Assam",
+    "latitude": 26.3452,
+    "longitude": 92.6835,
+    "elevation_m": 52,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 6,
+    "name": "Jorhat",
+    "state": "Assam",
+    "latitude": 26.7509,
+    "longitude": 94.2037,
+    "elevation_m": 116,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 7,
+    "name": "Dibrugarh",
+    "state": "Assam",
+    "latitude": 27.4728,
+    "longitude": 94.912,
+    "elevation_m": 108,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 8,
+    "name": "Tinsukia",
+    "state": "Assam",
+    "latitude": 27.4922,
+    "longitude": 95.3558,
+    "elevation_m": 116,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 9,
+    "name": "Silchar",
+    "state": "Assam",
+    "latitude": 24.8333,
+    "longitude": 92.7789,
+    "elevation_m": 35,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 10,
+    "name": "Haflong (Jatinga)",
+    "state": "Assam",
+    "latitude": 25.1804,
+    "longitude": 93.0169,
+    "elevation_m": 512,
+    "location_type": "mountain_pass",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 11,
+    "name": "Bhalukpong",
+    "state": "Assam",
+    "latitude": 27.0125,
+    "longitude": 92.6416,
+    "elevation_m": 213,
+    "location_type": "border_checkpost",
+    "terrain": "hilly"
+  },
+  {
+    "id": 44,
+    "name": "Nalbari",
+    "state": "Assam",
+    "latitude": 26.4447,
+    "longitude": 91.4428,
+    "elevation_m": 42,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 45,
+    "name": "Goalpara",
+    "state": "Assam",
+    "latitude": 26.1772,
+    "longitude": 90.6272,
+    "elevation_m": 35,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 51,
+    "name": "Bongaigaon",
+    "state": "Assam",
+    "latitude": 26.48,
+    "longitude": 90.56,
+    "elevation_m": 54,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 52,
+    "name": "Dhubri",
+    "state": "Assam",
+    "latitude": 26.02,
+    "longitude": 89.98,
+    "elevation_m": 34,
+    "location_type": "border_checkpost",
+    "terrain": "plain"
+  },
+  {
+    "id": 53,
+    "name": "Barpeta",
+    "state": "Assam",
+    "latitude": 26.32,
+    "longitude": 91.0,
+    "elevation_m": 35,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 54,
+    "name": "North Lakhimpur",
+    "state": "Assam",
+    "latitude": 27.23,
+    "longitude": 94.1,
+    "elevation_m": 101,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 55,
+    "name": "Dhemaji",
+    "state": "Assam",
+    "latitude": 27.48,
+    "longitude": 94.58,
+    "elevation_m": 91,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 56,
+    "name": "Golaghat",
+    "state": "Assam",
+    "latitude": 26.52,
+    "longitude": 93.97,
+    "elevation_m": 95,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 57,
+    "name": "Sivasagar",
+    "state": "Assam",
+    "latitude": 26.98,
+    "longitude": 94.63,
+    "elevation_m": 95,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 58,
+    "name": "Kokrajhar",
+    "state": "Assam",
+    "latitude": 26.4,
+    "longitude": 90.27,
+    "elevation_m": 38,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 59,
+    "name": "Karimganj",
+    "state": "Assam",
+    "latitude": 24.87,
+    "longitude": 92.35,
+    "elevation_m": 13,
+    "location_type": "border_checkpost",
+    "terrain": "plain"
+  },
+  {
+    "id": 60,
+    "name": "Hailakandi",
+    "state": "Assam",
+    "latitude": 24.68,
+    "longitude": 92.56,
+    "elevation_m": 21,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 61,
+    "name": "Diphu",
+    "state": "Assam",
+    "latitude": 25.84,
+    "longitude": 93.43,
+    "elevation_m": 186,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  }
+]

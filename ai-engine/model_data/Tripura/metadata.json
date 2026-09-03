@@ -1,0 +1,14 @@
+{
+  "state_key": "Tripura",
+  "state_name": "Tripura",
+  "capital": "Agartala",
+  "region": "Tripura Plains & Low Hill Ranges",
+  "terrain_category": "Rolling Plains & Low North-South Anticlinal Ridges",
+  "primary_highways": [
+    "NH-8",
+    "NH-108",
+    "NH-208"
+  ],
+  "total_locations": 8,
+  "total_road_segments": 8
+}

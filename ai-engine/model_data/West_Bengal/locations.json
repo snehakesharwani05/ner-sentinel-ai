@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Siliguri",
+    "state": "West Bengal",
+    "latitude": 26.7271,
+    "longitude": 88.3953,
+    "elevation_m": 122,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 46,
+    "name": "Alipurduar",
+    "state": "West Bengal",
+    "latitude": 26.4919,
+    "longitude": 89.5271,
+    "elevation_m": 93,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 85,
+    "name": "Jalpaiguri",
+    "state": "West Bengal",
+    "latitude": 26.54,
+    "longitude": 88.73,
+    "elevation_m": 86,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 86,
+    "name": "Cooch Behar",
+    "state": "West Bengal",
+    "latitude": 26.32,
+    "longitude": 89.45,
+    "elevation_m": 48,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 87,
+    "name": "Darjeeling",
+    "state": "West Bengal",
+    "latitude": 27.041,
+    "longitude": 88.2663,
+    "elevation_m": 2042,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 88,
+    "name": "Kalimpong",
+    "state": "West Bengal",
+    "latitude": 27.06,
+    "longitude": 88.47,
+    "elevation_m": 1250,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  }
+]

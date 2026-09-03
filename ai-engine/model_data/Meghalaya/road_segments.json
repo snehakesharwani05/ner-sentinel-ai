@@ -1,0 +1,122 @@
+[
+  {
+    "origin": "Guwahati",
+    "destination": "Nongpoh",
+    "highway": "NH-6 (4-Lane)",
+    "distance_km": 50,
+    "time_min": 50,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 3.0
+  },
+  {
+    "origin": "Nongpoh",
+    "destination": "Shillong",
+    "highway": "NH-6 (4-Lane)",
+    "distance_km": 50,
+    "time_min": 55,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 5.0
+  },
+  {
+    "origin": "Shillong",
+    "destination": "Cherrapunji (Sohra)",
+    "highway": "SH-5",
+    "distance_km": 54,
+    "time_min": 75,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 8.0
+  },
+  {
+    "origin": "Shillong",
+    "destination": "Mawsynram",
+    "highway": "SH-5",
+    "distance_km": 60,
+    "time_min": 90,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 9.0
+  },
+  {
+    "origin": "Shillong",
+    "destination": "Jowai",
+    "highway": "NH-6",
+    "distance_km": 65,
+    "time_min": 85,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
+  },
+  {
+    "origin": "Shillong",
+    "destination": "Dawki",
+    "highway": "NH-206",
+    "distance_km": 80,
+    "time_min": 115,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 9.0
+  },
+  {
+    "origin": "Dawki",
+    "destination": "Jowai",
+    "highway": "NH-206",
+    "distance_km": 55,
+    "time_min": 85,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
+  },
+  {
+    "origin": "Jowai",
+    "destination": "Silchar",
+    "highway": "NH-6",
+    "distance_km": 140,
+    "time_min": 210,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 12.0
+  },
+  {
+    "origin": "Shillong",
+    "destination": "Nongstoin",
+    "highway": "NH-217",
+    "distance_km": 90,
+    "time_min": 120,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 5.0
+  },
+  {
+    "origin": "Nongstoin",
+    "destination": "Williamnagar",
+    "highway": "NH-217",
+    "distance_km": 120,
+    "time_min": 180,
+    "terrain": "hilly",
+    "condition": "fair",
+    "slope_deg": 6.0
+  },
+  {
+    "origin": "Williamnagar",
+    "destination": "Tura",
+    "highway": "NH-217",
+    "distance_km": 75,
+    "time_min": 95,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
+  },
+  {
+    "origin": "Goalpara",
+    "destination": "Tura",
+    "highway": "NH-217",
+    "distance_km": 110,
+    "time_min": 140,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
+  }
+]

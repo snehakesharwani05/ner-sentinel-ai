@@ -273,8 +273,112 @@ function analyzeRoutes(originId, destinationId) {
   };
 }
 
+/**
+ * Real-Time AI Engine Bridge: Calls Python AI microservice (Port 5001) for live Open-Meteo & TomTom ML predictions.
+ * Automatically falls back to internal graph engine if Python service is unavailable.
+ */
+async function analyzeRoutesAsync(originId, destinationId) {
+  const locationsList = db.prepare(`SELECT * FROM locations`).all();
+  const locationsMap = new Map();
+  const nameToNode = new Map();
+  locationsList.forEach(loc => {
+    locationsMap.set(loc.id, loc);
+    nameToNode.set(loc.name, loc);
+  });
+
+  const originLoc = locationsMap.get(originId);
+  const destLoc = locationsMap.get(destinationId);
+
+  if (!originLoc || !destLoc) {
+    throw new Error('Invalid origin or destination location ID');
+  }
+
+  try {
+    const aiUrl = process.env.AI_ENGINE_URL || 'http://127.0.0.1:5001/api/v1/ai/analyze';
+    const response = await fetch(aiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ origin: originLoc.name, destination: destLoc.name }),
+      signal: AbortSignal.timeout(12000)
+    });
+
+    if (response.ok) {
+      const aiData = await response.json();
+      if (aiData && aiData.success && aiData.data) {
+        const formatAiRoute = (r, mode) => {
+          if (!r) return null;
+          const pathNodes = (r.nodes_in_path || []).map(name => {
+            const node = nameToNode.get(name) || {};
+            return {
+              id: node.id || 0,
+              name: name,
+              state: node.state || '',
+              lat: node.latitude || 0,
+              lng: node.longitude || 0,
+              type: node.location_type || 'hub'
+            };
+          });
+
+          const pathSegments = (r.corridors || []).map(c => ({
+            highway: c.highway,
+            from: c.origin,
+            to: c.destination,
+            distanceKm: c.distance_km,
+            transitTimeMin: c.effective_time_min || c.base_time_min,
+            terrain: c.terrain || 'plain',
+            riskScore: c.disaster_risk_score || 0,
+            severityBand: (c.disaster_risk_score >= 0.75) ? 'Critical' : (c.disaster_risk_score >= 0.50 ? 'High' : (c.disaster_risk_score >= 0.25 ? 'Moderate' : 'Low')),
+            predicted_state: c.predicted_state || 'CLEAR',
+            telemetry: c.telemetry || null
+          }));
+
+          return {
+            mode: mode,
+            origin: originLoc,
+            destination: destLoc,
+            totalDistanceKm: r.total_distance_km,
+            totalTransitTimeMin: r.estimated_transit_time_min,
+            averageRiskScore: r.average_disaster_risk,
+            severityBand: r.overall_severity,
+            nodesCount: pathNodes.length,
+            pathNodes: pathNodes,
+            pathSegments: pathSegments,
+            hazardsEncountered: pathSegments.filter(s => s.riskScore > 0.35 || s.predicted_state !== 'CLEAR').map(s => ({
+              highway: s.highway,
+              segment: `${s.from} -> ${s.to}`,
+              disruption: { type: s.predicted_state, severity: s.severityBand, description: `Live Telemetry: ${s.telemetry?.weather_source || 'Live'} & ${s.telemetry?.traffic_source || 'Live'}` }
+            })),
+            refueling_stations: r.refueling_stations || [],
+            refueling_stations_count: r.refueling_stations_count || (r.refueling_stations?.length || 0),
+            isRealTimeAI: true
+          };
+        };
+
+        return {
+          fastestRoute: formatAiRoute(aiData.data.fastestRoute, 'fastest'),
+          safestRoute: formatAiRoute(aiData.data.safestRoute, 'safest'),
+          recommendation: aiData.data.recommendation + ' (Powered by Live Open-Meteo & TomTom AI Engine)',
+          aiEngineStatus: 'LIVE_CONNECTED'
+        };
+      }
+    }
+  } catch (err) {
+    console.warn('[ROUTING] AI Engine microservice fallback to local SQLite graph:', err.message);
+  }
+
+  // Fallback to local synchronous Dijkstra/A* graph
+  return analyzeRoutes(originId, destinationId);
+}
+
+async function findPathAsync(originId, destinationId, mode = 'safest') {
+  const analysis = await analyzeRoutesAsync(originId, destinationId);
+  return mode === 'fastest' ? analysis.fastestRoute : analysis.safestRoute;
+}
+
 module.exports = {
   buildGraph,
   findPath,
-  analyzeRoutes
+  findPathAsync,
+  analyzeRoutes,
+  analyzeRoutesAsync
 };

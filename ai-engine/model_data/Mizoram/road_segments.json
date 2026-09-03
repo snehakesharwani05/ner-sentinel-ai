@@ -1,0 +1,82 @@
+[
+  {
+    "origin": "Silchar",
+    "destination": "Vairengte",
+    "highway": "NH-306",
+    "distance_km": 45,
+    "time_min": 70,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
+  },
+  {
+    "origin": "Vairengte",
+    "destination": "Kolasib",
+    "highway": "NH-306",
+    "distance_km": 40,
+    "time_min": 65,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 5.0
+  },
+  {
+    "origin": "Kolasib",
+    "destination": "Aizawl",
+    "highway": "NH-306",
+    "distance_km": 85,
+    "time_min": 170,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 9.0
+  },
+  {
+    "origin": "Aizawl",
+    "destination": "Serchhip",
+    "highway": "NH-54",
+    "distance_km": 90,
+    "time_min": 160,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 8.0
+  },
+  {
+    "origin": "Serchhip",
+    "destination": "Lunglei",
+    "highway": "NH-54",
+    "distance_km": 80,
+    "time_min": 140,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 8.0
+  },
+  {
+    "origin": "Aizawl",
+    "destination": "Champhai",
+    "highway": "NH-102B",
+    "distance_km": 190,
+    "time_min": 340,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 13.0
+  },
+  {
+    "origin": "Lunglei",
+    "destination": "Lawngtlai",
+    "highway": "NH-502A",
+    "distance_km": 90,
+    "time_min": 160,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 8.0
+  },
+  {
+    "origin": "Lawngtlai",
+    "destination": "Saiha",
+    "highway": "NH-54",
+    "distance_km": 40,
+    "time_min": 75,
+    "terrain": "hilly",
+    "condition": "fair",
+    "slope_deg": 6.0
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 31,
+    "name": "Kolasib",
+    "state": "Mizoram",
+    "latitude": 24.2247,
+    "longitude": 92.6781,
+    "elevation_m": 612,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 32,
+    "name": "Aizawl",
+    "state": "Mizoram",
+    "latitude": 23.7271,
+    "longitude": 92.7176,
+    "elevation_m": 1132,
+    "location_type": "state_capital",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 33,
+    "name": "Lunglei",
+    "state": "Mizoram",
+    "latitude": 22.8833,
+    "longitude": 92.7333,
+    "elevation_m": 722,
+    "location_type": "logistics_hub",
+    "terrain": "hilly"
+  },
+  {
+    "id": 34,
+    "name": "Champhai",
+    "state": "Mizoram",
+    "latitude": 23.456,
+    "longitude": 93.3282,
+    "elevation_m": 1678,
+    "location_type": "border_checkpost",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 71,
+    "name": "Vairengte",
+    "state": "Mizoram",
+    "latitude": 24.5,
+    "longitude": 92.76,
+    "elevation_m": 220,
+    "location_type": "border_checkpost",
+    "terrain": "hilly"
+  },
+  {
+    "id": 72,
+    "name": "Serchhip",
+    "state": "Mizoram",
+    "latitude": 23.34,
+    "longitude": 92.85,
+    "elevation_m": 880,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 73,
+    "name": "Lawngtlai",
+    "state": "Mizoram",
+    "latitude": 22.53,
+    "longitude": 92.89,
+    "elevation_m": 780,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 74,
+    "name": "Saiha",
+    "state": "Mizoram",
+    "latitude": 22.48,
+    "longitude": 92.97,
+    "elevation_m": 729,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "avg_annual_rainfall_mm": 1800,
+  "monsoon_months": [
+    "June",
+    "July",
+    "August"
+  ],
+  "landslide_susceptibility": "High",
+  "critical_passes": [
+    "Barak & Makru River Gorges on NH-37"
+  ]
+}

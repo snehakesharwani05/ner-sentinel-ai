@@ -1,0 +1,15 @@
+{
+  "state_key": "West_Bengal",
+  "state_name": "West Bengal",
+  "capital": "Kolkata",
+  "region": "Siliguri Strategic Corridor (Gateway to North East)",
+  "terrain_category": "Sub-Himalayan Dooars & Gateway Foothills",
+  "primary_highways": [
+    "NH-27",
+    "NH-10",
+    "NH-110",
+    "NH-717A"
+  ],
+  "total_locations": 6,
+  "total_road_segments": 7
+}

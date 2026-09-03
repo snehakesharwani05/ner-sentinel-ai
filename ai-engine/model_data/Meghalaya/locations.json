@@ -1,0 +1,92 @@
+[
+  {
+    "id": 12,
+    "name": "Shillong",
+    "state": "Meghalaya",
+    "latitude": 25.5788,
+    "longitude": 91.8933,
+    "elevation_m": 1525,
+    "location_type": "state_capital",
+    "terrain": "hilly"
+  },
+  {
+    "id": 13,
+    "name": "Cherrapunji (Sohra)",
+    "state": "Meghalaya",
+    "latitude": 25.2702,
+    "longitude": 91.7323,
+    "elevation_m": 1484,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 14,
+    "name": "Jowai",
+    "state": "Meghalaya",
+    "latitude": 25.45,
+    "longitude": 92.2,
+    "elevation_m": 1380,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 15,
+    "name": "Nongpoh",
+    "state": "Meghalaya",
+    "latitude": 25.9036,
+    "longitude": 91.88,
+    "elevation_m": 485,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 16,
+    "name": "Tura",
+    "state": "Meghalaya",
+    "latitude": 25.5138,
+    "longitude": 90.2202,
+    "elevation_m": 349,
+    "location_type": "logistics_hub",
+    "terrain": "hilly"
+  },
+  {
+    "id": 67,
+    "name": "Mawsynram",
+    "state": "Meghalaya",
+    "latitude": 25.3,
+    "longitude": 91.58,
+    "elevation_m": 1400,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 68,
+    "name": "Dawki",
+    "state": "Meghalaya",
+    "latitude": 25.18,
+    "longitude": 92.02,
+    "elevation_m": 105,
+    "location_type": "border_checkpost",
+    "terrain": "hilly"
+  },
+  {
+    "id": 69,
+    "name": "Williamnagar",
+    "state": "Meghalaya",
+    "latitude": 25.6,
+    "longitude": 90.62,
+    "elevation_m": 290,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 70,
+    "name": "Nongstoin",
+    "state": "Meghalaya",
+    "latitude": 25.52,
+    "longitude": 91.27,
+    "elevation_m": 1409,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "state_key": "Meghalaya",
+  "state_name": "Meghalaya",
+  "capital": "Shillong",
+  "region": "Shillong Plateau & Garo Hills",
+  "terrain_category": "Elevated Tableland & High Precipitation Ridges",
+  "primary_highways": [
+    "NH-6",
+    "SH-5",
+    "NH-206",
+    "NH-217"
+  ],
+  "total_locations": 9,
+  "total_road_segments": 12
+}

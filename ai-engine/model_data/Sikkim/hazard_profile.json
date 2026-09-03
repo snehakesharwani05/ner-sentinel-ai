@@ -1,0 +1,15 @@
+{
+  "avg_annual_rainfall_mm": 3500,
+  "monsoon_months": [
+    "June",
+    "July",
+    "August",
+    "September",
+    "October"
+  ],
+  "landslide_susceptibility": "Extreme",
+  "critical_passes": [
+    "29th Mile & Teesta Valley (NH-10)",
+    "Nathu La High Pass"
+  ]
+}

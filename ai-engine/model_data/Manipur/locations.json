@@ -1,0 +1,92 @@
+[
+  {
+    "id": 27,
+    "name": "Senapati",
+    "state": "Manipur",
+    "latitude": 25.2683,
+    "longitude": 94.0186,
+    "elevation_m": 1100,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 28,
+    "name": "Imphal",
+    "state": "Manipur",
+    "latitude": 24.817,
+    "longitude": 93.9368,
+    "elevation_m": 786,
+    "location_type": "state_capital",
+    "terrain": "plain"
+  },
+  {
+    "id": 29,
+    "name": "Churachandpur",
+    "state": "Manipur",
+    "latitude": 24.3333,
+    "longitude": 93.6833,
+    "elevation_m": 914,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 30,
+    "name": "Jiribam",
+    "state": "Manipur",
+    "latitude": 24.8014,
+    "longitude": 93.1186,
+    "elevation_m": 42,
+    "location_type": "border_checkpost",
+    "terrain": "plain"
+  },
+  {
+    "id": 62,
+    "name": "Ukhrul",
+    "state": "Manipur",
+    "latitude": 25.1167,
+    "longitude": 94.3667,
+    "elevation_m": 1662,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 63,
+    "name": "Thoubal",
+    "state": "Manipur",
+    "latitude": 24.6333,
+    "longitude": 93.9833,
+    "elevation_m": 775,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 64,
+    "name": "Bishnupur",
+    "state": "Manipur",
+    "latitude": 24.63,
+    "longitude": 93.76,
+    "elevation_m": 790,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 65,
+    "name": "Kakching",
+    "state": "Manipur",
+    "latitude": 24.48,
+    "longitude": 93.98,
+    "elevation_m": 776,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 66,
+    "name": "Moreh",
+    "state": "Manipur",
+    "latitude": 24.25,
+    "longitude": 94.3,
+    "elevation_m": 220,
+    "location_type": "border_checkpost",
+    "terrain": "hilly"
+  }
+]

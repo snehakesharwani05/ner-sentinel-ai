@@ -1,0 +1,142 @@
+[
+  {
+    "id": 17,
+    "name": "Itanagar",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.0844,
+    "longitude": 93.6053,
+    "elevation_m": 320,
+    "location_type": "state_capital",
+    "terrain": "hilly"
+  },
+  {
+    "id": 18,
+    "name": "Naharlagun",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.1064,
+    "longitude": 93.6931,
+    "elevation_m": 200,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 19,
+    "name": "Bomdila",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.2646,
+    "longitude": 92.4159,
+    "elevation_m": 2415,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 20,
+    "name": "Dirang",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.3592,
+    "longitude": 92.2392,
+    "elevation_m": 1560,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 21,
+    "name": "Sela Pass",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.505,
+    "longitude": 92.1058,
+    "elevation_m": 4170,
+    "location_type": "mountain_pass",
+    "terrain": "high_pass"
+  },
+  {
+    "id": 22,
+    "name": "Tawang",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.5861,
+    "longitude": 91.8594,
+    "elevation_m": 3048,
+    "location_type": "border_checkpost",
+    "terrain": "high_pass"
+  },
+  {
+    "id": 23,
+    "name": "Pasighat",
+    "state": "Arunachal Pradesh",
+    "latitude": 28.0661,
+    "longitude": 95.3262,
+    "elevation_m": 155,
+    "location_type": "logistics_hub",
+    "terrain": "hilly"
+  },
+  {
+    "id": 24,
+    "name": "Ziro",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.5949,
+    "longitude": 93.8385,
+    "elevation_m": 1572,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 25,
+    "name": "Along (Aalo)",
+    "state": "Arunachal Pradesh",
+    "latitude": 28.1691,
+    "longitude": 94.7972,
+    "elevation_m": 619,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 26,
+    "name": "Roing",
+    "state": "Arunachal Pradesh",
+    "latitude": 28.1408,
+    "longitude": 95.8354,
+    "elevation_m": 390,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 47,
+    "name": "Tezu",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.9144,
+    "longitude": 96.1669,
+    "elevation_m": 185,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 48,
+    "name": "Namsai",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.6698,
+    "longitude": 95.8711,
+    "elevation_m": 156,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 49,
+    "name": "Changlang",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.1278,
+    "longitude": 95.7389,
+    "elevation_m": 580,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 50,
+    "name": "Khonsa",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.0203,
+    "longitude": 95.5683,
+    "elevation_m": 1215,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  }
+]

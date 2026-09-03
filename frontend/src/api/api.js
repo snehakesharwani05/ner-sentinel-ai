@@ -34,6 +34,10 @@ export const api = {
     method: 'POST',
     body: JSON.stringify({ origin_id, destination_id, mode })
   }),
+  simulateHazard: (payload) => request('/api/v1/routes/simulate', {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  }),
   getWeather: () => request('/api/v1/weather'),
   getShipments: () => request('/api/v1/shipments'),
   reportDisruption: (payload, token) => request('/api/v1/disruptions', {

@@ -1,0 +1,16 @@
+{
+  "state_key": "Arunachal_Pradesh",
+  "state_name": "Arunachal Pradesh",
+  "capital": "Itanagar",
+  "region": "Eastern Himalayas / Border Region",
+  "terrain_category": "Steep Mountain & High Alpine Passes",
+  "primary_highways": [
+    "NH-13",
+    "NH-15",
+    "NH-415",
+    "NH-515",
+    "NH-713"
+  ],
+  "total_locations": 14,
+  "total_road_segments": 16
+}

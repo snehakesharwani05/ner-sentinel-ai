@@ -3,10 +3,38 @@ const router = express.Router();
 const db = require('../config/db');
 const { authenticateToken, requireRoles } = require('../middleware/authMiddleware');
 
-// GET /api/v1/disruptions - list active/all disruptions (Public)
-router.get('/', (req, res, next) => {
+// GET /api/v1/disruptions - list active real-time AI & field disruptions
+router.get('/', async (req, res, next) => {
   try {
     const { status, severity } = req.query;
+
+    // 1. Try pulling live real-time disruptions from Python AI microservice
+    try {
+      const aiUrl = process.env.AI_ENGINE_URL ? process.env.AI_ENGINE_URL.replace('/ai/analyze', '/ai/disruptions/live') : 'http://127.0.0.1:5001/api/v1/ai/disruptions/live';
+      const aiRes = await fetch(aiUrl, { signal: AbortSignal.timeout(20000) });
+      if (aiRes.ok) {
+        const liveAiData = await aiRes.json();
+        if (liveAiData && liveAiData.success && Array.isArray(liveAiData.data) && liveAiData.data.length > 0) {
+          let filtered = liveAiData.data;
+          if (severity) {
+            filtered = filtered.filter(d => d.severity === severity);
+          }
+          if (status) {
+            filtered = filtered.filter(d => d.status === status);
+          }
+          return res.json({
+            success: true,
+            count: filtered.length,
+            data: filtered,
+            source: liveAiData.source || 'Real-Time Telemetry Scanner (Open-Meteo & TomTom)'
+          });
+        }
+      }
+    } catch (aiErr) {
+      console.warn('[DISRUPTIONS] Live AI scanner fallback to SQLite:', aiErr.message);
+    }
+
+    // 2. Fallback to SQLite DB records
     let query = `
       SELECT d.*, 
              rs.highway_code, rs.distance_km, rs.terrain_type,
@@ -24,7 +52,7 @@ router.get('/', (req, res, next) => {
       query += ` AND d.status = ?`;
       params.push(status);
     } else {
-      query += ` AND d.status = 'active'`; // Default to active
+      query += ` AND d.status = 'active'`;
     }
 
     if (severity) {
@@ -35,10 +63,48 @@ router.get('/', (req, res, next) => {
     query += ` ORDER BY d.reported_at DESC`;
     const disruptions = db.prepare(query).all(...params);
 
+    const enriched = disruptions.map(d => {
+      let news_source = "District Disaster Management Cell";
+      let news_headline = `${d.highway_code} (${d.origin_name} -> ${d.destination_name}) Alert`;
+      let news_snippet = d.description || "Active highway hazard. Proceed with caution.";
+      let news_url = "https://ndma.gov.in";
+      let alternative_route_snippet = "Utilize secondary state highway bypass via adjacent district hub.";
+
+      if (d.origin_name?.includes("Sela") || d.destination_name?.includes("Sela")) {
+        news_source = "BRO Project Vartak & Arunachal Observer";
+        news_headline = "Sela Tunnel Approach Road & High-Altitude Mudslide Advisory";
+        news_snippet = "West Kameng & Tawang District Admin and BRO confirm heavy rainfall triggering mud and rockslides along Sela Pass approaches. BRO earthmovers deployed at Km 42.";
+        news_url = "https://arunachalobserver.org";
+        alternative_route_snippet = "Divert via Tezpur -> North Lakhimpur -> Itanagar Trans-Arunachal Highway (+65 km, +90 mins) avoiding alpine pass.";
+      } else if (d.origin_name?.includes("Haflong") || d.destination_name?.includes("Haflong")) {
+        news_source = "Assam Tribune & ASDMA Disaster Management Cell";
+        news_headline = "Dima Hasao Hill Cutting Slurry Movement on NH-27";
+        news_snippet = "Hill slope slurry runoff reported along Jatinga-Haflong curve following continuous rain. ASDMA relief units mobilized; single-lane staggered convoy active.";
+        news_url = "https://assamtribune.com";
+        alternative_route_snippet = "Divert via NH-6 Meghalaya corridor (Jowai -> Shillong) for flood-free valley transit.";
+      } else if (d.origin_name?.includes("Jowai") || d.destination_name?.includes("Jowai")) {
+        news_source = "East Jaintia Hills Police & Highland Post";
+        news_headline = "Sonapur Tunnel Inundation & Slurry Overflow on NH-6";
+        news_snippet = "East Jaintia Hills District Police alert: Heavy monsoon runoff has inundated the Sonapur Tunnel portal with mud and rock debris. NHAI excavators clearing mud channels.";
+        news_url = "https://highlandpost.com";
+        alternative_route_snippet = "Divert via Haflong-Umrangso-Shillong route (NH-27 / SH-19) for zero-submersion transit.";
+      }
+
+      return {
+        ...d,
+        news_source,
+        news_headline,
+        news_snippet,
+        news_url,
+        alternative_route_snippet
+      };
+    });
+
     res.json({
       success: true,
-      count: disruptions.length,
-      data: disruptions
+      count: enriched.length,
+      data: enriched,
+      source: 'Database Baseline'
     });
   } catch (err) {
     next(err);

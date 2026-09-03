@@ -1,0 +1,14 @@
+{
+  "avg_annual_rainfall_mm": 3200,
+  "monsoon_months": [
+    "May",
+    "June",
+    "July",
+    "August",
+    "September"
+  ],
+  "landslide_susceptibility": "Very High",
+  "critical_passes": [
+    "Sela Pass (4,170m)"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "state_key": "Assam",
+  "state_name": "Assam",
+  "capital": "Dispur",
+  "region": "Brahmaputra Valley",
+  "terrain_category": "Valley Plains & Foothills",
+  "primary_highways": [
+    "NH-27",
+    "NH-17",
+    "NH-37",
+    "NH-715",
+    "NH-15",
+    "NH-127B"
+  ],
+  "total_locations": 23,
+  "total_road_segments": 23
+}

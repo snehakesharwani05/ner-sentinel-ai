@@ -1,0 +1,12 @@
+{
+  "avg_annual_rainfall_mm": 2100,
+  "monsoon_months": [
+    "June",
+    "July",
+    "August"
+  ],
+  "landslide_susceptibility": "Low to Moderate",
+  "critical_passes": [
+    "Baramura Hill Section (NH-8)"
+  ]
+}

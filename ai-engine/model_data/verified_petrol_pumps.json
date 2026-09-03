@@ -1,0 +1,1597 @@
+{
+  "Guwahati": {
+    "name": "M/S NRL Highway Oasis & Fuel Center (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "GS Road, Khanapara / Zoo Road, Guwahati 781022, Assam",
+    "highway": "NH-27 / GS Road",
+    "latitude": 26.128953,
+    "longitude": 91.806422,
+    "elevation_m": 55,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Speed 97 Petrol",
+      "Power95",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway 4-Lane Oasis",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Dispur": {
+    "name": "Indian Oil Swagat Auto Service (IOCL)",
+    "brand": "Indian Oil",
+    "address": "Capital Complex Road, Dispur, Guwahati 781006, Assam",
+    "highway": "GS Road",
+    "latitude": 26.142,
+    "longitude": 91.789,
+    "elevation_m": 50,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Capital Retail Outlet",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Nagaon": {
+    "name": "M/S Valley Auto Service & Kisan Seva (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-27 4-Lane Bypass, Bangthai, Nagaon 782142, Assam",
+    "highway": "NH-27",
+    "latitude": 26.3452,
+    "longitude": 92.6835,
+    "elevation_m": 52,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Logistics Oasis",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Tezpur": {
+    "name": "M/S Mahabhairab Auto Fuels (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-715, Mazgaon / Mission Chariali, Tezpur 784027, Assam",
+    "highway": "NH-715",
+    "latitude": 26.6528,
+    "longitude": 92.7926,
+    "elevation_m": 48,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Highway Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Jorhat": {
+    "name": "M/S Borbheta Service Station (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-27, Borbheta, Jorhat 785004, Assam",
+    "highway": "NH-27",
+    "latitude": 26.7509,
+    "longitude": 94.2037,
+    "elevation_m": 116,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Speed Petrol",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Highway Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Dibrugarh": {
+    "name": "M/S Brahmaputra Highway Care (IOCL - Assam Oil)",
+    "brand": "Indian Oil",
+    "address": "NH-27, Graham Bazar / Bogibeel Approach, Dibrugarh 786001, Assam",
+    "highway": "NH-27",
+    "latitude": 27.4728,
+    "longitude": 94.912,
+    "elevation_m": 108,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Logistics & River Bridge Corridor",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Tinsukia": {
+    "name": "M/S Oil India Retail Outlet & Auto Service (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-27 / Bordoloi Nagar, Tinsukia 786125, Assam",
+    "highway": "NH-27",
+    "latitude": 27.4922,
+    "longitude": 95.3558,
+    "elevation_m": 116,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Power95 Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Industrial & Mining Logistics Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Silchar": {
+    "name": "M/S Cachar Highway Service Station (IOCL)",
+    "brand": "Indian Oil",
+    "address": "SH-38 / NH-37, Balighat, Silchar 788025, Assam",
+    "highway": "NH-37 / SH-38",
+    "latitude": 24.8333,
+    "longitude": 92.7789,
+    "elevation_m": 35,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Barak Valley Primary Supply Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Haflong (Jatinga)": {
+    "name": "Dima Hasao Hill Highway Fuel Station (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-27 Mahur-Jatinga Pass Section, Haflong 788819, Assam",
+    "highway": "NH-27",
+    "latitude": 25.1804,
+    "longitude": 93.0169,
+    "elevation_m": 512,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Emergency Heavy Jerrycan Stock"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Mountain Lifeline Bypass Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Bhalukpong": {
+    "name": "DIC Assam Oil Frontier Fuel Station (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-13 Border Checkpoint, Chariduar / Bhalukpong 784504, Assam",
+    "highway": "NH-13",
+    "latitude": 27.0125,
+    "longitude": 92.6416,
+    "elevation_m": 213,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Inter-State Border Logistics Post",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Nalbari": {
+    "name": "M/S Nalbari Highway Service (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-27 East-West Corridor, Nalbari 781335, Assam",
+    "highway": "NH-27",
+    "latitude": 26.4447,
+    "longitude": 91.4428,
+    "elevation_m": 42,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Goalpara": {
+    "name": "M/S Brahmaputra Valley Fuel Depot (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-17, Bhalukdubi, Goalpara 783101, Assam",
+    "highway": "NH-17",
+    "latitude": 26.1772,
+    "longitude": 90.6272,
+    "elevation_m": 35,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Bongaigaon": {
+    "name": "M/S BGR Township Auto Service (IOCL - Bongaigaon Refinery)",
+    "brand": "Indian Oil",
+    "address": "NH-27 / Chapaguri, Bongaigaon 783380, Assam",
+    "highway": "NH-27",
+    "latitude": 26.48,
+    "longitude": 90.56,
+    "elevation_m": 54,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Power95",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Refinery Logistics Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Dhubri": {
+    "name": "M/S Border Highway Petroleum (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-17, Gauripur-Dhubri Road, Dhubri 783301, Assam",
+    "highway": "NH-17",
+    "latitude": 26.02,
+    "longitude": 89.98,
+    "elevation_m": 34,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Border Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Barpeta": {
+    "name": "M/S Barpeta Road Service Center (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-27 / Howly Road, Barpeta 781301, Assam",
+    "highway": "NH-27",
+    "latitude": 26.32,
+    "longitude": 91.0,
+    "elevation_m": 35,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "North Lakhimpur": {
+    "name": "M/S Lakhimpur Auto Care (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-15, CD Road, North Lakhimpur 787001, Assam",
+    "highway": "NH-15",
+    "latitude": 27.23,
+    "longitude": 94.1,
+    "elevation_m": 101,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Highway Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Dhemaji": {
+    "name": "M/S Subansiri Highway Petroleum (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-15, Dhemaji Town Bypass, Dhemaji 787057, Assam",
+    "highway": "NH-15",
+    "latitude": 27.48,
+    "longitude": 94.58,
+    "elevation_m": 91,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Highway Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Golaghat": {
+    "name": "M/S Kaziranga Foothills Auto Service (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-129, Furkating Road, Golaghat 785621, Assam",
+    "highway": "NH-129",
+    "latitude": 26.52,
+    "longitude": 93.97,
+    "elevation_m": 95,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Highway Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Sivasagar": {
+    "name": "M/S Ahom Auto Fuels (IOCL - Assam Oil)",
+    "brand": "Indian Oil",
+    "address": "NH-27 / AT Road, Sivasagar 785640, Assam",
+    "highway": "NH-27",
+    "latitude": 26.98,
+    "longitude": 94.63,
+    "elevation_m": 95,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Power95"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Historic District Commercial Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Kokrajhar": {
+    "name": "M/S Bodoland Highway Service (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-27 / JD Road, Kokrajhar 783370, Assam",
+    "highway": "NH-27",
+    "latitude": 26.4,
+    "longitude": 90.27,
+    "elevation_m": 38,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Karimganj": {
+    "name": "M/S Loknath Petrol Pump (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-8, Saidambar Part II, Karimganj 788711, Assam",
+    "highway": "NH-8",
+    "latitude": 24.87,
+    "longitude": 92.35,
+    "elevation_m": 13,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Inter-State Gateway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Hailakandi": {
+    "name": "M/S Barak Valley Service Station (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "SH-38, Hailakandi Town, Hailakandi 788151, Assam",
+    "highway": "SH-38",
+    "latitude": 24.68,
+    "longitude": 92.56,
+    "elevation_m": 21,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "District Commercial Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Diphu": {
+    "name": "M/S Karbi Anglong Fuel Depot (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-129 / Manja Road, Rongtheso, Diphu 782480, Assam",
+    "highway": "NH-129",
+    "latitude": 25.84,
+    "longitude": 93.43,
+    "elevation_m": 186,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Hill District Logistics Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Shillong": {
+    "name": "M/S Barik Service Station & NRL Fuel Depot (IOCL & NRL)",
+    "brand": "Indian Oil / NRL",
+    "address": "Mdr 32 / Demsein Iong & Barik Point, Shillong 793001, Meghalaya",
+    "highway": "NH-6 / MDR-32",
+    "latitude": 25.580011,
+    "longitude": 91.897901,
+    "elevation_m": 1525,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Winter Anti-Freeze Additives",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Capital Strategic Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Cherrapunji (Sohra)": {
+    "name": "M/S Sohra Plateau Auto Service (IOCL)",
+    "brand": "Indian Oil",
+    "address": "SH-5 High Precipitation Corridor, Sohra 793108, Meghalaya",
+    "highway": "SH-5",
+    "latitude": 25.2702,
+    "longitude": 91.7323,
+    "elevation_m": 1484,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Tourist & High Mountain Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Jowai": {
+    "name": "M/S Jaintia Highway Fuel Station (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-6 / Ladthadlaboh, Jowai 793150, Meghalaya",
+    "highway": "NH-6",
+    "latitude": 25.45,
+    "longitude": 92.2,
+    "elevation_m": 1380,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Heavy Commercial Staging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Inter-State Freight Corridor Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Nongpoh": {
+    "name": "M/S Umsning Highway Oasis (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-6 (4-Lane Expressway), Umsning Khliehiew, Nongpoh 793105, Meghalaya",
+    "highway": "NH-6",
+    "latitude": 25.9036,
+    "longitude": 91.88,
+    "elevation_m": 485,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway 4-Lane Oasis",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Tura": {
+    "name": "M/S Garo Hills Auto Care (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-217 / Ring Road, Hawakhana, Tura 794001, Meghalaya",
+    "highway": "NH-217",
+    "latitude": 25.5138,
+    "longitude": 90.2202,
+    "elevation_m": 349,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Garo Hills District Headquarters Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Mawsynram": {
+    "name": "Mawsynram Frontier Fuel Point (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "SH-5 Mountain Ridge Road, Mawsynram 793113, Meghalaya",
+    "highway": "SH-5",
+    "latitude": 25.3,
+    "longitude": 91.58,
+    "elevation_m": 1400,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Extreme Weather Outpost Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Dawki": {
+    "name": "M/S Border Fuel Depot - Dawki Bridge (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-206 Umngot River Approach, Dawki 793109, Meghalaya",
+    "highway": "NH-206",
+    "latitude": 25.18,
+    "longitude": 92.02,
+    "elevation_m": 105,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "International Land Port Staging Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Williamnagar": {
+    "name": "East Garo Hills Auto Service (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-217, Simsang River Road, Williamnagar 794111, Meghalaya",
+    "highway": "NH-217",
+    "latitude": 25.6,
+    "longitude": 90.62,
+    "elevation_m": 290,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "District Headquarters Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Nongstoin": {
+    "name": "West Khasi Hills Fuel Center (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-217 / Pyndengrei, Nongstoin 793119, Meghalaya",
+    "highway": "NH-217",
+    "latitude": 25.52,
+    "longitude": 91.27,
+    "elevation_m": 1409,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Hill Commercial Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Kohima": {
+    "name": "BOC Indian Oil Retail Outlet & High School Junction (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-2, BOC / High School Junction, Kohima 797005, Nagaland",
+    "highway": "NH-2 (Asian Highway AH-1)",
+    "latitude": 25.653992,
+    "longitude": 94.099435,
+    "elevation_m": 1444,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Winter Fuel Additives",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Capital Strategic Lifeline Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Dimapur": {
+    "name": "M/S Purana Bazaar Service Station & Highway Oasis (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-29 / Purana Bazaar / 4th Mile, Dimapur 797112, Nagaland",
+    "highway": "NH-29",
+    "latitude": 25.9068,
+    "longitude": 93.7271,
+    "elevation_m": 145,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Power95",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Primary Freight Gateway Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Mokokchung": {
+    "name": "M/S Ungma Service Station (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-702 / Arkong Ward, Mokokchung 798601, Nagaland",
+    "highway": "NH-702",
+    "latitude": 26.3256,
+    "longitude": 94.5215,
+    "elevation_m": 1325,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Central Nagaland Strategic Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Wokha": {
+    "name": "M/S Wokha Hill Petroleum (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-2 / Tsumang Colony, Wokha 797111, Nagaland",
+    "highway": "NH-2",
+    "latitude": 26.1,
+    "longitude": 94.26,
+    "elevation_m": 1313,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Highway Transit Point",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Tuensang": {
+    "name": "Tuensang Eastern Frontier Fuel Base (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-702 / High School Ward, Tuensang 798612, Nagaland",
+    "highway": "NH-702",
+    "latitude": 26.28,
+    "longitude": 94.83,
+    "elevation_m": 1371,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Eastern Frontier Logistics Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Zunheboto": {
+    "name": "Sumi Hill Auto Care (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-702D / Project Colony, Zunheboto 798620, Nagaland",
+    "highway": "NH-702D",
+    "latitude": 25.97,
+    "longitude": 94.52,
+    "elevation_m": 1874,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "High Elevation District Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Mon": {
+    "name": "Mon Frontier Highway Service (IOCL)",
+    "brand": "Indian Oil",
+    "address": "Sonari-Mon Road / Council Ward, Mon 798621, Nagaland",
+    "highway": "SH-Mon Corridor",
+    "latitude": 26.75,
+    "longitude": 95.06,
+    "elevation_m": 897,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Northern Frontier Outpost",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Phek": {
+    "name": "Phek Mountain Pass Refueling Post (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-29 / Bible Hill, Phek 797107, Nagaland",
+    "highway": "NH-29",
+    "latitude": 25.66,
+    "longitude": 94.46,
+    "elevation_m": 1024,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Border District Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Itanagar": {
+    "name": "M/S Donyi Polo Auto Service (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-415 / Bank Tinali, Itanagar 791111, Arunachal Pradesh",
+    "highway": "NH-415",
+    "latitude": 27.0844,
+    "longitude": 93.6053,
+    "elevation_m": 320,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Power95",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Capital Strategic Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Naharlagun": {
+    "name": "M/S Papum Pare Highway Fuel Depot (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-415, Model Village / Railway Station Road, Naharlagun 791110, Arunachal Pradesh",
+    "highway": "NH-415",
+    "latitude": 27.1064,
+    "longitude": 93.6931,
+    "elevation_m": 200,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Railway & Freight Gateway Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Bomdila": {
+    "name": "Indian Oil Corporation (IOCL) Mountain Fuel Depot",
+    "brand": "Indian Oil",
+    "address": "NH-13 / Main Bazaar Road, Bomdila 790001, Arunachal Pradesh",
+    "highway": "NH-13",
+    "latitude": 27.2646,
+    "longitude": 92.4159,
+    "elevation_m": 2415,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Winter Anti-Freeze Fuel",
+      "Emergency Jerrycan Supply"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Strategic Trans-Himalayan Staging Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Dirang": {
+    "name": "HPCL Valley Corridor Fuel Station",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-13 Valley Highway, Dirang 790101, Arunachal Pradesh",
+    "highway": "NH-13",
+    "latitude": 27.3592,
+    "longitude": 92.2392,
+    "elevation_m": 1560,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Alpine Approach Staging Point",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Sela Pass": {
+    "name": "BRO Project Vartak High-Altitude Arctic Diesel Base",
+    "brand": "BRO & Indian Oil Defense Logistics",
+    "address": "NH-13 Sela Pass Tunnel & Summit Approach (4,170m), West Kameng",
+    "highway": "NH-13",
+    "latitude": 27.505,
+    "longitude": 92.1058,
+    "elevation_m": 4170,
+    "fuel_types": [
+      "Arctic Grade Diesel (-30\u00b0C Anti-Freeze)",
+      "High-Speed Diesel",
+      "24/7 Heavy GenSet Grid Power"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "High Himalayan Military & Lifeline Staging Post",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Tawang": {
+    "name": "Indian Oil (IOCL) High-Altitude Frontier Station",
+    "brand": "Indian Oil",
+    "address": "Old Market Road / Cona Highway, Tawang 790104, Arunachal Pradesh",
+    "highway": "NH-13",
+    "latitude": 27.5861,
+    "longitude": 91.8594,
+    "elevation_m": 3048,
+    "fuel_types": [
+      "Arctic Grade Diesel (-30\u00b0C)",
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Frontier Border Defense Logistics Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Pasighat": {
+    "name": "M/S Siang Valley Auto Care (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-515 / Gumin Nagar, Pasighat 791102, Arunachal Pradesh",
+    "highway": "NH-515",
+    "latitude": 28.0661,
+    "longitude": 95.3262,
+    "elevation_m": 155,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Eastern Foothills Gateway Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Ziro": {
+    "name": "Apatani Plateau Fuel Service (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-13 / Hapoli Market, Ziro 791120, Arunachal Pradesh",
+    "highway": "NH-13",
+    "latitude": 27.5949,
+    "longitude": 93.8385,
+    "elevation_m": 1572,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Plateau District Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Along (Aalo)": {
+    "name": "West Siang Auto Petroleum (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-13 / Puak Gumin, Aalo 791001, Arunachal Pradesh",
+    "highway": "NH-13",
+    "latitude": 28.1691,
+    "longitude": 94.7972,
+    "elevation_m": 619,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Mid-Hills Strategic Transit Point",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Roing": {
+    "name": "Dibang Valley Auto Fuel Depot (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-13 / Lower Dibang Bypass, Roing 792110, Arunachal Pradesh",
+    "highway": "NH-13",
+    "latitude": 28.1408,
+    "longitude": 95.8354,
+    "elevation_m": 390,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Valley Gateway Staging Point",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Tezu": {
+    "name": "M/S Lohit Auto Service (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-13 / Dhola-Sadiya Highway, Tezu 792001, Arunachal Pradesh",
+    "highway": "NH-13",
+    "latitude": 27.9144,
+    "longitude": 96.1669,
+    "elevation_m": 185,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Eastern Foothills Bridge Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Namsai": {
+    "name": "Namsai Highway Care (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-15 / Golden Pagoda Road, Namsai 792103, Arunachal Pradesh",
+    "highway": "NH-15",
+    "latitude": 27.6698,
+    "longitude": 95.8711,
+    "elevation_m": 156,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Plains Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Changlang": {
+    "name": "Patkai Foothills Fuel Post (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-215 / Main Bazar, Changlang 792120, Arunachal Pradesh",
+    "highway": "NH-215",
+    "latitude": 27.1278,
+    "longitude": 95.7389,
+    "elevation_m": 580,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "District Outpost Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Khonsa": {
+    "name": "Tirap Frontier Petroleum (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-315A / Khonsa Hill Road, Khonsa 792130, Arunachal Pradesh",
+    "highway": "NH-315A",
+    "latitude": 27.0203,
+    "longitude": 95.5683,
+    "elevation_m": 1215,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Frontier Hill Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Gangtok": {
+    "name": "SNT Petrol Pump & IOCL Highway Staging Depot (IOCL)",
+    "brand": "Indian Oil / SNT",
+    "address": "D P H Road, Sungava / Deorali, Gangtok 737101, Sikkim",
+    "highway": "NH-10",
+    "latitude": 27.334519,
+    "longitude": 88.614261,
+    "elevation_m": 1650,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Winter Anti-Freeze Additives",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Capital Strategic Staging Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Nathu La Pass": {
+    "name": "Army Transit & BRO Project Swastik Arctic Diesel Staging Base",
+    "brand": "Indian Army & BRO Logistics",
+    "address": "JN Road Summit Mile 14 (4,310m), East Sikkim 737103",
+    "highway": "JN Road",
+    "latitude": 27.3865,
+    "longitude": 88.8309,
+    "elevation_m": 4310,
+    "fuel_types": [
+      "Arctic Grade Anti-Freeze Diesel (-30\u00b0C)",
+      "High-Speed Diesel",
+      "Emergency Aviation Fuel"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "High Alpine Frontier Defense Base",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Mangan": {
+    "name": "Indian Oil (IOCL) North Sikkim District Station",
+    "brand": "Indian Oil",
+    "address": "North Sikkim Highway, Mangan 737116, Sikkim",
+    "highway": "NH-310A",
+    "latitude": 27.5,
+    "longitude": 88.53,
+    "elevation_m": 1310,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "North Sikkim Lifeline Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Chungthang": {
+    "name": "BRO Project Swastik Heavy Diesel Base",
+    "brand": "BRO & Indian Oil",
+    "address": "Lachen-Lachung Fork, Chungthang 737120, North Sikkim",
+    "highway": "NH-310A",
+    "latitude": 27.6,
+    "longitude": 88.65,
+    "elevation_m": 1790,
+    "fuel_types": [
+      "Arctic Grade Diesel",
+      "High-Speed Diesel",
+      "24/7 GenSet Power"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Glacial Highway Lifeline Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Lachen": {
+    "name": "Gurudongmar Approach BRO Fuel Depot",
+    "brand": "BRO & Defense Logistics",
+    "address": "Lachen Valley Road (2,750m), North Sikkim 737120",
+    "highway": "Lachen Corridor",
+    "latitude": 27.72,
+    "longitude": 88.55,
+    "elevation_m": 2750,
+    "fuel_types": [
+      "Arctic Anti-Freeze Diesel (-30\u00b0C)",
+      "High-Speed Diesel"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "High Altitude Defense Outpost",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Lachung": {
+    "name": "Yumthang Valley Fuel Point (IOCL & BRO)",
+    "brand": "Indian Oil & BRO",
+    "address": "Lachung Main Road (2,700m), North Sikkim 737120",
+    "highway": "Lachung Corridor",
+    "latitude": 27.69,
+    "longitude": 88.74,
+    "elevation_m": 2700,
+    "fuel_types": [
+      "Arctic Grade Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Alpine Tourism & Defense Staging",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Singtam": {
+    "name": "Teesta Valley Highway Service (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-10 / 31A Junction, Singtam 737134, Sikkim",
+    "highway": "NH-10",
+    "latitude": 27.23,
+    "longitude": 88.5,
+    "elevation_m": 400,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Junction Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Rangpo": {
+    "name": "M/S Rangpo Inter-State Border Fuel Depot (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-10 Border Checkpost, Rangpo 737132, Sikkim",
+    "highway": "NH-10",
+    "latitude": 27.17,
+    "longitude": 88.53,
+    "elevation_m": 330,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Gateway Logistics Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Namchi": {
+    "name": "South Sikkim Auto Fuels (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "Jorethang-Namchi Road, Namchi 737126, Sikkim",
+    "highway": "SH-South Sikkim",
+    "latitude": 27.17,
+    "longitude": 88.35,
+    "elevation_m": 1315,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "District Headquarters Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Jorethang": {
+    "name": "Rangeet Valley Highway Oasis (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-510 / Legship Road, Jorethang 737121, Sikkim",
+    "highway": "NH-510",
+    "latitude": 27.12,
+    "longitude": 88.31,
+    "elevation_m": 300,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Transport Junction",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Gyalshing": {
+    "name": "West Sikkim Fuel Center (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "Pelling Road, Gyalshing 737111, Sikkim",
+    "highway": "SH-West Sikkim",
+    "latitude": 27.28,
+    "longitude": 88.27,
+    "elevation_m": 1540,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "District Headquarters Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Ravangla": {
+    "name": "Buddha Park Approach Auto Care (IOCL)",
+    "brand": "Indian Oil",
+    "address": "Damthang-Ravangla Highway, Ravangla 737139, Sikkim",
+    "highway": "SH-Ravangla Corridor",
+    "latitude": 27.31,
+    "longitude": 88.36,
+    "elevation_m": 2100,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "High Elevation Transit Point",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Agartala": {
+    "name": "M/S Nabarun Petrol Pump & Highway Oasis (IOCL)",
+    "brand": "Indian Oil",
+    "address": "Bidurkarta Chowk / Krishna Nagar, Agartala 799001, Tripura",
+    "highway": "NH-8",
+    "latitude": 23.832951,
+    "longitude": 91.279221,
+    "elevation_m": 12,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Power95",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Capital Strategic Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Udaipur": {
+    "name": "M/S Matabari Highway Petroleum (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-8 / Matabari Road, Udaipur 799120, Tripura",
+    "highway": "NH-8",
+    "latitude": 23.5333,
+    "longitude": 91.4833,
+    "elevation_m": 25,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Dharmanagar": {
+    "name": "M/S Churaibari Frontier Petroleum (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-8 / Churaibari Border, Kadamtala, Dharmanagar 799262, Tripura",
+    "highway": "NH-8",
+    "latitude": 24.3833,
+    "longitude": 92.1667,
+    "elevation_m": 21,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Inter-State Commercial Freight Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Kailashahar": {
+    "name": "Unakoti Auto Service Station (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-108 / Airport Road, Kailashahar 799277, Tripura",
+    "highway": "NH-108",
+    "latitude": 24.3333,
+    "longitude": 92.0,
+    "elevation_m": 23,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "District Commercial Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Ambassa": {
+    "name": "Dhalai District Highway Care (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-8 / Kulai Bypass, Ambassa 799289, Tripura",
+    "highway": "NH-8",
+    "latitude": 23.9167,
+    "longitude": 91.85,
+    "elevation_m": 60,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Belonia": {
+    "name": "M/S Samabay Petrol Pump (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-8 / Dakshin Bharatchandranagar, Belonia 799155, Tripura",
+    "highway": "NH-8",
+    "latitude": 23.25,
+    "longitude": 91.45,
+    "elevation_m": 23,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Border Checkpoint Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Sabroom": {
+    "name": "Maitri Bridge International Staging Depot (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-8 / Feni River Port Approach, Sabroom 799145, Tripura",
+    "highway": "NH-8",
+    "latitude": 23.0,
+    "longitude": 91.7,
+    "elevation_m": 25,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Heavy Freight Staging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "International Port Gateway Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Teliamura": {
+    "name": "Baramura Foothills Auto Fuel Point (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-8 / Khowai Road, Teliamura 799205, Tripura",
+    "highway": "NH-8",
+    "latitude": 23.83,
+    "longitude": 91.6,
+    "elevation_m": 35,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Aizawl": {
+    "name": "M/S Zangena Petrol Pump & Ramhlun Care (IOCL)",
+    "brand": "Indian Oil",
+    "address": "Ramhlun Road / Ramhlun North, Aizawl 796012, Mizoram",
+    "highway": "NH-306 / NH-54",
+    "latitude": 23.749792,
+    "longitude": 92.725408,
+    "elevation_m": 1132,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Power95",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Capital Strategic Lifeline Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Kolasib": {
+    "name": "M/S Kolasib Highway Fuel Point (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-306 / Venglai, Kolasib 796081, Mizoram",
+    "highway": "NH-306",
+    "latitude": 24.2247,
+    "longitude": 92.6781,
+    "elevation_m": 612,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Mountain Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Vairengte": {
+    "name": "M/S Mizofed Highway Fuel Pump (IOCL)",
+    "brand": "Indian Oil / MIZOFED",
+    "address": "NH-306 / Bilkhawthlir Road, Vairengte 796091, Mizoram",
+    "highway": "NH-306",
+    "latitude": 24.5,
+    "longitude": 92.76,
+    "elevation_m": 220,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Inter-State Border Freight Gateway",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Lunglei": {
+    "name": "South Mizoram Central Fuel Depot (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-54 / Venglai, Lunglei 796701, Mizoram",
+    "highway": "NH-54",
+    "latitude": 22.8833,
+    "longitude": 92.7333,
+    "elevation_m": 722,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Southern District Strategic Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Champhai": {
+    "name": "Indian Oil Corporation Frontier Depot (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-6 / Zion Veng, Khawzawl-Champhai 796321, Mizoram",
+    "highway": "NH-6",
+    "latitude": 23.456,
+    "longitude": 93.3282,
+    "elevation_m": 1678,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Winter Heavy Jerrycan Stock"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "International Border Trade Staging Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Serchhip": {
+    "name": "M/S Serchhip Auto Fuels (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-54 / Main Market, Serchhip 796181, Mizoram",
+    "highway": "NH-54",
+    "latitude": 23.34,
+    "longitude": 92.85,
+    "elevation_m": 880,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Central Ridge Transit Point",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Lawngtlai": {
+    "name": "Kaladan Corridor Refueling Post (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-54 / Kaladan Multi-Modal Highway, Lawngtlai 796891, Mizoram",
+    "highway": "NH-54",
+    "latitude": 22.53,
+    "longitude": 92.89,
+    "elevation_m": 780,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Transit Corridor Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Saiha": {
+    "name": "Mara Autonomous Region Fuel Depot (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-54 / Council Veng, Saiha 796901, Mizoram",
+    "highway": "NH-54",
+    "latitude": 22.48,
+    "longitude": 92.97,
+    "elevation_m": 729,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "Southernmost Frontier Post",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Imphal": {
+    "name": "M/S Khabam Auto Service & Highway Fuel Depot (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-2, Khabam Lamkhai / Mantripukhri, Imphal 795002, Manipur",
+    "highway": "NH-2",
+    "latitude": 24.855682,
+    "longitude": 93.932763,
+    "elevation_m": 786,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Power95",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "State Capital Strategic Logistics Depot",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Senapati": {
+    "name": "M/S Senapati Highway Service (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-2 (Asian Highway AH-1), Senapati Town 795106, Manipur",
+    "highway": "NH-2",
+    "latitude": 25.2683,
+    "longitude": 94.0186,
+    "elevation_m": 1100,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Northern Mountain Lifeline Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Churachandpur": {
+    "name": "M/S Peace Ground Auto Care (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-2 / Tedim Road, Churachandpur 795128, Manipur",
+    "highway": "NH-2",
+    "latitude": 24.3333,
+    "longitude": 93.6833,
+    "elevation_m": 914,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Southern District Commercial Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Jiribam": {
+    "name": "M/S Barak Valley-Manipur Gateway Fuel Depot (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-37 / Babupara, Jiribam 795116, Manipur",
+    "highway": "NH-37",
+    "latitude": 24.8014,
+    "longitude": 93.1186,
+    "elevation_m": 42,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Heavy Freight Convoy Staging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "NH-37 Lifeline Gateway Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Ukhrul": {
+    "name": "Tangkhul Hills Petroleum (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-150 / Viewland, Ukhrul 795142, Manipur",
+    "highway": "NH-150",
+    "latitude": 25.1167,
+    "longitude": 94.3667,
+    "elevation_m": 1662,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": false,
+    "operator_type": "High Hill District Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Thoubal": {
+    "name": "M/S Thoubal Highway Petroleum (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-102 / Wangjing, Thoubal 795138, Manipur",
+    "highway": "NH-102",
+    "latitude": 24.6333,
+    "longitude": 93.9833,
+    "elevation_m": 775,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Asian Highway AH-1 Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Bishnupur": {
+    "name": "Loktak Lake Approach Service Station (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-2 / Moirang Road, Bishnupur 795126, Manipur",
+    "highway": "NH-2",
+    "latitude": 24.63,
+    "longitude": 93.76,
+    "elevation_m": 790,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "District Commercial Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Kakching": {
+    "name": "M/S Kakching Auto Fuels (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-102 / Pallel Road, Kakching 795103, Manipur",
+    "highway": "NH-102",
+    "latitude": 24.48,
+    "longitude": 93.98,
+    "elevation_m": 776,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Trans-Asian Corridor Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Moreh": {
+    "name": "M/S Asian Highway International Port Fuel Station (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-102 / Integrated Check Post (ICP), Moreh 795131, Manipur",
+    "highway": "NH-102 (Asian Highway AH-1)",
+    "latitude": 24.25,
+    "longitude": 94.3,
+    "elevation_m": 220,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "International Commercial Convoy Staging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "International Land Border Port Terminal",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Siliguri": {
+    "name": "M/S Eastern Bypass Highway Swagat Oasis (IOCL & BPCL)",
+    "brand": "Indian Oil",
+    "address": "NH-27 / Asian Highway AH-2 Eastern Bypass, Siliguri 734008, West Bengal",
+    "highway": "NH-27 / NH-10",
+    "latitude": 26.7271,
+    "longitude": 88.3953,
+    "elevation_m": 122,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Speed 97 Petrol",
+      "Power95",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "North East Strategic Gateway Mega Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Alipurduar": {
+    "name": "M/S Dooars Highway Care (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-27 / Buxa Feeder Road, Alipurduar 736121, West Bengal",
+    "highway": "NH-27",
+    "latitude": 26.4919,
+    "longitude": 89.5271,
+    "elevation_m": 93,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Gateway Oasis",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Jalpaiguri": {
+    "name": "M/S North Bengal Auto Service (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-27 / Paharpur More, Jalpaiguri 735101, West Bengal",
+    "highway": "NH-27",
+    "latitude": 26.54,
+    "longitude": 88.73,
+    "elevation_m": 86,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "National Highway Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Cooch Behar": {
+    "name": "M/S Royal Palace Auto Fuels (HPCL)",
+    "brand": "Hindustan Petroleum",
+    "address": "NH-17 / Silver Jubilee Road, Cooch Behar 736101, West Bengal",
+    "highway": "NH-17",
+    "latitude": 26.32,
+    "longitude": 89.45,
+    "elevation_m": 48,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Historic District Commercial Station",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Darjeeling": {
+    "name": "M/S Hill Cart Road Fuel Depot (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-110 / Hill Cart Road, Lebong, Darjeeling 734101, West Bengal",
+    "highway": "NH-110",
+    "latitude": 27.041,
+    "longitude": 88.2663,
+    "elevation_m": 2042,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "Winter Anti-Freeze Additives"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "High Himalayan Tourism & Transit Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Kalimpong": {
+    "name": "M/S Teesta Valley Approach Service (BPCL)",
+    "brand": "Bharat Petroleum",
+    "address": "NH-10 / Rishi Road, 10th Mile, Kalimpong 734301, West Bengal",
+    "highway": "NH-10",
+    "latitude": 27.06,
+    "longitude": 88.47,
+    "elevation_m": 1250,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Mountain Corridor Hub",
+    "status": "Operational \u2022 24/7 Full Stock"
+  }
+}

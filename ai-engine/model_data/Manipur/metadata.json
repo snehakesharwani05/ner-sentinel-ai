@@ -1,0 +1,15 @@
+{
+  "state_key": "Manipur",
+  "state_name": "Manipur",
+  "capital": "Imphal",
+  "region": "Manipur Valley & Hills",
+  "terrain_category": "Intermontane Valley & Rugged Hills",
+  "primary_highways": [
+    "NH-2",
+    "NH-37",
+    "NH-102",
+    "NH-150"
+  ],
+  "total_locations": 9,
+  "total_road_segments": 9
+}

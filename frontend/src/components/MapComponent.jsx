@@ -160,6 +160,14 @@ export function MapComponent({
     safestRoute?.pathNodes?.map((node) => node.id) || []
   );
 
+  /* =====================================================
+     REFUELING STATIONS ALONG ROUTE
+  ===================================================== */
+  const refuelingStations = useMemo(() => {
+    const list = safestRoute?.refueling_stations || fastestRoute?.refueling_stations || [];
+    return Array.isArray(list) ? list : [];
+  }, [safestRoute, fastestRoute]);
+
 
   /* =====================================================
      GET LOCATION MARKER STYLE
@@ -658,6 +666,49 @@ export function MapComponent({
           );
         })}
 
+        {/* =====================================================
+            EN-ROUTE REFUELING & FUEL STAGING STATIONS
+        ===================================================== */}
+        {refuelingStations.map((st) => (
+          <CircleMarker
+            key={`fuel-marker-${st.id}`}
+            center={[st.latitude, st.longitude]}
+            radius={8}
+            pathOptions={{
+              color: "#FFFFFF",
+              weight: 2,
+              fillColor: "#F59E0B",
+              fillOpacity: 0.95,
+            }}
+          >
+            <Tooltip direction="top" offset={[0, -10]}>
+              <strong>⛽ {st.brand}: {st.name} ({st.distance_from_origin_km} km)</strong>
+            </Tooltip>
+            <Popup>
+              <div style={{ minWidth: "220px", fontSize: "13px", color: "#20231F" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "4px" }}>
+                  <span style={{ fontWeight: "800", color: "#B8944A" }}>⛽ {st.brand} Station</span>
+                  <span style={{ fontSize: "11px", background: "#30483B", color: "#FFFFFF", padding: "1px 5px", borderRadius: "4px" }}>Active</span>
+                </div>
+                <strong style={{ fontSize: "14px", display: "block", marginBottom: "4px" }}>{st.name}</strong>
+                <div style={{ fontSize: "12px", opacity: 0.85, marginBottom: "4px" }}>
+                  📍 Position: <strong>Km {st.distance_from_origin_km}</strong> from origin (Alt: {st.elevation_m}m)
+                </div>
+                <div style={{ fontSize: "11px", background: "rgba(48,72,59,0.08)", padding: "4px 6px", borderRadius: "4px", marginBottom: "4px" }}>
+                  <strong>Fuels:</strong> {Array.isArray(st.fuel_types) ? st.fuel_types.join(", ") : "Diesel, Petrol"}
+                </div>
+                {st.has_ev_charging && (
+                  <div style={{ fontSize: "11px", color: "#16A34A", fontWeight: "700", marginBottom: "3px" }}>
+                    ⚡ EV Fast Charging Available
+                  </div>
+                )}
+                <div style={{ fontSize: "11px", color: "#30483B", fontWeight: "600" }}>
+                  🟢 {st.status}
+                </div>
+              </div>
+            </Popup>
+          </CircleMarker>
+        ))}
 
       </MapContainer>
 
@@ -738,6 +789,28 @@ export function MapComponent({
           Safest Route
         </div>
 
+        {refuelingStations.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              marginBottom: "7px",
+            }}
+          >
+            <span
+              style={{
+                width: "11px",
+                height: "11px",
+                background: "#F59E0B",
+                borderRadius: "50%",
+                display: "inline-block",
+                border: "1.5px solid #FFFFFF"
+              }}
+            />
+            Fuel / Refueling Base ({refuelingStations.length})
+          </div>
+        )}
 
         <div
           style={{

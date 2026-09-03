@@ -1,0 +1,82 @@
+[
+  {
+    "id": 35,
+    "name": "Dimapur",
+    "state": "Nagaland",
+    "latitude": 25.9068,
+    "longitude": 93.7271,
+    "elevation_m": 145,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 36,
+    "name": "Kohima",
+    "state": "Nagaland",
+    "latitude": 25.6701,
+    "longitude": 94.1077,
+    "elevation_m": 1444,
+    "location_type": "state_capital",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 37,
+    "name": "Mokokchung",
+    "state": "Nagaland",
+    "latitude": 26.3256,
+    "longitude": 94.5215,
+    "elevation_m": 1325,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 38,
+    "name": "Wokha",
+    "state": "Nagaland",
+    "latitude": 26.1,
+    "longitude": 94.26,
+    "elevation_m": 1313,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 75,
+    "name": "Tuensang",
+    "state": "Nagaland",
+    "latitude": 26.28,
+    "longitude": 94.83,
+    "elevation_m": 1371,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 76,
+    "name": "Zunheboto",
+    "state": "Nagaland",
+    "latitude": 25.97,
+    "longitude": 94.52,
+    "elevation_m": 1874,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 77,
+    "name": "Mon",
+    "state": "Nagaland",
+    "latitude": 26.75,
+    "longitude": 95.06,
+    "elevation_m": 897,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 78,
+    "name": "Phek",
+    "state": "Nagaland",
+    "latitude": 25.66,
+    "longitude": 94.46,
+    "elevation_m": 1024,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  }
+]

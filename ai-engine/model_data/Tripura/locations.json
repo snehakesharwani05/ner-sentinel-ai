@@ -1,0 +1,82 @@
+[
+  {
+    "id": 201,
+    "name": "Agartala",
+    "state": "Tripura",
+    "latitude": 23.8315,
+    "longitude": 91.2868,
+    "elevation_m": 12,
+    "location_type": "state_capital",
+    "terrain": "plain"
+  },
+  {
+    "id": 202,
+    "name": "Udaipur",
+    "state": "Tripura",
+    "latitude": 23.5333,
+    "longitude": 91.4833,
+    "elevation_m": 25,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 203,
+    "name": "Dharmanagar",
+    "state": "Tripura",
+    "latitude": 24.3833,
+    "longitude": 92.1667,
+    "elevation_m": 21,
+    "location_type": "logistics_hub",
+    "terrain": "plain"
+  },
+  {
+    "id": 204,
+    "name": "Kailashahar",
+    "state": "Tripura",
+    "latitude": 24.3333,
+    "longitude": 92.0,
+    "elevation_m": 23,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  },
+  {
+    "id": 205,
+    "name": "Ambassa",
+    "state": "Tripura",
+    "latitude": 23.9167,
+    "longitude": 91.85,
+    "elevation_m": 60,
+    "location_type": "district_hq",
+    "terrain": "hilly"
+  },
+  {
+    "id": 206,
+    "name": "Belonia",
+    "state": "Tripura",
+    "latitude": 23.25,
+    "longitude": 91.45,
+    "elevation_m": 23,
+    "location_type": "border_checkpost",
+    "terrain": "plain"
+  },
+  {
+    "id": 207,
+    "name": "Sabroom",
+    "state": "Tripura",
+    "latitude": 23.0,
+    "longitude": 91.7,
+    "elevation_m": 25,
+    "location_type": "border_checkpost",
+    "terrain": "plain"
+  },
+  {
+    "id": 208,
+    "name": "Teliamura",
+    "state": "Tripura",
+    "latitude": 23.83,
+    "longitude": 91.6,
+    "elevation_m": 35,
+    "location_type": "district_hq",
+    "terrain": "plain"
+  }
+]

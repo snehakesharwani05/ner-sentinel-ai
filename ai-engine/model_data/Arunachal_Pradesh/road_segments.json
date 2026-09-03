@@ -1,0 +1,162 @@
+[
+  {
+    "origin": "Bhalukpong",
+    "destination": "Bomdila",
+    "highway": "NH-13",
+    "distance_km": 95,
+    "time_min": 180,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 12.0
+  },
+  {
+    "origin": "Bomdila",
+    "destination": "Dirang",
+    "highway": "NH-13",
+    "distance_km": 25,
+    "time_min": 45,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 10.0
+  },
+  {
+    "origin": "Dirang",
+    "destination": "Sela Pass",
+    "highway": "NH-13",
+    "distance_km": 42,
+    "time_min": 110,
+    "terrain": "high_pass",
+    "condition": "poor",
+    "slope_deg": 18.0
+  },
+  {
+    "origin": "Sela Pass",
+    "destination": "Tawang",
+    "highway": "NH-13",
+    "distance_km": 78,
+    "time_min": 140,
+    "terrain": "high_pass",
+    "condition": "fair",
+    "slope_deg": 15.0
+  },
+  {
+    "origin": "Naharlagun",
+    "destination": "Itanagar",
+    "highway": "NH-415",
+    "distance_km": 15,
+    "time_min": 30,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
+  },
+  {
+    "origin": "Tezpur",
+    "destination": "Naharlagun",
+    "highway": "NH-15",
+    "distance_km": 150,
+    "time_min": 210,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 2.0
+  },
+  {
+    "origin": "Itanagar",
+    "destination": "Ziro",
+    "highway": "NH-13",
+    "distance_km": 110,
+    "time_min": 220,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 11.0
+  },
+  {
+    "origin": "North Lakhimpur",
+    "destination": "Ziro",
+    "highway": "NH-13",
+    "distance_km": 80,
+    "time_min": 160,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 12.0
+  },
+  {
+    "origin": "Dibrugarh",
+    "destination": "Pasighat",
+    "highway": "NH-515",
+    "distance_km": 150,
+    "time_min": 240,
+    "terrain": "hilly",
+    "condition": "fair",
+    "slope_deg": 4.0
+  },
+  {
+    "origin": "Pasighat",
+    "destination": "Along (Aalo)",
+    "highway": "NH-13",
+    "distance_km": 105,
+    "time_min": 200,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 13.0
+  },
+  {
+    "origin": "Pasighat",
+    "destination": "Roing",
+    "highway": "NH-13",
+    "distance_km": 95,
+    "time_min": 150,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 2.0
+  },
+  {
+    "origin": "Roing",
+    "destination": "Tezu",
+    "highway": "NH-13",
+    "distance_km": 65,
+    "time_min": 100,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.5
+  },
+  {
+    "origin": "Tinsukia",
+    "destination": "Namsai",
+    "highway": "NH-15",
+    "distance_km": 80,
+    "time_min": 110,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Namsai",
+    "destination": "Tezu",
+    "highway": "NH-115",
+    "distance_km": 40,
+    "time_min": 55,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Tinsukia",
+    "destination": "Changlang",
+    "highway": "NH-215",
+    "distance_km": 95,
+    "time_min": 160,
+    "terrain": "hilly",
+    "condition": "fair",
+    "slope_deg": 6.0
+  },
+  {
+    "origin": "Dibrugarh",
+    "destination": "Khonsa",
+    "highway": "NH-315A",
+    "distance_km": 110,
+    "time_min": 190,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 9.0
+  }
+]

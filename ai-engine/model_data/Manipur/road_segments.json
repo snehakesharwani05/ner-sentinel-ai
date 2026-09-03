@@ -1,0 +1,92 @@
+[
+  {
+    "origin": "Silchar",
+    "destination": "Jiribam",
+    "highway": "NH-37",
+    "distance_km": 50,
+    "time_min": 65,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 2.0
+  },
+  {
+    "origin": "Jiribam",
+    "destination": "Imphal",
+    "highway": "NH-37",
+    "distance_km": 170,
+    "time_min": 280,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 13.0
+  },
+  {
+    "origin": "Kohima",
+    "destination": "Senapati",
+    "highway": "NH-2",
+    "distance_km": 80,
+    "time_min": 120,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 11.0
+  },
+  {
+    "origin": "Senapati",
+    "destination": "Imphal",
+    "highway": "NH-2",
+    "distance_km": 60,
+    "time_min": 80,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 6.0
+  },
+  {
+    "origin": "Imphal",
+    "destination": "Churachandpur",
+    "highway": "NH-2",
+    "distance_km": 65,
+    "time_min": 80,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 2.0
+  },
+  {
+    "origin": "Imphal",
+    "destination": "Ukhrul",
+    "highway": "NH-150",
+    "distance_km": 85,
+    "time_min": 135,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 10.0
+  },
+  {
+    "origin": "Imphal",
+    "destination": "Thoubal",
+    "highway": "NH-102",
+    "distance_km": 25,
+    "time_min": 30,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Thoubal",
+    "destination": "Kakching",
+    "highway": "NH-102",
+    "distance_km": 20,
+    "time_min": 25,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Kakching",
+    "destination": "Moreh",
+    "highway": "NH-102",
+    "distance_km": 65,
+    "time_min": 95,
+    "terrain": "hilly",
+    "condition": "fair",
+    "slope_deg": 7.0
+  }
+]

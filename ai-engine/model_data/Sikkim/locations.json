@@ -1,0 +1,112 @@
+[
+  {
+    "id": 39,
+    "name": "Gangtok",
+    "state": "Sikkim",
+    "latitude": 27.3389,
+    "longitude": 88.6065,
+    "elevation_m": 1650,
+    "location_type": "state_capital",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 40,
+    "name": "Namchi",
+    "state": "Sikkim",
+    "latitude": 27.1667,
+    "longitude": 88.35,
+    "elevation_m": 1315,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 41,
+    "name": "Geyzing",
+    "state": "Sikkim",
+    "latitude": 27.2833,
+    "longitude": 88.25,
+    "elevation_m": 1900,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 42,
+    "name": "Mangan",
+    "state": "Sikkim",
+    "latitude": 27.5,
+    "longitude": 88.5333,
+    "elevation_m": 1790,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  },
+  {
+    "id": 43,
+    "name": "Rangpo",
+    "state": "Sikkim",
+    "latitude": 27.1764,
+    "longitude": 88.5283,
+    "elevation_m": 330,
+    "location_type": "border_checkpost",
+    "terrain": "hilly"
+  },
+  {
+    "id": 79,
+    "name": "Singtam",
+    "state": "Sikkim",
+    "latitude": 27.23,
+    "longitude": 88.5,
+    "elevation_m": 410,
+    "location_type": "logistics_hub",
+    "terrain": "hilly"
+  },
+  {
+    "id": 80,
+    "name": "Chungthang",
+    "state": "Sikkim",
+    "latitude": 27.6,
+    "longitude": 88.65,
+    "elevation_m": 1790,
+    "location_type": "mountain_pass",
+    "terrain": "high_pass"
+  },
+  {
+    "id": 81,
+    "name": "Lachung",
+    "state": "Sikkim",
+    "latitude": 27.69,
+    "longitude": 88.74,
+    "elevation_m": 2700,
+    "location_type": "mountain_pass",
+    "terrain": "high_pass"
+  },
+  {
+    "id": 82,
+    "name": "Lachen",
+    "state": "Sikkim",
+    "latitude": 27.72,
+    "longitude": 88.55,
+    "elevation_m": 2750,
+    "location_type": "mountain_pass",
+    "terrain": "high_pass"
+  },
+  {
+    "id": 83,
+    "name": "Nathu La Pass",
+    "state": "Sikkim",
+    "latitude": 27.3865,
+    "longitude": 88.831,
+    "elevation_m": 4310,
+    "location_type": "border_checkpost",
+    "terrain": "high_pass"
+  },
+  {
+    "id": 84,
+    "name": "Ravangla",
+    "state": "Sikkim",
+    "latitude": 27.3,
+    "longitude": 88.36,
+    "elevation_m": 2100,
+    "location_type": "district_hq",
+    "terrain": "steep_mountain"
+  }
+]

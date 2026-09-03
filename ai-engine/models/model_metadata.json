@@ -1,0 +1,25 @@
+{
+  "feature_cols": [
+    "elevation_m",
+    "slope_angle_deg",
+    "terrain_type",
+    "road_condition",
+    "precipitation_mm",
+    "soil_moisture",
+    "visibility_m",
+    "surface_pressure_hpa",
+    "wind_speed_kmh",
+    "speed_ratio",
+    "jam_factor"
+  ],
+  "road_states": [
+    "CLEAR",
+    "MODERATE_JAM",
+    "HEAVY_JAM",
+    "HAZARD_WARNING",
+    "CRITICAL_BLOCKED"
+  ],
+  "classification_accuracy": 0.994,
+  "regression_r2": 0.9824,
+  "trained_samples": 5000
+}

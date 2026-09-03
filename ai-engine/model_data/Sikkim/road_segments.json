@@ -1,0 +1,112 @@
+[
+  {
+    "origin": "Siliguri",
+    "destination": "Rangpo",
+    "highway": "NH-10",
+    "distance_km": 70,
+    "time_min": 120,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 11.0
+  },
+  {
+    "origin": "Rangpo",
+    "destination": "Singtam",
+    "highway": "NH-10",
+    "distance_km": 15,
+    "time_min": 25,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
+  },
+  {
+    "origin": "Singtam",
+    "destination": "Gangtok",
+    "highway": "NH-10",
+    "distance_km": 25,
+    "time_min": 40,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 7.0
+  },
+  {
+    "origin": "Singtam",
+    "destination": "Mangan",
+    "highway": "NH-10",
+    "distance_km": 40,
+    "time_min": 85,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 13.0
+  },
+  {
+    "origin": "Mangan",
+    "destination": "Chungthang",
+    "highway": "NH-10",
+    "distance_km": 30,
+    "time_min": 75,
+    "terrain": "high_pass",
+    "condition": "poor",
+    "slope_deg": 15.0
+  },
+  {
+    "origin": "Chungthang",
+    "destination": "Lachung",
+    "highway": "NH-10",
+    "distance_km": 24,
+    "time_min": 60,
+    "terrain": "high_pass",
+    "condition": "fair",
+    "slope_deg": 12.0
+  },
+  {
+    "origin": "Chungthang",
+    "destination": "Lachen",
+    "highway": "NH-10",
+    "distance_km": 28,
+    "time_min": 70,
+    "terrain": "high_pass",
+    "condition": "fair",
+    "slope_deg": 14.0
+  },
+  {
+    "origin": "Gangtok",
+    "destination": "Nathu La Pass",
+    "highway": "Jawaharlal Nehru Rd",
+    "distance_km": 54,
+    "time_min": 130,
+    "terrain": "high_pass",
+    "condition": "fair",
+    "slope_deg": 16.0
+  },
+  {
+    "origin": "Singtam",
+    "destination": "Namchi",
+    "highway": "NH-710",
+    "distance_km": 30,
+    "time_min": 60,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 8.0
+  },
+  {
+    "origin": "Namchi",
+    "destination": "Ravangla",
+    "highway": "SH-12",
+    "distance_km": 25,
+    "time_min": 50,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 7.0
+  },
+  {
+    "origin": "Ravangla",
+    "destination": "Geyzing",
+    "highway": "NH-510",
+    "distance_km": 40,
+    "time_min": 80,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 8.0
+  }
+]

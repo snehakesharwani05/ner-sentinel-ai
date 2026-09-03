@@ -1,0 +1,16 @@
+{
+  "avg_annual_rainfall_mm": 11800,
+  "monsoon_months": [
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October"
+  ],
+  "landslide_susceptibility": "Very High",
+  "critical_passes": [
+    "Sonapur Tunnel (NH-6)",
+    "Wahrew Gorge"
+  ]
+}

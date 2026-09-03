@@ -1,0 +1,82 @@
+[
+  {
+    "origin": "Nagaon",
+    "destination": "Dimapur",
+    "highway": "NH-29 (4-Lane)",
+    "distance_km": 160,
+    "time_min": 175,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.5
+  },
+  {
+    "origin": "Dimapur",
+    "destination": "Kohima",
+    "highway": "NH-29 (Asian Highway AH-1)",
+    "distance_km": 74,
+    "time_min": 115,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 12.0
+  },
+  {
+    "origin": "Kohima",
+    "destination": "Wokha",
+    "highway": "NH-2",
+    "distance_km": 75,
+    "time_min": 120,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 9.0
+  },
+  {
+    "origin": "Wokha",
+    "destination": "Mokokchung",
+    "highway": "NH-2",
+    "distance_km": 80,
+    "time_min": 130,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 9.0
+  },
+  {
+    "origin": "Mokokchung",
+    "destination": "Tuensang",
+    "highway": "NH-702",
+    "distance_km": 115,
+    "time_min": 190,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 12.0
+  },
+  {
+    "origin": "Mokokchung",
+    "destination": "Zunheboto",
+    "highway": "NH-702D",
+    "distance_km": 60,
+    "time_min": 100,
+    "terrain": "steep_mountain",
+    "condition": "fair",
+    "slope_deg": 10.0
+  },
+  {
+    "origin": "Kohima",
+    "destination": "Phek",
+    "highway": "NH-29",
+    "distance_km": 120,
+    "time_min": 190,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 11.0
+  },
+  {
+    "origin": "Jorhat",
+    "destination": "Mokokchung",
+    "highway": "NH-702",
+    "distance_km": 85,
+    "time_min": 125,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 6.0
+  }
+]

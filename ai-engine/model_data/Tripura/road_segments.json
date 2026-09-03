@@ -1,0 +1,82 @@
+[
+  {
+    "origin": "Karimganj",
+    "destination": "Dharmanagar",
+    "highway": "NH-8",
+    "distance_km": 55,
+    "time_min": 75,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.5
+  },
+  {
+    "origin": "Dharmanagar",
+    "destination": "Kailashahar",
+    "highway": "NH-108",
+    "distance_km": 25,
+    "time_min": 35,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Dharmanagar",
+    "destination": "Ambassa",
+    "highway": "NH-8",
+    "distance_km": 80,
+    "time_min": 115,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 3.0
+  },
+  {
+    "origin": "Ambassa",
+    "destination": "Teliamura",
+    "highway": "NH-8",
+    "distance_km": 40,
+    "time_min": 55,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 3.0
+  },
+  {
+    "origin": "Teliamura",
+    "destination": "Agartala",
+    "highway": "NH-8",
+    "distance_km": 45,
+    "time_min": 60,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Agartala",
+    "destination": "Udaipur",
+    "highway": "NH-8",
+    "distance_km": 50,
+    "time_min": 65,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Udaipur",
+    "destination": "Belonia",
+    "highway": "NH-8",
+    "distance_km": 45,
+    "time_min": 60,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Belonia",
+    "destination": "Sabroom",
+    "highway": "NH-8",
+    "distance_km": 40,
+    "time_min": 55,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  }
+]
