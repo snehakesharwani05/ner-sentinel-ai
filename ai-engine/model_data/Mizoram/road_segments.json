@@ -31,6 +31,26 @@
   },
   {
     "origin": "Aizawl",
+    "destination": "Mamit",
+    "highway": "NH-108B",
+    "distance_km": 85,
+    "time_min": 140,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 6.0
+  },
+  {
+    "origin": "Mamit",
+    "destination": "Kanchanpur",
+    "highway": "Jampui Hills Road",
+    "distance_km": 60,
+    "time_min": 100,
+    "terrain": "hilly",
+    "condition": "fair",
+    "slope_deg": 7.0
+  },
+  {
+    "origin": "Aizawl",
     "destination": "Serchhip",
     "highway": "NH-54",
     "distance_km": 90,

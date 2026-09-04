@@ -1,0 +1,17 @@
+{
+  "short_name": "NERSentinel",
+  "name": "NER Sentinel AI - North East Logistics & Accessibility Platform",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#EDE8DC",
+  "theme_color": "#30483B",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "description": "AI-Based Smart Logistics, Disaster Resilient Dual-Routing and Convoy Telematics for North Eastern Region (Problem Statement 26002)"
+}

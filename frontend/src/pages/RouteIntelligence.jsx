@@ -5,9 +5,11 @@ import RiskBadge from '../components/RiskBadge';
 import AIInsight from '../components/AIInsight';
 import { mockLocations } from '../data/mockData';
 import { Navigation, Clock, ShieldAlert, AlertTriangle, ArrowRight, Fuel, Zap, MapPin } from 'lucide-react';
-
+import { offlineEngine } from '../utils/offlineEngine';
+import { useTranslation } from '../context/LanguageContext';
 
 export function RouteIntelligence() {
+  const { t } = useTranslation();
   const [locations, setLocations] = useState([]);
   const [originState, setOriginState] = useState('Assam');
   const [originId, setOriginId] = useState(2); // Guwahati default
@@ -65,6 +67,30 @@ export function RouteIntelligence() {
       return;
     }
 
+    const origObj = locations.find(l => l.id === Number(originId));
+    const destObj = locations.find(l => l.id === Number(destId));
+    const origName = origObj?.name || "Guwahati";
+    const destName = destObj?.name || "Silchar";
+
+    // 1. If Offline, immediately use the Client-Side Offline Graph
+    if (!navigator.onLine) {
+      setLoading(true);
+      setError(null);
+      const offlineFast = offlineEngine.calculateRoute(origName, destName, 'fastest');
+      const offlineSafe = offlineEngine.calculateRoute(origName, destName, 'safest');
+      if (offlineFast || offlineSafe) {
+        setAnalysis({
+          fastestRoute: offlineFast,
+          safestRoute: offlineSafe,
+          recommendation: "🟡 Offline Field Mode Active: Routes calculated using client-side offline graph with zero internet connection."
+        });
+      } else {
+        setError('Offline routing could not find a path between these points.');
+      }
+      setLoading(false);
+      return;
+    }
+
     try {
       setLoading(true);
       setError(null);
@@ -73,7 +99,18 @@ export function RouteIntelligence() {
         setAnalysis(res.data);
       }
     } catch (err) {
-      setError(err.message || 'Failed to compute route analysis from backend.');
+      console.warn('Online routing failed, falling back to client-side offline graph:', err.message);
+      const offlineFast = offlineEngine.calculateRoute(origName, destName, 'fastest');
+      const offlineSafe = offlineEngine.calculateRoute(origName, destName, 'safest');
+      if (offlineFast || offlineSafe) {
+        setAnalysis({
+          fastestRoute: offlineFast,
+          safestRoute: offlineSafe,
+          recommendation: "🟡 Zero-Network Fallback Active: Route computed via local offline road graph."
+        });
+      } else {
+        setError(err.message || 'Failed to compute route analysis.');
+      }
     } finally {
       setLoading(false);
     }
@@ -83,7 +120,7 @@ export function RouteIntelligence() {
     <div className="page-container">
       <div className="page-header">
         <h1 className="page-title" style={{ color: '#A9573F' }}>
-          Route Intelligence Engine
+          {t('nav_routes', 'Route Intelligence Engine')}
         </h1>
         <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
           State-wise corridor navigation with real-time Open-Meteo & TomTom AI prediction models
@@ -98,7 +135,7 @@ export function RouteIntelligence() {
             {/* ORIGIN STATE & LOCATION */}
             <div style={{ padding: '1rem', background: 'rgba(48, 72, 59, 0.04)', borderRadius: '10px', border: '1px solid rgba(48, 72, 59, 0.15)' }}>
               <div style={{ fontWeight: '700', fontSize: '0.9rem', color: '#30483B', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Navigation size={16} /> 1. Origin (Starting Point)
+                <Navigation size={16} /> 1. {t('origin_point', 'Origin (Starting Point)')}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <div className="form-group" style={{ margin: 0 }}>
@@ -136,7 +173,7 @@ export function RouteIntelligence() {
             {/* DESTINATION STATE & LOCATION */}
             <div style={{ padding: '1rem', background: 'rgba(169, 87, 63, 0.04)', borderRadius: '10px', border: '1px solid rgba(169, 87, 63, 0.2)' }}>
               <div style={{ fontWeight: '700', fontSize: '0.9rem', color: '#A9573F', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <ArrowRight size={16} /> 2. Destination (Target Point)
+                <ArrowRight size={16} /> 2. {t('dest_point', 'Destination (Target Point)')}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <div className="form-group" style={{ margin: 0 }}>
@@ -173,10 +210,15 @@ export function RouteIntelligence() {
 
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '1rem' }}>
-            <button type="submit" className="btn-primary" disabled={loading} style={{ minWidth: '180px' }}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn btn-primary"
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', fontSize: '0.95rem' }}
+            >
               <Navigation size={18} />
-              {loading ? 'Analyzing Real-Time Telemetry...' : 'Analyze Optimal Route'}
+              {loading ? 'Analyzing Real-Time Telemetry...' : t('analyze_corridors', 'Analyze Strategic Corridors')}
             </button>
           </div>
         </form>
@@ -199,11 +241,16 @@ export function RouteIntelligence() {
             {/* FASTEST ROUTE CARD */}
             {analysis.fastestRoute ? (
               <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#30483B', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Clock size={20} color="#30483B" /> Fastest Route (Dijkstra)
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#30483B', display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
+                    <Clock size={20} color="#30483B" /> {t('fastest_route', 'Fastest Speed Route')}
                   </h3>
-                  <RiskBadge severity={analysis.fastestRoute.severityBand} score={analysis.fastestRoute.averageRiskScore} />
+                  <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.72rem', background: 'rgba(48,72,59,0.12)', color: '#30483B', padding: '3px 8px', borderRadius: '6px', fontWeight: '700' }}>
+                      {t('isro_verified', '🛰️ ISRO Bhuvan Synced')}
+                    </span>
+                    <RiskBadge severity={analysis.fastestRoute.severityBand} score={analysis.fastestRoute.averageRiskScore} />
+                  </div>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>

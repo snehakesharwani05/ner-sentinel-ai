@@ -10,6 +10,16 @@
     "slope_deg": 1.5
   },
   {
+    "origin": "Karimganj",
+    "destination": "Kailashahar",
+    "highway": "NH-208",
+    "distance_km": 55,
+    "time_min": 75,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.5
+  },
+  {
     "origin": "Dharmanagar",
     "destination": "Kailashahar",
     "highway": "NH-108",
@@ -25,6 +35,26 @@
     "highway": "NH-8",
     "distance_km": 80,
     "time_min": 115,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 3.0
+  },
+  {
+    "origin": "Kanchanpur",
+    "destination": "Ambassa",
+    "highway": "Tripura SH",
+    "distance_km": 55,
+    "time_min": 80,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 3.5
+  },
+  {
+    "origin": "Kanchanpur",
+    "destination": "Dharmanagar",
+    "highway": "Tripura SH",
+    "distance_km": 45,
+    "time_min": 70,
     "terrain": "hilly",
     "condition": "good",
     "slope_deg": 3.0

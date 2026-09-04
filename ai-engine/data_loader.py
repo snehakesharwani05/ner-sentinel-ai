@@ -202,7 +202,7 @@ ALL_NER_STATES = {
         "capital": "Aizawl",
         "region": "Lushai Hills",
         "terrain_category": "Parallel Ridge Chains & Steep Valleys",
-        "primary_highways": ["NH-306", "NH-54", "NH-102B", "NH-502A"],
+        "primary_highways": ["NH-306", "NH-54", "NH-102B", "NH-108B", "NH-502A"],
         "locations": [
             {"id": 31, "name": "Kolasib", "state": "Mizoram", "latitude": 24.2247, "longitude": 92.6781, "elevation_m": 612, "location_type": "district_hq", "terrain": "hilly"},
             {"id": 32, "name": "Aizawl", "state": "Mizoram", "latitude": 23.7271, "longitude": 92.7176, "elevation_m": 1132, "location_type": "state_capital", "terrain": "steep_mountain"},
@@ -211,12 +211,15 @@ ALL_NER_STATES = {
             {"id": 71, "name": "Vairengte", "state": "Mizoram", "latitude": 24.5000, "longitude": 92.7600, "elevation_m": 220, "location_type": "border_checkpost", "terrain": "hilly"},
             {"id": 72, "name": "Serchhip", "state": "Mizoram", "latitude": 23.3400, "longitude": 92.8500, "elevation_m": 880, "location_type": "district_hq", "terrain": "hilly"},
             {"id": 73, "name": "Lawngtlai", "state": "Mizoram", "latitude": 22.5300, "longitude": 92.8900, "elevation_m": 780, "location_type": "district_hq", "terrain": "hilly"},
-            {"id": 74, "name": "Saiha", "state": "Mizoram", "latitude": 22.4800, "longitude": 92.9700, "elevation_m": 729, "location_type": "district_hq", "terrain": "hilly"}
+            {"id": 74, "name": "Saiha", "state": "Mizoram", "latitude": 22.4800, "longitude": 92.9700, "elevation_m": 729, "location_type": "district_hq", "terrain": "hilly"},
+            {"id": 208, "name": "Mamit", "state": "Mizoram", "latitude": 23.9300, "longitude": 92.4900, "elevation_m": 718, "location_type": "district_hq", "terrain": "hilly"}
         ],
         "road_segments": [
             {"origin": "Silchar", "destination": "Vairengte", "highway": "NH-306", "distance_km": 45, "time_min": 70, "terrain": "hilly", "condition": "good", "slope_deg": 4.0},
             {"origin": "Vairengte", "destination": "Kolasib", "highway": "NH-306", "distance_km": 40, "time_min": 65, "terrain": "hilly", "condition": "good", "slope_deg": 5.0},
             {"origin": "Kolasib", "destination": "Aizawl", "highway": "NH-306", "distance_km": 85, "time_min": 170, "terrain": "steep_mountain", "condition": "fair", "slope_deg": 9.0},
+            {"origin": "Aizawl", "destination": "Mamit", "highway": "NH-108B", "distance_km": 85, "time_min": 140, "terrain": "hilly", "condition": "good", "slope_deg": 6.0},
+            {"origin": "Mamit", "destination": "Kanchanpur", "highway": "Jampui Hills Road", "distance_km": 60, "time_min": 100, "terrain": "hilly", "condition": "fair", "slope_deg": 7.0},
             {"origin": "Aizawl", "destination": "Serchhip", "highway": "NH-54", "distance_km": 90, "time_min": 160, "terrain": "steep_mountain", "condition": "fair", "slope_deg": 8.0},
             {"origin": "Serchhip", "destination": "Lunglei", "highway": "NH-54", "distance_km": 80, "time_min": 140, "terrain": "steep_mountain", "condition": "fair", "slope_deg": 8.0},
             {"origin": "Aizawl", "destination": "Champhai", "highway": "NH-102B", "distance_km": 190, "time_min": 340, "terrain": "steep_mountain", "condition": "poor", "slope_deg": 13.0},
@@ -319,12 +322,16 @@ ALL_NER_STATES = {
             {"id": 205, "name": "Ambassa", "state": "Tripura", "latitude": 23.9167, "longitude": 91.8500, "elevation_m": 60, "location_type": "district_hq", "terrain": "hilly"},
             {"id": 206, "name": "Belonia", "state": "Tripura", "latitude": 23.2500, "longitude": 91.4500, "elevation_m": 23, "location_type": "border_checkpost", "terrain": "plain"},
             {"id": 207, "name": "Sabroom", "state": "Tripura", "latitude": 23.0000, "longitude": 91.7000, "elevation_m": 25, "location_type": "border_checkpost", "terrain": "plain"},
-            {"id": 208, "name": "Teliamura", "state": "Tripura", "latitude": 23.8300, "longitude": 91.6000, "elevation_m": 35, "location_type": "district_hq", "terrain": "plain"}
+            {"id": 208, "name": "Teliamura", "state": "Tripura", "latitude": 23.8300, "longitude": 91.6000, "elevation_m": 35, "location_type": "district_hq", "terrain": "plain"},
+            {"id": 209, "name": "Kanchanpur", "state": "Tripura", "latitude": 23.9800, "longitude": 92.2200, "elevation_m": 75, "location_type": "district_hq", "terrain": "hilly"}
         ],
         "road_segments": [
             {"origin": "Karimganj", "destination": "Dharmanagar", "highway": "NH-8", "distance_km": 55, "time_min": 75, "terrain": "plain", "condition": "good", "slope_deg": 1.5},
+            {"origin": "Karimganj", "destination": "Kailashahar", "highway": "NH-208", "distance_km": 55, "time_min": 75, "terrain": "plain", "condition": "good", "slope_deg": 1.5},
             {"origin": "Dharmanagar", "destination": "Kailashahar", "highway": "NH-108", "distance_km": 25, "time_min": 35, "terrain": "plain", "condition": "good", "slope_deg": 1.0},
             {"origin": "Dharmanagar", "destination": "Ambassa", "highway": "NH-8", "distance_km": 80, "time_min": 115, "terrain": "hilly", "condition": "good", "slope_deg": 3.0},
+            {"origin": "Kanchanpur", "destination": "Ambassa", "highway": "Tripura SH", "distance_km": 55, "time_min": 80, "terrain": "hilly", "condition": "good", "slope_deg": 3.5},
+            {"origin": "Kanchanpur", "destination": "Dharmanagar", "highway": "Tripura SH", "distance_km": 45, "time_min": 70, "terrain": "hilly", "condition": "good", "slope_deg": 3.0},
             {"origin": "Ambassa", "destination": "Teliamura", "highway": "NH-8", "distance_km": 40, "time_min": 55, "terrain": "hilly", "condition": "good", "slope_deg": 3.0},
             {"origin": "Teliamura", "destination": "Agartala", "highway": "NH-8", "distance_km": 45, "time_min": 60, "terrain": "plain", "condition": "good", "slope_deg": 1.0},
             {"origin": "Agartala", "destination": "Udaipur", "highway": "NH-8", "distance_km": 50, "time_min": 65, "terrain": "plain", "condition": "good", "slope_deg": 1.0},

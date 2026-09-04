@@ -12,6 +12,8 @@ node_modules/
 *.sqlite-wal
 *.sqlite-shm
 **/*.sqlite
+*.bak
+**/*.bak
 
 # Build & Dist Artifacts
 dist/

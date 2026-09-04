@@ -5,12 +5,45 @@ import Dashboard from './pages/Dashboard';
 import RouteIntelligence from './pages/RouteIntelligence';
 import Simulation from './pages/Simulation';
 import FieldReport from './pages/FieldReport';
+import ConvoyTelematics from './pages/ConvoyTelematics';
+import LoginScreen from './pages/LoginScreen';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import AuthModal from './components/AuthModal';
+import AIAssistantDrawer from './components/AIAssistantDrawer';
 
-export function App() {
-  const [activeTab, setActiveTab] = useState('dashboard');
+import { LanguageProvider } from './context/LanguageContext';
+
+function AppContent() {
+  const { isAuthenticated, user, isGuest } = useAuth();
+  const [activeTab, setActiveTab] = useState(() => (user?.isGuest ? 'route-intelligence' : 'dashboard'));
+
+  // If user is guest, strictly restrict to Route Intelligence
+  React.useEffect(() => {
+    if (isGuest && activeTab !== 'route-intelligence') {
+      setActiveTab('route-intelligence');
+    }
+  }, [isGuest, activeTab]);
+
+  if (!isAuthenticated) {
+    return <LoginScreen />;
+  }
+
+  const handleTabChange = (tabId) => {
+    if (isGuest && tabId !== 'route-intelligence') {
+      return; // Blocked for guests
+    }
+    setActiveTab(tabId);
+  };
 
   const renderActivePage = () => {
+    // Hard security check: guests are strictly locked to Route Intelligence
+    if (isGuest) {
+      return <RouteIntelligence />;
+    }
+
     switch (activeTab) {
+      case 'convoy-telematics':
+        return <ConvoyTelematics />;
       case 'route-intelligence':
         return <RouteIntelligence />;
       case 'simulation':
@@ -25,12 +58,24 @@ export function App() {
 
   return (
     <div className="app-container">
-      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Sidebar activeTab={activeTab} setActiveTab={handleTabChange} isGuest={isGuest} />
       <div className="main-content">
         <Navbar systemStatus="ONLINE" />
         {renderActivePage()}
       </div>
+      <AIAssistantDrawer activeTab={activeTab} />
+      <AuthModal />
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <LanguageProvider>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </LanguageProvider>
   );
 }
 

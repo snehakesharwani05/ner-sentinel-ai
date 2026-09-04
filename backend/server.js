@@ -10,6 +10,8 @@ const disruptionRoutes = require('./routes/disruptionRoutes');
 const routeRoutes = require('./routes/routeRoutes');
 const weatherRoutes = require('./routes/weatherRoutes');
 const shipmentRoutes = require('./routes/shipmentRoutes');
+const convoyRoutes = require('./routes/convoyRoutes');
+const assistantRoutes = require('./routes/assistantRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -49,6 +51,9 @@ app.use('/api/v1/disruptions', disruptionRoutes);
 app.use('/api/v1/routes', routeRoutes);
 app.use('/api/v1/weather', weatherRoutes);
 app.use('/api/v1/shipments', shipmentRoutes);
+app.use('/api/v1/convoys', convoyRoutes);
+app.use('/api/v1/assistant', assistantRoutes);
+app.use('/api/assistant', assistantRoutes);
 
 // Global Error Handler
 app.use(errorHandler);
@@ -58,6 +63,12 @@ async function startServer() {
   try {
     await db.init();
     console.log('[DB] SQLite database initialized successfully.');
+
+    // Ensure users table schema columns exist
+    try { db.exec(`ALTER TABLE users ADD COLUMN country_code TEXT DEFAULT '+91';`); } catch (e) {}
+    try { db.exec(`ALTER TABLE users ADD COLUMN mobile_hash TEXT;`); } catch (e) {}
+    try { db.exec(`ALTER TABLE users ADD COLUMN mobile_masked TEXT;`); } catch (e) {}
+    try { db.exec(`ALTER TABLE users ADD COLUMN service_badge_id TEXT;`); } catch (e) {}
 
     // Auto-seed if database is empty
     const count = db.prepare(`SELECT COUNT(*) as count FROM locations`).get()?.count || 0;

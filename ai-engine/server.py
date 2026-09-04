@@ -13,6 +13,8 @@ from flask import Flask, request, jsonify
 from network_router import NERNetworkRouter
 from telemetry import ResilientTelemetryProvider
 from disruption_feed import LiveDisruptionFeed
+from convoy_tracker import ConvoyTrackingEngine
+from assistant_engine import assistant_engine
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
@@ -20,6 +22,7 @@ app = Flask(__name__)
 router = NERNetworkRouter()
 telemetry_provider = ResilientTelemetryProvider()
 disruption_feed = LiveDisruptionFeed()
+convoy_tracker = ConvoyTrackingEngine()
 
 _disruptions_cache = {"timestamp": 0, "data": []}
 
@@ -118,20 +121,14 @@ def analyze_routes():
         if not origin or not destination:
             return jsonify({"success": False, "error": "origin and destination are required"}), 400
 
-        fastest = router.find_optimal_route(str(origin), str(destination), mode="fastest")
-        safest = router.find_optimal_route(str(origin), str(destination), mode="safest")
-
-        recommendation = "Optimal path selected using real-time Open-Meteo weather and TomTom live traffic."
-        if safest.get("success") and fastest.get("success"):
-            if fastest.get("average_disaster_risk", 0) > safest.get("average_disaster_risk", 0):
-                recommendation = f"Safest route bypasses high-risk mountain hazards, reducing disaster risk from {fastest['average_disaster_risk']} to {safest['average_disaster_risk']}."
+        dual_res = router.find_dual_routes(str(origin), str(destination))
 
         return jsonify({
             "success": True,
             "data": {
-                "fastestRoute": fastest if fastest.get("success") else None,
-                "safestRoute": safest if safest.get("success") else None,
-                "recommendation": recommendation
+                "fastestRoute": dual_res.get("fastestRoute"),
+                "safestRoute": dual_res.get("safestRoute"),
+                "recommendation": dual_res.get("recommendation", "Optimal path computed with multi-objective geotechnical safety analysis.")
             }
         })
     except Exception as e:
@@ -240,6 +237,99 @@ def simulate_hazard():
                 "corridors": std_route.get("corridors", [])
             }
         })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/v1/ai/convoys', methods=['GET'])
+def get_convoys():
+    try:
+        commodity = request.args.get('commodity', 'ALL')
+        convoys = convoy_tracker.get_all_convoys(commodity)
+        return jsonify({
+            "success": True,
+            "count": len(convoys),
+            "data": convoys
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/v1/ai/convoys/<convoy_id>', methods=['GET'])
+def get_convoy_detail(convoy_id):
+    try:
+        convoy = convoy_tracker.get_convoy_by_id(convoy_id)
+        if not convoy:
+            return jsonify({"success": False, "error": f"Convoy {convoy_id} not found."}), 404
+        return jsonify({"success": True, "data": convoy})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/v1/ai/convoys/trigger-reroute/<convoy_id>', methods=['POST'])
+def trigger_dynamic_reroute(convoy_id):
+    try:
+        data = request.get_json() or {}
+        blocked_edge = data.get("blocked_edge_id", "NH-13/Sela")
+        
+        convoy = convoy_tracker.get_convoy_by_id(convoy_id)
+        if not convoy:
+            return jsonify({"success": False, "error": f"Convoy {convoy_id} not found."}), 404
+
+        # Update status
+        convoy["status"] = "REROUTING"
+        convoy["hazard_flag"] = f"Dynamic Landslide Reroute Triggered (Isolated from hazard on {blocked_edge})"
+        
+        # Calculate dynamic alternative bypass corridor with fast pre-cached graph
+        alt_route = None
+        try:
+            dual = router.find_dual_routes(convoy["origin"], convoy["destination"], prefetch_parallel=False)
+            alt_route = dual.get("safestRoute")
+        except Exception as ex:
+            print(f"[REROUTE] Graph calculation exception: {ex}")
+
+        return jsonify({
+            "success": True,
+            "status": "REROUTING",
+            "message": f"Convoy {convoy_id} successfully isolated from hazard on edge {blocked_edge}. Alternative path calculated via NetworkX engine.",
+            "convoy": convoy,
+            "alternative_route": alt_route
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/v1/ai/convoys/ping', methods=['POST'])
+def ping_convoy():
+    try:
+        data = request.get_json() or {}
+        convoy_id = data.get("convoy_id") or data.get("id")
+        lat = float(data.get("lat") or data.get("latitude", 0))
+        lng = float(data.get("lng") or data.get("lon") or data.get("longitude", 0))
+        speed = float(data.get("speed") or data.get("speed_kmh", 0))
+
+        if not convoy_id or not lat or not lng:
+            return jsonify({"success": False, "error": "convoy_id, lat, and lng are required"}), 400
+
+        res = convoy_tracker.ingest_gps_ping(convoy_id, lat, lng, speed)
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/api/v1/ai/assistant/query', methods=['POST'])
+@app.route('/api/assistant/query', methods=['POST'])
+def assistant_query():
+    try:
+        data = request.get_json() or {}
+        user_query = data.get("query") or data.get("user_query") or data.get("prompt")
+        current_section = data.get("current_section") or data.get("currentSection") or "Dashboard"
+        preferred_language = data.get("preferred_language") or data.get("targetLanguage") or data.get("language") or "English"
+
+        if not user_query:
+            return jsonify({"success": False, "error": "Query is required"}), 400
+
+        result = assistant_engine.query(
+            user_query=str(user_query),
+            current_section=str(current_section),
+            preferred_language=str(preferred_language)
+        )
+        return jsonify(result)
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
 

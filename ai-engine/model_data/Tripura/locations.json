@@ -78,5 +78,15 @@
     "elevation_m": 35,
     "location_type": "district_hq",
     "terrain": "plain"
+  },
+  {
+    "id": 209,
+    "name": "Kanchanpur",
+    "state": "Tripura",
+    "latitude": 23.98,
+    "longitude": 92.22,
+    "elevation_m": 75,
+    "location_type": "district_hq",
+    "terrain": "hilly"
   }
 ]

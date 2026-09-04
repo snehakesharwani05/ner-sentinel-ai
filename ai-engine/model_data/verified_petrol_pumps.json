@@ -1593,5 +1593,41 @@
     "has_ev_charging": true,
     "operator_type": "Mountain Corridor Hub",
     "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Mamit": {
+    "name": "M/S Mamit Petroleum Service (IOCL)",
+    "brand": "Indian Oil",
+    "address": "NH-108B Main Market Road, Mamit 796441, Mizoram",
+    "highway": "NH-108B",
+    "latitude": 23.93,
+    "longitude": 92.49,
+    "elevation_m": 718,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Highway Station",
+    "source": "Official MoPNG & PSU Registry",
+    "status": "Operational \u2022 24/7 Full Stock"
+  },
+  "Kanchanpur": {
+    "name": "M/S Jampui Valley Auto Fuel (IOCL)",
+    "brand": "Indian Oil",
+    "address": "Kanchanpur Bazaar Road, Jampui Foothills, North Tripura 799270",
+    "highway": "State Highway / Jampui Road",
+    "latitude": 23.98,
+    "longitude": 92.22,
+    "elevation_m": 75,
+    "fuel_types": [
+      "High-Speed Diesel",
+      "Regular Petrol",
+      "EV Fast Charging (60kW CCS2)"
+    ],
+    "has_ev_charging": true,
+    "operator_type": "Commercial Highway Station",
+    "source": "Official MoPNG & PSU Registry",
+    "status": "Operational \u2022 24/7 Full Stock"
   }
 }

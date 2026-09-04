@@ -299,7 +299,7 @@ async function analyzeRoutesAsync(originId, destinationId) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ origin: originLoc.name, destination: destLoc.name }),
-      signal: AbortSignal.timeout(12000)
+      signal: AbortSignal.timeout(20000)
     });
 
     if (response.ok) {

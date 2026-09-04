@@ -49,5 +49,15 @@ export const api = {
     method: 'PATCH',
     headers: token ? { 'Authorization': `Bearer ${token}` } : {},
     body: JSON.stringify({ status })
+  }),
+  getConvoys: (commodity = 'ALL') => request(`/api/v1/convoys?commodity=${commodity}`),
+  getConvoyById: (id) => request(`/api/v1/convoys/${id}`),
+  triggerConvoyReroute: (id, blocked_edge_id) => request(`/api/v1/convoys/trigger-reroute/${id}`, {
+    method: 'POST',
+    body: JSON.stringify({ blocked_edge_id })
+  }),
+  pingConvoy: (payload) => request('/api/v1/convoys/ping', {
+    method: 'POST',
+    body: JSON.stringify(payload)
   })
 };

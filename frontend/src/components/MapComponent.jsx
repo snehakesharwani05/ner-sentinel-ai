@@ -93,6 +93,7 @@ export function MapComponent({
   disruptions = [],
   fastestRoute = null,
   safestRoute = null,
+  convoys = [],
 }) {
 
   /* =====================================================
@@ -710,6 +711,64 @@ export function MapComponent({
           </CircleMarker>
         ))}
 
+        {/* =====================================================
+            ACTIVE DISASTER RELIEF & ESSENTIAL SUPPLY CONVOYS
+        ===================================================== */}
+        {convoys.map((c) => {
+          const isDelayed = c.status === "DELAYED_LANDSLIDE";
+          const isRerouting = c.status === "REROUTING";
+          const statusColor = isDelayed ? "#EF4444" : (isRerouting ? "#F59E0B" : "#10B981");
+          const typeIcon = c.commodity_type === "POL_TANKER" ? "⛽" : (c.commodity_type === "MEDICAL_AID" ? "💊" : (c.commodity_type === "FOOD_GRAINS" ? "🌾" : "🚛"));
+
+          return (
+            <CircleMarker
+              key={c.convoy_id}
+              center={[c.current_lat, c.current_lng]}
+              radius={9}
+              pathOptions={{
+                color: "#FFFFFF",
+                weight: 2.5,
+                fillColor: statusColor,
+                fillOpacity: 1.0,
+              }}
+            >
+              <Tooltip direction="top" offset={[0, -10]}>
+                <strong>{typeIcon} {c.vehicle_reg_no}: {c.name} ({c.speed_kmh} km/h)</strong>
+              </Tooltip>
+              <Popup>
+                <div style={{ minWidth: "240px", fontSize: "13px", color: "#20231F" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
+                    <span style={{ fontWeight: "800", color: statusColor }}>{typeIcon} {c.commodity_type.replace('_', ' ')}</span>
+                    <span style={{ fontSize: "10px", fontWeight: "700", background: statusColor, color: "#FFFFFF", padding: "2px 6px", borderRadius: "4px" }}>
+                      {c.status.replace('_', ' ')}
+                    </span>
+                  </div>
+                  <strong style={{ fontSize: "14px", display: "block", marginBottom: "4px", color: "#1E293B" }}>
+                    {c.name} ({c.vehicle_reg_no})
+                  </strong>
+                  <div style={{ fontSize: "12px", background: "rgba(48,72,59,0.08)", padding: "5px 8px", borderRadius: "6px", marginBottom: "6px" }}>
+                    📦 <strong>Payload:</strong> {c.payload_description} ({c.cargo_weight_tonnes}T)
+                  </div>
+                  <div style={{ fontSize: "12px", marginBottom: "3px" }}>
+                    📍 <strong>Location:</strong> {c.current_location_name}
+                  </div>
+                  <div style={{ fontSize: "12px", marginBottom: "3px" }}>
+                    ⚡ <strong>Speed:</strong> {c.speed_kmh} km/h • <strong>Priority:</strong> {c.priority_level}
+                  </div>
+                  <div style={{ fontSize: "11px", color: "#64748B", marginBottom: "4px" }}>
+                    👤 <strong>Driver:</strong> {c.driver_name} ({c.driver_contact})
+                  </div>
+                  {c.hazard_flag && (
+                    <div style={{ fontSize: "11px", color: isDelayed ? "#EF4444" : "#D97706", background: isDelayed ? "rgba(239,68,68,0.1)" : "rgba(245,158,11,0.1)", padding: "4px 6px", borderRadius: "4px", fontWeight: "600" }}>
+                      ⚠️ {c.hazard_flag}
+                    </div>
+                  )}
+                </div>
+              </Popup>
+            </CircleMarker>
+          );
+        })}
+
       </MapContainer>
 
 
@@ -732,7 +791,7 @@ export function MapComponent({
             "1px solid rgba(48, 72, 59, 0.12)",
           fontSize: "12px",
           color: "#20231F",
-          minWidth: "175px",
+          minWidth: "185px",
         }}
       >
 
@@ -743,7 +802,7 @@ export function MapComponent({
             fontSize: "13px",
           }}
         >
-          Route Legend
+          Route & Fleet Legend
         </div>
 
 
@@ -839,6 +898,7 @@ export function MapComponent({
             display: "flex",
             alignItems: "center",
             gap: "8px",
+            marginBottom: "7px",
           }}
         >
           <span>
@@ -847,6 +907,24 @@ export function MapComponent({
 
           Hazard / Disruption
         </div>
+
+        {convoys.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              paddingTop: "5px",
+              borderTop: "1px solid rgba(48,72,59,0.1)",
+              fontSize: "11px",
+              color: "#30483B",
+              fontWeight: "600"
+            }}
+          >
+            <span>🚛</span>
+            Tracked Convoy ({convoys.length})
+          </div>
+        )}
 
       </div>
 

@@ -78,5 +78,15 @@
     "elevation_m": 729,
     "location_type": "district_hq",
     "terrain": "hilly"
+  },
+  {
+    "id": 208,
+    "name": "Mamit",
+    "state": "Mizoram",
+    "latitude": 23.93,
+    "longitude": 92.49,
+    "elevation_m": 718,
+    "location_type": "district_hq",
+    "terrain": "hilly"
   }
 ]

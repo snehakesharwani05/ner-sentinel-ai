@@ -6,7 +6,11 @@ CREATE TABLE IF NOT EXISTS users (
     name TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
-    role TEXT CHECK(role IN ('admin', 'operator', 'disaster_mgmt', 'driver')) NOT NULL DEFAULT 'operator',
+    country_code TEXT DEFAULT '+91',
+    mobile_hash TEXT,
+    mobile_masked TEXT,
+    service_badge_id TEXT,
+    role TEXT CHECK(role IN ('admin', 'operator', 'disaster_mgmt', 'driver', 'citizen', 'public_citizen')) NOT NULL DEFAULT 'citizen',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 

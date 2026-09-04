@@ -11,27 +11,32 @@ if (!fs.existsSync(dbDir)) {
 
 let sqlInstance = null;
 
+let lastDiskMtime = 0;
+
+function checkDiskSync() {
+  if (fs.existsSync(dbPath) && sqlInstance) {
+    try {
+      const stats = fs.statSync(dbPath);
+      if (stats.mtimeMs > lastDiskMtime && lastDiskMtime > 0) {
+        // Disk changed externally, reload instance
+        const SQL = sqlInstance.constructor;
+        const fileBuffer = fs.readFileSync(dbPath);
+        sqlInstance = new SQL(fileBuffer);
+        lastDiskMtime = stats.mtimeMs;
+      }
+    } catch (e) {}
+  }
+}
+
 function saveDatabase() {
   if (sqlInstance) {
     const data = sqlInstance.export();
     const buffer = Buffer.from(data);
     fs.writeFileSync(dbPath, buffer);
+    try {
+      lastDiskMtime = fs.statSync(dbPath).mtimeMs;
+    } catch (e) {}
   }
-}
-
-// Load or create SQLite WASM instance
-function getSqlInstance() {
-  if (!sqlInstance) {
-    // Synchronous execution using cached instance if available or load file
-    let fileBuffer = null;
-    if (fs.existsSync(dbPath)) {
-      fileBuffer = fs.readFileSync(dbPath);
-    }
-    // We initialize sql.js synchronously using require('sql.js') init
-    // Note: initSqlJs returns a Promise, but we can handle it cleanly or load sync
-    throw new Error('Database not initialized. Call await db.init() first.');
-  }
-  return sqlInstance;
 }
 
 const db = {
@@ -40,18 +45,23 @@ const db = {
     let fileBuffer = null;
     if (fs.existsSync(dbPath)) {
       fileBuffer = fs.readFileSync(dbPath);
+      try {
+        lastDiskMtime = fs.statSync(dbPath).mtimeMs;
+      } catch (e) {}
     }
     sqlInstance = new SQL.Database(fileBuffer);
     return this;
   },
 
   exec(sql) {
+    checkDiskSync();
     if (!sqlInstance) throw new Error('Database not initialized');
     sqlInstance.exec(sql);
     saveDatabase();
   },
 
   prepare(sql) {
+    checkDiskSync();
     if (!sqlInstance) throw new Error('Database not initialized');
     return {
       all(...params) {

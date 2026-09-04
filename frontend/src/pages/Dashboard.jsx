@@ -11,6 +11,8 @@ export function Dashboard() {
   const [health, setHealth] = useState(null);
   const [locations, setLocations] = useState([]);
   const [disruptions, setDisruptions] = useState([]);
+  const [convoys, setConvoys] = useState([]);
+  const [convoyFilter, setConvoyFilter] = useState('ALL');
   const [activeFilter, setActiveFilter] = useState('all');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,15 +23,17 @@ export function Dashboard() {
         setLoading(true);
         setError(null);
 
-        const [healthRes, locsRes, disruptionsRes] = await Promise.all([
+        const [healthRes, locsRes, disruptionsRes, convoysRes] = await Promise.all([
           api.getHealth().catch(() => null),
           api.getLocations().catch(() => null),
-          api.getDisruptions('active').catch(() => null)
+          api.getDisruptions('active').catch(() => null),
+          api.getConvoys('ALL').catch(() => null)
         ]);
 
         if (healthRes) setHealth(healthRes);
         if (locsRes && locsRes.data) setLocations(locsRes.data);
         if (disruptionsRes && disruptionsRes.data) setDisruptions(disruptionsRes.data);
+        if (convoysRes && convoysRes.data) setConvoys(convoysRes.data);
       } catch (err) {
         setError(err.message || 'Failed to load live dashboard feeds.');
       } finally {
@@ -207,7 +211,7 @@ export function Dashboard() {
               {locations.length} Connected Locations across 9 States
             </span>
           </div>
-          <MapComponent locations={locations} disruptions={disruptions} />
+          <MapComponent locations={locations} disruptions={disruptions} convoys={convoys} />
         </div>
 
         {/* Right Column: Real-Time Active Disruption Feeds with Filter Triage */}

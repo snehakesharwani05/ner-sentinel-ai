@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../api/api';
 import RiskBadge from '../components/RiskBadge';
-import { AlertOctagon, PlusCircle, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { AlertOctagon, PlusCircle, CheckCircle2, ShieldAlert, WifiOff, UploadCloud } from 'lucide-react';
+import { offlineEngine } from '../utils/offlineEngine';
+import { useAuth } from '../context/AuthContext';
+import { useTranslation } from '../context/LanguageContext';
 
 export function FieldReport() {
+  const { isOnline, user } = useAuth();
+  const { t } = useTranslation();
   const [disruptions, setDisruptions] = useState([]);
   const [segmentId, setSegmentId] = useState(26); // Default Dirang -> Sela Pass
   const [disruptionType, setDisruptionType] = useState('landslide');
@@ -11,6 +16,7 @@ export function FieldReport() {
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [offlineQueue, setOfflineQueue] = useState(() => offlineEngine.getOfflineQueue());
 
   const loadDisruptions = async () => {
     try {
@@ -27,37 +33,46 @@ export function FieldReport() {
 
   const handleSubmitReport = async (e) => {
     e.preventDefault();
-    try {
-      setLoading(true);
-      setMessage(null);
+    setLoading(true);
+    setMessage(null);
 
-      // Using demo token for disaster_mgmt role to test auth & RBAC
+    const reportPayload = {
+      road_segment_id: Number(segmentId),
+      disruption_type: disruptionType,
+      severity: severity,
+      description: description || 'Field incident report submitted from mobile terminal.',
+      reporter: user?.name || 'Field Officer',
+      reported_at: new Date().toISOString()
+    };
+
+    // If Offline: Queue in client-side storage
+    if (!navigator.onLine) {
+      offlineEngine.queueOfflineReport(reportPayload);
+      setOfflineQueue(offlineEngine.getOfflineQueue());
+      setMessage('🟡 Zero-Internet Mode: Incident report saved in Local Outbox Queue! It will automatically synchronize when connection returns.');
+      setDescription('');
+      setLoading(false);
+      return;
+    }
+
+    try {
       const demoToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJkaXNhc3RlckBuZXJzZW50aW5lbC5pbiIsInJvbGUiOiJkaXNhc3Rlcl9tZ210In0.test';
 
-      await api.reportDisruption({
-        road_segment_id: Number(segmentId),
-        disruption_type: disruptionType,
-        severity: severity,
-        description: description || 'Field report submitted from mobile terminal.'
-      }, demoToken).catch(async () => {
-        // Fallback for public demo endpoint
+      await api.reportDisruption(reportPayload, demoToken).catch(async () => {
         return await fetch('http://localhost:5000/api/v1/disruptions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            road_segment_id: Number(segmentId),
-            disruption_type: disruptionType,
-            severity: severity,
-            description: description || 'Field report registered.'
-          })
+          body: JSON.stringify(reportPayload)
         });
       });
 
-      setMessage('Disruption report registered successfully! Dynamic rerouting engine updated.');
+      setMessage('✓ Disruption report submitted to Central Command! Dynamic rerouting engine updated.');
       setDescription('');
       loadDisruptions();
     } catch (err) {
-      setMessage(`Notice: Report registered in local view. (${err.message})`);
+      offlineEngine.queueOfflineReport(reportPayload);
+      setOfflineQueue(offlineEngine.getOfflineQueue());
+      setMessage('🟡 Report queued locally in Outbox due to network latency.');
     } finally {
       setLoading(false);
     }
@@ -67,7 +82,7 @@ export function FieldReport() {
     <div className="page-container">
       <div className="page-header">
         <h1 className="page-title" style={{ color: '#A9573F' }}>
-          Field Disruption Reporting Hub
+          {t('nav_field_report', 'Field Disruption Reporting Hub')}
         </h1>
         <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
           Submit real-time road hazard reports (landslides, flash floods, blockages) to trigger dynamic rerouting
@@ -78,7 +93,7 @@ export function FieldReport() {
         {/* Form to submit new disruption */}
         <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#20231F', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <PlusCircle size={20} color="#B8944A" /> Submit New Field Hazard Report
+            <PlusCircle size={20} color="#B8944A" /> {t('submit_incident', 'Submit New Field Hazard Report')}
           </h3>
 
           <form onSubmit={handleSubmitReport}>
@@ -96,11 +111,11 @@ export function FieldReport() {
             <div className="form-group">
               <label className="form-label" style={{ color: '#20231F' }}>Disruption Type</label>
               <select className="form-select" value={disruptionType} onChange={(e) => setDisruptionType(e.target.value)}>
-                <option value="landslide">Landslide / Mudslide</option>
-                <option value="flash_flood">Flash Flood / Waterlogging</option>
+                <option value="landslide">{t('landslide_alert', 'Landslide / Mudslide')}</option>
+                <option value="flash_flood">{t('flood_alert', 'Flash Flood / Waterlogging')}</option>
                 <option value="bridge_damage">Bridge Damage</option>
                 <option value="roadblock">Roadblock / Strike</option>
-                <option value="severe_weather">Severe Monsoon Fog/Weather</option>
+                <option value="severe_weather">{t('heavy_rain', 'Severe Monsoon Fog/Weather')}</option>
                 <option value="roadwork">Roadwork Repairs</option>
               </select>
             </div>
@@ -120,7 +135,7 @@ export function FieldReport() {
               <textarea
                 className="form-textarea"
                 rows="3"
-                placeholder="Describe current road conditions..."
+                placeholder={t('report_desc', 'Describe current road conditions...')}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
@@ -128,7 +143,7 @@ export function FieldReport() {
 
             <button type="submit" className="btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center' }}>
               <AlertOctagon size={18} />
-              {loading ? 'Submitting Report...' : 'Register Disruption Report'}
+              {loading ? 'Submitting Report...' : t('submit_incident', 'Register Disruption Report')}
             </button>
 
             {message && (
