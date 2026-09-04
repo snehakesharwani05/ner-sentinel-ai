@@ -143,9 +143,9 @@ def simulate_hazard():
         data = request.get_json() or {}
         target_name = data.get("target_location", "Sela Pass")
         origin_name = data.get("origin_location", "Guwahati")
-        rainfall_mm = float(data.get("rainfall_mm", 200.0))
-        soil_moisture = float(data.get("soil_moisture", 0.42))
-        jam_factor = float(data.get("jam_factor", 3.0))
+        rainfall_mm = float(data.get("rainfall_mm", 0.0) if data.get("rainfall_mm") is not None else 0.0)
+        soil_moisture = float(data.get("soil_moisture", 0.15) if data.get("soil_moisture") is not None else 0.15)
+        jam_factor = float(data.get("jam_factor", 0.0) if data.get("jam_factor") is not None else 0.0)
 
         # Support ID lookup if passed as integer IDs
         if isinstance(target_name, int) or (isinstance(target_name, str) and target_name.isdigit()):
@@ -155,58 +155,80 @@ def simulate_hazard():
 
         target_node = router.locations_map.get(str(target_name), {})
         elevation_m = target_node.get("elevation_m", 1200)
-        terrain_str = target_node.get("terrain", "steep_mountain")
+        terrain_str = target_node.get("terrain", "steep_mountain" if elevation_m > 1000 else "plain")
         terrain_code = TERRAIN_MAP.get(terrain_str, 2)
 
-        # Slope estimation based on terrain
-        slope_deg = 18.0 if terrain_str in ["high_pass", "steep_mountain"] else (8.0 if terrain_str == "hilly" else 2.0)
+        # 1. Slope/Terrain vulnerability factor based on elevation and terrain steepness
+        terrain_factor = min(1.0, max(0.1, elevation_m / 2500.0))
 
-        # Build feature vector matching exact trained model schema
-        speed_ratio = max(0.05, 1.0 - (jam_factor * 0.08) - (rainfall_mm * 0.002))
-        sim_features = pd.DataFrame([{
-            "elevation_m": elevation_m,
-            "slope_angle_deg": slope_deg,
-            "terrain_type": terrain_code,
-            "road_condition": 2 if rainfall_mm > 150 else 0, # poor condition under heavy rain
-            "precipitation_mm": rainfall_mm,
-            "soil_moisture": soil_moisture,
-            "visibility_m": max(100.0, 5000.0 - (rainfall_mm * 15.0)),
-            "surface_pressure_hpa": 980.0,
-            "wind_speed_kmh": min(80.0, 15.0 + (rainfall_mm / 10.0)),
-            "speed_ratio": speed_ratio,
-            "jam_factor": jam_factor
-        }], columns=FEATURE_COLS)
+        # 2. Normalized environmental inputs
+        rain_norm = min(1.0, max(0.0, rainfall_mm / 300.0))
+        moisture_norm = max(0.0, min(1.0, (soil_moisture - 0.15) / (0.45 - 0.15)))
+        traffic_norm = max(0.0, min(1.0, jam_factor / 10.0))
 
-        # Run AI Machine Learning Models
-        pred_state_idx = int(router.classifier.predict(sim_features)[0])
-        predicted_state = ROAD_STATES[pred_state_idx]
-        raw_risk = float(router.regressor.predict(sim_features)[0])
-        disaster_risk_score = round(max(0.0, min(1.0, raw_risk)), 3)
+        # 3. Geotechnical landslide failure probability (empirical formula)
+        landslide_risk = (0.55 * rain_norm + 0.35 * moisture_norm + 0.10 * traffic_norm) * terrain_factor
 
-        if rainfall_mm > 250 or (soil_moisture >= 0.42 and slope_deg >= 12.0):
-            predicted_state = "CRITICAL_BLOCKED"
-            disaster_risk_score = max(0.85, disaster_risk_score)
+        # 4. Low-altitude plains waterlogging & urban flash flood modeling
+        if elevation_m < 600:
+            waterlogging_factor = max(0.2, 1.0 - (elevation_m / 1000.0))
+            waterlogging_risk = min(1.0, (0.70 * rain_norm + 0.20 * moisture_norm + 0.10 * traffic_norm) * waterlogging_factor)
+            effective_risk = max(landslide_risk, waterlogging_risk)
+            hazard_type = "Urban Inundation / Flash Flood" if rain_norm > 0.25 else "Dry Baseline"
+        else:
+            effective_risk = landslide_risk
+            waterlogging_risk = 0.0
+            hazard_type = "Landslide Slope Failure" if rain_norm > 0.20 else "Dry Baseline"
 
-        # Landslide geotechnical probability
-        landslide_prob = min(99.0, max(5.0, (rainfall_mm * 0.22) + (soil_moisture * 105.0) + (slope_deg * 1.6)))
-        is_blocked = (predicted_state == "CRITICAL_BLOCKED") or (disaster_risk_score >= 0.70)
+        disaster_risk_score = round(max(0.0, min(1.0, effective_risk)), 3)
+        landslide_prob_pct = round(max(0.0, min(100.0, landslide_risk * 100.0)), 1)
+        waterlogging_prob_pct = round(max(0.0, min(100.0, waterlogging_risk * 100.0)), 1)
+
+        # 5. Road Capacity Degradation (%): min(100%, (disaster_risk_score * 60) + (traffic_factor / 10 * 40))
+        capacity_drop_pct = min(100.0, round((disaster_risk_score * 60.0) + (traffic_norm * 40.0), 1))
+
+        # 6. Road Status Categories:
+        # 0.00 <= Risk < 0.25: CLEAR_PASS (Green / Low Risk)
+        # 0.25 <= Risk < 0.55: CAUTION_WET (Yellow / Moderate Risk)
+        # 0.55 <= Risk < 0.75: RESTRICTED_CONVOY (Amber / High Risk)
+        # 0.75 <= Risk <= 1.00: SEVERED_BLOCKED (Red / Critical Hazard)
+        if disaster_risk_score >= 0.75:
+            predicted_state = "SEVERED_BLOCKED"
+            severity_band = "Critical"
+            is_blocked = True
+        elif disaster_risk_score >= 0.55:
+            predicted_state = "RESTRICTED_CONVOY"
+            severity_band = "High"
+            is_blocked = False
+        elif disaster_risk_score >= 0.25:
+            predicted_state = "CAUTION_WET"
+            severity_band = "Moderate"
+            is_blocked = False
+        else:
+            predicted_state = "CLEAR_PASS"
+            severity_band = "Low"
+            is_blocked = False
+
+        # 7. Formulate Active Conditions String and Operational Directive
+        conditions_str = f"Conditions: Precipitation ({rainfall_mm:.1f}mm), Soil Saturation ({soil_moisture:.2f} m³/m³), Congestion Factor ({jam_factor:.1f}/10)."
+
+        if predicted_state == "SEVERED_BLOCKED":
+            if elevation_m >= 600:
+                directive = f"CRITICAL HAZARD: {target_name} (Alt: {elevation_m}m) corridor impassable due to severe slope failure and debris flow. Road capacity severed (-{capacity_drop_pct}%). Emergency rerouting initiated. {conditions_str} Dispatch BRO heavy recovery teams."
+            else:
+                directive = f"CRITICAL HAZARD: {target_name} corridor inundated with severe urban waterlogging and flash floods. Transit halted (-{capacity_drop_pct}% capacity). {conditions_str} Emergency municipal drainage deployed."
+        elif predicted_state == "RESTRICTED_CONVOY":
+            if elevation_m >= 600:
+                directive = f"HIGH HAZARD RESTRICTION: Significant slope instability / rockfall risk around {target_name}. Capacity degraded by -{capacity_drop_pct}%. {conditions_str} Speed restricted to 20 km/h; military/essential convoys only with escort."
+            else:
+                directive = f"HIGH HAZARD RESTRICTION: Severe urban water accumulation and drainage backlog near {target_name}. Capacity degraded by -{capacity_drop_pct}%. {conditions_str} High-clearance logistics vehicles only."
+        elif predicted_state == "CAUTION_WET":
+            directive = f"MODERATE CAUTION: Wet road surfaces and localized runoff near {target_name}. Capacity reduction: -{capacity_drop_pct}%. {conditions_str} Exercise caution and maintain braking buffers."
+        else:
+            directive = f"NORMAL OPERATIONS: Weather and geotechnical parameters within safe thresholds at {target_name}. Capacity nominal (-{capacity_drop_pct}%). {conditions_str} Corridor clear for unrestricted civilian and freight transit."
 
         # Calculate Standard Route vs Emergency Bypass Route
         std_route = router.find_optimal_route(str(origin_name), str(target_name), mode="safest")
-        
-        # Operational recommendation
-        if is_blocked:
-            directive = f"CRITICAL HAZARD: {target_name} corridor impassable due to severe mudslide risk. Emergency rerouting initiated. Dispatch BRO heavy recovery teams."
-            severity_band = "Critical"
-        elif disaster_risk_score >= 0.50:
-            directive = f"HIGH HAZARD WARNING: Heavy precipitation ({rainfall_mm}mm) and high soil saturation ({soil_moisture} m3/m3) detected. Speed limited to 20 km/h. Essential convoys only."
-            severity_band = "High"
-        elif disaster_risk_score >= 0.25:
-            directive = f"MODERATE CAUTION: Wet road surfaces and fog present around {target_name}. Maintain increased braking distance."
-            severity_band = "Moderate"
-        else:
-            directive = f"NORMAL OPERATIONS: Weather within safe thresholds. Corridor clear for all logistics transit."
-            severity_band = "Low"
 
         return jsonify({
             "success": True,
@@ -215,6 +237,7 @@ def simulate_hazard():
                 "target_state": target_node.get("state", "North East"),
                 "elevation_m": elevation_m,
                 "terrain": terrain_str,
+                "hazard_type": hazard_type,
                 "simulated_rainfall_mm": rainfall_mm,
                 "simulated_soil_moisture": soil_moisture,
                 "simulated_jam_factor": jam_factor
@@ -223,9 +246,10 @@ def simulate_hazard():
                 "predicted_state": predicted_state,
                 "disaster_risk_score": disaster_risk_score,
                 "severity_band": severity_band,
-                "landslide_probability_pct": round(landslide_prob, 1),
+                "landslide_probability_pct": landslide_prob_pct,
+                "waterlogging_probability_pct": waterlogging_prob_pct,
                 "is_corridor_blocked": is_blocked,
-                "capacity_drop_pct": min(100, int(disaster_risk_score * 100)),
+                "capacity_drop_pct": capacity_drop_pct,
                 "operational_directive": directive
             },
             "route_impact": {

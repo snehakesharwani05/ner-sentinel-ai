@@ -2,7 +2,7 @@
   "state_key": "Sikkim",
   "state_name": "Sikkim",
   "capital": "Gangtok",
-  "region": "Eastern Himalayas / Kangchenjunga",
+  "region": "Eastern Himalayas / Teesta River Corridor",
   "terrain_category": "Steep Alpine Terrain & Active Teesta River Basin",
   "primary_highways": [
     "NH-10",
@@ -10,6 +10,6 @@
     "NH-510",
     "JN Road"
   ],
-  "total_locations": 11,
-  "total_road_segments": 11
+  "total_locations": 13,
+  "total_road_segments": 13
 }

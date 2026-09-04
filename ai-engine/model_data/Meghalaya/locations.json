@@ -2,91 +2,145 @@
   {
     "id": 12,
     "name": "Shillong",
+    "district": "East Khasi Hills",
     "state": "Meghalaya",
     "latitude": 25.5788,
     "longitude": 91.8933,
     "elevation_m": 1525,
     "location_type": "state_capital",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.12
   },
   {
     "id": 13,
     "name": "Cherrapunji (Sohra)",
+    "district": "East Khasi Hills",
     "state": "Meghalaya",
     "latitude": 25.2702,
     "longitude": 91.7323,
     "elevation_m": 1484,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.48
   },
   {
     "id": 14,
     "name": "Jowai",
+    "district": "West Jaintia Hills",
     "state": "Meghalaya",
     "latitude": 25.45,
     "longitude": 92.2,
     "elevation_m": 1380,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.2
   },
   {
     "id": 15,
     "name": "Nongpoh",
+    "district": "Ri Bhoi",
     "state": "Meghalaya",
     "latitude": 25.9036,
     "longitude": 91.88,
     "elevation_m": 485,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.15
   },
   {
     "id": 16,
     "name": "Tura",
+    "district": "West Garo Hills",
     "state": "Meghalaya",
     "latitude": 25.5138,
     "longitude": 90.2202,
     "elevation_m": 349,
     "location_type": "logistics_hub",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.18
   },
   {
     "id": 67,
     "name": "Mawsynram",
+    "district": "East Khasi Hills",
     "state": "Meghalaya",
     "latitude": 25.3,
     "longitude": 91.58,
     "elevation_m": 1400,
-    "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "location_type": "subdivision_town",
+    "is_urban": 0,
+    "risk_score": 0.55
   },
   {
     "id": 68,
     "name": "Dawki",
+    "district": "West Jaintia Hills",
     "state": "Meghalaya",
     "latitude": 25.18,
     "longitude": 92.02,
     "elevation_m": 105,
     "location_type": "border_checkpost",
-    "terrain": "hilly"
+    "is_urban": 0,
+    "risk_score": 0.28
   },
   {
     "id": 69,
     "name": "Williamnagar",
+    "district": "East Garo Hills",
     "state": "Meghalaya",
     "latitude": 25.6,
     "longitude": 90.62,
     "elevation_m": 290,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.22
   },
   {
     "id": 70,
     "name": "Nongstoin",
+    "district": "West Khasi Hills",
     "state": "Meghalaya",
     "latitude": 25.52,
     "longitude": 91.27,
     "elevation_m": 1409,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.24
+  },
+  {
+    "id": 131,
+    "name": "Byrnihat",
+    "district": "Ri Bhoi",
+    "state": "Meghalaya",
+    "latitude": 26.05,
+    "longitude": 91.85,
+    "elevation_m": 150,
+    "location_type": "logistics_hub",
+    "is_urban": 1,
+    "risk_score": 0.1
+  },
+  {
+    "id": 132,
+    "name": "Khliehriat",
+    "district": "East Jaintia Hills",
+    "state": "Meghalaya",
+    "latitude": 25.35,
+    "longitude": 92.37,
+    "elevation_m": 1200,
+    "location_type": "district_hq",
+    "is_urban": 1,
+    "risk_score": 0.35
+  },
+  {
+    "id": 133,
+    "name": "Mairang",
+    "district": "Eastern West Khasi Hills",
+    "state": "Meghalaya",
+    "latitude": 25.56,
+    "longitude": 91.64,
+    "elevation_m": 1550,
+    "location_type": "district_hq",
+    "is_urban": 1,
+    "risk_score": 0.2
   }
 ]

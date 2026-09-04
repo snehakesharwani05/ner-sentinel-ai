@@ -2,91 +2,145 @@
   {
     "id": 27,
     "name": "Senapati",
+    "district": "Senapati",
     "state": "Manipur",
     "latitude": 25.2683,
     "longitude": 94.0186,
     "elevation_m": 1100,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.35
   },
   {
     "id": 28,
     "name": "Imphal",
+    "district": "Imphal West",
     "state": "Manipur",
     "latitude": 24.817,
     "longitude": 93.9368,
     "elevation_m": 786,
     "location_type": "state_capital",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.12
   },
   {
     "id": 29,
     "name": "Churachandpur",
+    "district": "Churachandpur",
     "state": "Manipur",
     "latitude": 24.3333,
     "longitude": 93.6833,
     "elevation_m": 914,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.25
   },
   {
     "id": 30,
     "name": "Jiribam",
+    "district": "Jiribam",
     "state": "Manipur",
     "latitude": 24.8014,
     "longitude": 93.1186,
     "elevation_m": 42,
     "location_type": "border_checkpost",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.2
   },
   {
     "id": 62,
     "name": "Ukhrul",
+    "district": "Ukhrul",
     "state": "Manipur",
     "latitude": 25.1167,
     "longitude": 94.3667,
     "elevation_m": 1662,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.4
   },
   {
     "id": 63,
     "name": "Thoubal",
+    "district": "Thoubal",
     "state": "Manipur",
     "latitude": 24.6333,
     "longitude": 93.9833,
     "elevation_m": 775,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 64,
     "name": "Bishnupur",
+    "district": "Bishnupur",
     "state": "Manipur",
     "latitude": 24.63,
     "longitude": 93.76,
     "elevation_m": 790,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 65,
     "name": "Kakching",
+    "district": "Kakching",
     "state": "Manipur",
     "latitude": 24.48,
     "longitude": 93.98,
     "elevation_m": 776,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 66,
     "name": "Moreh",
+    "district": "Tengnoupal",
     "state": "Manipur",
     "latitude": 24.25,
     "longitude": 94.3,
     "elevation_m": 220,
     "location_type": "border_checkpost",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.35
+  },
+  {
+    "id": 121,
+    "name": "Kangpokpi",
+    "district": "Kangpokpi",
+    "state": "Manipur",
+    "latitude": 25.15,
+    "longitude": 93.97,
+    "elevation_m": 1050,
+    "location_type": "subdivision_town",
+    "is_urban": 0,
+    "risk_score": 0.3
+  },
+  {
+    "id": 122,
+    "name": "Moirang",
+    "district": "Bishnupur",
+    "state": "Manipur",
+    "latitude": 24.5,
+    "longitude": 93.77,
+    "elevation_m": 770,
+    "location_type": "market_center",
+    "is_urban": 1,
+    "risk_score": 0.1
+  },
+  {
+    "id": 123,
+    "name": "Noney",
+    "district": "Noney",
+    "state": "Manipur",
+    "latitude": 24.83,
+    "longitude": 93.6,
+    "elevation_m": 450,
+    "location_type": "highway_junction",
+    "is_urban": 0,
+    "risk_score": 0.55
   }
 ]

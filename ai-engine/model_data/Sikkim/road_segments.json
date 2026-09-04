@@ -91,6 +91,16 @@
   },
   {
     "origin": "Namchi",
+    "destination": "Jorethang",
+    "highway": "SH-Sikkim",
+    "distance_km": 20,
+    "time_min": 35,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 6.0
+  },
+  {
+    "origin": "Namchi",
     "destination": "Ravangla",
     "highway": "SH-12",
     "distance_km": 25,
@@ -108,5 +118,15 @@
     "terrain": "steep_mountain",
     "condition": "fair",
     "slope_deg": 8.0
+  },
+  {
+    "origin": "Geyzing",
+    "destination": "Pelling",
+    "highway": "SH-Sikkim",
+    "distance_km": 10,
+    "time_min": 20,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 7.0
   }
 ]

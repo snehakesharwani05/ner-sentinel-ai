@@ -1,82 +1,134 @@
 [
   {
-    "id": 35,
+    "id": 24,
     "name": "Dimapur",
+    "district": "Dimapur",
     "state": "Nagaland",
     "latitude": 25.9068,
     "longitude": 93.7271,
     "elevation_m": 145,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
-    "id": 36,
+    "id": 25,
     "name": "Kohima",
+    "district": "Kohima",
     "state": "Nagaland",
     "latitude": 25.6701,
     "longitude": 94.1077,
     "elevation_m": 1444,
     "location_type": "state_capital",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.25
   },
   {
-    "id": 37,
+    "id": 26,
     "name": "Mokokchung",
+    "district": "Mokokchung",
     "state": "Nagaland",
     "latitude": 26.3256,
     "longitude": 94.5215,
     "elevation_m": 1325,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.28
   },
   {
     "id": 38,
     "name": "Wokha",
+    "district": "Wokha",
     "state": "Nagaland",
     "latitude": 26.1,
     "longitude": 94.26,
     "elevation_m": 1313,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.3
   },
   {
     "id": 75,
     "name": "Tuensang",
+    "district": "Tuensang",
     "state": "Nagaland",
     "latitude": 26.28,
     "longitude": 94.83,
     "elevation_m": 1371,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.35
   },
   {
     "id": 76,
     "name": "Zunheboto",
+    "district": "Zunheboto",
     "state": "Nagaland",
     "latitude": 25.97,
     "longitude": 94.52,
     "elevation_m": 1874,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.35
   },
   {
     "id": 77,
     "name": "Mon",
+    "district": "Mon",
     "state": "Nagaland",
     "latitude": 26.75,
     "longitude": 95.06,
     "elevation_m": 897,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.32
   },
   {
     "id": 78,
     "name": "Phek",
+    "district": "Phek",
     "state": "Nagaland",
     "latitude": 25.66,
     "longitude": 94.46,
     "elevation_m": 1024,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.35
+  },
+  {
+    "id": 151,
+    "name": "Chumoukedima",
+    "district": "Chumoukedima",
+    "state": "Nagaland",
+    "latitude": 25.79,
+    "longitude": 93.77,
+    "elevation_m": 180,
+    "location_type": "subdivision_town",
+    "is_urban": 1,
+    "risk_score": 0.12
+  },
+  {
+    "id": 152,
+    "name": "Medziphema",
+    "district": "Chumoukedima",
+    "state": "Nagaland",
+    "latitude": 25.75,
+    "longitude": 93.85,
+    "elevation_m": 310,
+    "location_type": "highway_junction",
+    "is_urban": 1,
+    "risk_score": 0.15
+  },
+  {
+    "id": 153,
+    "name": "Tseminyu",
+    "district": "Tseminyu",
+    "state": "Nagaland",
+    "latitude": 25.9,
+    "longitude": 94.21,
+    "elevation_m": 1260,
+    "location_type": "subdivision_town",
+    "is_urban": 0,
+    "risk_score": 0.28
   }
 ]

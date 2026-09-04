@@ -21,20 +21,30 @@
   },
   {
     "origin": "Dharmanagar",
-    "destination": "Kailashahar",
-    "highway": "NH-108",
-    "distance_km": 25,
-    "time_min": 35,
+    "destination": "Kumarghat",
+    "highway": "NH-8",
+    "distance_km": 30,
+    "time_min": 40,
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 1.0
   },
   {
-    "origin": "Dharmanagar",
+    "origin": "Kailashahar",
+    "destination": "Kumarghat",
+    "highway": "SH-Tripura",
+    "distance_km": 22,
+    "time_min": 30,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Kumarghat",
     "destination": "Ambassa",
     "highway": "NH-8",
-    "distance_km": 80,
-    "time_min": 115,
+    "distance_km": 50,
+    "time_min": 75,
     "terrain": "hilly",
     "condition": "good",
     "slope_deg": 3.0
@@ -81,10 +91,20 @@
   },
   {
     "origin": "Agartala",
+    "destination": "Bishalgarh",
+    "highway": "NH-8",
+    "distance_km": 20,
+    "time_min": 25,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Bishalgarh",
     "destination": "Udaipur",
     "highway": "NH-8",
-    "distance_km": 50,
-    "time_min": 65,
+    "distance_km": 30,
+    "time_min": 40,
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 1.0

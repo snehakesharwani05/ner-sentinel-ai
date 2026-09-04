@@ -60,17 +60,43 @@ export function RouteIntelligence() {
     }
   };
 
+  const isLocationValid = (loc) => {
+    if (!loc) return false;
+    const lat = Number(loc.latitude ?? loc.lat);
+    const lng = Number(loc.longitude ?? loc.lng);
+    const isValidNumber = !isNaN(lat) && !isNaN(lng) && lat !== null && lng !== null;
+    const isNotZero = !(lat === 0 && lng === 0);
+    const isInNER = lat >= 20.0 && lat <= 30.0 && lng >= 88.0 && lng <= 98.0;
+    return isValidNumber && isNotZero && isInNER;
+  };
+
   const handleAnalyze = async (e) => {
     e?.preventDefault();
-    if (!originId || !destId || originId === destId) {
+    if (!originId || !destId) {
+      setError('Please select both Origin and Destination locations.');
+      return;
+    }
+
+    if (Number(originId) === Number(destId)) {
       setError('Please select two distinct locations.');
       return;
     }
 
     const origObj = locations.find(l => l.id === Number(originId));
     const destObj = locations.find(l => l.id === Number(destId));
-    const origName = origObj?.name || "Guwahati";
-    const destName = destObj?.name || "Silchar";
+
+    if (!origObj || !destObj) {
+      setError('Selected locations could not be resolved.');
+      return;
+    }
+
+    if (!isLocationValid(origObj) || !isLocationValid(destObj)) {
+      setError('Origin or Destination has invalid or out-of-bounds coordinates.');
+      return;
+    }
+
+    const origName = origObj.name || "Guwahati";
+    const destName = destObj.name || "Silchar";
 
     // 1. If Offline, immediately use the Client-Side Offline Graph
     if (!navigator.onLine) {
@@ -162,7 +188,7 @@ export function RouteIntelligence() {
                   >
                     {originLocations.map(loc => (
                       <option key={`orig-${loc.id}`} value={loc.id}>
-                        {loc.name} ({loc.location_type?.replace(/_/g, ' ') || 'hub'})
+                        {loc.name} {loc.district ? `(${loc.district})` : ''} - {loc.location_type?.replace(/_/g, ' ') || 'hub'}
                       </option>
                     ))}
                   </select>
@@ -200,7 +226,7 @@ export function RouteIntelligence() {
                   >
                     {destLocations.map(loc => (
                       <option key={`dest-${loc.id}`} value={loc.id}>
-                        {loc.name} ({loc.location_type?.replace(/_/g, ' ') || 'hub'})
+                        {loc.name} {loc.district ? `(${loc.district})` : ''} - {loc.location_type?.replace(/_/g, ' ') || 'hub'}
                       </option>
                     ))}
                   </select>
@@ -299,6 +325,12 @@ export function RouteIntelligence() {
                   </h3>
                   <RiskBadge severity={analysis.safestRoute.severityBand} score={analysis.safestRoute.averageRiskScore} />
                 </div>
+
+                {(analysis.safestRoute.is_lane_buffered || analysis.safestRoute.buffer_status_tag) && (
+                  <div style={{ padding: '0.6rem 0.85rem', borderRadius: '8px', background: '#EFF6FF', border: '1.5px solid #93C5FD', color: '#1E40AF', fontSize: '0.82rem', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    🛡️ {analysis.safestRoute.buffer_status_tag || 'Primary Arterial Corridor — Alternate Lane Buffer Applied'}
+                  </div>
+                )}
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                   <div>

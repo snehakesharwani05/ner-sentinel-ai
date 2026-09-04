@@ -11,10 +11,30 @@
   },
   {
     "origin": "Jalpaiguri",
+    "destination": "Mainaguri",
+    "highway": "NH-27",
+    "distance_km": 15,
+    "time_min": 20,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Mainaguri",
     "destination": "Alipurduar",
     "highway": "NH-27",
-    "distance_km": 105,
-    "time_min": 140,
+    "distance_km": 90,
+    "time_min": 120,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Alipurduar",
+    "destination": "Hasimara",
+    "highway": "NH-317",
+    "distance_km": 30,
+    "time_min": 40,
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 0.5

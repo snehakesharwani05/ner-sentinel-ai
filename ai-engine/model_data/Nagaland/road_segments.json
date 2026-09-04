@@ -11,20 +11,50 @@
   },
   {
     "origin": "Dimapur",
+    "destination": "Chumoukedima",
+    "highway": "NH-29 (4-Lane)",
+    "distance_km": 14,
+    "time_min": 18,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Chumoukedima",
+    "destination": "Medziphema",
+    "highway": "NH-29",
+    "distance_km": 18,
+    "time_min": 25,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
+  },
+  {
+    "origin": "Medziphema",
     "destination": "Kohima",
     "highway": "NH-29 (Asian Highway AH-1)",
-    "distance_km": 74,
-    "time_min": 115,
+    "distance_km": 42,
+    "time_min": 70,
     "terrain": "steep_mountain",
     "condition": "fair",
     "slope_deg": 12.0
   },
   {
     "origin": "Kohima",
+    "destination": "Tseminyu",
+    "highway": "NH-2",
+    "distance_km": 40,
+    "time_min": 60,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 8.0
+  },
+  {
+    "origin": "Tseminyu",
     "destination": "Wokha",
     "highway": "NH-2",
-    "distance_km": 75,
-    "time_min": 120,
+    "distance_km": 35,
+    "time_min": 55,
     "terrain": "steep_mountain",
     "condition": "fair",
     "slope_deg": 9.0

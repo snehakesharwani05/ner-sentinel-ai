@@ -1,6 +1,30 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../config/db');
 const { analyzeRoutesAsync, findPathAsync } = require('../services/routingService');
+
+// GET /api/v1/routes/segments - List all road corridors with names
+router.get('/segments', (req, res, next) => {
+  try {
+    const segments = db.prepare(`
+      SELECT rs.id, rs.highway_code, rs.distance_km, rs.terrain_type, rs.road_condition,
+             o.id as origin_id, o.name as origin_name, o.state as origin_state,
+             d.id as destination_id, d.name as destination_name, d.state as destination_state
+      FROM road_segments rs
+      JOIN locations o ON rs.origin_location_id = o.id
+      JOIN locations d ON rs.destination_location_id = d.id
+      ORDER BY rs.highway_code, o.name
+    `).all();
+
+    res.json({
+      success: true,
+      count: segments.length,
+      data: segments
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 // POST /api/v1/routes/analyze - Compare Fastest vs Safest Route with Real-Time AI Predictions
 router.post('/analyze', async (req, res, next) => {
@@ -74,11 +98,11 @@ router.post('/simulate', async (req, res, next) => {
       body: JSON.stringify({
         target_location: target_location || 'Sela Pass',
         origin_location: origin_location || 'Guwahati',
-        rainfall_mm: Number(rainfall_mm || 200),
-        soil_moisture: Number(soil_moisture || 0.42),
-        jam_factor: Number(jam_factor || 3.0)
+        rainfall_mm: rainfall_mm !== undefined && rainfall_mm !== null ? Number(rainfall_mm) : 200,
+        soil_moisture: soil_moisture !== undefined && soil_moisture !== null ? Number(soil_moisture) : 0.42,
+        jam_factor: jam_factor !== undefined && jam_factor !== null ? Number(jam_factor) : 3.0
       }),
-      signal: AbortSignal.timeout(8000)
+      signal: AbortSignal.timeout(20000)
     });
 
     if (aiRes.ok) {

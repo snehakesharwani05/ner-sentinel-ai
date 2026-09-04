@@ -2,141 +2,217 @@
   {
     "id": 17,
     "name": "Itanagar",
+    "district": "Papum Pare",
     "state": "Arunachal Pradesh",
     "latitude": 27.0844,
     "longitude": 93.6053,
     "elevation_m": 320,
     "location_type": "state_capital",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.15
   },
   {
     "id": 18,
     "name": "Naharlagun",
+    "district": "Papum Pare",
     "state": "Arunachal Pradesh",
     "latitude": 27.1064,
     "longitude": 93.6931,
     "elevation_m": 200,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.12
   },
   {
     "id": 19,
     "name": "Bomdila",
+    "district": "West Kameng",
     "state": "Arunachal Pradesh",
     "latitude": 27.2646,
     "longitude": 92.4159,
     "elevation_m": 2415,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.35
   },
   {
     "id": 20,
     "name": "Dirang",
+    "district": "West Kameng",
     "state": "Arunachal Pradesh",
     "latitude": 27.3592,
     "longitude": 92.2392,
     "elevation_m": 1560,
-    "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "location_type": "subdivision_town",
+    "is_urban": 0,
+    "risk_score": 0.4
   },
   {
     "id": 21,
     "name": "Sela Pass",
+    "district": "Tawang",
     "state": "Arunachal Pradesh",
     "latitude": 27.505,
     "longitude": 92.1058,
     "elevation_m": 4170,
     "location_type": "mountain_pass",
-    "terrain": "high_pass"
+    "is_urban": 0,
+    "risk_score": 0.85
   },
   {
     "id": 22,
     "name": "Tawang",
+    "district": "Tawang",
     "state": "Arunachal Pradesh",
     "latitude": 27.5861,
     "longitude": 91.8594,
     "elevation_m": 3048,
     "location_type": "border_checkpost",
-    "terrain": "high_pass"
+    "is_urban": 1,
+    "risk_score": 0.45
   },
   {
     "id": 23,
     "name": "Pasighat",
+    "district": "East Siang",
     "state": "Arunachal Pradesh",
     "latitude": 28.0661,
     "longitude": 95.3262,
     "elevation_m": 155,
     "location_type": "logistics_hub",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.2
   },
   {
-    "id": 24,
+    "id": 105,
     "name": "Ziro",
+    "district": "Lower Subansiri",
     "state": "Arunachal Pradesh",
     "latitude": 27.5949,
     "longitude": 93.8385,
     "elevation_m": 1572,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.28
   },
   {
-    "id": 25,
+    "id": 106,
     "name": "Along (Aalo)",
+    "district": "West Siang",
     "state": "Arunachal Pradesh",
     "latitude": 28.1691,
     "longitude": 94.7972,
     "elevation_m": 619,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.38
   },
   {
-    "id": 26,
+    "id": 107,
     "name": "Roing",
+    "district": "Lower Dibang Valley",
     "state": "Arunachal Pradesh",
     "latitude": 28.1408,
     "longitude": 95.8354,
     "elevation_m": 390,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.25
   },
   {
     "id": 47,
     "name": "Tezu",
+    "district": "Lohit",
     "state": "Arunachal Pradesh",
     "latitude": 27.9144,
     "longitude": 96.1669,
     "elevation_m": 185,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.22
   },
   {
     "id": 48,
     "name": "Namsai",
+    "district": "Namsai",
     "state": "Arunachal Pradesh",
     "latitude": 27.6698,
     "longitude": 95.8711,
     "elevation_m": 156,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.18
   },
   {
     "id": 49,
     "name": "Changlang",
+    "district": "Changlang",
     "state": "Arunachal Pradesh",
     "latitude": 27.1278,
     "longitude": 95.7389,
     "elevation_m": 580,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 0,
+    "risk_score": 0.32
   },
   {
     "id": 50,
     "name": "Khonsa",
+    "district": "Tirap",
     "state": "Arunachal Pradesh",
     "latitude": 27.0203,
     "longitude": 95.5683,
     "elevation_m": 1215,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 0,
+    "risk_score": 0.35
+  },
+  {
+    "id": 101,
+    "name": "Banderdewa",
+    "district": "Papum Pare",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.11,
+    "longitude": 93.82,
+    "elevation_m": 120,
+    "location_type": "border_checkpost",
+    "is_urban": 1,
+    "risk_score": 0.15
+  },
+  {
+    "id": 102,
+    "name": "Rupa",
+    "district": "West Kameng",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.2,
+    "longitude": 92.4,
+    "elevation_m": 1400,
+    "location_type": "highway_junction",
+    "is_urban": 0,
+    "risk_score": 0.3
+  },
+  {
+    "id": 103,
+    "name": "Jang",
+    "district": "Tawang",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.57,
+    "longitude": 91.98,
+    "elevation_m": 2100,
+    "location_type": "subdivision_town",
+    "is_urban": 0,
+    "risk_score": 0.5
+  },
+  {
+    "id": 104,
+    "name": "Miao",
+    "district": "Changlang",
+    "state": "Arunachal Pradesh",
+    "latitude": 27.49,
+    "longitude": 96.2,
+    "elevation_m": 240,
+    "location_type": "market_center",
+    "is_urban": 0,
+    "risk_score": 0.25
   }
 ]

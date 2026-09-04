@@ -2,91 +2,133 @@
   {
     "id": 201,
     "name": "Agartala",
+    "district": "West Tripura",
     "state": "Tripura",
     "latitude": 23.8315,
     "longitude": 91.2868,
     "elevation_m": 12,
     "location_type": "state_capital",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.08
   },
   {
     "id": 202,
     "name": "Udaipur",
+    "district": "Gomati",
     "state": "Tripura",
     "latitude": 23.5333,
     "longitude": 91.4833,
     "elevation_m": 25,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 203,
     "name": "Dharmanagar",
+    "district": "North Tripura",
     "state": "Tripura",
     "latitude": 24.3833,
     "longitude": 92.1667,
     "elevation_m": 21,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.12
   },
   {
     "id": 204,
     "name": "Kailashahar",
+    "district": "Unakoti",
     "state": "Tripura",
     "latitude": 24.3333,
     "longitude": 92.0,
     "elevation_m": 23,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.12
   },
   {
     "id": 205,
     "name": "Ambassa",
+    "district": "Dhalai",
     "state": "Tripura",
     "latitude": 23.9167,
     "longitude": 91.85,
     "elevation_m": 60,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.18
   },
   {
     "id": 206,
     "name": "Belonia",
+    "district": "South Tripura",
     "state": "Tripura",
     "latitude": 23.25,
     "longitude": 91.45,
     "elevation_m": 23,
     "location_type": "border_checkpost",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.12
   },
   {
     "id": 207,
     "name": "Sabroom",
+    "district": "South Tripura",
     "state": "Tripura",
     "latitude": 23.0,
     "longitude": 91.7,
     "elevation_m": 25,
     "location_type": "border_checkpost",
-    "terrain": "plain"
-  },
-  {
-    "id": 208,
-    "name": "Teliamura",
-    "state": "Tripura",
-    "latitude": 23.83,
-    "longitude": 91.6,
-    "elevation_m": 35,
-    "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.14
   },
   {
     "id": 209,
     "name": "Kanchanpur",
+    "district": "North Tripura",
     "state": "Tripura",
     "latitude": 23.98,
     "longitude": 92.22,
     "elevation_m": 75,
-    "location_type": "district_hq",
-    "terrain": "hilly"
+    "location_type": "subdivision_town",
+    "is_urban": 0,
+    "risk_score": 0.2
+  },
+  {
+    "id": 210,
+    "name": "Teliamura",
+    "district": "Khowai",
+    "state": "Tripura",
+    "latitude": 23.83,
+    "longitude": 91.6,
+    "elevation_m": 35,
+    "location_type": "subdivision_town",
+    "is_urban": 1,
+    "risk_score": 0.15
+  },
+  {
+    "id": 171,
+    "name": "Kumarghat",
+    "district": "Unakoti",
+    "state": "Tripura",
+    "latitude": 24.16,
+    "longitude": 92.02,
+    "elevation_m": 28,
+    "location_type": "highway_junction",
+    "is_urban": 1,
+    "risk_score": 0.12
+  },
+  {
+    "id": 172,
+    "name": "Bishalgarh",
+    "district": "Sipahijala",
+    "state": "Tripura",
+    "latitude": 23.68,
+    "longitude": 91.3,
+    "elevation_m": 20,
+    "location_type": "subdivision_town",
+    "is_urban": 1,
+    "risk_score": 0.1
   }
 ]

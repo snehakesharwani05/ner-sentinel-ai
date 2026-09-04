@@ -1,13 +1,23 @@
 [
   {
     "origin": "Bhalukpong",
+    "destination": "Rupa",
+    "highway": "NH-13",
+    "distance_km": 75,
+    "time_min": 140,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 10.0
+  },
+  {
+    "origin": "Rupa",
     "destination": "Bomdila",
     "highway": "NH-13",
-    "distance_km": 95,
-    "time_min": 180,
+    "distance_km": 20,
+    "time_min": 40,
     "terrain": "steep_mountain",
-    "condition": "fair",
-    "slope_deg": 12.0
+    "condition": "good",
+    "slope_deg": 11.0
   },
   {
     "origin": "Bomdila",
@@ -31,33 +41,53 @@
   },
   {
     "origin": "Sela Pass",
-    "destination": "Tawang",
+    "destination": "Jang",
     "highway": "NH-13",
-    "distance_km": 78,
-    "time_min": 140,
+    "distance_km": 45,
+    "time_min": 85,
     "terrain": "high_pass",
     "condition": "fair",
     "slope_deg": 15.0
+  },
+  {
+    "origin": "Jang",
+    "destination": "Tawang",
+    "highway": "NH-13",
+    "distance_km": 33,
+    "time_min": 55,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 12.0
   },
   {
     "origin": "Naharlagun",
     "destination": "Itanagar",
     "highway": "NH-415",
     "distance_km": 15,
-    "time_min": 30,
+    "time_min": 25,
     "terrain": "hilly",
     "condition": "good",
     "slope_deg": 4.0
   },
   {
-    "origin": "Tezpur",
+    "origin": "Banderdewa",
     "destination": "Naharlagun",
-    "highway": "NH-15",
-    "distance_km": 150,
-    "time_min": 210,
+    "highway": "NH-415",
+    "distance_km": 20,
+    "time_min": 30,
     "terrain": "plain",
     "condition": "good",
-    "slope_deg": 2.0
+    "slope_deg": 1.5
+  },
+  {
+    "origin": "Tezpur",
+    "destination": "Banderdewa",
+    "highway": "NH-15",
+    "distance_km": 130,
+    "time_min": 180,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.5
   },
   {
     "origin": "Itanagar",
@@ -138,6 +168,26 @@
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 1.0
+  },
+  {
+    "origin": "Namsai",
+    "destination": "Miao",
+    "highway": "NH-215",
+    "distance_km": 50,
+    "time_min": 75,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.0
+  },
+  {
+    "origin": "Miao",
+    "destination": "Changlang",
+    "highway": "SH-Arunachal",
+    "distance_km": 45,
+    "time_min": 85,
+    "terrain": "hilly",
+    "condition": "fair",
+    "slope_deg": 5.0
   },
   {
     "origin": "Tinsukia",

@@ -2,7 +2,7 @@
   "state_key": "Mizoram",
   "state_name": "Mizoram",
   "capital": "Aizawl",
-  "region": "Lushai Hills",
+  "region": "Lushai Hills & Ridge Lines",
   "terrain_category": "Parallel Ridge Chains & Steep Valleys",
   "primary_highways": [
     "NH-306",
@@ -11,6 +11,6 @@
     "NH-108B",
     "NH-502A"
   ],
-  "total_locations": 9,
-  "total_road_segments": 10
+  "total_locations": 11,
+  "total_road_segments": 14
 }

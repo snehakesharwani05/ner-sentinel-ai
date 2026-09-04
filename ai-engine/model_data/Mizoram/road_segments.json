@@ -21,6 +21,26 @@
   },
   {
     "origin": "Kolasib",
+    "destination": "Lengpui",
+    "highway": "NH-306 Bypass",
+    "distance_km": 50,
+    "time_min": 85,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 6.0
+  },
+  {
+    "origin": "Lengpui",
+    "destination": "Aizawl",
+    "highway": "NH-306",
+    "distance_km": 35,
+    "time_min": 55,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 8.0
+  },
+  {
+    "origin": "Kolasib",
     "destination": "Aizawl",
     "highway": "NH-306",
     "distance_km": 85,
@@ -48,6 +68,26 @@
     "terrain": "hilly",
     "condition": "fair",
     "slope_deg": 7.0
+  },
+  {
+    "origin": "Aizawl",
+    "destination": "Thenzawl",
+    "highway": "SH-Mizoram",
+    "distance_km": 85,
+    "time_min": 145,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 7.0
+  },
+  {
+    "origin": "Thenzawl",
+    "destination": "Lunglei",
+    "highway": "SH-Mizoram",
+    "distance_km": 85,
+    "time_min": 145,
+    "terrain": "steep_mountain",
+    "condition": "good",
+    "slope_deg": 8.0
   },
   {
     "origin": "Aizawl",

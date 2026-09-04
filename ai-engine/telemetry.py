@@ -9,9 +9,15 @@ import json
 import urllib.request
 import urllib.parse
 import urllib.error
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional, Tuple, List
 
-TOMTOM_API_KEY = "pak6rEHVfjs3lgBfH4K6v4HMQLNtNrwi"
+TOMTOM_API_KEYS = [
+    "IFJmnWPEijH29ZJ3bMHfRl1c3w0Oxq5X",
+    "Yl2GX6k7j8C68xWJV2kzMuHAN38uyGY1",
+    "qaOKeRHAO7bMYUJb77vBW5lHPZBcSKQD",
+    "s09EyGxWaRyZVyA35PJjOJfIDZApLZCo"
+]
+TOMTOM_API_KEY = TOMTOM_API_KEYS[0]
 
 # Regional Baseline Constants for North East India (Fallback when offline)
 REGIONAL_DEFAULTS = {
@@ -36,18 +42,18 @@ class OpenMeteoClient:
     @classmethod
     def fetch_weather(cls, latitude: float, longitude: float, timeout_sec: int = 5) -> Dict[str, Any]:
         """
-        Fetches real-time precipitation, soil moisture, visibility, pressure, and wind.
+        Fetches real-time precipitation, rain, wind, relative humidity, apparent temp, soil moisture, and visibility.
         """
         params = {
             "latitude": f"{latitude:.4f}",
             "longitude": f"{longitude:.4f}",
-            "current": "temperature_2m,relative_humidity_2m,precipitation,rain,snowfall,surface_pressure,wind_speed_10m",
-            "hourly": "soil_moisture_0_to_1cm,soil_moisture_1_to_3cm,visibility",
+            "current": "temperature_2m,rain,wind_speed_10m,relative_humidity_2m,apparent_temperature,precipitation,surface_pressure",
+            "hourly": "temperature_2m,rain,relative_humidity_2m,apparent_temperature,temperature_80m,temperature_120m,temperature_180m,wind_speed_180m,wind_speed_120m,wind_speed_80m,wind_speed_10m,visibility,wind_direction_180m,wind_direction_120m,soil_moisture_0_to_1cm",
             "timezone": "Asia/Kolkata",
             "forecast_days": 1
         }
         url = f"{cls.BASE_URL}?{urllib.parse.urlencode(params)}"
-        req = urllib.request.Request(url, headers={"User-Agent": "NERSentinelAI/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "NERSentinelAI/2.0"})
 
         try:
             with urllib.request.urlopen(req, timeout=timeout_sec) as response:
@@ -60,13 +66,19 @@ class OpenMeteoClient:
                     soil_moist = hourly.get("soil_moisture_0_to_1cm", [0.32])[0] or 0.32
                     vis_m = hourly.get("visibility", [8000.0])[0] or 8000.0
 
+                    rain_mm = float(curr.get("rain", curr.get("precipitation", 0.0)))
+                    temp_c = float(curr.get("temperature_2m", 22.0))
+                    apparent_temp_c = float(curr.get("apparent_temperature", temp_c))
+
                     return {
                         "success": True,
                         "source": "Open-Meteo Live API",
-                        "temperature_c": float(curr.get("temperature_2m", 22.0)),
+                        "temperature_c": temp_c,
+                        "apparent_temperature_c": apparent_temp_c,
                         "humidity_pct": float(curr.get("relative_humidity_2m", 70.0)),
-                        "precipitation_mm": float(curr.get("precipitation", 0.0)),
-                        "snowfall_cm": float(curr.get("snowfall", 0.0)),
+                        "precipitation_mm": rain_mm,
+                        "rain_mm": rain_mm,
+                        "snowfall_cm": 0.0,
                         "soil_moisture": float(soil_moist),
                         "visibility_m": float(vis_m),
                         "surface_pressure_hpa": float(curr.get("surface_pressure", 920.0)),
@@ -80,97 +92,119 @@ class OpenMeteoClient:
             }
 
 class TomTomClient:
-    """Client for TomTom Traffic Flow, Incidents, and Routing APIs."""
+    """Client for TomTom Traffic Flow, Incidents, and Routing APIs with multi-key failover pool."""
     FLOW_URL = "https://api.tomtom.com/traffic/services/4/flowSegmentData/relative0/10/json"
     INCIDENTS_URL = "https://api.tomtom.com/traffic/services/5/incidentDetails"
 
-    def __init__(self, api_key: str = TOMTOM_API_KEY):
-        self.api_key = api_key
+    def __init__(self, api_keys: Optional[List[str]] = None):
+        if api_keys and isinstance(api_keys, list):
+            self.api_keys = api_keys
+        elif isinstance(api_keys, str):
+            self.api_keys = [api_keys] + [k for k in TOMTOM_API_KEYS if k != api_keys]
+        else:
+            self.api_keys = list(TOMTOM_API_KEYS)
+        self.active_key_idx = 0
 
     def fetch_traffic_flow(self, latitude: float, longitude: float, timeout_sec: int = 5) -> Dict[str, Any]:
         """
         Fetches live vehicle speed, free-flow speed, jam factor, and closure status.
+        Cycles across available API keys on rate limit or authorization errors.
         """
-        params = {
-            "point": f"{latitude:.4f},{longitude:.4f}",
-            "unit": "KMPH",
-            "key": self.api_key
-        }
-        url = f"{self.FLOW_URL}?{urllib.parse.urlencode(params)}"
-        req = urllib.request.Request(url, headers={"User-Agent": "NERSentinelAI/1.0"})
-
-        try:
-            with urllib.request.urlopen(req, timeout=timeout_sec) as response:
-                if response.status == 200:
-                    data = json.loads(response.read().decode("utf-8"))
-                    flow = data.get("flowSegmentData", {})
-                    current_spd = float(flow.get("currentSpeed", 45.0))
-                    free_flow_spd = float(flow.get("freeFlowSpeed", 50.0))
-                    confidence = float(flow.get("confidence", 0.8))
-                    is_closed = bool(flow.get("roadClosure", False))
-
-                    # Calculate normalized Jam Factor (0.0 to 10.0 scale)
-                    speed_ratio = current_spd / max(1.0, free_flow_spd)
-                    jam_factor = max(0.0, min(10.0, (1.0 - speed_ratio) * 10.0))
-
-                    return {
-                        "success": True,
-                        "source": "TomTom Flow Live API",
-                        "current_speed_kmh": current_spd,
-                        "free_flow_speed_kmh": free_flow_spd,
-                        "jam_factor": round(jam_factor, 1),
-                        "confidence": confidence,
-                        "is_road_closed": is_closed
-                    }
-        except Exception as e:
-            return {
-                "success": False,
-                "error": str(e),
-                "source": "TomTom Error"
+        last_error = None
+        for attempt in range(len(self.api_keys)):
+            current_key = self.api_keys[(self.active_key_idx + attempt) % len(self.api_keys)]
+            params = {
+                "point": f"{latitude:.4f},{longitude:.4f}",
+                "unit": "KMPH",
+                "key": current_key
             }
+            url = f"{self.FLOW_URL}?{urllib.parse.urlencode(params)}"
+            req = urllib.request.Request(url, headers={"User-Agent": "NERSentinelAI/2.0"})
+
+            try:
+                with urllib.request.urlopen(req, timeout=timeout_sec) as response:
+                    if response.status == 200:
+                        data = json.loads(response.read().decode("utf-8"))
+                        flow = data.get("flowSegmentData", {})
+                        current_spd = float(flow.get("currentSpeed", 45.0))
+                        free_flow_spd = float(flow.get("freeFlowSpeed", 50.0))
+                        confidence = float(flow.get("confidence", 0.8))
+                        is_closed = bool(flow.get("roadClosure", False))
+
+                        # Calculate normalized Jam Factor (0.0 to 10.0 scale)
+                        speed_ratio = current_spd / max(1.0, free_flow_spd)
+                        jam_factor = max(0.0, min(10.0, (1.0 - speed_ratio) * 10.0))
+
+                        self.active_key_idx = (self.active_key_idx + attempt) % len(self.api_keys)
+                        return {
+                            "success": True,
+                            "source": f"TomTom Flow Live API (Key #{self.active_key_idx + 1})",
+                            "current_speed_kmh": current_spd,
+                            "free_flow_speed_kmh": free_flow_spd,
+                            "jam_factor": round(jam_factor, 1),
+                            "confidence": confidence,
+                            "is_road_closed": is_closed
+                        }
+            except Exception as e:
+                last_error = str(e)
+                # Cycle to next key on error
+                continue
+
+        return {
+            "success": False,
+            "error": last_error or "All TomTom API keys exhausted",
+            "source": "TomTom Error"
+        }
 
     def fetch_regional_incidents(self, bbox: Tuple[float, float, float, float] = (88.0, 21.5, 97.5, 29.5), timeout_sec: int = 6) -> Dict[str, Any]:
         """
-        Fetches active disaster/roadblock incident reports in North East bounding box.
+        Fetches active disaster/roadblock incident reports in North East bounding box across key pool.
         """
         min_lon, min_lat, max_lon, max_lat = bbox
-        params = {
-            "bbox": f"{min_lon},{min_lat},{max_lon},{max_lat}",
-            "fields": "{incidents{type,properties{iconCategory,magnitudeOfDelay,events{description}}}}",
-            "language": "en-GB",
-            "key": self.api_key
-        }
-        url = f"{self.INCIDENTS_URL}?{urllib.parse.urlencode(params)}"
-        req = urllib.request.Request(url, headers={"User-Agent": "NERSentinelAI/1.0"})
-
-        try:
-            with urllib.request.urlopen(req, timeout=timeout_sec) as response:
-                if response.status == 200:
-                    data = json.loads(response.read().decode("utf-8"))
-                    raw_incidents = data.get("incidents", [])
-                    cleaned = []
-                    for inc in raw_incidents:
-                        props = inc.get("properties", {})
-                        events = props.get("events", [])
-                        desc = events[0].get("description", "Road Hazard") if events else "Road Incident"
-                        cleaned.append({
-                            "category": props.get("iconCategory", 0),
-                            "delay_magnitude": props.get("magnitudeOfDelay", 0),
-                            "description": desc
-                        })
-                    return {
-                        "success": True,
-                        "source": "TomTom Incidents Live API",
-                        "count": len(cleaned),
-                        "incidents": cleaned
-                    }
-        except Exception as e:
-            return {
-                "success": False,
-                "error": str(e),
-                "source": "TomTom Incidents Error",
-                "incidents": []
+        last_error = None
+        for attempt in range(len(self.api_keys)):
+            current_key = self.api_keys[(self.active_key_idx + attempt) % len(self.api_keys)]
+            params = {
+                "bbox": f"{min_lon},{min_lat},{max_lon},{max_lat}",
+                "fields": "{incidents{type,properties{iconCategory,magnitudeOfDelay,events{description}}}}",
+                "language": "en-GB",
+                "key": current_key
             }
+            url = f"{self.INCIDENTS_URL}?{urllib.parse.urlencode(params)}"
+            req = urllib.request.Request(url, headers={"User-Agent": "NERSentinelAI/2.0"})
+
+            try:
+                with urllib.request.urlopen(req, timeout=timeout_sec) as response:
+                    if response.status == 200:
+                        data = json.loads(response.read().decode("utf-8"))
+                        raw_incidents = data.get("incidents", [])
+                        cleaned = []
+                        for inc in raw_incidents:
+                            props = inc.get("properties", {})
+                            events = props.get("events", [])
+                            desc = events[0].get("description", "Road Hazard") if events else "Road Incident"
+                            cleaned.append({
+                                "category": props.get("iconCategory", 0),
+                                "delay_magnitude": props.get("magnitudeOfDelay", 0),
+                                "description": desc
+                            })
+                        self.active_key_idx = (self.active_key_idx + attempt) % len(self.api_keys)
+                        return {
+                            "success": True,
+                            "source": f"TomTom Incidents Live API (Key #{self.active_key_idx + 1})",
+                            "count": len(cleaned),
+                            "incidents": cleaned
+                        }
+            except Exception as e:
+                last_error = str(e)
+                continue
+
+        return {
+            "success": False,
+            "error": last_error or "All TomTom API keys exhausted",
+            "source": "TomTom Incidents Error",
+            "incidents": []
+        }
 
 class ResilientTelemetryProvider:
     """

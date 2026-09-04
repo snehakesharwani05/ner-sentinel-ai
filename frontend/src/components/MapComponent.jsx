@@ -58,7 +58,18 @@ function FitMapBounds({ coordinates }) {
    }
 ===================================================== */
 
-function getCoordinates(location) {
+export function sanitizeRouteCoordinates(coords) {
+  if (!Array.isArray(coords)) return [];
+  return coords.filter(([lat, lng]) => {
+    const isValidNumber = typeof lat === 'number' && typeof lng === 'number' && !isNaN(lat) && !isNaN(lng) && lat !== null && lng !== null;
+    const isNotZero = !(lat === 0 && lng === 0);
+    // Ensure coordinates stay strictly within the North East Region bounding box:
+    const isInNER = lat >= 20.0 && lat <= 30.0 && lng >= 88.0 && lng <= 98.0;
+    return isValidNumber && isNotZero && isInNER;
+  });
+}
+
+export function getCoordinates(location) {
   if (!location) return null;
 
   const lat = location.latitude ?? location.lat;
@@ -77,6 +88,14 @@ function getCoordinates(location) {
   const longitude = Number(lng);
 
   if (Number.isNaN(latitude) || Number.isNaN(longitude)) {
+    return null;
+  }
+
+  if (latitude === 0 && longitude === 0) {
+    return null;
+  }
+
+  if (latitude < 20.0 || latitude > 30.0 || longitude < 88.0 || longitude > 98.0) {
     return null;
   }
 
@@ -109,14 +128,15 @@ export function MapComponent({
   ===================================================== */
 
   const fastestCoordinates = useMemo(() => {
-    if (!fastestRoute?.pathNodes) {
+    if (!fastestRoute?.pathNodes || !Array.isArray(fastestRoute.pathNodes)) {
       return [];
     }
 
-    return fastestRoute.pathNodes
+    const raw = fastestRoute.pathNodes
       .map(getCoordinates)
       .filter(Boolean);
 
+    return sanitizeRouteCoordinates(raw);
   }, [fastestRoute]);
 
 
@@ -125,14 +145,15 @@ export function MapComponent({
   ===================================================== */
 
   const safestCoordinates = useMemo(() => {
-    if (!safestRoute?.pathNodes) {
+    if (!safestRoute?.pathNodes || !Array.isArray(safestRoute.pathNodes)) {
       return [];
     }
 
-    return safestRoute.pathNodes
+    const raw = safestRoute.pathNodes
       .map(getCoordinates)
       .filter(Boolean);
 
+    return sanitizeRouteCoordinates(raw);
   }, [safestRoute]);
 
 
@@ -188,45 +209,75 @@ export function MapComponent({
     const isPass =
       location.location_type === "mountain_pass";
 
+    const isJunction =
+      location.location_type === "highway_junction";
+
+    const isCheckpoint =
+      location.location_type === "border_checkpost" || location.location_type === "checkpoint";
+
+    const isRiverPort =
+      location.location_type === "river_port";
+
+    const isMarket =
+      location.location_type === "market_center";
+
+    const isSubdivision =
+      location.location_type === "subdivision_town";
 
     let fillColor = "#30483B";
     let radius = 5;
-
 
     // State capital
     if (isCapital) {
       fillColor = "#20231F";
       radius = 8;
     }
-
-
     // Mountain pass
-    if (isPass) {
+    else if (isPass) {
       fillColor = "#B8944A";
       radius = 7;
     }
-
+    // Checkpoint / Border post
+    else if (isCheckpoint) {
+      fillColor = "#DC2626";
+      radius = 7;
+    }
+    // Highway junction
+    else if (isJunction) {
+      fillColor = "#D97706";
+      radius = 6;
+    }
+    // River port
+    else if (isRiverPort) {
+      fillColor = "#0284C7";
+      radius = 6;
+    }
+    // Market center
+    else if (isMarket) {
+      fillColor = "#7C3AED";
+      radius = 5;
+    }
+    // Subdivision town
+    else if (isSubdivision) {
+      fillColor = "#059669";
+      radius = 5;
+    }
 
     // Both routes use this node
     if (isFastestRoute && isSafestRoute) {
       fillColor = "#7C3AED";
       radius = 10;
     }
-
-
     // Fastest route only
     else if (isFastestRoute) {
       fillColor = "#16A34A";
       radius = 9;
     }
-
-
     // Safest route only
     else if (isSafestRoute) {
       fillColor = "#2563EB";
       radius = 9;
     }
-
 
     return {
       fillColor,
@@ -348,6 +399,62 @@ export function MapComponent({
       >
         🗺️ NER Intelligent Road Network
       </div>
+
+      {/* =====================================================
+          ALTERNATE LANE BUFFER BADGE
+          Displays if route has lateral lane buffer applied
+      ===================================================== */}
+      {(safestRoute?.is_lane_buffered || safestRoute?.buffer_status_tag) && (
+        <div
+          style={{
+            position: "absolute",
+            top: "16px",
+            right: "16px",
+            zIndex: 1000,
+            background: "#EFF6FF",
+            color: "#1E40AF",
+            padding: "8px 14px",
+            borderRadius: "12px",
+            fontSize: "0.8rem",
+            fontWeight: "700",
+            boxShadow: "0 4px 15px rgba(37, 99, 235, 0.18)",
+            border: "1.5px solid rgba(59, 130, 246, 0.4)",
+            display: "flex",
+            alignItems: "center",
+            gap: "6px"
+          }}
+        >
+          🛡️ {safestRoute.buffer_status_tag || "Primary Arterial Corridor — Alternate Lane Buffer Applied"}
+        </div>
+      )}
+
+      {/* =====================================================
+          ROUTE UNAVAILABLE ALERT
+          Displays if route coordinates < 2 or invalid
+      ===================================================== */}
+      {(fastestRoute || safestRoute) && fastestCoordinates.length < 2 && safestCoordinates.length < 2 && (
+        <div
+          style={{
+            position: "absolute",
+            top: "16px",
+            right: "16px",
+            zIndex: 1000,
+            background: "#FEF2F2",
+            color: "#991B1B",
+            padding: "10px 16px",
+            borderRadius: "12px",
+            fontSize: "0.85rem",
+            fontWeight: "700",
+            boxShadow: "0 4px 15px rgba(220, 38, 38, 0.2)",
+            border: "1px solid rgba(239, 68, 68, 0.4)",
+            display: "flex",
+            alignItems: "center",
+            gap: "6px"
+          }}
+        >
+          ⚠️ Route unavailable between selected nodes
+        </div>
+      )}
 
 
       {/* =====================================================

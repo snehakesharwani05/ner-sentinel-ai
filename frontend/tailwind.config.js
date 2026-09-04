@@ -34,7 +34,16 @@ export default {
         wide: '0.01em',
         wider: '0.025em',
         widest: '0.05em',
-      }
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 30s linear infinite',
+      },
     },
   },
   plugins: [],

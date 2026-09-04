@@ -18,11 +18,14 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS locations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
+    district TEXT,
     state TEXT NOT NULL CHECK(state IN ('Assam', 'Arunachal Pradesh', 'Meghalaya', 'Manipur', 'Mizoram', 'Nagaland', 'Tripura', 'Sikkim', 'West Bengal')),
     latitude REAL NOT NULL,
     longitude REAL NOT NULL,
     elevation_m INTEGER NOT NULL DEFAULT 100,
-    location_type TEXT CHECK(location_type IN ('state_capital', 'logistics_hub', 'district_hq', 'mountain_pass', 'border_checkpost', 'remote_village')) NOT NULL,
+    location_type TEXT CHECK(location_type IN ('state_capital', 'logistics_hub', 'district_hq', 'mountain_pass', 'border_checkpost', 'remote_village', 'subdivision_town', 'highway_junction', 'market_center', 'river_port', 'checkpoint')) NOT NULL,
+    is_urban BOOLEAN DEFAULT 0,
+    risk_score REAL DEFAULT 0.1,
     is_verified_seed BOOLEAN DEFAULT 1,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -49,9 +52,11 @@ CREATE TABLE IF NOT EXISTS disruptions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     road_segment_id INTEGER NOT NULL,
     disruption_type TEXT CHECK(disruption_type IN ('landslide', 'flash_flood', 'bridge_damage', 'roadblock', 'severe_weather', 'roadwork')) NOT NULL,
-    severity TEXT CHECK(severity IN ('low', 'moderate', 'high', 'critical_blocked')) NOT NULL,
+    severity TEXT CHECK(severity IN ('low', 'moderate', 'high', 'critical_blocked', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL_BLOCKED')) NOT NULL,
     description TEXT,
     reported_by INTEGER,
+    reported_by_name TEXT,
+    reported_by_role TEXT,
     status TEXT CHECK(status IN ('active', 'cleared', 'under_repair')) DEFAULT 'active',
     reported_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     expected_clearance DATETIME,

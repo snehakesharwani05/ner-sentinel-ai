@@ -2,231 +2,373 @@
   {
     "id": 2,
     "name": "Guwahati",
+    "district": "Kamrup Metropolitan",
     "state": "Assam",
     "latitude": 26.1445,
     "longitude": 91.7362,
     "elevation_m": 55,
     "location_type": "state_capital",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.08
   },
   {
     "id": 3,
     "name": "Dispur",
+    "district": "Kamrup Metropolitan",
     "state": "Assam",
     "latitude": 26.1433,
     "longitude": 91.7898,
     "elevation_m": 55,
     "location_type": "state_capital",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.05
   },
   {
     "id": 4,
     "name": "Tezpur",
+    "district": "Sonitpur",
     "state": "Assam",
     "latitude": 26.6528,
     "longitude": 92.7926,
     "elevation_m": 48,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.12
   },
   {
     "id": 5,
     "name": "Nagaon",
+    "district": "Nagaon",
     "state": "Assam",
     "latitude": 26.3452,
     "longitude": 92.6835,
     "elevation_m": 52,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 6,
     "name": "Jorhat",
+    "district": "Jorhat",
     "state": "Assam",
     "latitude": 26.7509,
     "longitude": 94.2037,
     "elevation_m": 116,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 7,
     "name": "Dibrugarh",
+    "district": "Dibrugarh",
     "state": "Assam",
     "latitude": 27.4728,
     "longitude": 94.912,
     "elevation_m": 108,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.14
   },
   {
     "id": 8,
     "name": "Tinsukia",
+    "district": "Tinsukia",
     "state": "Assam",
     "latitude": 27.4922,
     "longitude": 95.3558,
     "elevation_m": 116,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 9,
     "name": "Silchar",
+    "district": "Cachar",
     "state": "Assam",
     "latitude": 24.8333,
     "longitude": 92.7789,
     "elevation_m": 35,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.22
   },
   {
     "id": 10,
     "name": "Haflong (Jatinga)",
+    "district": "Dima Hasao",
     "state": "Assam",
     "latitude": 25.1804,
     "longitude": 93.0169,
     "elevation_m": 512,
     "location_type": "mountain_pass",
-    "terrain": "steep_mountain"
+    "is_urban": 0,
+    "risk_score": 0.65
   },
   {
     "id": 11,
     "name": "Bhalukpong",
+    "district": "Sonitpur",
     "state": "Assam",
     "latitude": 27.0125,
     "longitude": 92.6416,
     "elevation_m": 213,
     "location_type": "border_checkpost",
-    "terrain": "hilly"
+    "is_urban": 0,
+    "risk_score": 0.3
   },
   {
     "id": 44,
     "name": "Nalbari",
+    "district": "Nalbari",
     "state": "Assam",
     "latitude": 26.4447,
     "longitude": 91.4428,
     "elevation_m": 42,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.12
   },
   {
     "id": 45,
     "name": "Goalpara",
+    "district": "Goalpara",
     "state": "Assam",
     "latitude": 26.1772,
     "longitude": 90.6272,
     "elevation_m": 35,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.15
   },
   {
     "id": 51,
     "name": "Bongaigaon",
+    "district": "Bongaigaon",
     "state": "Assam",
     "latitude": 26.48,
     "longitude": 90.56,
     "elevation_m": 54,
     "location_type": "logistics_hub",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 52,
     "name": "Dhubri",
+    "district": "Dhubri",
     "state": "Assam",
     "latitude": 26.02,
     "longitude": 89.98,
     "elevation_m": 34,
-    "location_type": "border_checkpost",
-    "terrain": "plain"
+    "location_type": "river_port",
+    "is_urban": 1,
+    "risk_score": 0.18
   },
   {
     "id": 53,
     "name": "Barpeta",
+    "district": "Barpeta",
     "state": "Assam",
     "latitude": 26.32,
     "longitude": 91.0,
     "elevation_m": 35,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.15
   },
   {
     "id": 54,
     "name": "North Lakhimpur",
+    "district": "Lakhimpur",
     "state": "Assam",
     "latitude": 27.23,
     "longitude": 94.1,
     "elevation_m": 101,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.16
   },
   {
     "id": 55,
     "name": "Dhemaji",
+    "district": "Dhemaji",
     "state": "Assam",
     "latitude": 27.48,
     "longitude": 94.58,
     "elevation_m": 91,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.2
   },
   {
     "id": 56,
     "name": "Golaghat",
+    "district": "Golaghat",
     "state": "Assam",
     "latitude": 26.52,
     "longitude": 93.97,
     "elevation_m": 95,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 57,
     "name": "Sivasagar",
+    "district": "Sivasagar",
     "state": "Assam",
     "latitude": 26.98,
     "longitude": 94.63,
     "elevation_m": 95,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 58,
     "name": "Kokrajhar",
+    "district": "Kokrajhar",
     "state": "Assam",
     "latitude": 26.4,
     "longitude": 90.27,
     "elevation_m": 38,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.1
   },
   {
     "id": 59,
     "name": "Karimganj",
+    "district": "Karimganj",
     "state": "Assam",
     "latitude": 24.87,
     "longitude": 92.35,
     "elevation_m": 13,
     "location_type": "border_checkpost",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.18
   },
   {
     "id": 60,
     "name": "Hailakandi",
+    "district": "Hailakandi",
     "state": "Assam",
     "latitude": 24.68,
     "longitude": 92.56,
     "elevation_m": 21,
     "location_type": "district_hq",
-    "terrain": "plain"
+    "is_urban": 1,
+    "risk_score": 0.16
   },
   {
     "id": 61,
     "name": "Diphu",
+    "district": "Karbi Anglong",
     "state": "Assam",
     "latitude": 25.84,
     "longitude": 93.43,
     "elevation_m": 186,
     "location_type": "district_hq",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.22
+  },
+  {
+    "id": 111,
+    "name": "Jalukbari",
+    "district": "Kamrup Metropolitan",
+    "state": "Assam",
+    "latitude": 26.15,
+    "longitude": 91.66,
+    "elevation_m": 52,
+    "location_type": "highway_junction",
+    "is_urban": 1,
+    "risk_score": 0.06
+  },
+  {
+    "id": 112,
+    "name": "Khanapara",
+    "district": "Kamrup Metropolitan",
+    "state": "Assam",
+    "latitude": 26.11,
+    "longitude": 91.82,
+    "elevation_m": 60,
+    "location_type": "highway_junction",
+    "is_urban": 1,
+    "risk_score": 0.06
+  },
+  {
+    "id": 113,
+    "name": "Jagiroad",
+    "district": "Morigaon",
+    "state": "Assam",
+    "latitude": 26.12,
+    "longitude": 92.21,
+    "elevation_m": 50,
+    "location_type": "subdivision_town",
+    "is_urban": 1,
+    "risk_score": 0.08
+  },
+  {
+    "id": 114,
+    "name": "Raha",
+    "district": "Nagaon",
+    "state": "Assam",
+    "latitude": 26.23,
+    "longitude": 92.52,
+    "elevation_m": 52,
+    "location_type": "market_center",
+    "is_urban": 1,
+    "risk_score": 0.09
+  },
+  {
+    "id": 115,
+    "name": "Numaligarh",
+    "district": "Golaghat",
+    "state": "Assam",
+    "latitude": 26.63,
+    "longitude": 93.75,
+    "elevation_m": 85,
+    "location_type": "highway_junction",
+    "is_urban": 1,
+    "risk_score": 0.08
+  },
+  {
+    "id": 116,
+    "name": "Barpeta Road",
+    "district": "Barpeta",
+    "state": "Assam",
+    "latitude": 26.5,
+    "longitude": 90.97,
+    "elevation_m": 48,
+    "location_type": "market_center",
+    "is_urban": 1,
+    "risk_score": 0.1
+  },
+  {
+    "id": 117,
+    "name": "Digboi",
+    "district": "Tinsukia",
+    "state": "Assam",
+    "latitude": 27.38,
+    "longitude": 95.62,
+    "elevation_m": 150,
+    "location_type": "subdivision_town",
+    "is_urban": 1,
+    "risk_score": 0.12
+  },
+  {
+    "id": 118,
+    "name": "Badarpur",
+    "district": "Karimganj",
+    "state": "Assam",
+    "latitude": 24.9,
+    "longitude": 92.6,
+    "elevation_m": 25,
+    "location_type": "highway_junction",
+    "is_urban": 1,
+    "risk_score": 0.15
   }
 ]

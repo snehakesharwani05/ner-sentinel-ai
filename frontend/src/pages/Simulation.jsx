@@ -214,10 +214,14 @@ export function Simulation() {
               <div style={{
                 padding: '1.25rem',
                 borderRadius: '12px',
-                background: simResult.ml_assessment.is_corridor_blocked
-                  ? 'linear-gradient(135deg, rgba(169, 87, 63, 0.2) 0%, rgba(169, 87, 63, 0.05) 100%)'
-                  : 'linear-gradient(135deg, rgba(48, 72, 59, 0.15) 0%, rgba(48, 72, 59, 0.05) 100%)',
-                border: `1.5px solid ${simResult.ml_assessment.is_corridor_blocked ? '#A9573F' : '#30483B'}`,
+                background: simResult.ml_assessment.predicted_state === 'SEVERED_BLOCKED'
+                  ? 'linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(220, 38, 38, 0.05) 100%)'
+                  : (simResult.ml_assessment.predicted_state === 'RESTRICTED_CONVOY'
+                  ? 'linear-gradient(135deg, rgba(217, 119, 6, 0.15) 0%, rgba(217, 119, 6, 0.05) 100%)'
+                  : (simResult.ml_assessment.predicted_state === 'CAUTION_WET'
+                  ? 'linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%)'
+                  : 'linear-gradient(135deg, rgba(22, 163, 74, 0.15) 0%, rgba(22, 163, 74, 0.05) 100%)')),
+                border: `1.5px solid ${simResult.ml_assessment.predicted_state === 'SEVERED_BLOCKED' ? '#DC2626' : (simResult.ml_assessment.predicted_state === 'RESTRICTED_CONVOY' ? '#D97706' : (simResult.ml_assessment.predicted_state === 'CAUTION_WET' ? '#CA8A04' : '#16A34A'))}`,
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -226,8 +230,15 @@ export function Simulation() {
               }}>
                 <div>
                   <div style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.7 }}>AI Predicted Road State</div>
-                  <div style={{ fontSize: '1.4rem', fontWeight: '800', color: simResult.ml_assessment.is_corridor_blocked ? '#A9573F' : '#30483B' }}>
+                  <div style={{
+                    fontSize: '1.4rem',
+                    fontWeight: '800',
+                    color: simResult.ml_assessment.predicted_state === 'SEVERED_BLOCKED' ? '#DC2626' : (simResult.ml_assessment.predicted_state === 'RESTRICTED_CONVOY' ? '#D97706' : (simResult.ml_assessment.predicted_state === 'CAUTION_WET' ? '#CA8A04' : '#16A34A'))
+                  }}>
                     {simResult.ml_assessment.predicted_state}
+                  </div>
+                  <div style={{ fontSize: '0.78rem', color: '#20231F', opacity: 0.8, marginTop: '2px' }}>
+                    Terrain: {simResult.simulation?.terrain?.replace(/_/g, ' ') || 'corridor'} (Alt: {simResult.simulation?.elevation_m || 0}m)
                   </div>
                 </div>
                 <RiskBadge severity={simResult.ml_assessment.severity_band} score={simResult.ml_assessment.disaster_risk_score} />
@@ -236,12 +247,23 @@ export function Simulation() {
               {/* GEOTECHNICAL RISK METRICS */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div style={{ padding: '1rem', borderRadius: '10px', background: '#EDE8DC', border: '1px solid #CBD0C0' }}>
-                  <div style={{ fontSize: '0.78rem', color: '#20231F', opacity: 0.7 }}>Landslide Slope Failure Risk</div>
-                  <div style={{ fontSize: '1.4rem', fontWeight: '700', color: '#A9573F' }}>
-                    {simResult.ml_assessment.landslide_probability_pct}%
+                  <div style={{ fontSize: '0.78rem', color: '#20231F', opacity: 0.7 }}>
+                    {simResult.simulation?.elevation_m >= 600 ? 'Landslide Slope Failure Risk' : 'Urban Inundation / Flood Risk'}
+                  </div>
+                  <div style={{
+                    fontSize: '1.4rem',
+                    fontWeight: '700',
+                    color: simResult.ml_assessment.disaster_risk_score >= 0.55 ? '#DC2626' : (simResult.ml_assessment.disaster_risk_score >= 0.25 ? '#D97706' : '#16A34A')
+                  }}>
+                    {simResult.simulation?.elevation_m >= 600 ? simResult.ml_assessment.landslide_probability_pct : (simResult.ml_assessment.waterlogging_probability_pct || simResult.ml_assessment.landslide_probability_pct)}%
                   </div>
                   <div style={{ width: '100%', height: '6px', background: 'rgba(0,0,0,0.1)', borderRadius: '3px', marginTop: '6px', overflow: 'hidden' }}>
-                    <div style={{ width: `${simResult.ml_assessment.landslide_probability_pct}%`, height: '100%', background: '#A9573F', transition: 'width 0.5s ease' }} />
+                    <div style={{
+                      width: `${simResult.simulation?.elevation_m >= 600 ? simResult.ml_assessment.landslide_probability_pct : (simResult.ml_assessment.waterlogging_probability_pct || simResult.ml_assessment.landslide_probability_pct)}%`,
+                      height: '100%',
+                      background: simResult.ml_assessment.disaster_risk_score >= 0.55 ? '#DC2626' : (simResult.ml_assessment.disaster_risk_score >= 0.25 ? '#D97706' : '#16A34A'),
+                      transition: 'width 0.5s ease'
+                    }} />
                   </div>
                 </div>
 
@@ -261,12 +283,19 @@ export function Simulation() {
                 padding: '1rem',
                 borderRadius: '10px',
                 background: '#EDE8DC',
-                borderLeft: `4px solid ${simResult.ml_assessment.is_corridor_blocked ? '#A9573F' : '#30483B'}`,
+                borderLeft: `4px solid ${simResult.ml_assessment.predicted_state === 'SEVERED_BLOCKED' ? '#DC2626' : (simResult.ml_assessment.predicted_state === 'RESTRICTED_CONVOY' ? '#D97706' : (simResult.ml_assessment.predicted_state === 'CAUTION_WET' ? '#CA8A04' : '#16A34A'))}`,
                 fontSize: '0.88rem',
                 color: '#20231F',
                 lineHeight: '1.5'
               }}>
-                <div style={{ fontWeight: '700', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px', color: simResult.ml_assessment.is_corridor_blocked ? '#A9573F' : '#30483B' }}>
+                <div style={{
+                  fontWeight: '700',
+                  marginBottom: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  color: simResult.ml_assessment.predicted_state === 'SEVERED_BLOCKED' ? '#DC2626' : (simResult.ml_assessment.predicted_state === 'RESTRICTED_CONVOY' ? '#D97706' : (simResult.ml_assessment.predicted_state === 'CAUTION_WET' ? '#CA8A04' : '#16A34A'))
+                }}>
                   <AlertTriangle size={16} /> Operational Disaster Directive
                 </div>
                 {simResult.ml_assessment.operational_directive}

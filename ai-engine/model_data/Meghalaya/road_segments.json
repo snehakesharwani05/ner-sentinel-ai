@@ -1,10 +1,20 @@
 [
   {
     "origin": "Guwahati",
+    "destination": "Byrnihat",
+    "highway": "NH-6 (4-Lane)",
+    "distance_km": 20,
+    "time_min": 20,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 1.5
+  },
+  {
+    "origin": "Byrnihat",
     "destination": "Nongpoh",
     "highway": "NH-6 (4-Lane)",
-    "distance_km": 50,
-    "time_min": 50,
+    "distance_km": 30,
+    "time_min": 30,
     "terrain": "hilly",
     "condition": "good",
     "slope_deg": 3.0
@@ -12,7 +22,7 @@
   {
     "origin": "Nongpoh",
     "destination": "Shillong",
-    "highway": "NH-6 (4-Lane)",
+    "highway": "NH-6 (4-Lane Bypass)",
     "distance_km": 50,
     "time_min": 55,
     "terrain": "hilly",
@@ -50,6 +60,26 @@
     "slope_deg": 4.0
   },
   {
+    "origin": "Jowai",
+    "destination": "Khliehriat",
+    "highway": "NH-6",
+    "distance_km": 35,
+    "time_min": 45,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 5.0
+  },
+  {
+    "origin": "Khliehriat",
+    "destination": "Silchar",
+    "highway": "NH-6 (Sonapur Tunnel Corridor)",
+    "distance_km": 105,
+    "time_min": 165,
+    "terrain": "steep_mountain",
+    "condition": "poor",
+    "slope_deg": 12.0
+  },
+  {
     "origin": "Shillong",
     "destination": "Dawki",
     "highway": "NH-206",
@@ -70,21 +100,21 @@
     "slope_deg": 4.0
   },
   {
-    "origin": "Jowai",
-    "destination": "Silchar",
-    "highway": "NH-6",
-    "distance_km": 140,
-    "time_min": 210,
-    "terrain": "steep_mountain",
-    "condition": "poor",
-    "slope_deg": 12.0
+    "origin": "Shillong",
+    "destination": "Mairang",
+    "highway": "NH-217",
+    "distance_km": 40,
+    "time_min": 50,
+    "terrain": "hilly",
+    "condition": "good",
+    "slope_deg": 4.0
   },
   {
-    "origin": "Shillong",
+    "origin": "Mairang",
     "destination": "Nongstoin",
     "highway": "NH-217",
-    "distance_km": 90,
-    "time_min": 120,
+    "distance_km": 50,
+    "time_min": 65,
     "terrain": "hilly",
     "condition": "good",
     "slope_deg": 5.0

@@ -2,111 +2,157 @@
   {
     "id": 39,
     "name": "Gangtok",
+    "district": "East Sikkim",
     "state": "Sikkim",
     "latitude": 27.3389,
     "longitude": 88.6065,
     "elevation_m": 1650,
     "location_type": "state_capital",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.2
   },
   {
     "id": 40,
     "name": "Namchi",
+    "district": "South Sikkim",
     "state": "Sikkim",
     "latitude": 27.1667,
     "longitude": 88.35,
     "elevation_m": 1315,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.25
   },
   {
     "id": 41,
     "name": "Geyzing",
+    "district": "West Sikkim",
     "state": "Sikkim",
     "latitude": 27.2833,
     "longitude": 88.25,
     "elevation_m": 1900,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.3
   },
   {
     "id": 42,
     "name": "Mangan",
+    "district": "North Sikkim",
     "state": "Sikkim",
     "latitude": 27.5,
     "longitude": 88.5333,
     "elevation_m": 1790,
     "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "is_urban": 1,
+    "risk_score": 0.55
   },
   {
     "id": 43,
     "name": "Rangpo",
+    "district": "Pakyong",
     "state": "Sikkim",
     "latitude": 27.1764,
     "longitude": 88.5283,
     "elevation_m": 330,
     "location_type": "border_checkpost",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.35
   },
   {
     "id": 79,
     "name": "Singtam",
+    "district": "Gangtok",
     "state": "Sikkim",
     "latitude": 27.23,
     "longitude": 88.5,
     "elevation_m": 410,
     "location_type": "logistics_hub",
-    "terrain": "hilly"
+    "is_urban": 1,
+    "risk_score": 0.25
   },
   {
     "id": 80,
     "name": "Chungthang",
+    "district": "North Sikkim",
     "state": "Sikkim",
     "latitude": 27.6,
     "longitude": 88.65,
     "elevation_m": 1790,
     "location_type": "mountain_pass",
-    "terrain": "high_pass"
+    "is_urban": 0,
+    "risk_score": 0.7
   },
   {
     "id": 81,
     "name": "Lachung",
+    "district": "North Sikkim",
     "state": "Sikkim",
     "latitude": 27.69,
     "longitude": 88.74,
     "elevation_m": 2700,
     "location_type": "mountain_pass",
-    "terrain": "high_pass"
+    "is_urban": 0,
+    "risk_score": 0.65
   },
   {
     "id": 82,
     "name": "Lachen",
+    "district": "North Sikkim",
     "state": "Sikkim",
     "latitude": 27.72,
     "longitude": 88.55,
     "elevation_m": 2750,
     "location_type": "mountain_pass",
-    "terrain": "high_pass"
+    "is_urban": 0,
+    "risk_score": 0.68
   },
   {
     "id": 83,
     "name": "Nathu La Pass",
+    "district": "East Sikkim",
     "state": "Sikkim",
     "latitude": 27.3865,
     "longitude": 88.831,
     "elevation_m": 4310,
     "location_type": "border_checkpost",
-    "terrain": "high_pass"
+    "is_urban": 0,
+    "risk_score": 0.75
   },
   {
     "id": 84,
     "name": "Ravangla",
+    "district": "South Sikkim",
     "state": "Sikkim",
     "latitude": 27.3,
     "longitude": 88.36,
     "elevation_m": 2100,
-    "location_type": "district_hq",
-    "terrain": "steep_mountain"
+    "location_type": "subdivision_town",
+    "is_urban": 1,
+    "risk_score": 0.28
+  },
+  {
+    "id": 161,
+    "name": "Jorethang",
+    "district": "South Sikkim",
+    "state": "Sikkim",
+    "latitude": 27.12,
+    "longitude": 88.3,
+    "elevation_m": 300,
+    "location_type": "logistics_hub",
+    "is_urban": 1,
+    "risk_score": 0.18
+  },
+  {
+    "id": 162,
+    "name": "Pelling",
+    "district": "West Sikkim",
+    "state": "Sikkim",
+    "latitude": 27.3,
+    "longitude": 88.23,
+    "elevation_m": 2150,
+    "location_type": "market_center",
+    "is_urban": 1,
+    "risk_score": 0.32
   }
 ]

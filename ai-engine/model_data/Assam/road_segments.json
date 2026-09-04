@@ -11,18 +11,58 @@
   },
   {
     "origin": "Guwahati",
-    "destination": "Nagaon",
-    "highway": "NH-27 (4-Lane)",
-    "distance_km": 120,
-    "time_min": 105,
+    "destination": "Jalukbari",
+    "highway": "NH-27 Bypass",
+    "distance_km": 12,
+    "time_min": 15,
     "terrain": "plain",
     "condition": "good",
-    "slope_deg": 1.0
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Dispur",
+    "destination": "Khanapara",
+    "highway": "GS Road",
+    "distance_km": 6,
+    "time_min": 10,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Khanapara",
+    "destination": "Jagiroad",
+    "highway": "NH-27 (4-Lane)",
+    "distance_km": 50,
+    "time_min": 45,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Jagiroad",
+    "destination": "Raha",
+    "highway": "NH-27 (4-Lane)",
+    "distance_km": 40,
+    "time_min": 35,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Raha",
+    "destination": "Nagaon",
+    "highway": "NH-27",
+    "distance_km": 20,
+    "time_min": 20,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
   },
   {
     "origin": "Nagaon",
     "destination": "Tezpur",
-    "highway": "NH-715",
+    "highway": "NH-715 (Kalia Bhomora Bridge)",
     "distance_km": 50,
     "time_min": 55,
     "terrain": "plain",
@@ -41,23 +81,63 @@
   },
   {
     "origin": "Nagaon",
-    "destination": "Jorhat",
+    "destination": "Numaligarh",
     "highway": "NH-27",
-    "distance_km": 180,
-    "time_min": 195,
+    "distance_km": 115,
+    "time_min": 120,
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 1.0
   },
   {
-    "origin": "Jorhat",
-    "destination": "Dibrugarh",
-    "highway": "NH-27",
-    "distance_km": 130,
-    "time_min": 150,
+    "origin": "Numaligarh",
+    "destination": "Golaghat",
+    "highway": "NH-129",
+    "distance_km": 25,
+    "time_min": 30,
     "terrain": "plain",
     "condition": "good",
-    "slope_deg": 1.0
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Golaghat",
+    "destination": "Jorhat",
+    "highway": "SH-Assam",
+    "distance_km": 45,
+    "time_min": 50,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Numaligarh",
+    "destination": "Jorhat",
+    "highway": "NH-27",
+    "distance_km": 65,
+    "time_min": 70,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Jorhat",
+    "destination": "Sivasagar",
+    "highway": "NH-27",
+    "distance_km": 55,
+    "time_min": 60,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Sivasagar",
+    "destination": "Dibrugarh",
+    "highway": "NH-27",
+    "distance_km": 75,
+    "time_min": 85,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
   },
   {
     "origin": "Dibrugarh",
@@ -65,6 +145,16 @@
     "highway": "NH-27",
     "distance_km": 48,
     "time_min": 50,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Tinsukia",
+    "destination": "Digboi",
+    "highway": "NH-38",
+    "distance_km": 35,
+    "time_min": 40,
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 0.5
@@ -90,41 +180,51 @@
     "slope_deg": 13.0
   },
   {
-    "origin": "Guwahati",
+    "origin": "Jalukbari",
     "destination": "Goalpara",
     "highway": "NH-17",
-    "distance_km": 130,
-    "time_min": 150,
+    "distance_km": 120,
+    "time_min": 140,
     "terrain": "plain",
     "condition": "good",
-    "slope_deg": 2.0
+    "slope_deg": 1.5
   },
   {
-    "origin": "Guwahati",
+    "origin": "Jalukbari",
     "destination": "Nalbari",
     "highway": "NH-27",
-    "distance_km": 70,
-    "time_min": 70,
+    "distance_km": 60,
+    "time_min": 60,
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 0.5
   },
   {
     "origin": "Nalbari",
-    "destination": "Barpeta",
+    "destination": "Barpeta Road",
     "highway": "NH-27",
-    "distance_km": 55,
-    "time_min": 55,
+    "distance_km": 45,
+    "time_min": 45,
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 0.5
   },
   {
-    "origin": "Barpeta",
+    "origin": "Barpeta Road",
+    "destination": "Barpeta",
+    "highway": "SH-Barpeta",
+    "distance_km": 18,
+    "time_min": 25,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Barpeta Road",
     "destination": "Bongaigaon",
     "highway": "NH-27",
-    "distance_km": 65,
-    "time_min": 65,
+    "distance_km": 45,
+    "time_min": 45,
     "terrain": "plain",
     "condition": "good",
     "slope_deg": 0.5
@@ -190,34 +290,34 @@
     "slope_deg": 5.0
   },
   {
-    "origin": "Jorhat",
-    "destination": "Golaghat",
-    "highway": "NH-129",
-    "distance_km": 45,
-    "time_min": 50,
-    "terrain": "plain",
-    "condition": "good",
-    "slope_deg": 0.5
-  },
-  {
-    "origin": "Jorhat",
-    "destination": "Sivasagar",
-    "highway": "NH-27",
-    "distance_km": 55,
-    "time_min": 60,
-    "terrain": "plain",
-    "condition": "good",
-    "slope_deg": 0.5
-  },
-  {
     "origin": "Silchar",
+    "destination": "Badarpur",
+    "highway": "NH-37",
+    "distance_km": 28,
+    "time_min": 35,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Badarpur",
     "destination": "Karimganj",
     "highway": "NH-37",
-    "distance_km": 55,
-    "time_min": 65,
+    "distance_km": 25,
+    "time_min": 30,
     "terrain": "plain",
     "condition": "good",
-    "slope_deg": 1.0
+    "slope_deg": 0.5
+  },
+  {
+    "origin": "Badarpur",
+    "destination": "Hailakandi",
+    "highway": "SH-38",
+    "distance_km": 25,
+    "time_min": 30,
+    "terrain": "plain",
+    "condition": "good",
+    "slope_deg": 0.5
   },
   {
     "origin": "Silchar",

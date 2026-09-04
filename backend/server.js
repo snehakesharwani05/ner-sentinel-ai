@@ -48,6 +48,8 @@ app.get('/health', (req, res) => {
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/locations', locationRoutes);
 app.use('/api/v1/disruptions', disruptionRoutes);
+app.use('/api/incidents', disruptionRoutes);
+app.use('/api/v1/incidents', disruptionRoutes);
 app.use('/api/v1/routes', routeRoutes);
 app.use('/api/v1/weather', weatherRoutes);
 app.use('/api/v1/shipments', shipmentRoutes);
@@ -69,6 +71,10 @@ async function startServer() {
     try { db.exec(`ALTER TABLE users ADD COLUMN mobile_hash TEXT;`); } catch (e) {}
     try { db.exec(`ALTER TABLE users ADD COLUMN mobile_masked TEXT;`); } catch (e) {}
     try { db.exec(`ALTER TABLE users ADD COLUMN service_badge_id TEXT;`); } catch (e) {}
+
+    // Ensure disruptions table schema columns exist
+    try { db.exec(`ALTER TABLE disruptions ADD COLUMN reported_by_name TEXT;`); } catch (e) {}
+    try { db.exec(`ALTER TABLE disruptions ADD COLUMN reported_by_role TEXT;`); } catch (e) {}
 
     // Auto-seed if database is empty
     const count = db.prepare(`SELECT COUNT(*) as count FROM locations`).get()?.count || 0;

@@ -133,11 +133,21 @@ export class OfflineRoutingEngine {
 
     path.forEach((name, i) => {
       const node = this.nodes[name];
+      if (!node) return;
+      
+      const lat = Number(node.lat);
+      const lng = Number(node.lng);
+      const isValid = !isNaN(lat) && !isNaN(lng) && !(lat === 0 && lng === 0) && lat >= 20.0 && lat <= 30.0 && lng >= 88.0 && lng <= 98.0;
+      if (!isValid) return;
+
       pathNodesDetail.push({
+        id: name,
         name,
-        latitude: node.lat,
-        longitude: node.lng,
-        state: node.state
+        latitude: lat,
+        longitude: lng,
+        lat,
+        lng,
+        state: node.state || 'North East'
       });
 
       if (i > 0) {
@@ -150,6 +160,10 @@ export class OfflineRoutingEngine {
       }
     });
 
+    if (pathNodesDetail.length < 2 && originName !== destName) {
+      return null;
+    }
+
     return {
       success: true,
       mode,
@@ -160,7 +174,7 @@ export class OfflineRoutingEngine {
       estimated_transit_time_min: totalTime,
       average_disaster_risk: 0.15,
       overall_severity: "Low",
-      nodes_in_path: path,
+      nodes_in_path: pathNodesDetail.map(n => n.name),
       pathNodes: pathNodesDetail,
       source: "NER Sentinel Client-Side Offline Graph (Zero-Internet Engine)"
     };

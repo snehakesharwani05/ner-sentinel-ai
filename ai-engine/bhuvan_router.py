@@ -8,7 +8,7 @@ import json
 import math
 from typing import Dict, List, Any, Optional
 
-BHUVAN_TOKEN = "911a321166a614e3e8c74a96dc187d56c63afe17"
+BHUVAN_TOKEN = "8a76956a280ae337564ba0aefd7c3eb3d521a0c9"
 BHUVAN_ROUTING_URL = "https://bhuvan-app1.nrsc.gov.in/api/routing/curl_routing_state.php"
 
 def haversine_distance_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

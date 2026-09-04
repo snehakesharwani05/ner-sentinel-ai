@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { api } from '../api/api';
 import MapComponent from '../components/MapComponent';
 import RiskBadge from '../components/RiskBadge';
+import LifelineTicker from '../components/LifelineTicker';
 import { 
   ShieldCheck, Mountain, CloudRain, Truck, AlertTriangle, 
   Radio, Newspaper, CornerDownRight, ExternalLink, Filter, CheckCircle2
@@ -156,50 +157,8 @@ export function Dashboard() {
 
       </div>
 
-      {/* 2. CRITICAL MOUNTAIN PASSES LIVE TICKER BAR */}
-      <div style={{
-        marginBottom: '1.5rem',
-        padding: '0.75rem 1rem',
-        borderRadius: '12px',
-        background: '#EDE8DC',
-        border: '1px solid #CBD0C0',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1rem',
-        overflowX: 'auto',
-        whiteSpace: 'nowrap'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '800', fontSize: '0.78rem', color: '#A9573F', textTransform: 'uppercase', letterSpacing: '0.04em', borderRight: '2px solid #CBD0C0', paddingRight: '1rem' }}>
-          <Mountain size={16} /> Key Lifelines:
-        </div>
-
-        <div style={{ display: 'flex', gap: '1.25rem', fontSize: '0.8rem', color: '#20231F' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#A9573F' }}></span>
-            <strong>Sela Pass (NH-13 / 4,170m):</strong> <span style={{ opacity: 0.85 }}>Slurry / 1-Way (BRO Dozers Standby)</span>
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#B8944A' }}></span>
-            <strong>Sonapur Tunnel (NH-6):</strong> <span style={{ opacity: 0.85 }}>Mud Accumulation (Piloted Queue)</span>
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#B8944A' }}></span>
-            <strong>Paglapahar (NH-29):</strong> <span style={{ opacity: 0.85 }}>Sinking Zone (Speed Cap 20 km/h)</span>
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#A9573F' }}></span>
-            <strong>29th Mile Teesta (NH-10):</strong> <span style={{ opacity: 0.85 }}>River Surge (Divert via NH-717A)</span>
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#30483B' }}></span>
-            <strong>Haflong Jatinga (NH-27):</strong> <span style={{ opacity: 0.85 }}>Single-Lane Heavy Escort</span>
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#30483B' }}></span>
-            <strong>Nathu La Pass (4,310m):</strong> <span style={{ opacity: 0.85 }}>Freezing Fog (Defense Convoys Only)</span>
-          </span>
-        </div>
-      </div>
+      {/* 2. CRITICAL MOUNTAIN PASSES LIVE AUTO-SCROLLING TICKER MARQUEE */}
+      <LifelineTicker />
 
       {/* 3. MAIN GRID: MAP & ACTIVE DISRUPTION FEEDS */}
       <div className="grid-two-col">
