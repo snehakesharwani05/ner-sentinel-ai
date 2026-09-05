@@ -53,7 +53,7 @@ export function Sidebar({ activeTab, setActiveTab, isGuest }) {
             justifyContent: 'space-between'
           }}
         >
-          <span>{t('brand_title', 'NER SENTINEL')}</span>
+          <span>{t('brand_title', 'PurvaSetu')}</span>
           {isGuest && (
             <span style={{
               fontSize: '0.62rem',

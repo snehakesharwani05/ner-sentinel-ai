@@ -355,6 +355,15 @@ class AutonomousOfflineRoutingEngine {
       if (adj[v]) adj[v].push({ neighbor: u, weight, edge });
     }
 
+    const origCoords = this.allNodes[origin];
+    const destCoords = this.allNodes[dest];
+    const totalDirectKm = origCoords && destCoords ? 
+      6371.0 * (2.0 * Math.atan2(
+        Math.sqrt(Math.sin(((destCoords.lat - origCoords.lat) * Math.PI / 180.0) / 2.0) ** 2 + Math.cos(origCoords.lat * Math.PI / 180.0) * Math.cos(destCoords.lat * Math.PI / 180.0) * Math.sin(((destCoords.lng - origCoords.lng) * Math.PI / 180.0) / 2.0) ** 2),
+        Math.sqrt(1.0 - (Math.sin(((destCoords.lat - origCoords.lat) * Math.PI / 180.0) / 2.0) ** 2 + Math.cos(origCoords.lat * Math.PI / 180.0) * Math.cos(destCoords.lat * Math.PI / 180.0) * Math.sin(((destCoords.lng - origCoords.lng) * Math.PI / 180.0) / 2.0) ** 2))
+      )) : 500;
+    const ellipticalLimit = Math.max(totalDirectKm * 1.30, totalDirectKm + 45.0);
+
     const distances = {};
     const previous = {};
     const unvisited = new Set(Object.keys(this.allNodes));
@@ -386,6 +395,22 @@ class AutonomousOfflineRoutingEngine {
       const neighbors = adj[current] || [];
       for (const { neighbor, weight } of neighbors) {
         if (unvisited.has(neighbor)) {
+          // Directive 4: Elliptical Corridor Bounding
+          const nCoords = this.allNodes[neighbor];
+          if (nCoords && origCoords && destCoords) {
+            const dFromStart = 6371.0 * (2.0 * Math.atan2(
+              Math.sqrt(Math.sin(((nCoords.lat - origCoords.lat) * Math.PI / 180.0) / 2.0) ** 2 + Math.cos(origCoords.lat * Math.PI / 180.0) * Math.cos(nCoords.lat * Math.PI / 180.0) * Math.sin(((nCoords.lng - origCoords.lng) * Math.PI / 180.0) / 2.0) ** 2),
+              Math.sqrt(1.0 - (Math.sin(((nCoords.lat - origCoords.lat) * Math.PI / 180.0) / 2.0) ** 2 + Math.cos(origCoords.lat * Math.PI / 180.0) * Math.cos(nCoords.lat * Math.PI / 180.0) * Math.sin(((nCoords.lng - origCoords.lng) * Math.PI / 180.0) / 2.0) ** 2))
+            ));
+            const dToGoal = 6371.0 * (2.0 * Math.atan2(
+              Math.sqrt(Math.sin(((destCoords.lat - nCoords.lat) * Math.PI / 180.0) / 2.0) ** 2 + Math.cos(nCoords.lat * Math.PI / 180.0) * Math.cos(destCoords.lat * Math.PI / 180.0) * Math.sin(((destCoords.lng - nCoords.lng) * Math.PI / 180.0) / 2.0) ** 2),
+              Math.sqrt(1.0 - (Math.sin(((destCoords.lat - nCoords.lat) * Math.PI / 180.0) / 2.0) ** 2 + Math.cos(nCoords.lat * Math.PI / 180.0) * Math.cos(destCoords.lat * Math.PI / 180.0) * Math.sin(((destCoords.lng - nCoords.lng) * Math.PI / 180.0) / 2.0) ** 2))
+            ));
+            if (dFromStart + dToGoal > ellipticalLimit) {
+              continue;
+            }
+          }
+
           const alt = distances[current] + weight;
           if (alt < distances[neighbor]) {
             distances[neighbor] = alt;

@@ -51,7 +51,7 @@ export function LoginScreen() {
     try {
       const res = await login(loginEmail.trim(), loginPassword);
       if (!res.success) {
-        setError(res.error || 'Authentication rejected by Sentinel security gateway.');
+        setError(res.error || 'Authentication rejected by PurvaSetu security gateway.');
       }
     } catch (err) {
       setError(err.message || 'Security service connection timeout.');
@@ -149,7 +149,7 @@ export function LoginScreen() {
             </div>
 
             <h1 style={{ fontSize: '2.2rem', fontWeight: '800', lineHeight: '1.2', margin: '0 0 1rem 0' }}>
-              North Eastern Region Sentinel AI
+              PurvaSetu
             </h1>
             <p style={{ fontSize: '0.92rem', opacity: 0.88, lineHeight: '1.6', margin: 0 }}>
               Official High-Security Accessibility & Logistics Command Gateway. Real-time satellite integration with ISRO Bhuvan, AIS-140 GPS fleet tracking, and AI disruption intelligence.
@@ -271,7 +271,7 @@ export function LoginScreen() {
             </div>
 
             <h2 style={{ fontSize: '1.35rem', fontWeight: '800', color: '#20231F', margin: '0 0 0.35rem 0' }}>
-              {tab === 'login' ? 'Officer & Citizen Security Clearance' : 'Create High-Security Sentinel ID'}
+              {tab === 'login' ? 'Officer & Citizen Security Clearance' : 'Create High-Security PurvaSetu ID'}
             </h2>
             <p style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.75, margin: '0 0 1rem 0' }}>
               {tab === 'login' ? 'Input your registered credentials to establish encrypted session.' : 'Enforcing 8+ char, mixed-case, numeric & symbol security policy.'}

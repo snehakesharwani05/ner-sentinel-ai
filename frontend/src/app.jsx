@@ -17,6 +17,14 @@ function AppContent() {
   const { isAuthenticated, user, isGuest } = useAuth();
   const [activeTab, setActiveTab] = useState(() => (user?.isGuest ? 'route-intelligence' : 'dashboard'));
 
+  // Purge legacy dummy storage keys on boot
+  React.useEffect(() => {
+    try {
+      localStorage.removeItem("field_reports");
+      localStorage.removeItem("purvasetu_offline_disruptions");
+    } catch (e) {}
+  }, []);
+
   // If user is guest, strictly restrict to Route Intelligence
   React.useEffect(() => {
     if (isGuest && activeTab !== 'route-intelligence') {

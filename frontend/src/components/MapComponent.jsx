@@ -323,22 +323,25 @@ export function MapComponent({
   ===================================================== */
 
   const getDisruptionCoordinates = (disruption) => {
+    if (!disruption) return null;
 
-    const directCoordinates =
-      getCoordinates(disruption);
+    if (Array.isArray(disruption.coordinates) && disruption.coordinates.length === 2) {
+      const lat = Number(disruption.coordinates[0]);
+      const lng = Number(disruption.coordinates[1]);
+      if (!Number.isNaN(lat) && !Number.isNaN(lng) && lat >= 20.0 && lat <= 30.0 && lng >= 88.0 && lng <= 98.0) {
+        return [lat, lng];
+      }
+    }
 
+    const directCoordinates = getCoordinates(disruption);
     if (directCoordinates) {
       return directCoordinates;
     }
 
-
     // Try location object if backend returns one
     if (disruption.location) {
-      return getCoordinates(
-        disruption.location
-      );
+      return getCoordinates(disruption.location);
     }
-
 
     return null;
   };

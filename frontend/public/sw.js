@@ -1,7 +1,7 @@
 /**
- * Service Worker for NER Sentinel AI (Zero-Internet Offline PWA)
+ * Service Worker for PurvaSetu (Zero-Internet Offline PWA)
  */
-const CACHE_NAME = 'ner-sentinel-v1';
+const CACHE_NAME = 'purvasetu-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

@@ -1,7 +1,8 @@
 import React from 'react';
 
 /**
- * Custom-styled inline SVG icons for NER Sentinel AI Clearance Roles
+ * PurvaSetu / PRAGATI-AI (SIH Problem Statement 26002)
+ * Custom-styled inline SVG icons for PurvaSetu Clearance Roles
  */
 
 export function PublicCitizenIcon({ size = 18, color = '#30483B', style = {} }) {

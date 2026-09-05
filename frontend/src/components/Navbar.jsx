@@ -39,8 +39,7 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
       {/* Brand & Problem Statement Title */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
         <h2 style={{ fontSize: '1.25rem', fontWeight: '800', letterSpacing: '-0.02em', color: '#30483B', margin: 0 }}>
-          <span style={{ color: '#30483B' }}>{t('brand_title', 'NER SENTINEL')}</span>{' '}
-          <span style={{ color: '#A9573F' }}>AI</span>
+          <span className="font-bold tracking-wide" style={{ color: '#30483B' }}>{t('brand_title', 'PurvaSetu')}</span>
         </h2>
         <span style={{ fontSize: '0.75rem', color: '#20231F', opacity: 0.6, borderLeft: '1px solid #CBD0C0', paddingLeft: '0.75rem' }}>
           {t('sub_title', 'Problem Statement 26002')}

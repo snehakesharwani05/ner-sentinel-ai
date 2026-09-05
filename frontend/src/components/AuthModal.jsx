@@ -133,7 +133,7 @@ export function AuthModal() {
           </div>
           <div>
             <h3 style={{ margin: 0, fontSize: '1.3rem', fontWeight: '800', color: '#20231F' }}>
-              NER Sentinel AI
+              PurvaSetu
             </h3>
             <span style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.75 }}>
               Authentication & Security Terminal

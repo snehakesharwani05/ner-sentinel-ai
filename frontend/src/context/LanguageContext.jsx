@@ -4,7 +4,7 @@ const LanguageContext = createContext(null);
 
 export const TRANSLATIONS = {
   en: {
-    brand_title: "NER SENTINEL AI",
+    brand_title: "PurvaSetu",
     sub_title: "Problem Statement 26002",
     nav_dashboard: "Command Dashboard",
     nav_convoys: "Convoy Telematics (AIS-140)",
@@ -46,7 +46,7 @@ export const TRANSLATIONS = {
     report_desc: "Describe road conditions, mud accumulation, or structural damage..."
   },
   as: {
-    brand_title: "এন ই আৰ চেন্টিনেল এআই",
+    brand_title: "পূৰ্বসেতু",
     sub_title: "সমস্যা বিবৃতি ২৬০০২",
     nav_dashboard: "মুখ্য নিয়ন্ত্ৰণ ডেশ্ববৰ্ড",
     nav_convoys: "কনভয় টেলিমেটিক্স (AIS-140)",
@@ -88,7 +88,7 @@ export const TRANSLATIONS = {
     report_desc: "পথৰ অৱস্থা, বোকা বা ক্ষতিৰ বিৱৰণ দিয়ক..."
   },
   bn: {
-    brand_title: "এন ই আর সেন্টিনেল এআই",
+    brand_title: "পূর্বসেতু",
     sub_title: "সমস্যা বিবৃতি ২৬০০২",
     nav_dashboard: "কমান্ড ড্যাশবোর্ড",
     nav_convoys: "কনভয় টেলিমেটিক্স (AIS-140)",
@@ -130,7 +130,7 @@ export const TRANSLATIONS = {
     report_desc: "রাস্তার ক্ষয়ক্ষতি বা কাদার বিবরণ দিন..."
   },
   hi: {
-    brand_title: "एनईआर सेंटिनल एआई",
+    brand_title: "पूर्वसेतु",
     sub_title: "समस्या विवरण 26002",
     nav_dashboard: "कमांड डैशबोर्ड",
     nav_convoys: "कॉनवॉय टेलीमैटिक्स (AIS-140)",
@@ -172,7 +172,7 @@ export const TRANSLATIONS = {
     report_desc: "सड़क की स्थिति, मलबे या क्षति का विवरण दें..."
   },
   mni: {
-    brand_title: "এন ই আর সেন্তিনেল এআই",
+    brand_title: "পূর্বসেতু",
     sub_title: "প্রোব্লেম স্তেতমেন্ত ২৬০০২",
     nav_dashboard: "কমান্দ দেশবোর্দ",
     nav_convoys: "কোনভোয় তেলিমিতিক্স (AIS-140)",
@@ -214,7 +214,7 @@ export const TRANSLATIONS = {
     report_desc: "লমবীগী ফীভম ইবীয়ু..."
   },
   lus: {
-    brand_title: "NER SENTINEL AI",
+    brand_title: "PurvaSetu",
     sub_title: "Problem Statement 26002",
     nav_dashboard: "Command Dashboard",
     nav_convoys: "Convoy Telematics (AIS-140)",
@@ -256,7 +256,7 @@ export const TRANSLATIONS = {
     report_desc: "Kawng chhiat dan leh leimin zual zia ziak rawh..."
   },
   kha: {
-    brand_title: "NER SENTINEL AI",
+    brand_title: "PurvaSetu",
     sub_title: "Problem Statement 26002",
     nav_dashboard: "Ka Dashboard Bahal",
     nav_convoys: "Ka Convoy Telematics (AIS-140)",

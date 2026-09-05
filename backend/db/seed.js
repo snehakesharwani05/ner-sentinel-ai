@@ -379,22 +379,6 @@ async function seedDatabase() {
 
   console.log(`Seeded ${segments.length} highway & municipal bypass corridors (~${segments.length * 2} bidirectional edges).`);
 
-  console.log('Seeding initial disruptions...');
-  const insertDisruption = db.prepare(`
-    INSERT INTO disruptions (road_segment_id, disruption_type, severity, description, status, reported_by_name, reported_by_role, reported_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `);
-
-  const selaSegment = db.prepare(`SELECT id FROM road_segments WHERE origin_location_id = 20 AND destination_location_id = 21`).get();
-  if (selaSegment) {
-    insertDisruption.run(selaSegment.id, 'landslide', 'critical_blocked', 'Massive mudslide blocking NH-13 at Sela Pass elevation 4,100m. Clearance underway.', 'active', 'Capt. R. Sharma (BRO Project Vartak)', 'disaster_mgmt', new Date(Date.now() - 25 * 60 * 1000).toISOString());
-  }
-
-  const haflongSegment = db.prepare(`SELECT id FROM road_segments WHERE origin_location_id = 5 AND destination_location_id = 10`).get();
-  if (haflongSegment) {
-    insertDisruption.run(haflongSegment.id, 'flash_flood', 'high', 'Heavy rain causing waterlogging & debris flow on Dima Hasao hill highway.', 'active', 'Inspector D. Gogoi (ASDMA)', 'field_officer', new Date(Date.now() - 55 * 60 * 1000).toISOString());
-  }
-
   console.log('Seeding initial weather data...');
   const insertWeather = db.prepare(`
     INSERT INTO weather_data (location_id, rainfall_mm_24h, wind_speed_kmh, fog_visibility_m, landslide_risk_index, flood_warning_level)

@@ -177,29 +177,7 @@ class LiveDisruptionFeed:
                 "alternative_route_snippet": nb["alternative_route_snippet"]
             })
 
-        # 2. High Soil Saturation / Landslide Trigger (from Open-Meteo on mountain corridors)
-        soil_m = tel.get("soil_moisture", 0.0)
-        rain_mm = tel.get("precipitation_mm", 0.0)
-        
-        if (soil_m >= 0.36 or rain_mm > 15.0) and terrain in ["steep_mountain", "high_pass"]:
-            nb = self._get_news_and_bypass(origin, dest, seg["highway"], "landslide_hazard")
-            hazards.append({
-                "id": idx * 10 + 2,
-                "road_segment_id": idx + 1,
-                "highway_code": seg["highway"],
-                "origin_name": origin,
-                "destination_name": dest,
-                "disruption_type": "landslide_hazard",
-                "severity": "high" if soil_m >= 0.38 else "moderate",
-                "description": f"Open-Meteo Telemetry: High soil moisture saturation ({soil_m:.3f} m³/m³) at {elevation}m elevation. Slope slippage hazard.",
-                "status": "active",
-                "live_telemetry": tel,
-                "news_source": nb["news_source"],
-                "news_headline": nb["news_headline"],
-                "news_snippet": nb["news_snippet"],
-                "news_url": nb.get("news_url", "https://ndma.gov.in"),
-                "alternative_route_snippet": nb["alternative_route_snippet"]
-            })
+        # Soil moisture is an environmental metric, not a confirmed physical blockage - do not fabricate incident cards.
 
         # 3. Dense Mountain Fog / Visibility Blinding (< 1200m)
         vis_m = tel.get("visibility_m", 8000.0)

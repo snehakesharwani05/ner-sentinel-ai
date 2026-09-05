@@ -52,46 +52,11 @@ router.get('/', async (req, res, next) => {
       console.warn('[DISRUPTIONS] SQLite query error:', dbErr.message);
     }
 
-    // 2. Try pulling live real-time disruptions from Python AI microservice
-    let aiDisruptions = [];
-    try {
-      const aiUrl = process.env.AI_ENGINE_URL ? process.env.AI_ENGINE_URL.replace('/ai/analyze', '/ai/disruptions/live') : 'http://127.0.0.1:5001/api/v1/ai/disruptions/live';
-      const aiRes = await fetch(aiUrl, { signal: AbortSignal.timeout(20000) });
-      if (aiRes.ok) {
-        const liveAiData = await aiRes.json();
-        if (liveAiData && liveAiData.success && Array.isArray(liveAiData.data)) {
-          aiDisruptions = liveAiData.data.map(item => ({
-            ...item,
-            reported_by_name: 'Automated Telemetry Scanner (Open-Meteo & TomTom)',
-            reported_by_role: 'automated_telemetry',
-            reported_at: item.reported_at || new Date().toISOString(),
-            source_type: 'AUTOMATED_TELEMETRY',
-            source: 'Source: Open-Meteo Telemetry / TomTom'
-          }));
-        }
-      }
-    } catch (aiErr) {
-      console.warn('[DISRUPTIONS] Live AI scanner fallback to SQLite:', aiErr.message);
-    }
-
-    // Filter AI disruptions by query params if needed
-    if (severity) {
-      aiDisruptions = aiDisruptions.filter(d => d.severity?.toLowerCase() === severity.toLowerCase());
-    }
-    if (status) {
-      aiDisruptions = aiDisruptions.filter(d => d.status?.toLowerCase() === status.toLowerCase());
-    }
-
-    // Combine: User Field Reports first, then non-duplicate live AI telemetry cards
-    const userSegmentIds = new Set(dbDisruptions.map(d => d.road_segment_id));
-    const nonDuplicatedAi = aiDisruptions.filter(a => !userSegmentIds.has(a.road_segment_id));
-    const combined = [...dbDisruptions, ...nonDuplicatedAi];
-
     res.json({
       success: true,
-      count: combined.length,
-      data: combined,
-      source: 'Hybrid Field Reports & Live Telemetry'
+      count: dbDisruptions.length,
+      data: dbDisruptions,
+      source: 'Verified Field Reports'
     });
   } catch (err) {
     next(err);

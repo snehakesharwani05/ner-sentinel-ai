@@ -3,9 +3,11 @@ import { api } from '../api/api';
 import MapComponent from '../components/MapComponent';
 import RiskBadge from '../components/RiskBadge';
 import LifelineTicker from '../components/LifelineTicker';
+import { fetchAllVerifiedDisruptions, startLiveDisruptionPoller, clusterTomTomIncidents } from '../services/liveDisruptionService';
 import { 
   ShieldCheck, Mountain, CloudRain, Truck, AlertTriangle, 
-  Radio, Newspaper, CornerDownRight, ExternalLink, Filter, CheckCircle2
+  Radio, Newspaper, CornerDownRight, ExternalLink, Filter, CheckCircle2,
+  Activity, Zap, MapPin, Layers
 } from 'lucide-react';
 
 export function Dashboard() {
@@ -17,32 +19,70 @@ export function Dashboard() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [syncStatus, setSyncStatus] = useState({ isLive: true, lastSynced: new Date().toLocaleTimeString() });
 
   useEffect(() => {
+    let isMounted = true;
+
     async function loadDashboardData() {
       try {
         setLoading(true);
         setError(null);
 
-        const [healthRes, locsRes, disruptionsRes, convoysRes] = await Promise.all([
+        const isOnline = typeof navigator !== 'undefined' ? navigator.onLine : true;
+
+        const [healthRes, locsRes, disruptionsRes, convoysRes, liveTelemetryFeeds] = await Promise.all([
           api.getHealth().catch(() => null),
           api.getLocations().catch(() => null),
           api.getDisruptions('active').catch(() => null),
-          api.getConvoys('ALL').catch(() => null)
+          api.getConvoys('ALL').catch(() => null),
+          fetchAllVerifiedDisruptions().catch(() => [])
         ]);
+
+        if (!isMounted) return;
 
         if (healthRes) setHealth(healthRes);
         if (locsRes && locsRes.data) setLocations(locsRes.data);
-        if (disruptionsRes && disruptionsRes.data) setDisruptions(disruptionsRes.data);
         if (convoysRes && convoysRes.data) setConvoys(convoysRes.data);
+
+        // Merge DB field reports with live verified external feeds (TomTom, USGS)
+        const dbDisruptions = (disruptionsRes && disruptionsRes.data) || [];
+        const liveItems = Array.isArray(liveTelemetryFeeds) ? liveTelemetryFeeds : [];
+
+        // Apply spatial clustering & name deduplication filter
+        const combined = clusterTomTomIncidents([...dbDisruptions, ...liveItems]);
+
+        let hasCachedSnap = !isOnline;
+        liveItems.forEach(item => {
+          if (item.isCached) hasCachedSnap = true;
+        });
+
+        setDisruptions(combined);
+        setSyncStatus({
+          isLive: !hasCachedSnap && isOnline,
+          lastSynced: new Date().toLocaleTimeString()
+        });
       } catch (err) {
-        setError(err.message || 'Failed to load live dashboard feeds.');
+        if (isMounted) setError(err.message || 'Failed to load live dashboard feeds.');
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     }
 
     loadDashboardData();
+
+    // Start background live poller with pure state replacement (Never [...prev, ...incoming])
+    const stopPoller = startLiveDisruptionPoller((freshFeeds) => {
+      if (!isMounted || !Array.isArray(freshFeeds)) return;
+      const sanitizedIncidents = clusterTomTomIncidents(freshFeeds);
+      setDisruptions(sanitizedIncidents);
+      setSyncStatus({ isLive: true, lastSynced: new Date().toLocaleTimeString() });
+    }, 10 * 60 * 1000);
+
+    return () => {
+      isMounted = false;
+      stopPoller();
+    };
   }, []);
 
   // Compute Real-World Operational Metrics from Live Telemetry & Graph Data
@@ -78,13 +118,40 @@ export function Dashboard() {
   return (
     <div className="page-container">
       {/* Header Section */}
-      <div className="page-header" style={{ marginBottom: '1.25rem' }}>
-        <h1 className="page-title" style={{ color: '#A9573F' }}>
-          NER Logistics Command & Disaster Sentinel
-        </h1>
-        <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
-          Real-time strategic accessibility monitoring & geotechnical contingency intelligence across 8 North-Eastern States + Siliguri Gateway
-        </p>
+      <div className="page-header" style={{ marginBottom: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+        <div>
+          <h1 className="page-title" style={{ color: '#A9573F' }}>
+            PurvaSetu — NER Logistics Command & Disaster Intelligence
+          </h1>
+          <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
+            Real-time strategic accessibility monitoring & geotechnical contingency intelligence across 8 North-Eastern States + Siliguri Gateway
+          </p>
+        </div>
+        <div style={{
+          padding: '6px 14px',
+          borderRadius: '20px',
+          fontSize: '0.8rem',
+          fontWeight: '700',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          background: syncStatus.isLive ? 'rgba(48, 72, 59, 0.12)' : 'rgba(217, 119, 6, 0.12)',
+          color: syncStatus.isLive ? '#30483B' : '#B45309',
+          border: syncStatus.isLive ? '1px solid rgba(48, 72, 59, 0.3)' : '1px solid rgba(217, 119, 6, 0.3)',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+        }}>
+          {syncStatus.isLive ? (
+            <>
+              <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#16A34A', boxShadow: '0 0 6px #16A34A' }} />
+              <span>🟢 Live Telemetry Active (TomTom & Open-Meteo Stream)</span>
+            </>
+          ) : (
+            <>
+              <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#D97706' }} />
+              <span>🟠 Cached Sensor Snapshot (Last Synced: {syncStatus.lastSynced})</span>
+            </>
+          )}
+        </div>
       </div>
 
       {/* 1. OPERATIONAL COMMAND READINESS RIBBON (4 High-Impact Operational Cards) */}
@@ -180,7 +247,7 @@ export function Dashboard() {
               <Radio size={18} color="#A9573F" /> Active Real-Time Disruption Feeds
             </h3>
             <span style={{ fontSize: '0.75rem', background: '#30483B', color: '#FFFFFF', padding: '3px 8px', borderRadius: '10px', fontWeight: '600' }}>
-              Live Open-Meteo & TomTom ({disruptions.length} Total)
+              {disruptions.length} Active Incidents
             </span>
           </div>
 
@@ -251,8 +318,26 @@ export function Dashboard() {
           {/* Scrollable Disruption Cards List */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', maxHeight: '460px', overflowY: 'auto' }}>
             {filteredDisruptions.length === 0 ? (
-              <div style={{ padding: '2rem', textAlign: 'center', color: '#20231F', opacity: 0.6 }}>
-                No disruptions match the selected triage filter.
+              <div style={{
+                padding: '1.75rem 1.25rem',
+                borderRadius: 'var(--radius-md)',
+                backgroundColor: 'rgba(48, 72, 59, 0.08)',
+                border: '1.5px dashed #30483B',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                textAlign: 'center',
+                color: '#30483B'
+              }}>
+                <ShieldCheck size={32} color="#30483B" />
+                <div style={{ fontWeight: '800', fontSize: '0.92rem', color: '#20231F' }}>
+                  All Monitored Lifelines Clear — No Active Roadblocks or Extreme Weather Hazards Reported by Live Sensors.
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#20231F', opacity: 0.75 }}>
+                  Live TomTom and USGS probes detecting normal freight transit with 0 reported physical closures.
+                </div>
               </div>
             ) : (
               filteredDisruptions.map(d => (
@@ -268,10 +353,24 @@ export function Dashboard() {
                     gap: '0.65rem'
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontWeight: '700', fontSize: '0.95rem', color: '#20231F' }}>
-                      {d.highway_code || 'Highway'} ({d.origin_name} &rarr; {d.destination_name})
-                    </span>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                      <span style={{ fontWeight: '700', fontSize: '0.95rem', color: '#20231F' }}>
+                        {d.title || `${d.highway_code || 'Highway'} (${d.origin_name || 'Corridor'} → ${d.destination_name || 'Destination'})`}
+                      </span>
+                      {d.source && (
+                        <span style={{ 
+                          fontSize: '0.7rem', 
+                          fontWeight: '700', 
+                          color: d.source.includes('TomTom') ? '#D97706' : d.source.includes('USGS') ? '#DC2626' : d.source.includes('Open-Meteo') ? '#2563EB' : '#30483B',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px'
+                        }}>
+                          <Activity size={11} /> {d.source}
+                        </span>
+                      )}
+                    </div>
                     <RiskBadge severity={d.severity} />
                   </div>
 

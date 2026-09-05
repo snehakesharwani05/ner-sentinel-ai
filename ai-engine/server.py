@@ -47,40 +47,14 @@ def health():
 
 @app.route('/api/v1/ai/disruptions/live', methods=['GET'])
 def get_live_disruptions():
-    import time
-    now = time.time()
-    # Cache for 300 seconds (5 minutes)
-    if now - _disruptions_cache["timestamp"] < 300 and _disruptions_cache["data"]:
-        return jsonify({
-            "success": True,
-            "count": len(_disruptions_cache["data"]),
-            "data": _disruptions_cache["data"],
-            "source": "Live Telemetry Scanner (Open-Meteo & TomTom)"
-        })
-
+    # Only return confirmed physical road closures or active verified disruptions
     hazards = disruption_feed.get_live_disruptions()
-    _disruptions_cache["timestamp"] = now
-    _disruptions_cache["data"] = hazards
-
     return jsonify({
         "success": True,
         "count": len(hazards),
         "data": hazards,
-        "source": "Live Telemetry Scanner (Open-Meteo & TomTom)"
+        "source": "Live External APIs"
     })
-
-def _prewarm_telemetry():
-    import threading, time
-    def _worker():
-        time.sleep(1)
-        print("[AI ENGINE] Prewarming real-time disruption scanner across North East...")
-        hazards = disruption_feed.get_live_disruptions()
-        _disruptions_cache["timestamp"] = time.time()
-        _disruptions_cache["data"] = hazards
-        print(f"[AI ENGINE] Prewarm complete! {len(hazards)} live real-world hazards active.")
-    threading.Thread(target=_worker, daemon=True).start()
-
-_prewarm_telemetry()
 
 @app.route('/api/v1/ai/route', methods=['POST'])
 def find_route():

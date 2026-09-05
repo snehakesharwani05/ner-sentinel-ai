@@ -198,7 +198,7 @@ export function AuthProvider({ children }) {
         role: "admin",
         isGuest: false,
         roleLabel: "Platform Administrator",
-        unit: "NER Sentinel Core",
+        unit: "PurvaSetu Core",
         adminAccess: true,
         permissions: ['dashboard', 'convoy-telematics', 'route-intelligence', 'simulation', 'field-report']
       }

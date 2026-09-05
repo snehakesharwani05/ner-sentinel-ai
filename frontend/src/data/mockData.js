@@ -7,19 +7,7 @@ export const mockLocations = [
   { id: 22, name: 'Tawang', state: 'Arunachal Pradesh', latitude: 27.5861, longitude: 91.8594, elevation_m: 3048, location_type: 'border_checkpost' }
 ];
 
-export const mockDisruptions = [
-  {
-    id: 1,
-    road_segment_id: 26,
-    disruption_type: 'landslide',
-    severity: 'critical_blocked',
-    description: 'Massive mudslide blocking NH-13 at Sela Pass elevation 4,100m. Clearance underway.',
-    status: 'active',
-    highway_code: 'NH-13',
-    origin_name: 'Dirang',
-    destination_name: 'Sela Pass'
-  }
-];
+export const mockDisruptions = [];
 
 export const mockKpis = {
   totalLocations: 46,

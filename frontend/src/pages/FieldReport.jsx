@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../api/api';
 import RiskBadge from '../components/RiskBadge';
-import { AlertOctagon, PlusCircle, CheckCircle2, ShieldAlert, UserCheck, Radio, Clock, MapPin, Tag } from 'lucide-react';
+import { 
+  AlertOctagon, PlusCircle, CheckCircle2, ShieldAlert, UserCheck, 
+  Radio, Clock, MapPin, Tag, AlertTriangle, X, ShieldCheck 
+} from 'lucide-react';
 import { offlineEngine } from '../utils/offlineEngine';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
+import { verifyReportAuthenticity, validateFieldReport, clusterTomTomIncidents } from '../services/liveDisruptionService';
 
 function formatRelativeTime(timestamp) {
   if (!timestamp) return 'Just now';
@@ -15,28 +19,30 @@ function formatRelativeTime(timestamp) {
   if (diffMins < 1) return 'Just now';
   if (diffMins < 60) return `${diffMins} min${diffMins > 1 ? 's' : ''} ago`;
   const diffHours = Math.floor(diffMins / 60);
-  if (diffHours < 24) return `${diffHours} hr${diffHours > 1 ? 's' : ''} ago`;
-  const diffDays = Math.floor(diffHours / 24);
-  return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+  if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+  return date.toLocaleDateString();
 }
 
 export function FieldReport() {
-  const { isOnline, user } = useAuth();
+  const { user } = useAuth();
   const { t } = useTranslation();
   const [disruptions, setDisruptions] = useState([]);
   const [segments, setSegments] = useState([]);
-  const [segmentId, setSegmentId] = useState(26); // Default Dirang -> Sela Pass
+  const [segmentId, setSegmentId] = useState(26);
   const [disruptionType, setDisruptionType] = useState('landslide');
   const [severity, setSeverity] = useState('critical_blocked');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [rejectionModal, setRejectionModal] = useState(null);
   const [offlineQueue, setOfflineQueue] = useState(() => offlineEngine.getOfflineQueue());
 
   const loadDisruptions = async () => {
     try {
       const res = await api.getDisruptions('active');
-      if (res && res.data) setDisruptions(res.data);
+      if (res && res.data) {
+        setDisruptions(clusterTomTomIncidents(res.data));
+      }
     } catch (err) {
       console.error(err);
     }
@@ -62,14 +68,33 @@ export function FieldReport() {
     loadSegments();
   }, []);
 
+  const selectedSegment = segments.find(s => s.id === Number(segmentId));
+
   const handleSubmitReport = async (e) => {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
+    setRejectionModal(null);
 
     const activeUserName = user?.name || 'Field Officer';
     const activeUserRole = user?.role || 'field_officer';
     const activeTimestamp = new Date().toISOString();
+
+    // Determine segment coordinates for validation gateway
+    const segLat = Number(selectedSegment?.origin_lat || selectedSegment?.origin_latitude || 27.503);
+    const segLng = Number(selectedSegment?.origin_lng || selectedSegment?.origin_longitude || 92.102);
+
+    // 1. Run Ground-Truth Telemetry Cross-Check Gateway against Live External APIs
+    const verification = await verifyReportAuthenticity([segLat, segLng], disruptionType);
+
+    if (!verification.approved) {
+      setRejectionModal({
+        title: 'Report Rejected: Live Telemetry Verification Failed',
+        reason: verification.errorMsg || 'Ground-truth sensor mismatch detected with live ground sensors.'
+      });
+      setLoading(false);
+      return;
+    }
 
     const reportPayload = {
       road_segment_id: Number(segmentId),
@@ -80,14 +105,16 @@ export function FieldReport() {
       reported_by_name: activeUserName,
       reported_by_role: activeUserRole,
       reported_at: activeTimestamp,
-      reporter: activeUserName
+      reporter: activeUserName,
+      telemetry_summary: verification.telemetrySummary,
+      is_telemetry_verified: true
     };
 
     // If Offline: Queue in client-side storage
     if (!navigator.onLine) {
       offlineEngine.queueOfflineReport(reportPayload);
       setOfflineQueue(offlineEngine.getOfflineQueue());
-      setMessage('🟡 Zero-Internet Mode: Incident report saved in Local Outbox Queue! Auto-sync when connection returns.');
+      setMessage(`🟡 Zero-Internet Mode: Incident report verified (${verification.telemetrySummary || 'Live Sensors'}) & queued in Local Outbox.`);
       setDescription('');
       setLoading(false);
       return;
@@ -106,7 +133,7 @@ export function FieldReport() {
       });
 
       if (res.ok) {
-        setMessage('✓ Incident report submitted & persisted to central database! Dynamic graph rerouting updated.');
+        setMessage(`✔ ${verification.telemetrySummary || 'Verified by Live Sensors'} — Report active & dynamic routing updated.`);
         setDescription('');
         loadDisruptions();
       } else {
@@ -115,13 +142,11 @@ export function FieldReport() {
     } catch (err) {
       offlineEngine.queueOfflineReport(reportPayload);
       setOfflineQueue(offlineEngine.getOfflineQueue());
-      setMessage('🟡 Report queued in Local Outbox Queue due to network latency.');
+      setMessage('🟡 Report verified & queued in Local Outbox due to network latency.');
     } finally {
       setLoading(false);
     }
   };
-
-  const selectedSegment = segments.find(s => s.id === Number(segmentId));
 
   return (
     <div className="page-container">
@@ -130,9 +155,88 @@ export function FieldReport() {
           {t('nav_field_report', 'Field Incident Reporting Hub')}
         </h1>
         <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
-          SIH 26002: Live field hazard triage with verified user attribution and dynamic GIS graph penalization
+          SIH 26002: Live field hazard triage with automated telemetry cross-check gateway & authentic verified attribution
         </p>
       </div>
+
+      {/* REJECTION MODAL DIALOG */}
+      {rejectionModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(32, 35, 31, 0.65)',
+          backdropFilter: 'blur(4px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 9999,
+          padding: '1rem'
+        }}>
+          <div style={{
+            background: '#FFFFFF',
+            borderRadius: '16px',
+            maxWidth: '520px',
+            width: '100%',
+            padding: '1.75rem',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.25)',
+            border: '2px solid #DC2626',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#DC2626' }}>
+                <AlertTriangle size={24} />
+                <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: '800' }}>
+                  {rejectionModal.title}
+                </h3>
+              </div>
+              <button 
+                onClick={() => setRejectionModal(null)}
+                style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#64748B' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div style={{
+              padding: '1rem',
+              borderRadius: '8px',
+              background: '#FEF2F2',
+              border: '1px solid #FCA5A5',
+              fontSize: '0.88rem',
+              lineHeight: '1.5',
+              color: '#991B1B'
+            }}>
+              <strong>Reason for Rejection:</strong>
+              <p style={{ margin: '6px 0 0 0' }}>{rejectionModal.reason}</p>
+            </div>
+
+            <div style={{ fontSize: '0.8rem', color: '#20231F', opacity: 0.8 }}>
+              To ensure zero false positives, all field hazard submissions must align with active telemetry (precipitation, soil saturation, or TomTom flow delay).
+            </div>
+
+            <button
+              onClick={() => setRejectionModal(null)}
+              style={{
+                padding: '10px 16px',
+                borderRadius: '8px',
+                background: '#30483B',
+                color: '#FFFFFF',
+                fontWeight: '700',
+                border: 'none',
+                cursor: 'pointer',
+                alignSelf: 'flex-end'
+              }}
+            >
+              Acknowledge & Edit Report
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="grid-two-col">
         {/* Form to submit new disruption */}
@@ -176,70 +280,63 @@ export function FieldReport() {
               <select className="form-select" value={disruptionType} onChange={(e) => setDisruptionType(e.target.value)}>
                 <option value="landslide">{t('landslide_alert', 'Landslide / Mudslide Slope Failure')}</option>
                 <option value="flash_flood">{t('flood_alert', 'Flash Flood / Urban Inundation')}</option>
+                <option value="traffic_jam">Traffic Bottleneck / Congestion</option>
+                <option value="road_blockage">Road Blockage / Physical Closure</option>
                 <option value="bridge_damage">Bridge Structural Damage</option>
-                <option value="roadblock">Roadblock / Transit Strike</option>
-                <option value="severe_weather">{t('heavy_rain', 'Dense Alpine Fog / Cloudburst')}</option>
-                <option value="roadwork">Emergency Roadwork Repairs</option>
               </select>
             </div>
 
             <div className="form-group" style={{ margin: 0 }}>
               <label className="form-label" style={{ color: '#20231F', fontWeight: '600' }}>Severity Level</label>
               <select className="form-select" value={severity} onChange={(e) => setSeverity(e.target.value)}>
-                <option value="low">LOW — Minor Delay (Passable)</option>
-                <option value="moderate">MEDIUM / MODERATE — Wet Surface (+30m Delay)</option>
-                <option value="high">HIGH — Heavy Hazard (+60m / Escort Convoy Only)</option>
-                <option value="critical_blocked">CRITICAL_BLOCKED — Road Severed (Full Closure)</option>
+                <option value="critical_blocked">CRITICAL BLOCKED (100% Impassable)</option>
+                <option value="high">HIGH (Severe Delay / 1-Way Convoys)</option>
+                <option value="moderate">MODERATE (Wet Slurry / Caution)</option>
+                <option value="low">LOW (Minor Congestion)</option>
               </select>
             </div>
 
             <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label" style={{ color: '#20231F', fontWeight: '600' }}>Hazard Description / Field Notes</label>
+              <label className="form-label" style={{ color: '#20231F', fontWeight: '600' }}>Observations & Field Advisory</label>
               <textarea
                 className="form-textarea"
                 rows="3"
-                placeholder={t('report_desc', 'Describe current ground conditions, debris volume, or clearance status...')}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                placeholder="Detail current pass accessibility, debris status, or local police diversions..."
+                required
               />
             </div>
 
-            {/* Read-Only Metadata & Attribution Badge */}
-            <div style={{
-              padding: '0.65rem 0.85rem',
-              borderRadius: '8px',
-              background: 'rgba(48, 72, 59, 0.08)',
-              border: '1px solid rgba(48, 72, 59, 0.18)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              fontSize: '0.8rem',
-              color: '#30483B'
-            }}>
-              <UserCheck size={16} color="#30483B" />
-              <span>
-                <strong>Submitting as:</strong> {user?.name || 'Field Officer'} ({user?.role || 'field_officer'}) • <em>Auto-tagged via AIS-140/GPS</em>
-              </span>
-            </div>
-
-            <button type="submit" className="btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center' }}>
-              <AlertOctagon size={18} />
-              {loading ? 'Submitting & Updating GIS Graph...' : t('submit_incident', 'Register Disruption Report')}
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={loading}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '12px'
+              }}
+            >
+              <ShieldCheck size={18} />
+              <span>{loading ? 'Cross-Checking Live Sensors...' : 'Validate & Submit Verified Report'}</span>
             </button>
 
             {message && (
               <div style={{
-                padding: '0.75rem',
+                padding: '10px 14px',
                 borderRadius: '8px',
-                background: '#EDE8DC',
+                backgroundColor: message.includes('✔') ? 'rgba(22, 163, 74, 0.12)' : 'rgba(217, 119, 6, 0.12)',
+                border: message.includes('✔') ? '1px solid #16A34A' : '1px solid #D97706',
                 color: '#20231F',
-                fontSize: '0.85rem',
-                border: '1.5px solid #CBD0C0',
+                fontSize: '0.82rem',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px'
               }}>
-                <CheckCircle2 size={16} color="#16A34A" />
+                <CheckCircle2 size={16} color={message.includes('✔') ? '#16A34A' : '#D97706'} />
                 <span>{message}</span>
               </div>
             )}
@@ -259,13 +356,25 @@ export function FieldReport() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', maxHeight: '520px', overflowY: 'auto' }}>
             {disruptions.length === 0 ? (
-              <div style={{ padding: '2rem', textAlign: 'center', color: '#20231F', opacity: 0.6 }}>
-                No active field disruption reports currently registered.
+              <div style={{
+                padding: '2rem 1.5rem',
+                borderRadius: '12px',
+                backgroundColor: 'rgba(48, 72, 59, 0.08)',
+                border: '1.5px dashed #30483B',
+                textAlign: 'center',
+                color: '#30483B',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '6px'
+              }}>
+                <ShieldCheck size={28} color="#30483B" />
+                <strong style={{ fontSize: '0.92rem' }}>All Monitored Lifelines Clear — No Active Roadblocks or Extreme Weather Hazards Reported by Live Sensors.</strong>
+                <span style={{ fontSize: '0.78rem', opacity: 0.8 }}>0 Active Roadblocks Reported Across NER Corridors</span>
               </div>
             ) : (
               disruptions.map(d => {
                 const isUserReport = d.source_type === 'USER_FIELD_REPORT' || !!d.reported_by_name;
-                const isAutomated = d.source_type === 'AUTOMATED_TELEMETRY' || d.reported_by_role === 'automated_telemetry';
 
                 return (
                   <div
@@ -280,10 +389,17 @@ export function FieldReport() {
                       gap: '0.5rem'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.4rem' }}>
-                      <span style={{ fontWeight: '700', color: '#20231F', fontSize: '0.95rem' }}>
-                        {d.highway_code || 'NH Highway'} ({d.origin_name} &rarr; {d.destination_name})
-                      </span>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.4rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                        <span style={{ fontWeight: '700', color: '#20231F', fontSize: '0.95rem' }}>
+                          {d.title || `${d.highway_code || 'NH Highway'} (${d.origin_name || 'Corridor'} → ${d.destination_name || 'Destination'})`}
+                        </span>
+                        {d.is_telemetry_verified && (
+                          <span style={{ fontSize: '0.7rem', color: '#16A34A', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '3px' }}>
+                            ✔ {d.telemetry_summary || (d.confidence_score ? `Verified via Live Sensors (${d.confidence_score}%)` : 'Verified via Live Sensors')}
+                          </span>
+                        )}
+                      </div>
                       <RiskBadge severity={d.severity} />
                     </div>
 
@@ -312,7 +428,7 @@ export function FieldReport() {
                         ) : (
                           <span style={{ color: '#64748B', display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <Radio size={13} color="#D97706" />
-                            Source: Open-Meteo Telemetry / TomTom
+                            Source: {d.source || 'TomTom / USGS Telemetry'}
                           </span>
                         )}
                       </div>

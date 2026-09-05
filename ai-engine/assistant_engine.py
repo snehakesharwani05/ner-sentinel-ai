@@ -24,7 +24,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 
 STRICT_REFUSAL_MESSAGE = (
     "I am Bhumika, your AI Operations Commander. I can only assist you with the 4 core sections "
-    "of NER Sentinel AI: Command Dashboard, Convoy Telematics (AIS-140), Route Intelligence, "
+    "of PurvaSetu: Command Dashboard, Convoy Telematics (AIS-140), Route Intelligence, "
     "Hazard Simulation Studio, and Field Incident Report. How can I help you within these operations?"
 )
 
@@ -107,7 +107,7 @@ class BhumikaOperationsCopilot:
             try:
                 system_instruction = f"""
 Role & Strict Behavioral Directives:
-You are "Bhumika", the production-grade AI Operations Commander for **NER Sentinel AI**. Your sole purpose is to assist command-center operators by explaining the 4 application sections, guiding them on their usage, tracking supply convoys, and providing route/disaster intelligence across the 8 North-Eastern states.
+You are "Bhumika", the production-grade AI Operations Commander for **PurvaSetu**. Your sole purpose is to assist command-center operators by explaining the 4 application sections, guiding them on their usage, tracking supply convoys, and providing route/disaster intelligence across the 8 North-Eastern states.
 
 STRICT BOUNDARY ENFORCEMENT:
 - You are strictly restricted to answering questions related to the application's 4 core sections, fleet tracking, route guidance, and disaster alerts.
@@ -234,7 +234,7 @@ Navigate to **Convoy Telematics (AIS-140)**, select `{v_reg}`, and click **'Exec
         greeting_words = ["hi", "hello", "hey", "namaste", "namaskar", "nomoskar", "khublei", "chibai", "khurumjari", "good morning", "good evening", "how are you", "kemon acho", "ki khobor", "kaise ho", "নমস্কাৰ", "নমস্কার", "नमस्ते", "খুরুমজরি"]
         if word_count <= 5 and any(w in q for w in greeting_words):
             greetings = {
-                "en": f"""Namaste! I am **Bhumika**, your AI Operations Commander for **NER Sentinel AI**.
+                "en": f"""Namaste! I am **Bhumika**, your AI Operations Commander for **PurvaSetu**.
 
 I am standing by to assist you. You are currently viewing the **{section}** section.
 
@@ -246,7 +246,7 @@ I am standing by to assist you. You are currently viewing the **{section}** sect
 
 How can I assist your mission within these 4 sections?""",
 
-                "as": f"""নমস্কাৰ! মই **ভূমিকা (Bhumika)**, **NER Sentinel AI**-ৰ আপোনাৰ AI অপাৰেচন কমাণ্ডাৰ।
+                "as": f"""নমস্কাৰ! মই **ভূমিকা (Bhumika)**, **PurvaSetu**-ৰ আপোনাৰ AI অপাৰেচন কমাণ্ডাৰ।
 
 মই আপোনাক সহায় কৰিবলৈ সাজু। আপুনি এতিয়া **{section}** পেনেল চাই আছে।
 
@@ -258,7 +258,7 @@ How can I assist your mission within these 4 sections?""",
 
 মই আপোনাক কিদৰে সহায় কৰিব পাৰো?""",
 
-                "bn": f"""নমস্কার! আমি **ভূমিকা (Bhumika)**, **NER Sentinel AI**-এর আপনার এআই অপারেশনস কমান্ডার।
+                "bn": f"""নমস্কার! আমি **ভূমিকা (Bhumika)**, **PurvaSetu**-এর আপনার এআই অপারেশনস কমান্ডার।
 
 আমি আপনাকে সহায়তা করতে প্রস্তুত। আপনি বর্তমানে **{section}** সেকশন দেখছেন।
 
@@ -270,7 +270,7 @@ How can I assist your mission within these 4 sections?""",
 
 কীভাবে সাহায্য করতে পারি?""",
 
-                "hi": f"""नमस्ते! मैं **भूमिका (Bhumika)** हूँ, **NER Sentinel AI** की आपकी AI ऑपरेशंस कमांडर।
+                "hi": f"""नमस्ते! मैं **भूमिका (Bhumika)** हूँ, **PurvaSetu** की आपकी AI ऑपरेशंस कमांडर।
 
 मैं आपकी सहायता के लिए तैयार हूँ। आप वर्तमान में **{section}** सेक्शन देख रहे हैं।
 
@@ -288,7 +288,7 @@ How can I assist your mission within these 4 sections?""",
         # 4. EXPLAIN ALL 4 CORE SECTIONS
         # =========================================================================
         if any(w in q for w in ["all section", "all 4", "4 section", "4 core", "four section", "four core", "explain section", "explain app", "what is this app", "how to use app", "overview", "core section", "sections", "architecture", "সকল সেকশন", "সব সেকশন", "সকল বিভাগ", "সকল ৪টা", "সকল ৪টি", "সকল ৪", "सभी सेक्शन", "चारों सेक्शन"]):
-            return """**[NER Sentinel AI — The 4 Core Application Sections]**
+            return """**[PurvaSetu — The 4 Core Application Sections]**
 
 ---
 
@@ -381,7 +381,7 @@ Simulating extreme weather triggers (such as rainfall spikes via Open-Meteo) and
         # =========================================================================
         # If query contains any keywords related to routes, landslides, weather, convoys, or states:
         if any(w in q for w in ["assam", "meghalaya", "arunachal", "manipur", "mizoram", "nagaland", "tripura", "sikkim", "nh-6", "nh-37", "sela", "sonapur", "weather", "landslide", "flood", "fuel", "diesel", "oxygen"]):
-            return f"""**[NER Sentinel AI Operations Guidance]**
+            return f"""**[PurvaSetu Operations Guidance]**
 
 Regarding your query: **"{query}"**
 

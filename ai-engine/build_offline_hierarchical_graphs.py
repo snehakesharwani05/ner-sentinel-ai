@@ -158,6 +158,28 @@ def douglas_peucker(coords, epsilon=0.0001):
     else:
         return [coords[0], coords[-1]]
 
+def to_radians(degrees):
+    return (degrees * math.pi) / 180.0
+
+def haversine_distance_km(lat1, lon1, lat2, lon2):
+    dLat = to_radians(lat2 - lat1)
+    dLon = to_radians(lon2 - lon1)
+    a = math.sin(dLat / 2.0) ** 2 + math.cos(to_radians(lat1)) * math.cos(to_radians(lat2)) * math.sin(dLon / 2.0) ** 2
+    c = 2.0 * math.atan2(math.sqrt(a), math.sqrt(1.0 - a))
+    return 6371.0 * c
+
+def get_road_hierarchy_weight(hw: str) -> float:
+    """Road Hierarchy-Aware Cost Metrics to prioritize National/Asian Highways over rural shortcuts."""
+    hw_upper = str(hw).upper()
+    if "AH" in hw_upper or "EXPRESSWAY" in hw_upper or "NH" in hw_upper:
+        return 0.85
+    elif "SH" in hw_upper or "STATE HIGHWAY" in hw_upper:
+        return 1.0
+    elif "MDR" in hw_upper or "MAJOR DISTRICT" in hw_upper:
+        return 1.25
+    else:
+        return 1.85
+
 def get_speed_for_highway(hw: str, terrain: str) -> float:
     hw_upper = str(hw).upper()
     if "AH" in hw_upper or "EXPRESSWAY" in hw_upper:
@@ -179,17 +201,54 @@ def get_speed_for_highway(hw: str, terrain: str) -> float:
         speed *= 0.85
     return max(15.0, round(speed, 1))
 
-def calculate_safest_cost(distance_km: float, speed_kmh: float, terrain: str, slope_deg: float, flood_risk: float, is_urban: bool) -> float:
-    base_time_min = (distance_km / max(10.0, speed_kmh)) * 60.0
+def calculate_calibrated_edge_costs(u_loc: dict, v_loc: dict, dist_km: float, hw: str, terrain: str, slope_deg: float, flood_risk: float, is_urban: bool):
+    """
+    Computes elevation gradient, tortuosity curvature, hierarchy-weighted fastest impedance,
+    and hazard-mitigated safest cost.
+    """
+    elev_u = float(u_loc.get("elevation_m", 100))
+    elev_v = float(v_loc.get("elevation_m", 100))
+    delta_h = abs(elev_v - elev_u)
     
-    # Terrain & Slope weights
+    # 1. Elevation-Informed Gradient Factor
+    gradient_factor = 1.0 + (delta_h / max(500.0, dist_km * 1000.0)) * 1.8
+    
+    # 2. Tortuosity Curvature Penalty
+    u_lat = float(u_loc.get("lat", u_loc.get("latitude", 26.0)))
+    u_lng = float(u_loc.get("lng", u_loc.get("longitude", 92.0)))
+    v_lat = float(v_loc.get("lat", v_loc.get("latitude", 26.0)))
+    v_lng = float(v_loc.get("lng", v_loc.get("longitude", 92.0)))
+    straight_dist_km = max(0.5, haversine_distance_km(u_lat, u_lng, v_lat, v_lng))
+    tortuosity = min(3.5, max(1.0, dist_km / straight_dist_km))
+    
+    # 3. Effective Speed with Tortuosity Winding Penalty
+    baseline_speed = get_speed_for_highway(hw, terrain)
+    effective_speed = baseline_speed / max(1.0, tortuosity * 0.85)
+    
+    # 4. Road Hierarchy Weight
+    hierarchy_weight = get_road_hierarchy_weight(hw)
+    
+    # 5. Fastest Cost (Impedance minutes)
+    fastest_time_min = round((dist_km / max(10.0, effective_speed)) * 60.0 * hierarchy_weight * gradient_factor, 1)
+    
+    # 6. Safest Resilient Cost
     terrain_weight = 0.8 if terrain == "high_pass" else (0.45 if terrain == "steep_mountain" else (0.2 if terrain == "hilly" else 0.0))
     slope_weight = min(0.6, (slope_deg / 25.0) * 0.5)
     flood_weight = flood_risk * 0.8
     urban_bonus = 0.20 if is_urban else 0.0
     
-    cost_factor = 1.0 + terrain_weight + slope_weight + flood_weight - urban_bonus
-    return round(base_time_min * max(0.5, cost_factor), 2)
+    safest_factor = 1.0 + terrain_weight + slope_weight + flood_weight - urban_bonus
+    safest_cost = round((dist_km / max(10.0, effective_speed)) * 60.0 * safest_factor * gradient_factor, 1)
+    
+    return {
+        "delta_h": delta_h,
+        "gradient_factor": round(gradient_factor, 3),
+        "tortuosity": round(tortuosity, 3),
+        "effective_speed_kmh": round(effective_speed, 1),
+        "hierarchy_weight": hierarchy_weight,
+        "fastest_time_min": fastest_time_min,
+        "safest_cost": safest_cost
+    }
 
 def build_offline_graphs():
     state_folders = [d for d in os.listdir(MODEL_DATA_DIR) if (MODEL_DATA_DIR / d).is_dir()]
@@ -249,9 +308,7 @@ def build_offline_graphs():
             v_loc = all_locations.get(v, {})
             is_urban = bool(u_loc.get("is_urban") or v_loc.get("is_urban") or u_loc.get("location_type") in ('state_capital', 'district_hq', 'logistics_hub') or v_loc.get("location_type") in ('state_capital', 'district_hq', 'logistics_hub'))
             
-            speed = get_speed_for_highway(hw, terrain)
-            fastest_time_min = round((dist / speed) * 60.0, 1)
-            safest_cost = calculate_safest_cost(dist, speed, terrain, slope, flood_risk, is_urban)
+            costs = calculate_calibrated_edge_costs(u_loc, v_loc, dist, hw, terrain, slope, flood_risk, is_urban)
             
             # Polyline coordinates with Douglas-Peucker simplification
             raw_coords = [[u_loc.get("lat", 26.0), u_loc.get("lng", 92.0)], [v_loc.get("lat", 26.0), v_loc.get("lng", 92.0)]]
@@ -267,9 +324,13 @@ def build_offline_graphs():
                 "terrain": terrain,
                 "slope_deg": slope,
                 "condition": cond,
-                "speed_kmh": speed,
-                "fastest_time_min": fastest_time_min,
-                "safest_cost": safest_cost,
+                "speed_kmh": costs["effective_speed_kmh"],
+                "delta_h": costs["delta_h"],
+                "gradient_factor": costs["gradient_factor"],
+                "tortuosity": costs["tortuosity"],
+                "hierarchy_weight": costs["hierarchy_weight"],
+                "fastest_time_min": costs["fastest_time_min"],
+                "safest_cost": costs["safest_cost"],
                 "is_urban": is_urban,
                 "coordinates": clean_coords
             }
@@ -339,12 +400,11 @@ def build_offline_graphs():
         cond = b["condition"]
         gw = b["gateway"]
         
-        speed = get_speed_for_highway(hw, terrain)
-        fastest_time_min = round((dist / speed) * 60.0, 1)
-        safest_cost = calculate_safest_cost(dist, speed, terrain, slope, 0.15, True)
-        
         u_loc = all_locations.get(u, {})
         v_loc = all_locations.get(v, {})
+        
+        costs = calculate_calibrated_edge_costs(u_loc, v_loc, dist, hw, terrain, slope, 0.15, True)
+        
         raw_coords = [[u_loc.get("lat", 26.0), u_loc.get("lng", 92.0)], [v_loc.get("lat", 26.0), v_loc.get("lng", 92.0)]]
         clean_coords = douglas_peucker(raw_coords, epsilon=0.0001)
         
@@ -358,9 +418,13 @@ def build_offline_graphs():
             "terrain": terrain,
             "slope_deg": slope,
             "condition": cond,
-            "speed_kmh": speed,
-            "fastest_time_min": fastest_time_min,
-            "safest_cost": safest_cost,
+            "speed_kmh": costs["effective_speed_kmh"],
+            "delta_h": costs["delta_h"],
+            "gradient_factor": costs["gradient_factor"],
+            "tortuosity": costs["tortuosity"],
+            "hierarchy_weight": costs["hierarchy_weight"],
+            "fastest_time_min": costs["fastest_time_min"],
+            "safest_cost": costs["safest_cost"],
             "is_urban": True,
             "is_inter_state_bridge": True,
             "gateway": gw,
@@ -414,26 +478,39 @@ def build_offline_graphs():
         speed = seg.get("speed_kmh", 50)
         time_min = seg.get("fastest_time_min", round((dist / max(10, speed)) * 60, 1))
 
+        edge_data_forward = {
+            "to": v,
+            "dist": dist,
+            "risk": risk,
+            "highway": hw,
+            "speed_kmh": speed,
+            "time_min": time_min,
+            "fastest_cost": seg.get("fastest_time_min", time_min),
+            "safest_cost": seg.get("safest_cost", time_min),
+            "hierarchy_weight": seg.get("hierarchy_weight", 1.0),
+            "gradient_factor": seg.get("gradient_factor", 1.0),
+            "tortuosity": seg.get("tortuosity", 1.0),
+            "terrain": seg.get("terrain", "plain")
+        }
+        edge_data_reverse = {
+            "to": u,
+            "dist": dist,
+            "risk": risk,
+            "highway": hw,
+            "speed_kmh": speed,
+            "time_min": time_min,
+            "fastest_cost": seg.get("fastest_time_min", time_min),
+            "safest_cost": seg.get("safest_cost", time_min),
+            "hierarchy_weight": seg.get("hierarchy_weight", 1.0),
+            "gradient_factor": seg.get("gradient_factor", 1.0),
+            "tortuosity": seg.get("tortuosity", 1.0),
+            "terrain": seg.get("terrain", "plain")
+        }
+
         if u in stitched_adj:
-            stitched_adj[u].push if hasattr(stitched_adj[u], 'push') else stitched_adj[u].append({
-                "to": v,
-                "dist": dist,
-                "risk": risk,
-                "highway": hw,
-                "speed_kmh": speed,
-                "time_min": time_min,
-                "terrain": seg.get("terrain", "plain")
-            })
+            stitched_adj[u].append(edge_data_forward)
         if v in stitched_adj:
-            stitched_adj[v].push if hasattr(stitched_adj[v], 'push') else stitched_adj[v].append({
-                "to": u,
-                "dist": dist,
-                "risk": risk,
-                "highway": hw,
-                "speed_kmh": speed,
-                "time_min": time_min,
-                "terrain": seg.get("terrain", "plain")
-            })
+            stitched_adj[v].append(edge_data_reverse)
 
     stitched_graph = {
         "nodes": stitched_nodes,

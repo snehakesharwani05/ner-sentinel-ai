@@ -65,7 +65,22 @@ class MinPriorityQueue {
   }
 }
 
-// 4. A* Search Engine with Admissible Haversine Heuristic
+// Helper: Road Hierarchy Weighting Table
+function getHierarchyWeight(highwayType) {
+  const hw = (highwayType || '').toUpperCase();
+  if (hw.includes('NH') || hw.includes('AH') || hw.includes('NATIONAL') || hw.includes('EXPRESSWAY')) {
+    return 0.85; // Preferred for heavy logistics & speed
+  }
+  if (hw.includes('SH') || hw.includes('STATE')) {
+    return 1.00; // Standard state arterial
+  }
+  if (hw.includes('MDR') || hw.includes('DISTRICT')) {
+    return 1.25; // Secondary district link
+  }
+  return 1.85; // Rural / Unclassified tracks heavily penalized
+}
+
+// 4. A* Search Engine with Admissible Heuristic & Elliptical Corridor Bounding
 function runAStar(nodesDict, adjList, startNode, goalNode, options = {}) {
   const {
     costMode = 'fastest', // 'fastest' | 'safest'
@@ -80,16 +95,24 @@ function runAStar(nodesDict, adjList, startNode, goalNode, options = {}) {
     return [startNode];
   }
 
+  const startCoords = nodesDict[startNode];
+  const startLat = Array.isArray(startCoords) ? startCoords[0] : (startCoords.lat ?? startCoords.latitude);
+  const startLng = Array.isArray(startCoords) ? startCoords[1] : (startCoords.lng ?? startCoords.longitude);
+
   const goalCoords = nodesDict[goalNode];
   const goalLat = Array.isArray(goalCoords) ? goalCoords[0] : (goalCoords.lat ?? goalCoords.latitude);
   const goalLng = Array.isArray(goalCoords) ? goalCoords[1] : (goalCoords.lng ?? goalCoords.longitude);
 
+  // Total origin-to-destination straight distance for elliptical corridor bounding
+  const totalDirectDistKm = haversineDistanceKm(startLat, startLng, goalLat, goalLng);
+  // Elliptical corridor limit: 1.30x with a 45km buffer for mountainous switchbacks
+  const ellipticalLimitKm = Math.max(totalDirectDistKm * 1.30, totalDirectDistKm + 45.0);
+
   const frontier = new MinPriorityQueue();
-  frontier.enqueue(startNode, 0);
 
   const cameFrom = {};
-  const gScore = {}; // Cost from start along best known path
-  const fScore = {}; // Estimated total cost: gScore + heuristic
+  const gScore = {}; // Cost from start along best known path (in minutes)
+  const fScore = {}; // Estimated total cost: gScore + admissible heuristic
 
   for (const nodeId of Object.keys(nodesDict)) {
     gScore[nodeId] = Infinity;
@@ -97,13 +120,10 @@ function runAStar(nodesDict, adjList, startNode, goalNode, options = {}) {
   }
 
   gScore[startNode] = 0;
-  const startDistToGoal = haversineDistanceKm(
-    Array.isArray(nodesDict[startNode]) ? nodesDict[startNode][0] : nodesDict[startNode].lat,
-    Array.isArray(nodesDict[startNode]) ? nodesDict[startNode][1] : nodesDict[startNode].lng,
-    goalLat,
-    goalLng
-  );
-  fScore[startNode] = startDistToGoal;
+  // Strictly admissible heuristic (never overestimates travel cost in minutes: 80 km/h max speed, 0.85 hierarchy weight)
+  const initialH = (totalDirectDistKm / 80.0) * 60.0 * 0.85;
+  fScore[startNode] = initialH;
+  frontier.enqueue(startNode, initialH);
 
   const visited = new Set();
 
@@ -121,24 +141,50 @@ function runAStar(nodesDict, adjList, startNode, goalNode, options = {}) {
       const neighbor = edge.to || edge.v || edge.destination;
       if (visited.has(neighbor)) continue;
 
+      const neighborCoords = nodesDict[neighbor];
+      if (!neighborCoords) continue;
+
+      const nLat = Array.isArray(neighborCoords) ? neighborCoords[0] : (neighborCoords.lat ?? neighborCoords.latitude);
+      const nLng = Array.isArray(neighborCoords) ? neighborCoords[1] : (neighborCoords.lng ?? neighborCoords.longitude);
+
+      // Directive 4: Dynamic Corridor Bounding (Elliptical Search Space)
+      // Dist(neighbor, origin) + Dist(neighbor, destination) <= 1.30 * Dist(origin, destination)
+      const distFromStart = haversineDistanceKm(startLat, startLng, nLat, nLng);
+      const distToGoal = haversineDistanceKm(nLat, nLng, goalLat, goalLng);
+
+      if ((distFromStart + distToGoal) > ellipticalLimitKm) {
+        continue; // Skip node outside the elliptical corridor
+      }
+
       const dist = Number(edge.dist ?? edge.distance_km ?? 10);
       const risk = Number(edge.risk ?? edge.disaster_risk_score ?? 0.1);
+      const highwayType = edge.highway || 'NH';
 
-      // Edge penalty check (for forced divergence on safest route)
+      // Elevation & Curvature Calibrated Edge Cost
+      let stepCost = 0;
+      if (edge.fastest_cost !== undefined && edge.safest_cost !== undefined) {
+        stepCost = costMode === 'safest' ? Number(edge.safest_cost) : Number(edge.fastest_cost);
+      } else {
+        // Compute dynamically if not pre-cached in edge object
+        const hierWeight = getHierarchyWeight(highwayType);
+        const baselineSpeed = Number(edge.speed_kmh ?? 50);
+        const tortuosity = Number(edge.tortuosity ?? 1.15);
+        const effectiveSpeed = baselineSpeed / Math.max(1.0, tortuosity * 0.85);
+        const gradientFactor = Number(edge.gradient_factor ?? 1.05);
+
+        const transitTimeMin = (dist / Math.max(15, effectiveSpeed)) * 60.0 * gradientFactor;
+        const fastestCost = transitTimeMin * hierWeight;
+        const safestCost = fastestCost * (1.0 + risk * 2.8);
+
+        stepCost = costMode === 'safest' ? safestCost : fastestCost;
+      }
+
+      // Edge penalty check (for route divergence on safest route)
       const edgeKeyForward = `${current}->${neighbor}`;
       const edgeKeyReverse = `${neighbor}->${current}`;
       const isPenalized = penalizedEdges.has(edgeKeyForward) || penalizedEdges.has(edgeKeyReverse);
-      const edgeMultiplier = isPenalized ? penaltyMultiplier : 1.0;
-
-      // Evaluation cost
-      let stepCost = dist;
-      if (costMode === 'safest') {
-        // Weight(u, v) = dist * (1.0 + risk * 2.0) * penalty
-        stepCost = dist * (1.0 + risk * 2.0) * edgeMultiplier;
-      } else {
-        // Fastest speed evaluation (time-proportional)
-        const speed = Number(edge.speed_kmh ?? 50);
-        stepCost = (dist / Math.max(15, speed)) * 60.0;
+      if (isPenalized) {
+        stepCost *= penaltyMultiplier;
       }
 
       const tentativeGScore = gScore[current] + stepCost;
@@ -147,12 +193,11 @@ function runAStar(nodesDict, adjList, startNode, goalNode, options = {}) {
         cameFrom[neighbor] = current;
         gScore[neighbor] = tentativeGScore;
 
-        const neighborCoords = nodesDict[neighbor];
-        const nLat = Array.isArray(neighborCoords) ? neighborCoords[0] : (neighborCoords.lat ?? neighborCoords.latitude);
-        const nLng = Array.isArray(neighborCoords) ? neighborCoords[1] : (neighborCoords.lng ?? neighborCoords.longitude);
-        const heuristic = haversineDistanceKm(nLat, nLng, goalLat, goalLng);
+        // Directive 3: Strictly Admissible A* Heuristic
+        // h(n) = (Haversine(n, goal) / max(HighwaySpeeds)) * 60.0 * min(HierarchyWeight)
+        const heuristicMin = (distToGoal / 80.0) * 60.0 * 0.85;
 
-        fScore[neighbor] = tentativeGScore + heuristic;
+        fScore[neighbor] = tentativeGScore + heuristicMin;
         frontier.enqueue(neighbor, fScore[neighbor]);
       }
     }

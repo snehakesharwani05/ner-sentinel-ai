@@ -289,6 +289,26 @@ p, span, div, li, td, th, label {
 /* ==========================================================================
    Ticker Marquee (Auto-Scrolling Lifeline Ribbon)
    ========================================================================== */
+@keyframes tickerMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.lifeline-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerMarquee 32s linear infinite;
+  will-change: transform;
+}
+
+.lifeline-ticker-track:hover {
+  animation-play-state: paused;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -301,7 +321,7 @@ p, span, div, li, td, th, label {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: tickerMarquee 32s linear infinite;
   will-change: transform;
 }
 

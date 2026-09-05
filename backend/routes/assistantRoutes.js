@@ -43,10 +43,10 @@ router.post('/query', (req, res) => {
     const { query, current_section, preferred_language } = req.body;
     res.json({
       success: true,
-      source: 'Backend Sentinel Fallback Gateway (Zero-Downtime Pipeline)',
+      source: 'Backend PurvaSetu Fallback Gateway (Zero-Downtime Pipeline)',
       language: preferred_language || 'English',
       current_section: current_section || 'Dashboard',
-      response: `[NER Sentinel AI Assistant - ${current_section || 'Dashboard'}]\n\nRegarding your inquiry "${query}": The operational grid is continuously monitoring 46 multimodal nodes across all 8 North Eastern states with live ISRO Bhuvan satellite synchronization, AIS-140 GPS telematics, and automated A* geotechnical bypass rerouting.`
+      response: `[PurvaSetu AI Assistant - ${current_section || 'Dashboard'}]\n\nRegarding your inquiry "${query}": The operational grid is continuously monitoring 46 multimodal nodes across all 8 North Eastern states with live ISRO Bhuvan satellite synchronization, AIS-140 GPS telematics, and automated A* geotechnical bypass rerouting.`
     });
   });
 
