@@ -1,0 +1,504 @@
+export const MANIPUR_DENSE_GRAPH = {
+  "state": "Manipur",
+  "state_key": "manipur",
+  "node_count": 12,
+  "edge_count": 13,
+  "nodes": [
+    {
+      "id": 27,
+      "name": "Senapati",
+      "state": "Manipur",
+      "district": "Senapati",
+      "latitude": 25.2683,
+      "longitude": 94.0186,
+      "lat": 25.2683,
+      "lng": 94.0186,
+      "elevation_m": 1100,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.35
+    },
+    {
+      "id": 28,
+      "name": "Imphal",
+      "state": "Manipur",
+      "district": "Imphal West",
+      "latitude": 24.817,
+      "longitude": 93.9368,
+      "lat": 24.817,
+      "lng": 93.9368,
+      "elevation_m": 786,
+      "location_type": "state_capital",
+      "is_urban": 1,
+      "risk_score": 0.12
+    },
+    {
+      "id": 29,
+      "name": "Churachandpur",
+      "state": "Manipur",
+      "district": "Churachandpur",
+      "latitude": 24.3333,
+      "longitude": 93.6833,
+      "lat": 24.3333,
+      "lng": 93.6833,
+      "elevation_m": 914,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.25
+    },
+    {
+      "id": 30,
+      "name": "Jiribam",
+      "state": "Manipur",
+      "district": "Jiribam",
+      "latitude": 24.8014,
+      "longitude": 93.1186,
+      "lat": 24.8014,
+      "lng": 93.1186,
+      "elevation_m": 42,
+      "location_type": "border_checkpost",
+      "is_urban": 1,
+      "risk_score": 0.2
+    },
+    {
+      "id": 62,
+      "name": "Ukhrul",
+      "state": "Manipur",
+      "district": "Ukhrul",
+      "latitude": 25.1167,
+      "longitude": 94.3667,
+      "lat": 25.1167,
+      "lng": 94.3667,
+      "elevation_m": 1662,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.4
+    },
+    {
+      "id": 63,
+      "name": "Thoubal",
+      "state": "Manipur",
+      "district": "Thoubal",
+      "latitude": 24.6333,
+      "longitude": 93.9833,
+      "lat": 24.6333,
+      "lng": 93.9833,
+      "elevation_m": 775,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 64,
+      "name": "Bishnupur",
+      "state": "Manipur",
+      "district": "Bishnupur",
+      "latitude": 24.63,
+      "longitude": 93.76,
+      "lat": 24.63,
+      "lng": 93.76,
+      "elevation_m": 790,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 65,
+      "name": "Kakching",
+      "state": "Manipur",
+      "district": "Kakching",
+      "latitude": 24.48,
+      "longitude": 93.98,
+      "lat": 24.48,
+      "lng": 93.98,
+      "elevation_m": 776,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 66,
+      "name": "Moreh",
+      "state": "Manipur",
+      "district": "Tengnoupal",
+      "latitude": 24.25,
+      "longitude": 94.3,
+      "lat": 24.25,
+      "lng": 94.3,
+      "elevation_m": 220,
+      "location_type": "border_checkpost",
+      "is_urban": 1,
+      "risk_score": 0.35
+    },
+    {
+      "id": 121,
+      "name": "Kangpokpi",
+      "state": "Manipur",
+      "district": "Kangpokpi",
+      "latitude": 25.15,
+      "longitude": 93.97,
+      "lat": 25.15,
+      "lng": 93.97,
+      "elevation_m": 1050,
+      "location_type": "subdivision_town",
+      "is_urban": 0,
+      "risk_score": 0.3
+    },
+    {
+      "id": 122,
+      "name": "Moirang",
+      "state": "Manipur",
+      "district": "Bishnupur",
+      "latitude": 24.5,
+      "longitude": 93.77,
+      "lat": 24.5,
+      "lng": 93.77,
+      "elevation_m": 770,
+      "location_type": "market_center",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 123,
+      "name": "Noney",
+      "state": "Manipur",
+      "district": "Noney",
+      "latitude": 24.83,
+      "longitude": 93.6,
+      "lat": 24.83,
+      "lng": 93.6,
+      "elevation_m": 450,
+      "location_type": "highway_junction",
+      "is_urban": 0,
+      "risk_score": 0.55
+    }
+  ],
+  "edges": [
+    {
+      "u": "Silchar",
+      "v": "Jiribam",
+      "origin": "Silchar",
+      "destination": "Jiribam",
+      "distance_km": 50.0,
+      "highway": "NH-37",
+      "terrain": "plain",
+      "slope_deg": 2.0,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 50.0,
+      "safest_cost": 46.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.8333,
+          92.7789
+        ],
+        [
+          24.8014,
+          93.1186
+        ]
+      ]
+    },
+    {
+      "u": "Jiribam",
+      "v": "Noney",
+      "origin": "Jiribam",
+      "destination": "Noney",
+      "distance_km": 110.0,
+      "highway": "NH-37",
+      "terrain": "steep_mountain",
+      "slope_deg": 13.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 157.1,
+      "safest_cost": 249.86,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.8014,
+          93.1186
+        ],
+        [
+          24.83,
+          93.6
+        ]
+      ]
+    },
+    {
+      "u": "Noney",
+      "v": "Imphal",
+      "origin": "Noney",
+      "destination": "Imphal",
+      "distance_km": 60.0,
+      "highway": "NH-37",
+      "terrain": "steep_mountain",
+      "slope_deg": 10.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 85.7,
+      "safest_cost": 131.14,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.83,
+          93.6
+        ],
+        [
+          24.817,
+          93.9368
+        ]
+      ]
+    },
+    {
+      "u": "Kohima",
+      "v": "Senapati",
+      "origin": "Kohima",
+      "destination": "Senapati",
+      "distance_km": 80.0,
+      "highway": "NH-2",
+      "terrain": "steep_mountain",
+      "slope_deg": 11.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 114.3,
+      "safest_cost": 177.14,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.0,
+          92.0
+        ],
+        [
+          25.2683,
+          94.0186
+        ]
+      ]
+    },
+    {
+      "u": "Senapati",
+      "v": "Kangpokpi",
+      "origin": "Senapati",
+      "destination": "Kangpokpi",
+      "distance_km": 25.0,
+      "highway": "NH-2",
+      "terrain": "hilly",
+      "slope_deg": 6.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 29.4,
+      "safest_cost": 35.29,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.2683,
+          94.0186
+        ],
+        [
+          25.15,
+          93.97
+        ]
+      ]
+    },
+    {
+      "u": "Kangpokpi",
+      "v": "Imphal",
+      "origin": "Kangpokpi",
+      "destination": "Imphal",
+      "distance_km": 35.0,
+      "highway": "NH-2",
+      "terrain": "plain",
+      "slope_deg": 2.0,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 35.0,
+      "safest_cost": 32.2,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.15,
+          93.97
+        ],
+        [
+          24.817,
+          93.9368
+        ]
+      ]
+    },
+    {
+      "u": "Imphal",
+      "v": "Bishnupur",
+      "origin": "Imphal",
+      "destination": "Bishnupur",
+      "distance_km": 30.0,
+      "highway": "Tiddim Rd / NH-2",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 30.0,
+      "safest_cost": 26.7,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.817,
+          93.9368
+        ],
+        [
+          24.63,
+          93.76
+        ]
+      ]
+    },
+    {
+      "u": "Bishnupur",
+      "v": "Moirang",
+      "origin": "Bishnupur",
+      "destination": "Moirang",
+      "distance_km": 15.0,
+      "highway": "NH-2",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 15.0,
+      "safest_cost": 13.35,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.63,
+          93.76
+        ],
+        [
+          24.5,
+          93.77
+        ]
+      ]
+    },
+    {
+      "u": "Moirang",
+      "v": "Churachandpur",
+      "origin": "Moirang",
+      "destination": "Churachandpur",
+      "distance_km": 20.0,
+      "highway": "NH-2",
+      "terrain": "plain",
+      "slope_deg": 1.0,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 20.0,
+      "safest_cost": 18.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.5,
+          93.77
+        ],
+        [
+          24.3333,
+          93.6833
+        ]
+      ]
+    },
+    {
+      "u": "Imphal",
+      "v": "Ukhrul",
+      "origin": "Imphal",
+      "destination": "Ukhrul",
+      "distance_km": 85.0,
+      "highway": "NH-150",
+      "terrain": "steep_mountain",
+      "slope_deg": 10.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 121.4,
+      "safest_cost": 185.79,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.817,
+          93.9368
+        ],
+        [
+          25.1167,
+          94.3667
+        ]
+      ]
+    },
+    {
+      "u": "Imphal",
+      "v": "Thoubal",
+      "origin": "Imphal",
+      "destination": "Thoubal",
+      "distance_km": 25.0,
+      "highway": "NH-102 (Asian Highway AH-1)",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 70.0,
+      "fastest_time_min": 21.4,
+      "safest_cost": 19.07,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.817,
+          93.9368
+        ],
+        [
+          24.6333,
+          93.9833
+        ]
+      ]
+    },
+    {
+      "u": "Thoubal",
+      "v": "Kakching",
+      "origin": "Thoubal",
+      "destination": "Kakching",
+      "distance_km": 20.0,
+      "highway": "NH-102",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 20.0,
+      "safest_cost": 17.8,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.6333,
+          93.9833
+        ],
+        [
+          24.48,
+          93.98
+        ]
+      ]
+    },
+    {
+      "u": "Kakching",
+      "v": "Moreh",
+      "origin": "Kakching",
+      "destination": "Moreh",
+      "distance_km": 65.0,
+      "highway": "NH-102",
+      "terrain": "hilly",
+      "slope_deg": 7.0,
+      "condition": "fair",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 76.5,
+      "safest_cost": 93.29,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.48,
+          93.98
+        ],
+        [
+          24.25,
+          94.3
+        ]
+      ]
+    }
+  ]
+};
+export default MANIPUR_DENSE_GRAPH;

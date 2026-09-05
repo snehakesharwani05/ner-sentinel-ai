@@ -10,19 +10,40 @@ export function AuthProvider({ children }) {
   });
   const [token, setToken] = useState(() => localStorage.getItem('ner_sentinel_token') || null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isSimulatedOffline, setIsSimulatedOffline] = useState(() => {
+    return localStorage.getItem('purvasetu_simulated_offline') === 'true';
+  });
+  const [isOnline, setIsOnline] = useState(() => {
+    if (localStorage.getItem('purvasetu_simulated_offline') === 'true') return false;
+    return typeof navigator !== 'undefined' ? navigator.onLine : true;
+  });
+
+  const toggleSimulateOffline = () => {
+    const next = !isSimulatedOffline;
+    setIsSimulatedOffline(next);
+    localStorage.setItem('purvasetu_simulated_offline', String(next));
+    const effectiveOnline = next ? false : (typeof navigator !== 'undefined' ? navigator.onLine : true);
+    setIsOnline(effectiveOnline);
+  };
 
   useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
+    const updateStatus = () => {
+      const isSim = localStorage.getItem('purvasetu_simulated_offline') === 'true';
+      if (isSim) {
+        setIsOnline(false);
+      } else {
+        setIsOnline(navigator.onLine);
+      }
+    };
 
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
+    window.addEventListener('online', updateStatus);
+    window.addEventListener('offline', updateStatus);
+    window.addEventListener('purvasetu_network_change', updateStatus);
 
     // Auto-verify stored session token against database
     async function verifySession() {
       const storedToken = localStorage.getItem('ner_sentinel_token');
-      if (storedToken && !storedToken.startsWith('mock-') && navigator.onLine) {
+      if (storedToken && !storedToken.startsWith('mock-') && navigator.onLine && !isSimulatedOffline) {
         try {
           const res = await fetch(`${API_BASE_URL}/api/v1/auth/me`, {
             headers: { 'Authorization': `Bearer ${storedToken}` }
@@ -45,10 +66,11 @@ export function AuthProvider({ children }) {
     verifySession();
 
     return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
+      window.removeEventListener('online', updateStatus);
+      window.removeEventListener('offline', updateStatus);
+      window.removeEventListener('purvasetu_network_change', updateStatus);
     };
-  }, []);
+  }, [isSimulatedOffline]);
 
   const login = async (email, password) => {
     try {
@@ -208,6 +230,8 @@ export function AuthProvider({ children }) {
       isAuthModalOpen,
       setIsAuthModalOpen,
       isOnline,
+      isSimulatedOffline,
+      toggleSimulateOffline,
       login,
       register,
       loginAsGuest,

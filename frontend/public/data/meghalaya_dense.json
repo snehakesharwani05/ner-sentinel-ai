@@ -1,0 +1,553 @@
+{
+  "state": "Meghalaya",
+  "state_key": "meghalaya",
+  "node_count": 12,
+  "edge_count": 15,
+  "nodes": [
+    {
+      "id": 12,
+      "name": "Shillong",
+      "state": "Meghalaya",
+      "district": "East Khasi Hills",
+      "latitude": 25.5788,
+      "longitude": 91.8933,
+      "lat": 25.5788,
+      "lng": 91.8933,
+      "elevation_m": 1525,
+      "location_type": "state_capital",
+      "is_urban": 1,
+      "risk_score": 0.12
+    },
+    {
+      "id": 13,
+      "name": "Cherrapunji (Sohra)",
+      "state": "Meghalaya",
+      "district": "East Khasi Hills",
+      "latitude": 25.2702,
+      "longitude": 91.7323,
+      "lat": 25.2702,
+      "lng": 91.7323,
+      "elevation_m": 1484,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.48
+    },
+    {
+      "id": 14,
+      "name": "Jowai",
+      "state": "Meghalaya",
+      "district": "West Jaintia Hills",
+      "latitude": 25.45,
+      "longitude": 92.2,
+      "lat": 25.45,
+      "lng": 92.2,
+      "elevation_m": 1380,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.2
+    },
+    {
+      "id": 15,
+      "name": "Nongpoh",
+      "state": "Meghalaya",
+      "district": "Ri Bhoi",
+      "latitude": 25.9036,
+      "longitude": 91.88,
+      "lat": 25.9036,
+      "lng": 91.88,
+      "elevation_m": 485,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.15
+    },
+    {
+      "id": 16,
+      "name": "Tura",
+      "state": "Meghalaya",
+      "district": "West Garo Hills",
+      "latitude": 25.5138,
+      "longitude": 90.2202,
+      "lat": 25.5138,
+      "lng": 90.2202,
+      "elevation_m": 349,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.18
+    },
+    {
+      "id": 67,
+      "name": "Mawsynram",
+      "state": "Meghalaya",
+      "district": "East Khasi Hills",
+      "latitude": 25.3,
+      "longitude": 91.58,
+      "lat": 25.3,
+      "lng": 91.58,
+      "elevation_m": 1400,
+      "location_type": "subdivision_town",
+      "is_urban": 0,
+      "risk_score": 0.55
+    },
+    {
+      "id": 68,
+      "name": "Dawki",
+      "state": "Meghalaya",
+      "district": "West Jaintia Hills",
+      "latitude": 25.18,
+      "longitude": 92.02,
+      "lat": 25.18,
+      "lng": 92.02,
+      "elevation_m": 105,
+      "location_type": "border_checkpost",
+      "is_urban": 0,
+      "risk_score": 0.28
+    },
+    {
+      "id": 69,
+      "name": "Williamnagar",
+      "state": "Meghalaya",
+      "district": "East Garo Hills",
+      "latitude": 25.6,
+      "longitude": 90.62,
+      "lat": 25.6,
+      "lng": 90.62,
+      "elevation_m": 290,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.22
+    },
+    {
+      "id": 70,
+      "name": "Nongstoin",
+      "state": "Meghalaya",
+      "district": "West Khasi Hills",
+      "latitude": 25.52,
+      "longitude": 91.27,
+      "lat": 25.52,
+      "lng": 91.27,
+      "elevation_m": 1409,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.24
+    },
+    {
+      "id": 131,
+      "name": "Byrnihat",
+      "state": "Meghalaya",
+      "district": "Ri Bhoi",
+      "latitude": 26.05,
+      "longitude": 91.85,
+      "lat": 26.05,
+      "lng": 91.85,
+      "elevation_m": 150,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 132,
+      "name": "Khliehriat",
+      "state": "Meghalaya",
+      "district": "East Jaintia Hills",
+      "latitude": 25.35,
+      "longitude": 92.37,
+      "lat": 25.35,
+      "lng": 92.37,
+      "elevation_m": 1200,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.35
+    },
+    {
+      "id": 133,
+      "name": "Mairang",
+      "state": "Meghalaya",
+      "district": "Eastern West Khasi Hills",
+      "latitude": 25.56,
+      "longitude": 91.64,
+      "lat": 25.56,
+      "lng": 91.64,
+      "elevation_m": 1550,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.2
+    }
+  ],
+  "edges": [
+    {
+      "u": "Guwahati",
+      "v": "Byrnihat",
+      "origin": "Guwahati",
+      "destination": "Byrnihat",
+      "distance_km": 20.0,
+      "highway": "NH-6 (4-Lane)",
+      "terrain": "plain",
+      "slope_deg": 1.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 20.0,
+      "safest_cost": 18.2,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.1445,
+          91.7362
+        ],
+        [
+          26.05,
+          91.85
+        ]
+      ]
+    },
+    {
+      "u": "Byrnihat",
+      "v": "Nongpoh",
+      "origin": "Byrnihat",
+      "destination": "Nongpoh",
+      "distance_km": 30.0,
+      "highway": "NH-6 (4-Lane)",
+      "terrain": "hilly",
+      "slope_deg": 3.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 35.3,
+      "safest_cost": 40.24,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.05,
+          91.85
+        ],
+        [
+          25.9036,
+          91.88
+        ]
+      ]
+    },
+    {
+      "u": "Nongpoh",
+      "v": "Shillong",
+      "origin": "Nongpoh",
+      "destination": "Shillong",
+      "distance_km": 50.0,
+      "highway": "NH-6 (4-Lane Bypass)",
+      "terrain": "hilly",
+      "slope_deg": 5.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 58.8,
+      "safest_cost": 69.41,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.9036,
+          91.88
+        ],
+        [
+          25.5788,
+          91.8933
+        ]
+      ]
+    },
+    {
+      "u": "Shillong",
+      "v": "Cherrapunji (Sohra)",
+      "origin": "Shillong",
+      "destination": "Cherrapunji (Sohra)",
+      "distance_km": 54.0,
+      "highway": "SH-5",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "good",
+      "speed_kmh": 31.5,
+      "fastest_time_min": 102.9,
+      "safest_cost": 153.26,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.5788,
+          91.8933
+        ],
+        [
+          25.2702,
+          91.7323
+        ]
+      ]
+    },
+    {
+      "u": "Shillong",
+      "v": "Mawsynram",
+      "origin": "Shillong",
+      "destination": "Mawsynram",
+      "distance_km": 60.0,
+      "highway": "SH-5",
+      "terrain": "steep_mountain",
+      "slope_deg": 9.0,
+      "condition": "fair",
+      "speed_kmh": 31.5,
+      "fastest_time_min": 114.3,
+      "safest_cost": 172.57,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.5788,
+          91.8933
+        ],
+        [
+          25.3,
+          91.58
+        ]
+      ]
+    },
+    {
+      "u": "Shillong",
+      "v": "Jowai",
+      "origin": "Shillong",
+      "destination": "Jowai",
+      "distance_km": 65.0,
+      "highway": "NH-6",
+      "terrain": "hilly",
+      "slope_deg": 4.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 76.5,
+      "safest_cost": 88.71,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.5788,
+          91.8933
+        ],
+        [
+          25.45,
+          92.2
+        ]
+      ]
+    },
+    {
+      "u": "Jowai",
+      "v": "Khliehriat",
+      "origin": "Jowai",
+      "destination": "Khliehriat",
+      "distance_km": 35.0,
+      "highway": "NH-6",
+      "terrain": "hilly",
+      "slope_deg": 5.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 41.2,
+      "safest_cost": 48.59,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.45,
+          92.2
+        ],
+        [
+          25.35,
+          92.37
+        ]
+      ]
+    },
+    {
+      "u": "Khliehriat",
+      "v": "Silchar",
+      "origin": "Khliehriat",
+      "destination": "Silchar",
+      "distance_km": 105.0,
+      "highway": "NH-6 (Sonapur Tunnel Corridor)",
+      "terrain": "steep_mountain",
+      "slope_deg": 12.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 150.0,
+      "safest_cost": 235.5,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.35,
+          92.37
+        ],
+        [
+          24.8333,
+          92.7789
+        ]
+      ]
+    },
+    {
+      "u": "Shillong",
+      "v": "Dawki",
+      "origin": "Shillong",
+      "destination": "Dawki",
+      "distance_km": 80.0,
+      "highway": "NH-206",
+      "terrain": "steep_mountain",
+      "slope_deg": 9.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 114.3,
+      "safest_cost": 172.57,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.5788,
+          91.8933
+        ],
+        [
+          25.18,
+          92.02
+        ]
+      ]
+    },
+    {
+      "u": "Dawki",
+      "v": "Jowai",
+      "origin": "Dawki",
+      "destination": "Jowai",
+      "distance_km": 55.0,
+      "highway": "NH-206",
+      "terrain": "hilly",
+      "slope_deg": 4.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 64.7,
+      "safest_cost": 75.06,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.18,
+          92.02
+        ],
+        [
+          25.45,
+          92.2
+        ]
+      ]
+    },
+    {
+      "u": "Shillong",
+      "v": "Mairang",
+      "origin": "Shillong",
+      "destination": "Mairang",
+      "distance_km": 40.0,
+      "highway": "NH-217",
+      "terrain": "hilly",
+      "slope_deg": 4.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 47.1,
+      "safest_cost": 54.59,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.5788,
+          91.8933
+        ],
+        [
+          25.56,
+          91.64
+        ]
+      ]
+    },
+    {
+      "u": "Mairang",
+      "v": "Nongstoin",
+      "origin": "Mairang",
+      "destination": "Nongstoin",
+      "distance_km": 50.0,
+      "highway": "NH-217",
+      "terrain": "hilly",
+      "slope_deg": 5.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 58.8,
+      "safest_cost": 69.41,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.56,
+          91.64
+        ],
+        [
+          25.52,
+          91.27
+        ]
+      ]
+    },
+    {
+      "u": "Nongstoin",
+      "v": "Williamnagar",
+      "origin": "Nongstoin",
+      "destination": "Williamnagar",
+      "distance_km": 120.0,
+      "highway": "NH-217",
+      "terrain": "hilly",
+      "slope_deg": 6.0,
+      "condition": "fair",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 141.2,
+      "safest_cost": 169.41,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.52,
+          91.27
+        ],
+        [
+          25.6,
+          90.62
+        ]
+      ]
+    },
+    {
+      "u": "Williamnagar",
+      "v": "Tura",
+      "origin": "Williamnagar",
+      "destination": "Tura",
+      "distance_km": 75.0,
+      "highway": "NH-217",
+      "terrain": "hilly",
+      "slope_deg": 4.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 88.2,
+      "safest_cost": 102.35,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.6,
+          90.62
+        ],
+        [
+          25.5138,
+          90.2202
+        ]
+      ]
+    },
+    {
+      "u": "Goalpara",
+      "v": "Tura",
+      "origin": "Goalpara",
+      "destination": "Tura",
+      "distance_km": 110.0,
+      "highway": "NH-217",
+      "terrain": "hilly",
+      "slope_deg": 4.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 129.4,
+      "safest_cost": 150.12,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.1772,
+          90.6272
+        ],
+        [
+          25.5138,
+          90.2202
+        ]
+      ]
+    }
+  ]
+}

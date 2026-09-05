@@ -1,0 +1,517 @@
+{
+  "state": "Sikkim",
+  "state_key": "sikkim",
+  "node_count": 13,
+  "edge_count": 13,
+  "nodes": [
+    {
+      "id": 39,
+      "name": "Gangtok",
+      "state": "Sikkim",
+      "district": "East Sikkim",
+      "latitude": 27.3389,
+      "longitude": 88.6065,
+      "lat": 27.3389,
+      "lng": 88.6065,
+      "elevation_m": 1650,
+      "location_type": "state_capital",
+      "is_urban": 1,
+      "risk_score": 0.2
+    },
+    {
+      "id": 40,
+      "name": "Namchi",
+      "state": "Sikkim",
+      "district": "South Sikkim",
+      "latitude": 27.1667,
+      "longitude": 88.35,
+      "lat": 27.1667,
+      "lng": 88.35,
+      "elevation_m": 1315,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.25
+    },
+    {
+      "id": 41,
+      "name": "Geyzing",
+      "state": "Sikkim",
+      "district": "West Sikkim",
+      "latitude": 27.2833,
+      "longitude": 88.25,
+      "lat": 27.2833,
+      "lng": 88.25,
+      "elevation_m": 1900,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.3
+    },
+    {
+      "id": 42,
+      "name": "Mangan",
+      "state": "Sikkim",
+      "district": "North Sikkim",
+      "latitude": 27.5,
+      "longitude": 88.5333,
+      "lat": 27.5,
+      "lng": 88.5333,
+      "elevation_m": 1790,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.55
+    },
+    {
+      "id": 43,
+      "name": "Rangpo",
+      "state": "Sikkim",
+      "district": "Pakyong",
+      "latitude": 27.1764,
+      "longitude": 88.5283,
+      "lat": 27.1764,
+      "lng": 88.5283,
+      "elevation_m": 330,
+      "location_type": "border_checkpost",
+      "is_urban": 1,
+      "risk_score": 0.35
+    },
+    {
+      "id": 79,
+      "name": "Singtam",
+      "state": "Sikkim",
+      "district": "Gangtok",
+      "latitude": 27.23,
+      "longitude": 88.5,
+      "lat": 27.23,
+      "lng": 88.5,
+      "elevation_m": 410,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.25
+    },
+    {
+      "id": 80,
+      "name": "Chungthang",
+      "state": "Sikkim",
+      "district": "North Sikkim",
+      "latitude": 27.6,
+      "longitude": 88.65,
+      "lat": 27.6,
+      "lng": 88.65,
+      "elevation_m": 1790,
+      "location_type": "mountain_pass",
+      "is_urban": 0,
+      "risk_score": 0.7
+    },
+    {
+      "id": 81,
+      "name": "Lachung",
+      "state": "Sikkim",
+      "district": "North Sikkim",
+      "latitude": 27.69,
+      "longitude": 88.74,
+      "lat": 27.69,
+      "lng": 88.74,
+      "elevation_m": 2700,
+      "location_type": "mountain_pass",
+      "is_urban": 0,
+      "risk_score": 0.65
+    },
+    {
+      "id": 82,
+      "name": "Lachen",
+      "state": "Sikkim",
+      "district": "North Sikkim",
+      "latitude": 27.72,
+      "longitude": 88.55,
+      "lat": 27.72,
+      "lng": 88.55,
+      "elevation_m": 2750,
+      "location_type": "mountain_pass",
+      "is_urban": 0,
+      "risk_score": 0.68
+    },
+    {
+      "id": 83,
+      "name": "Nathu La Pass",
+      "state": "Sikkim",
+      "district": "East Sikkim",
+      "latitude": 27.3865,
+      "longitude": 88.831,
+      "lat": 27.3865,
+      "lng": 88.831,
+      "elevation_m": 4310,
+      "location_type": "border_checkpost",
+      "is_urban": 0,
+      "risk_score": 0.75
+    },
+    {
+      "id": 84,
+      "name": "Ravangla",
+      "state": "Sikkim",
+      "district": "South Sikkim",
+      "latitude": 27.3,
+      "longitude": 88.36,
+      "lat": 27.3,
+      "lng": 88.36,
+      "elevation_m": 2100,
+      "location_type": "subdivision_town",
+      "is_urban": 1,
+      "risk_score": 0.28
+    },
+    {
+      "id": 161,
+      "name": "Jorethang",
+      "state": "Sikkim",
+      "district": "South Sikkim",
+      "latitude": 27.12,
+      "longitude": 88.3,
+      "lat": 27.12,
+      "lng": 88.3,
+      "elevation_m": 300,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.18
+    },
+    {
+      "id": 162,
+      "name": "Pelling",
+      "state": "Sikkim",
+      "district": "West Sikkim",
+      "latitude": 27.3,
+      "longitude": 88.23,
+      "lat": 27.3,
+      "lng": 88.23,
+      "elevation_m": 2150,
+      "location_type": "market_center",
+      "is_urban": 1,
+      "risk_score": 0.32
+    }
+  ],
+  "edges": [
+    {
+      "u": "Siliguri",
+      "v": "Rangpo",
+      "origin": "Siliguri",
+      "destination": "Rangpo",
+      "distance_km": 70.0,
+      "highway": "NH-10",
+      "terrain": "steep_mountain",
+      "slope_deg": 11.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 100.0,
+      "safest_cost": 155.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.0,
+          92.0
+        ],
+        [
+          27.1764,
+          88.5283
+        ]
+      ]
+    },
+    {
+      "u": "Rangpo",
+      "v": "Singtam",
+      "origin": "Rangpo",
+      "destination": "Singtam",
+      "distance_km": 15.0,
+      "highway": "NH-10",
+      "terrain": "hilly",
+      "slope_deg": 4.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 17.6,
+      "safest_cost": 20.47,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.1764,
+          88.5283
+        ],
+        [
+          27.23,
+          88.5
+        ]
+      ]
+    },
+    {
+      "u": "Singtam",
+      "v": "Gangtok",
+      "origin": "Singtam",
+      "destination": "Gangtok",
+      "distance_km": 25.0,
+      "highway": "NH-10",
+      "terrain": "steep_mountain",
+      "slope_deg": 7.0,
+      "condition": "good",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 35.7,
+      "safest_cost": 52.5,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.23,
+          88.5
+        ],
+        [
+          27.3389,
+          88.6065
+        ]
+      ]
+    },
+    {
+      "u": "Singtam",
+      "v": "Mangan",
+      "origin": "Singtam",
+      "destination": "Mangan",
+      "distance_km": 40.0,
+      "highway": "NH-10",
+      "terrain": "steep_mountain",
+      "slope_deg": 13.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 57.1,
+      "safest_cost": 90.86,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.23,
+          88.5
+        ],
+        [
+          27.5,
+          88.5333
+        ]
+      ]
+    },
+    {
+      "u": "Mangan",
+      "v": "Chungthang",
+      "origin": "Mangan",
+      "destination": "Chungthang",
+      "distance_km": 30.0,
+      "highway": "NH-10",
+      "terrain": "high_pass",
+      "slope_deg": 15.0,
+      "condition": "poor",
+      "speed_kmh": 33.0,
+      "fastest_time_min": 54.5,
+      "safest_cost": 108.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.5,
+          88.5333
+        ],
+        [
+          27.6,
+          88.65
+        ]
+      ]
+    },
+    {
+      "u": "Chungthang",
+      "v": "Lachung",
+      "origin": "Chungthang",
+      "destination": "Lachung",
+      "distance_km": 24.0,
+      "highway": "NH-10",
+      "terrain": "high_pass",
+      "slope_deg": 12.0,
+      "condition": "fair",
+      "speed_kmh": 33.0,
+      "fastest_time_min": 43.6,
+      "safest_cost": 92.51,
+      "is_urban": false,
+      "coordinates": [
+        [
+          27.6,
+          88.65
+        ],
+        [
+          27.69,
+          88.74
+        ]
+      ]
+    },
+    {
+      "u": "Chungthang",
+      "v": "Lachen",
+      "origin": "Chungthang",
+      "destination": "Lachen",
+      "distance_km": 28.0,
+      "highway": "NH-10",
+      "terrain": "high_pass",
+      "slope_deg": 14.0,
+      "condition": "fair",
+      "speed_kmh": 33.0,
+      "fastest_time_min": 50.9,
+      "safest_cost": 109.96,
+      "is_urban": false,
+      "coordinates": [
+        [
+          27.6,
+          88.65
+        ],
+        [
+          27.72,
+          88.55
+        ]
+      ]
+    },
+    {
+      "u": "Gangtok",
+      "v": "Nathu La Pass",
+      "origin": "Gangtok",
+      "destination": "Nathu La Pass",
+      "distance_km": 54.0,
+      "highway": "Jawaharlal Nehru Rd",
+      "terrain": "high_pass",
+      "slope_deg": 16.0,
+      "condition": "fair",
+      "speed_kmh": 38.5,
+      "fastest_time_min": 84.2,
+      "safest_cost": 168.31,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.3389,
+          88.6065
+        ],
+        [
+          27.3865,
+          88.831
+        ]
+      ]
+    },
+    {
+      "u": "Singtam",
+      "v": "Namchi",
+      "origin": "Singtam",
+      "destination": "Namchi",
+      "distance_km": 30.0,
+      "highway": "NH-710",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "good",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 42.9,
+      "safest_cost": 63.86,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.23,
+          88.5
+        ],
+        [
+          27.1667,
+          88.35
+        ]
+      ]
+    },
+    {
+      "u": "Namchi",
+      "v": "Jorethang",
+      "origin": "Namchi",
+      "destination": "Jorethang",
+      "distance_km": 20.0,
+      "highway": "SH-Sikkim",
+      "terrain": "hilly",
+      "slope_deg": 6.0,
+      "condition": "good",
+      "speed_kmh": 38.2,
+      "fastest_time_min": 31.4,
+      "safest_cost": 37.7,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.1667,
+          88.35
+        ],
+        [
+          27.12,
+          88.3
+        ]
+      ]
+    },
+    {
+      "u": "Namchi",
+      "v": "Ravangla",
+      "origin": "Namchi",
+      "destination": "Ravangla",
+      "distance_km": 25.0,
+      "highway": "SH-12",
+      "terrain": "steep_mountain",
+      "slope_deg": 7.0,
+      "condition": "good",
+      "speed_kmh": 31.5,
+      "fastest_time_min": 47.6,
+      "safest_cost": 70.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.1667,
+          88.35
+        ],
+        [
+          27.3,
+          88.36
+        ]
+      ]
+    },
+    {
+      "u": "Ravangla",
+      "v": "Geyzing",
+      "origin": "Ravangla",
+      "destination": "Geyzing",
+      "distance_km": 40.0,
+      "highway": "NH-510",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 57.1,
+      "safest_cost": 85.14,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.3,
+          88.36
+        ],
+        [
+          27.2833,
+          88.25
+        ]
+      ]
+    },
+    {
+      "u": "Geyzing",
+      "v": "Pelling",
+      "origin": "Geyzing",
+      "destination": "Pelling",
+      "distance_km": 10.0,
+      "highway": "SH-Sikkim",
+      "terrain": "steep_mountain",
+      "slope_deg": 7.0,
+      "condition": "good",
+      "speed_kmh": 31.5,
+      "fastest_time_min": 19.0,
+      "safest_cost": 28.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.2833,
+          88.25
+        ],
+        [
+          27.3,
+          88.23
+        ]
+      ]
+    }
+  ]
+}

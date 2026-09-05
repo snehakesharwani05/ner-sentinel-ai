@@ -1,91 +1,370 @@
 /**
- * NER Sentinel AI - Zero-Internet Offline Execution Engine
- * Pure Client-Side Graph Routing & Outbox Sync for Remote Field Areas
+ * PurvaSetu / PRAGATI-AI (SIH Problem Statement 26002)
+ * Autonomous Offline GIS Routing & Multi-State Graph Stitching Architecture
+ * Two-Tier Hierarchical Graph (Tier 1 Regional Backbone + Tier 2 State Dense Subgraphs)
  */
 
-// Master verified North East Nodes & Coordinates
-export const OFFLINE_NODES = {
-  "Guwahati": { lat: 26.1445, lng: 91.7362, state: "Assam", elev: 55 },
-  "Shillong": { lat: 25.5788, lng: 91.8933, state: "Meghalaya", elev: 1525 },
-  "Jowai": { lat: 25.4500, lng: 92.2000, state: "Meghalaya", elev: 1380 },
-  "Silchar": { lat: 24.8333, lng: 92.7789, state: "Assam", elev: 25 },
-  "Karimganj": { lat: 24.8667, lng: 92.3500, state: "Assam", elev: 20 },
-  "Agartala": { lat: 23.8315, lng: 91.2868, state: "Tripura", elev: 15 },
-  "Aizawl": { lat: 23.7271, lng: 92.7176, state: "Mizoram", elev: 1132 },
-  "Mamit": { lat: 23.9284, lng: 92.4897, state: "Mizoram", elev: 718 },
-  "Kanchanpur": { lat: 23.7842, lng: 92.2155, state: "Tripura", elev: 120 },
-  "Dimapur": { lat: 25.9090, lng: 93.7266, state: "Nagaland", elev: 145 },
-  "Kohima": { lat: 25.6751, lng: 94.1086, state: "Nagaland", elev: 1444 },
-  "Imphal": { lat: 24.8170, lng: 93.9368, state: "Manipur", elev: 786 },
-  "Tezpur": { lat: 26.6528, lng: 92.7926, state: "Assam", elev: 48 },
-  "Bomdila": { lat: 27.2645, lng: 92.4230, state: "Arunachal Pradesh", elev: 2217 },
-  "Dirang": { lat: 27.3500, lng: 92.2333, state: "Arunachal Pradesh", elev: 1560 },
-  "Sela Pass": { lat: 27.5042, lng: 92.1037, state: "Arunachal Pradesh", elev: 4170 },
-  "Tawang": { lat: 27.5861, lng: 91.8656, state: "Arunachal Pradesh", elev: 3048 },
-  "Siliguri": { lat: 26.7271, lng: 88.3953, state: "West Bengal", elev: 122 },
-  "Gangtok": { lat: 27.3389, lng: 88.6065, state: "Sikkim", elev: 1650 },
-  "Haflong (Jatinga)": { lat: 25.1800, lng: 93.0200, state: "Assam", elev: 966 },
-  "Nagaon": { lat: 26.3452, lng: 92.6840, state: "Assam", elev: 60 },
-  "Jorhat": { lat: 26.7509, lng: 94.2037, state: "Assam", elev: 116 },
-  "Dibrugarh": { lat: 27.4728, lng: 94.9120, state: "Assam", elev: 108 },
-  "Itanagar": { lat: 27.0844, lng: 93.6053, state: "Arunachal Pradesh", elev: 320 }
-};
+import {
+  BORDER_GATEWAY_REGISTRY,
+  NER_BACKBONE_GRAPH,
+  STITCHED_NER_GRAPH,
+  ALL_OFFLINE_NODES,
+  ALL_OFFLINE_EDGES,
+  STATE_DENSE_MANIFEST
+} from '../data/offline/index';
 
-// Master verified Highway Segments
-export const OFFLINE_EDGES = [
-  { u: "Guwahati", v: "Shillong", dist: 100, time: 150, hw: "NH-6" },
-  { u: "Shillong", v: "Jowai", dist: 65, time: 100, hw: "NH-6" },
-  { u: "Jowai", v: "Silchar", dist: 140, time: 260, hw: "NH-6 (Sonapur)" },
-  { u: "Guwahati", v: "Nagaon", dist: 120, time: 140, hw: "NH-27" },
-  { u: "Nagaon", v: "Haflong (Jatinga)", dist: 140, time: 210, hw: "NH-27" },
-  { u: "Haflong (Jatinga)", v: "Silchar", dist: 100, time: 135, hw: "NH-27" },
-  { u: "Silchar", v: "Karimganj", dist: 55, time: 80, hw: "NH-37" },
-  { u: "Karimganj", v: "Agartala", dist: 195, time: 270, hw: "NH-8" },
-  { u: "Aizawl", v: "Mamit", dist: 85, time: 135, hw: "NH-108B" },
-  { u: "Mamit", v: "Kanchanpur", dist: 60, time: 110, hw: "Jampui Hills Road" },
-  { u: "Kanchanpur", v: "Agartala", dist: 140, time: 190, hw: "Tripura State Highway" },
-  { u: "Nagaon", v: "Dimapur", dist: 165, time: 210, hw: "NH-29" },
-  { u: "Dimapur", v: "Kohima", dist: 74, time: 130, hw: "NH-29" },
-  { u: "Kohima", v: "Imphal", dist: 140, time: 230, hw: "NH-2 (Mao Gate)" },
-  { u: "Silchar", v: "Imphal", dist: 255, time: 420, hw: "NH-37" },
-  { u: "Silchar", v: "Aizawl", dist: 175, time: 330, hw: "NH-306" },
-  { u: "Guwahati", v: "Tezpur", dist: 180, time: 220, hw: "NH-15" },
-  { u: "Tezpur", v: "Bomdila", dist: 155, time: 280, hw: "NH-13" },
-  { u: "Bomdila", v: "Dirang", dist: 42, time: 70, hw: "NH-13" },
-  { u: "Dirang", v: "Sela Pass", dist: 65, time: 130, hw: "NH-13 (4170m)" },
-  { u: "Sela Pass", v: "Tawang", dist: 75, time: 140, hw: "NH-13" },
-  { u: "Siliguri", v: "Gangtok", dist: 115, time: 240, hw: "NH-10" }
-];
+// IndexedDB Helper for Persistent Subgraph Storage
+const DB_NAME = 'PurvaSetu_Offline_GeoGraph';
+const DB_VERSION = 1;
+const STORE_NAME = 'state_subgraphs';
 
-export class OfflineRoutingEngine {
+function openIndexedDB() {
+  return new Promise((resolve) => {
+    if (typeof window === 'undefined' || !window.indexedDB) {
+      resolve(null);
+      return;
+    }
+    const req = window.indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.createObjectStore(STORE_NAME, { keyPath: 'stateKey' });
+      }
+    };
+    req.onsuccess = (e) => resolve(e.target.result);
+    req.onerror = () => resolve(null);
+  });
+}
+
+class AutonomousOfflineRoutingEngine {
   constructor() {
-    this.nodes = OFFLINE_NODES;
-    this.edges = OFFLINE_EDGES;
+    this.gateways = BORDER_GATEWAY_REGISTRY;
+    this.backboneGraph = NER_BACKBONE_GRAPH;
+    this.stitchedGraph = STITCHED_NER_GRAPH;
+    this.allNodes = ALL_OFFLINE_NODES;
+    this.allEdges = ALL_OFFLINE_EDGES;
+    this.stateManifest = STATE_DENSE_MANIFEST;
+    
+    this.subgraphCache = {};
+    this.worker = null;
+    this.workerPending = new Map();
+    this.workerCounter = 0;
+    this.isSimulatedOffline = false;
+
+    this.initWorker();
   }
 
-  calculateRoute(originName, destName, mode = "safest") {
-    // Dijkstra Shortest/Safest Path in pure JS
-    const graph = {};
-    Object.keys(this.nodes).forEach(node => { graph[node] = []; });
-
-    this.edges.forEach(e => {
-      if (graph[e.u] && graph[e.v]) {
-        const weight = mode === "safest" ? (e.time * 1.1) : e.dist;
-        graph[e.u].push({ node: e.v, weight, edge: e });
-        graph[e.v].push({ node: e.u, weight, edge: e });
+  initWorker() {
+    if (typeof window !== 'undefined' && window.Worker) {
+      try {
+        this.worker = new Worker(new URL('../workers/offlineRoutingWorker.js', import.meta.url), {
+          type: 'module'
+        });
+        this.worker.onmessage = (e) => {
+          const { id, success, data, error } = e.data;
+          const resolver = this.workerPending.get(id);
+          if (resolver) {
+            this.workerPending.delete(id);
+            if (success) {
+              resolver.resolve(data);
+            } else {
+              resolver.reject(new Error(error));
+            }
+          }
+        };
+        this.worker.onerror = () => {
+          this.worker = null;
+        };
+      } catch (err) {
+        this.worker = null;
       }
-    });
+    }
+  }
+
+  setSimulatedOffline(flag) {
+    this.isSimulatedOffline = Boolean(flag);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('purvasetu_network_change', {
+        detail: { isOffline: this.isOffline() }
+      }));
+    }
+  }
+
+  isOffline() {
+    if (this.isSimulatedOffline) return true;
+    if (typeof navigator !== 'undefined') {
+      return !navigator.onLine;
+    }
+    return false;
+  }
+
+  // Resolve node name with fuzzy fallback
+  resolveNode(name) {
+    if (!name) return name;
+    if (this.allNodes[name]) return name;
+
+    const clean = String(name).trim().toLowerCase();
+    for (const key of Object.keys(this.allNodes)) {
+      if (key.toLowerCase() === clean) return key;
+    }
+    for (const key of Object.keys(this.allNodes)) {
+      if (key.toLowerCase().includes(clean) || clean.includes(key.toLowerCase())) {
+        return key;
+      }
+    }
+    return name;
+  }
+
+  // Find nearest Border Gateway for an inter-state node
+  findNearestGateway(nodeName, targetState) {
+    const node = this.allNodes[nodeName];
+    if (!node) return null;
+
+    let nearest = null;
+    let minDist = Infinity;
+
+    for (const [gwKey, gwData] of Object.entries(this.gateways)) {
+      if (gwData.states.includes(node.state) || (targetState && gwData.states.includes(targetState))) {
+        const dLat = (node.lat - gwData.lat);
+        const dLng = (node.lng - gwData.lng);
+        const dist = Math.sqrt(dLat * dLat + dLng * dLng);
+        if (dist < minDist) {
+          minDist = dist;
+          nearest = gwKey;
+        }
+      }
+    }
+
+    return nearest || 'Jorabat';
+  }
+
+  // Load a state's Tier 2 Dense Subgraph
+  async loadStateSubgraph(stateName) {
+    const stateKey = stateName.toLowerCase().replace(/ /g, '_');
+    if (this.subgraphCache[stateKey]) {
+      return this.subgraphCache[stateKey];
+    }
+
+    // Try IndexedDB
+    try {
+      const db = await openIndexedDB();
+      if (db) {
+        const tx = db.transaction(STORE_NAME, 'readonly');
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.get(stateKey);
+        const cached = await new Promise((res) => {
+          req.onsuccess = () => res(req.result);
+          req.onerror = () => res(null);
+        });
+        if (cached && cached.data) {
+          this.subgraphCache[stateKey] = cached.data;
+          return cached.data;
+        }
+      }
+    } catch (e) {}
+
+    // Fallback: Dynamically import or load from public /data
+    try {
+      const mod = await import(`../data/offline/${stateKey}_dense.js`);
+      const data = mod.default || mod[`${stateKey.toUpperCase()}_DENSE_GRAPH`];
+      if (data) {
+        this.subgraphCache[stateKey] = data;
+        // Save to IndexedDB
+        try {
+          const db = await openIndexedDB();
+          if (db) {
+            const tx = db.transaction(STORE_NAME, 'readwrite');
+            tx.objectStore(STORE_NAME).put({ stateKey, data });
+          }
+        } catch (e) {}
+        return data;
+      }
+    } catch (e) {}
+
+    // Default return all nodes/edges filtered by state
+    const filteredNodes = Object.values(this.allNodes).filter(n => n.state === stateName);
+    const nodeNames = new Set(filteredNodes.map(n => n.name));
+    const filteredEdges = this.allEdges.filter(e => nodeNames.has(e.u) && nodeNames.has(e.v));
+    return { nodes: filteredNodes, edges: filteredEdges };
+  }
+
+  // Spatial Nearest-Neighbor Snapping
+  snapToNearestJunction(targetLat, targetLng, thresholdKm = 5.0) {
+    let nearestNodeId = null;
+    let minDistance = Infinity;
+
+    for (const [nodeId, coords] of Object.entries(this.stitchedGraph.nodes)) {
+      const nodeLat = Array.isArray(coords) ? coords[0] : (coords.lat ?? coords.latitude);
+      const nodeLng = Array.isArray(coords) ? coords[1] : (coords.lng ?? coords.longitude);
+      if (nodeLat === undefined || nodeLng === undefined) continue;
+
+      const dLat = (Number(nodeLat) - targetLat) * 111.0;
+      const dLng = (Number(nodeLng) - targetLng) * 111.0 * Math.cos((targetLat * Math.PI) / 180.0);
+      const dist = Math.sqrt(dLat * dLat + dLng * dLng);
+
+      if (dist < minDistance) {
+        minDistance = dist;
+        nearestNodeId = nodeId;
+      }
+    }
+
+    return {
+      nodeId: nearestNodeId,
+      snappedDistanceKm: Number(minDistance.toFixed(2)),
+      withinThreshold: minDistance <= thresholdKm
+    };
+  }
+
+  // Main Dual Route Calculation (Fastest vs Safest via A*)
+  async calculateDualRoutesAsync(originInput, destInput, originCoords = null, destCoords = null) {
+    let origin = typeof originInput === 'string' ? this.resolveNode(originInput) : originInput;
+    let dest = typeof destInput === 'string' ? this.resolveNode(destInput) : destInput;
+
+    if (originCoords && Array.isArray(originCoords)) {
+      const snap = this.snapToNearestJunction(originCoords[0], originCoords[1]);
+      if (snap.nodeId) origin = snap.nodeId;
+    }
+    if (destCoords && Array.isArray(destCoords)) {
+      const snap = this.snapToNearestJunction(destCoords[0], destCoords[1]);
+      if (snap.nodeId) dest = snap.nodeId;
+    }
+
+    // If Web Worker is available, offload A* search to background thread
+    if (this.worker) {
+      const reqId = ++this.workerCounter;
+      const workerPromise = new Promise((resolve, reject) => {
+        this.workerPending.set(reqId, { resolve, reject });
+      });
+
+      this.worker.postMessage({
+        id: reqId,
+        origin,
+        destination: dest,
+        originCoords,
+        destCoords,
+        graph: this.stitchedGraph
+      });
+
+      try {
+        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Worker timeout')), 4000));
+        return await Promise.race([workerPromise, timeoutPromise]);
+      } catch (e) {
+        // Fall back to synchronous in-memory engine
+      }
+    }
+
+    return this.calculateDualRoutesSync(origin, dest);
+  }
+
+  calculateDualRoutesSync(originInput, destInput) {
+    const origin = this.resolveNode(originInput);
+    const dest = this.resolveNode(destInput);
+
+    const fastest = this.calculateRoute(origin, dest, 'fastest');
+    let safest = this.calculateRoute(origin, dest, 'safest');
+
+    let isLaneBuffered = false;
+
+    // Route differentiation logic
+    if (fastest && (!safest || fastest.nodes_in_path.join('->') === safest.nodes_in_path.join('->'))) {
+      // Find alternative path with penalized edges
+      const penalized = this.allEdges.map(edge => {
+        const u = edge.u;
+        const v = edge.v;
+        const inFastest = fastest.nodes_in_path.some((n, i) => i < fastest.nodes_in_path.length - 1 && ((fastest.nodes_in_path[i] === u && fastest.nodes_in_path[i + 1] === v) || (fastest.nodes_in_path[i] === v && fastest.nodes_in_path[i + 1] === u)));
+        return inFastest ? { ...edge, safest_cost: (edge.safest_cost || 10) * 2.2 } : edge;
+      });
+
+      const altSafest = this.calculateRouteWithEdges(origin, dest, penalized, 'safest');
+      const maxCeiling = fastest.totalDistanceKm * 1.25;
+
+      if (altSafest && altSafest.nodes_in_path.join('->') !== fastest.nodes_in_path.join('->') && altSafest.totalDistanceKm <= maxCeiling) {
+        safest = altSafest;
+      } else {
+        safest = { ...fastest };
+        isLaneBuffered = true;
+        safest.is_lane_buffered = true;
+        safest.buffer_status_tag = 'Primary Arterial Corridor — Alternate Lane Buffer Applied';
+        safest.pathNodes = safest.pathNodes.map((n, i) => {
+          if (i > 0 && i < safest.pathNodes.length - 1) {
+            return {
+              ...n,
+              latitude: Number((n.latitude + 0.0004).toFixed(6)),
+              longitude: Number((n.longitude + 0.0004).toFixed(6)),
+              lat: Number((n.lat + 0.0004).toFixed(6)),
+              lng: Number((n.lng + 0.0004).toFixed(6))
+            };
+          }
+          return n;
+        });
+      }
+    }
+
+    return {
+      fastestRoute: fastest,
+      safestRoute: safest,
+      recommendation: '🟡 OFFLINE: Autonomous Edge Node Routing Active (Client-Side Hierarchical GeoGraph)'
+    };
+  }
+
+  // Single Route Calculation (Dijkstra / A*)
+  calculateRoute(originName, destName, mode = 'safest') {
+    return this.calculateRouteWithEdges(originName, destName, this.allEdges, mode);
+  }
+
+  calculateRouteWithEdges(originName, destName, edgesList, mode = 'safest') {
+    const origin = this.resolveNode(originName);
+    const dest = this.resolveNode(destName);
+
+    if (!this.allNodes[origin] || !this.allNodes[dest]) {
+      return null;
+    }
+    if (origin === dest) {
+      const loc = this.allNodes[origin];
+      return {
+        success: true,
+        mode,
+        is_offline: true,
+        origin,
+        destination: dest,
+        totalDistanceKm: 0,
+        totalTransitTimeMin: 0,
+        averageRiskScore: 0.05,
+        severityBand: 'Low',
+        nodesCount: 1,
+        nodes_in_path: [origin],
+        pathNodes: [{ ...loc, name: origin }],
+        pathSegments: [],
+        source: 'OFFLINE: Autonomous Edge Node Routing'
+      };
+    }
+
+    // Build Adjacency List
+    const adj = {};
+    for (const name of Object.keys(this.allNodes)) {
+      adj[name] = [];
+    }
+
+    const weightKey = mode === 'safest' ? 'safest_cost' : 'fastest_time_min';
+
+    for (const edge of edgesList) {
+      const u = edge.u;
+      const v = edge.v;
+      const weight = Number(edge[weightKey] ?? edge.fastest_time_min ?? edge.distance_km ?? 15);
+      if (adj[u]) adj[u].push({ neighbor: v, weight, edge });
+      if (adj[v]) adj[v].push({ neighbor: u, weight, edge });
+    }
 
     const distances = {};
     const previous = {};
-    const unvisited = new Set(Object.keys(this.nodes));
+    const unvisited = new Set(Object.keys(this.allNodes));
 
-    Object.keys(this.nodes).forEach(node => {
-      distances[node] = Infinity;
-      previous[node] = null;
-    });
+    for (const name of Object.keys(this.allNodes)) {
+      distances[name] = Infinity;
+      previous[name] = null;
+    }
 
-    distances[originName] = 0;
+    distances[origin] = 0;
 
     while (unvisited.size > 0) {
       let current = null;
@@ -98,85 +377,120 @@ export class OfflineRoutingEngine {
         }
       });
 
-      if (!current || distances[current] === Infinity || current === destName) {
+      if (!current || distances[current] === Infinity || current === dest) {
         break;
       }
 
       unvisited.delete(current);
 
-      graph[current].forEach(neighbor => {
-        if (unvisited.has(neighbor.node)) {
-          const alt = distances[current] + neighbor.weight;
-          if (alt < distances[neighbor.node]) {
-            distances[neighbor.node] = alt;
-            previous[neighbor.node] = current;
+      const neighbors = adj[current] || [];
+      for (const { neighbor, weight } of neighbors) {
+        if (unvisited.has(neighbor)) {
+          const alt = distances[current] + weight;
+          if (alt < distances[neighbor]) {
+            distances[neighbor] = alt;
+            previous[neighbor] = current;
           }
         }
-      });
+      }
     }
 
-    // Reconstruct path
+    if (distances[dest] === Infinity) {
+      return null;
+    }
+
     const path = [];
-    let curr = destName;
+    let curr = dest;
     while (curr) {
       path.unshift(curr);
       curr = previous[curr];
     }
 
-    if (path.length <= 1 && originName !== destName) {
-      return null;
-    }
+    if (path.length <= 1) return null;
 
-    let totalDist = 0;
-    let totalTime = 0;
+    let totalDistKm = 0;
+    let totalTimeMin = 0;
+    let riskScores = [];
     const pathNodesDetail = [];
+    const pathSegments = [];
 
-    path.forEach((name, i) => {
-      const node = this.nodes[name];
-      if (!node) return;
-      
-      const lat = Number(node.lat);
-      const lng = Number(node.lng);
-      const isValid = !isNaN(lat) && !isNaN(lng) && !(lat === 0 && lng === 0) && lat >= 20.0 && lat <= 30.0 && lng >= 88.0 && lng <= 98.0;
-      if (!isValid) return;
+    for (let i = 0; i < path.length; i++) {
+      const name = path[i];
+      const loc = this.allNodes[name];
+      if (!loc) continue;
+
+      const lat = Number(loc.lat ?? loc.latitude);
+      const lng = Number(loc.lng ?? loc.longitude);
+      if (lat < 20.0 || lat > 30.0 || lng < 88.0 || lng > 98.0) continue;
 
       pathNodesDetail.push({
-        id: name,
+        id: loc.id || i + 1,
         name,
+        district: loc.district || '',
+        state: loc.state || 'North East',
         latitude: lat,
         longitude: lng,
         lat,
         lng,
-        state: node.state || 'North East'
+        elevation_m: loc.elevation_m || 100,
+        location_type: loc.location_type || 'town',
+        is_urban: loc.is_urban || 0,
+        risk_score: loc.risk_score || 0.1
       });
 
-      if (i > 0) {
-        const prevName = path[i - 1];
-        const edge = this.edges.find(e => (e.u === prevName && e.v === name) || (e.v === prevName && e.u === name));
-        if (edge) {
-          totalDist += edge.dist;
-          totalTime += edge.time;
-        }
-      }
-    });
+      if (i < path.length - 1) {
+        const u = path[i];
+        const v = path[i + 1];
+        const edge = edgesList.find(e => (e.u === u && e.v === v) || (e.u === v && e.v === u)) || {
+          distance_km: 40,
+          fastest_time_min: 50,
+          highway: 'NH',
+          terrain: 'plain'
+        };
 
-    if (pathNodesDetail.length < 2 && originName !== destName) {
-      return null;
+        const dist = Number(edge.distance_km || 40);
+        const time = Number(edge.fastest_time_min || (dist * 1.3));
+        const risk = edge.terrain === 'high_pass' ? 0.45 : (edge.terrain === 'steep_mountain' ? 0.30 : (edge.terrain === 'hilly' ? 0.20 : 0.08));
+
+        totalDistKm += dist;
+        totalTimeMin += time;
+        riskScores.push(risk);
+
+        pathSegments.push({
+          from: u,
+          to: v,
+          highway: edge.highway || 'NH',
+          distanceKm: dist,
+          transitTimeMin: time,
+          predicted_state: risk > 0.4 ? 'HAZARD_WARNING' : 'CLEAR',
+          riskScore: risk,
+          severityBand: risk > 0.4 ? 'Moderate' : 'Low'
+        });
+      }
     }
+
+    const avgRisk = Number((riskScores.reduce((a, b) => a + b, 0) / Math.max(1, riskScores.length)).toFixed(3));
+    const severity = avgRisk >= 0.50 ? 'High' : (avgRisk >= 0.25 ? 'Moderate' : 'Low');
 
     return {
       success: true,
       mode,
       is_offline: true,
-      origin: originName,
-      destination: destName,
-      total_distance_km: totalDist,
-      estimated_transit_time_min: totalTime,
-      average_disaster_risk: 0.15,
-      overall_severity: "Low",
-      nodes_in_path: pathNodesDetail.map(n => n.name),
+      origin,
+      destination: dest,
+      totalDistanceKm: Number(totalDistKm.toFixed(1)),
+      total_distance_km: Number(totalDistKm.toFixed(1)),
+      totalTransitTimeMin: Math.round(totalTimeMin),
+      estimated_transit_time_min: Math.round(totalTimeMin),
+      averageRiskScore: avgRisk,
+      average_disaster_risk: avgRisk,
+      severityBand: severity,
+      overall_severity: severity,
+      nodesCount: pathNodesDetail.length,
+      nodes_in_path: path,
       pathNodes: pathNodesDetail,
-      source: "NER Sentinel Client-Side Offline Graph (Zero-Internet Engine)"
+      pathSegments,
+      source: 'OFFLINE: Autonomous Edge Node Routing'
     };
   }
 
@@ -202,5 +516,5 @@ export class OfflineRoutingEngine {
   }
 }
 
-export const offlineEngine = new OfflineRoutingEngine();
+export const offlineEngine = new AutonomousOfflineRoutingEngine();
 export default offlineEngine;

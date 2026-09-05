@@ -4,12 +4,14 @@ import MapComponent from '../components/MapComponent';
 import RiskBadge from '../components/RiskBadge';
 import AIInsight from '../components/AIInsight';
 import { mockLocations } from '../data/mockData';
-import { Navigation, Clock, ShieldAlert, AlertTriangle, ArrowRight, Fuel, Zap, MapPin } from 'lucide-react';
+import { Navigation, Clock, ShieldAlert, AlertTriangle, ArrowRight, Fuel, Zap, MapPin, WifiOff, Globe2, Cpu } from 'lucide-react';
 import { offlineEngine } from '../utils/offlineEngine';
+import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
 
 export function RouteIntelligence() {
   const { t } = useTranslation();
+  const { isOnline, isSimulatedOffline, toggleSimulateOffline } = useAuth();
   const [locations, setLocations] = useState([]);
   const [originState, setOriginState] = useState('Assam');
   const [originId, setOriginId] = useState(2); // Guwahati default
@@ -98,25 +100,26 @@ export function RouteIntelligence() {
     const origName = origObj.name || "Guwahati";
     const destName = destObj.name || "Silchar";
 
-    // 1. If Offline, immediately use the Client-Side Offline Graph
-    if (!navigator.onLine) {
+    // 1. If Offline or in Simulated Offline Mode, immediately execute Autonomous Web Worker engine
+    if (!isOnline || isSimulatedOffline) {
       setLoading(true);
       setError(null);
-      const offlineFast = offlineEngine.calculateRoute(origName, destName, 'fastest');
-      const offlineSafe = offlineEngine.calculateRoute(origName, destName, 'safest');
-      if (offlineFast || offlineSafe) {
-        setAnalysis({
-          fastestRoute: offlineFast,
-          safestRoute: offlineSafe,
-          recommendation: "🟡 Offline Field Mode Active: Routes calculated using client-side offline graph with zero internet connection."
-        });
-      } else {
-        setError('Offline routing could not find a path between these points.');
+      try {
+        const offlineResult = await offlineEngine.calculateDualRoutesAsync(origName, destName);
+        if (offlineResult && (offlineResult.fastestRoute || offlineResult.safestRoute)) {
+          setAnalysis(offlineResult);
+        } else {
+          setError('Autonomous offline routing could not calculate a traversable path between these nodes.');
+        }
+      } catch (offErr) {
+        setError(offErr.message || 'Offline pathfinding encountered an issue.');
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
       return;
     }
 
+    // 2. Online Mode: Query backend hybrid engine with seamless offline fallback
     try {
       setLoading(true);
       setError(null);
@@ -125,16 +128,18 @@ export function RouteIntelligence() {
         setAnalysis(res.data);
       }
     } catch (err) {
-      console.warn('Online routing failed, falling back to client-side offline graph:', err.message);
-      const offlineFast = offlineEngine.calculateRoute(origName, destName, 'fastest');
-      const offlineSafe = offlineEngine.calculateRoute(origName, destName, 'safest');
-      if (offlineFast || offlineSafe) {
-        setAnalysis({
-          fastestRoute: offlineFast,
-          safestRoute: offlineSafe,
-          recommendation: "🟡 Zero-Network Fallback Active: Route computed via local offline road graph."
-        });
-      } else {
+      console.warn('Online routing failed, falling back to autonomous client-side offline graph:', err.message);
+      try {
+        const offlineResult = await offlineEngine.calculateDualRoutesAsync(origName, destName);
+        if (offlineResult && (offlineResult.fastestRoute || offlineResult.safestRoute)) {
+          setAnalysis({
+            ...offlineResult,
+            recommendation: "🟡 Zero-Network Fallback Active: Real-time API unreachable. Route computed autonomously via client-side GeoGraph."
+          });
+        } else {
+          setError(err.message || 'Failed to compute route analysis.');
+        }
+      } catch (fallbackErr) {
         setError(err.message || 'Failed to compute route analysis.');
       }
     } finally {
@@ -144,13 +149,64 @@ export function RouteIntelligence() {
 
   return (
     <div className="page-container">
-      <div className="page-header">
-        <h1 className="page-title" style={{ color: '#A9573F' }}>
-          {t('nav_routes', 'Route Intelligence Engine')}
-        </h1>
-        <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
-          State-wise corridor navigation with real-time Open-Meteo & TomTom AI prediction models
-        </p>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+        <div>
+          <h1 className="page-title" style={{ color: '#A9573F' }}>
+            {t('nav_routes', 'Route Intelligence Engine')}
+          </h1>
+          <p className="page-subtitle" style={{ color: '#20231F', opacity: 0.8 }}>
+            Multi-State Hierarchical Corridor Navigation • Live Satellite & Autonomous Edge GIS Graph
+          </p>
+        </div>
+
+        {/* Status Tag & Mode Toggle */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+          <div style={{
+            padding: '6px 12px',
+            borderRadius: '10px',
+            fontSize: '0.78rem',
+            fontWeight: '700',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            background: isOnline ? '#CBD0C0' : '#FEF3C7',
+            border: `1.5px solid ${isOnline ? '#30483B' : '#F59E0B'}`,
+            color: isOnline ? '#20231F' : '#92400E'
+          }}>
+            {isOnline ? (
+              <>
+                <Globe2 size={14} color="#30483B" />
+                <span>ONLINE: Live Hybrid Telemetry Engine</span>
+              </>
+            ) : (
+              <>
+                <Cpu size={14} color="#92400E" />
+                <span>OFFLINE: Autonomous Edge Node Routing</span>
+              </>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={toggleSimulateOffline}
+            style={{
+              padding: '6px 12px',
+              borderRadius: '10px',
+              fontSize: '0.75rem',
+              fontWeight: '700',
+              cursor: 'pointer',
+              border: '1.5px solid #A0AEC0',
+              background: isSimulatedOffline ? '#A9573F' : '#EDE8DC',
+              color: isSimulatedOffline ? '#FFFFFF' : '#20231F',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px'
+            }}
+          >
+            <WifiOff size={13} />
+            {isSimulatedOffline ? 'Restore Live Online Mode' : 'Test Zero-Internet Mode'}
+          </button>
+        </div>
       </div>
 
       {/* Control Panel: State-Wise Cascading Selectors */}

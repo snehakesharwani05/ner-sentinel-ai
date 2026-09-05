@@ -1,0 +1,439 @@
+{
+  "state": "Nagaland",
+  "state_key": "nagaland",
+  "node_count": 11,
+  "edge_count": 11,
+  "nodes": [
+    {
+      "id": 24,
+      "name": "Dimapur",
+      "state": "Nagaland",
+      "district": "Dimapur",
+      "latitude": 25.9068,
+      "longitude": 93.7271,
+      "lat": 25.9068,
+      "lng": 93.7271,
+      "elevation_m": 145,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 25,
+      "name": "Kohima",
+      "state": "Nagaland",
+      "district": "Kohima",
+      "latitude": 25.6701,
+      "longitude": 94.1077,
+      "lat": 25.6701,
+      "lng": 94.1077,
+      "elevation_m": 1444,
+      "location_type": "state_capital",
+      "is_urban": 1,
+      "risk_score": 0.25
+    },
+    {
+      "id": 26,
+      "name": "Mokokchung",
+      "state": "Nagaland",
+      "district": "Mokokchung",
+      "latitude": 26.3256,
+      "longitude": 94.5215,
+      "lat": 26.3256,
+      "lng": 94.5215,
+      "elevation_m": 1325,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.28
+    },
+    {
+      "id": 38,
+      "name": "Wokha",
+      "state": "Nagaland",
+      "district": "Wokha",
+      "latitude": 26.1,
+      "longitude": 94.26,
+      "lat": 26.1,
+      "lng": 94.26,
+      "elevation_m": 1313,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.3
+    },
+    {
+      "id": 75,
+      "name": "Tuensang",
+      "state": "Nagaland",
+      "district": "Tuensang",
+      "latitude": 26.28,
+      "longitude": 94.83,
+      "lat": 26.28,
+      "lng": 94.83,
+      "elevation_m": 1371,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.35
+    },
+    {
+      "id": 76,
+      "name": "Zunheboto",
+      "state": "Nagaland",
+      "district": "Zunheboto",
+      "latitude": 25.97,
+      "longitude": 94.52,
+      "lat": 25.97,
+      "lng": 94.52,
+      "elevation_m": 1874,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.35
+    },
+    {
+      "id": 77,
+      "name": "Mon",
+      "state": "Nagaland",
+      "district": "Mon",
+      "latitude": 26.75,
+      "longitude": 95.06,
+      "lat": 26.75,
+      "lng": 95.06,
+      "elevation_m": 897,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.32
+    },
+    {
+      "id": 78,
+      "name": "Phek",
+      "state": "Nagaland",
+      "district": "Phek",
+      "latitude": 25.66,
+      "longitude": 94.46,
+      "lat": 25.66,
+      "lng": 94.46,
+      "elevation_m": 1024,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.35
+    },
+    {
+      "id": 151,
+      "name": "Chumoukedima",
+      "state": "Nagaland",
+      "district": "Chumoukedima",
+      "latitude": 25.79,
+      "longitude": 93.77,
+      "lat": 25.79,
+      "lng": 93.77,
+      "elevation_m": 180,
+      "location_type": "subdivision_town",
+      "is_urban": 1,
+      "risk_score": 0.12
+    },
+    {
+      "id": 152,
+      "name": "Medziphema",
+      "state": "Nagaland",
+      "district": "Chumoukedima",
+      "latitude": 25.75,
+      "longitude": 93.85,
+      "lat": 25.75,
+      "lng": 93.85,
+      "elevation_m": 310,
+      "location_type": "highway_junction",
+      "is_urban": 1,
+      "risk_score": 0.15
+    },
+    {
+      "id": 153,
+      "name": "Tseminyu",
+      "state": "Nagaland",
+      "district": "Tseminyu",
+      "latitude": 25.9,
+      "longitude": 94.21,
+      "lat": 25.9,
+      "lng": 94.21,
+      "elevation_m": 1260,
+      "location_type": "subdivision_town",
+      "is_urban": 0,
+      "risk_score": 0.28
+    }
+  ],
+  "edges": [
+    {
+      "u": "Nagaon",
+      "v": "Dimapur",
+      "origin": "Nagaon",
+      "destination": "Dimapur",
+      "distance_km": 160.0,
+      "highway": "NH-29 (4-Lane)",
+      "terrain": "plain",
+      "slope_deg": 1.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 160.0,
+      "safest_cost": 145.6,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.3452,
+          92.6835
+        ],
+        [
+          25.9068,
+          93.7271
+        ]
+      ]
+    },
+    {
+      "u": "Dimapur",
+      "v": "Chumoukedima",
+      "origin": "Dimapur",
+      "destination": "Chumoukedima",
+      "distance_km": 14.0,
+      "highway": "NH-29 (4-Lane)",
+      "terrain": "plain",
+      "slope_deg": 1.0,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 14.0,
+      "safest_cost": 12.6,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.9068,
+          93.7271
+        ],
+        [
+          25.79,
+          93.77
+        ]
+      ]
+    },
+    {
+      "u": "Chumoukedima",
+      "v": "Medziphema",
+      "origin": "Chumoukedima",
+      "destination": "Medziphema",
+      "distance_km": 18.0,
+      "highway": "NH-29",
+      "terrain": "hilly",
+      "slope_deg": 4.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 21.2,
+      "safest_cost": 24.56,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.79,
+          93.77
+        ],
+        [
+          25.75,
+          93.85
+        ]
+      ]
+    },
+    {
+      "u": "Medziphema",
+      "v": "Kohima",
+      "origin": "Medziphema",
+      "destination": "Kohima",
+      "distance_km": 42.0,
+      "highway": "NH-29 (Asian Highway AH-1)",
+      "terrain": "steep_mountain",
+      "slope_deg": 12.0,
+      "condition": "fair",
+      "speed_kmh": 49.0,
+      "fastest_time_min": 51.4,
+      "safest_cost": 80.74,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.75,
+          93.85
+        ],
+        [
+          25.6701,
+          94.1077
+        ]
+      ]
+    },
+    {
+      "u": "Kohima",
+      "v": "Tseminyu",
+      "origin": "Kohima",
+      "destination": "Tseminyu",
+      "distance_km": 40.0,
+      "highway": "NH-2",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "good",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 57.1,
+      "safest_cost": 85.14,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.6701,
+          94.1077
+        ],
+        [
+          25.9,
+          94.21
+        ]
+      ]
+    },
+    {
+      "u": "Tseminyu",
+      "v": "Wokha",
+      "origin": "Tseminyu",
+      "destination": "Wokha",
+      "distance_km": 35.0,
+      "highway": "NH-2",
+      "terrain": "steep_mountain",
+      "slope_deg": 9.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 50.0,
+      "safest_cost": 75.5,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.9,
+          94.21
+        ],
+        [
+          26.1,
+          94.26
+        ]
+      ]
+    },
+    {
+      "u": "Wokha",
+      "v": "Mokokchung",
+      "origin": "Wokha",
+      "destination": "Mokokchung",
+      "distance_km": 80.0,
+      "highway": "NH-2",
+      "terrain": "steep_mountain",
+      "slope_deg": 9.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 114.3,
+      "safest_cost": 172.57,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.1,
+          94.26
+        ],
+        [
+          26.3256,
+          94.5215
+        ]
+      ]
+    },
+    {
+      "u": "Mokokchung",
+      "v": "Tuensang",
+      "origin": "Mokokchung",
+      "destination": "Tuensang",
+      "distance_km": 115.0,
+      "highway": "NH-702",
+      "terrain": "steep_mountain",
+      "slope_deg": 12.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 164.3,
+      "safest_cost": 257.93,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.3256,
+          94.5215
+        ],
+        [
+          26.28,
+          94.83
+        ]
+      ]
+    },
+    {
+      "u": "Mokokchung",
+      "v": "Zunheboto",
+      "origin": "Mokokchung",
+      "destination": "Zunheboto",
+      "distance_km": 60.0,
+      "highway": "NH-702D",
+      "terrain": "steep_mountain",
+      "slope_deg": 10.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 85.7,
+      "safest_cost": 131.14,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.3256,
+          94.5215
+        ],
+        [
+          25.97,
+          94.52
+        ]
+      ]
+    },
+    {
+      "u": "Kohima",
+      "v": "Phek",
+      "origin": "Kohima",
+      "destination": "Phek",
+      "distance_km": 120.0,
+      "highway": "NH-29",
+      "terrain": "steep_mountain",
+      "slope_deg": 11.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 171.4,
+      "safest_cost": 265.71,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.6701,
+          94.1077
+        ],
+        [
+          25.66,
+          94.46
+        ]
+      ]
+    },
+    {
+      "u": "Jorhat",
+      "v": "Mokokchung",
+      "origin": "Jorhat",
+      "destination": "Mokokchung",
+      "distance_km": 85.0,
+      "highway": "NH-702",
+      "terrain": "hilly",
+      "slope_deg": 6.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 100.0,
+      "safest_cost": 120.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.7509,
+          94.2037
+        ],
+        [
+          26.3256,
+          94.5215
+        ]
+      ]
+    }
+  ]
+}

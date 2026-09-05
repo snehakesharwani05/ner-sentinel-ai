@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
 
 export function Navbar({ systemStatus = 'ONLINE' }) {
-  const { user, isAuthenticated, setIsAuthModalOpen, logout, isOnline } = useAuth();
+  const { user, isAuthenticated, setIsAuthModalOpen, logout, isOnline, toggleSimulateOffline } = useAuth();
   const { language, setLanguage, t } = useTranslation();
 
   const languages = [
@@ -74,33 +74,38 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
           </select>
         </div>
 
-        {/* Live Network & Zero-Internet Offline Pill */}
-        <div
+        {/* Live Network & Autonomous Edge Node Offline Pill */}
+        <button
+          onClick={toggleSimulateOffline}
+          title={isOnline ? "Click to simulate Zero-Internet Field Mode" : "Click to restore Online Satellite Mode"}
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            padding: '5px 10px',
+            padding: '5px 12px',
             borderRadius: '9999px',
             backgroundColor: isOnline ? '#CBD0C0' : '#FEF3C7',
-            border: `1px solid ${isOnline ? 'rgba(48, 72, 59, 0.2)' : '#F59E0B'}`,
+            border: `1.5px solid ${isOnline ? 'rgba(48, 72, 59, 0.3)' : '#F59E0B'}`,
             fontSize: '0.76rem',
-            color: isOnline ? '#20231F' : '#B45309',
-            fontWeight: '700'
+            color: isOnline ? '#20231F' : '#92400E',
+            fontWeight: '700',
+            cursor: 'pointer',
+            transition: 'all 0.15s ease',
+            boxShadow: isOnline ? 'none' : '0 2px 6px rgba(245, 158, 11, 0.25)'
           }}
         >
           {isOnline ? (
             <>
               <div className="pulse-dot" />
-              <span>{t('online_satellite', '🟢 Live Satellite (Online)')}</span>
+              <span>{t('online_satellite', 'ONLINE: Live Hybrid Telemetry Engine')}</span>
             </>
           ) : (
             <>
-              <WifiOff size={13} color="#B45309" />
-              <span>{t('offline_mode', '🟡 Offline Field Mode (Local Graph)')}</span>
+              <WifiOff size={13} color="#92400E" />
+              <span>{t('offline_mode', 'OFFLINE: Autonomous Edge Node Routing')}</span>
             </>
           )}
-        </div>
+        </button>
 
         {/* User Authentication Badge / Sign In Button */}
         {isAuthenticated ? (

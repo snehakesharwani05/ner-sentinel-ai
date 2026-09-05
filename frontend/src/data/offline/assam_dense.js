@@ -1,0 +1,1270 @@
+export const ASSAM_DENSE_GRAPH = {
+  "state": "Assam",
+  "state_key": "assam",
+  "node_count": 31,
+  "edge_count": 33,
+  "nodes": [
+    {
+      "id": 2,
+      "name": "Guwahati",
+      "state": "Assam",
+      "district": "Kamrup Metropolitan",
+      "latitude": 26.1445,
+      "longitude": 91.7362,
+      "lat": 26.1445,
+      "lng": 91.7362,
+      "elevation_m": 55,
+      "location_type": "state_capital",
+      "is_urban": 1,
+      "risk_score": 0.08
+    },
+    {
+      "id": 3,
+      "name": "Dispur",
+      "state": "Assam",
+      "district": "Kamrup Metropolitan",
+      "latitude": 26.1433,
+      "longitude": 91.7898,
+      "lat": 26.1433,
+      "lng": 91.7898,
+      "elevation_m": 55,
+      "location_type": "state_capital",
+      "is_urban": 1,
+      "risk_score": 0.05
+    },
+    {
+      "id": 4,
+      "name": "Tezpur",
+      "state": "Assam",
+      "district": "Sonitpur",
+      "latitude": 26.6528,
+      "longitude": 92.7926,
+      "lat": 26.6528,
+      "lng": 92.7926,
+      "elevation_m": 48,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.12
+    },
+    {
+      "id": 5,
+      "name": "Nagaon",
+      "state": "Assam",
+      "district": "Nagaon",
+      "latitude": 26.3452,
+      "longitude": 92.6835,
+      "lat": 26.3452,
+      "lng": 92.6835,
+      "elevation_m": 52,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 6,
+      "name": "Jorhat",
+      "state": "Assam",
+      "district": "Jorhat",
+      "latitude": 26.7509,
+      "longitude": 94.2037,
+      "lat": 26.7509,
+      "lng": 94.2037,
+      "elevation_m": 116,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 7,
+      "name": "Dibrugarh",
+      "state": "Assam",
+      "district": "Dibrugarh",
+      "latitude": 27.4728,
+      "longitude": 94.912,
+      "lat": 27.4728,
+      "lng": 94.912,
+      "elevation_m": 108,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.14
+    },
+    {
+      "id": 8,
+      "name": "Tinsukia",
+      "state": "Assam",
+      "district": "Tinsukia",
+      "latitude": 27.4922,
+      "longitude": 95.3558,
+      "lat": 27.4922,
+      "lng": 95.3558,
+      "elevation_m": 116,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 9,
+      "name": "Silchar",
+      "state": "Assam",
+      "district": "Cachar",
+      "latitude": 24.8333,
+      "longitude": 92.7789,
+      "lat": 24.8333,
+      "lng": 92.7789,
+      "elevation_m": 35,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.22
+    },
+    {
+      "id": 10,
+      "name": "Haflong (Jatinga)",
+      "state": "Assam",
+      "district": "Dima Hasao",
+      "latitude": 25.1804,
+      "longitude": 93.0169,
+      "lat": 25.1804,
+      "lng": 93.0169,
+      "elevation_m": 512,
+      "location_type": "mountain_pass",
+      "is_urban": 0,
+      "risk_score": 0.65
+    },
+    {
+      "id": 11,
+      "name": "Bhalukpong",
+      "state": "Assam",
+      "district": "Sonitpur",
+      "latitude": 27.0125,
+      "longitude": 92.6416,
+      "lat": 27.0125,
+      "lng": 92.6416,
+      "elevation_m": 213,
+      "location_type": "border_checkpost",
+      "is_urban": 0,
+      "risk_score": 0.3
+    },
+    {
+      "id": 44,
+      "name": "Nalbari",
+      "state": "Assam",
+      "district": "Nalbari",
+      "latitude": 26.4447,
+      "longitude": 91.4428,
+      "lat": 26.4447,
+      "lng": 91.4428,
+      "elevation_m": 42,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.12
+    },
+    {
+      "id": 45,
+      "name": "Goalpara",
+      "state": "Assam",
+      "district": "Goalpara",
+      "latitude": 26.1772,
+      "longitude": 90.6272,
+      "lat": 26.1772,
+      "lng": 90.6272,
+      "elevation_m": 35,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.15
+    },
+    {
+      "id": 51,
+      "name": "Bongaigaon",
+      "state": "Assam",
+      "district": "Bongaigaon",
+      "latitude": 26.48,
+      "longitude": 90.56,
+      "lat": 26.48,
+      "lng": 90.56,
+      "elevation_m": 54,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 52,
+      "name": "Dhubri",
+      "state": "Assam",
+      "district": "Dhubri",
+      "latitude": 26.02,
+      "longitude": 89.98,
+      "lat": 26.02,
+      "lng": 89.98,
+      "elevation_m": 34,
+      "location_type": "river_port",
+      "is_urban": 1,
+      "risk_score": 0.18
+    },
+    {
+      "id": 53,
+      "name": "Barpeta",
+      "state": "Assam",
+      "district": "Barpeta",
+      "latitude": 26.32,
+      "longitude": 91.0,
+      "lat": 26.32,
+      "lng": 91.0,
+      "elevation_m": 35,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.15
+    },
+    {
+      "id": 54,
+      "name": "North Lakhimpur",
+      "state": "Assam",
+      "district": "Lakhimpur",
+      "latitude": 27.23,
+      "longitude": 94.1,
+      "lat": 27.23,
+      "lng": 94.1,
+      "elevation_m": 101,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.16
+    },
+    {
+      "id": 55,
+      "name": "Dhemaji",
+      "state": "Assam",
+      "district": "Dhemaji",
+      "latitude": 27.48,
+      "longitude": 94.58,
+      "lat": 27.48,
+      "lng": 94.58,
+      "elevation_m": 91,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.2
+    },
+    {
+      "id": 56,
+      "name": "Golaghat",
+      "state": "Assam",
+      "district": "Golaghat",
+      "latitude": 26.52,
+      "longitude": 93.97,
+      "lat": 26.52,
+      "lng": 93.97,
+      "elevation_m": 95,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 57,
+      "name": "Sivasagar",
+      "state": "Assam",
+      "district": "Sivasagar",
+      "latitude": 26.98,
+      "longitude": 94.63,
+      "lat": 26.98,
+      "lng": 94.63,
+      "elevation_m": 95,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 58,
+      "name": "Kokrajhar",
+      "state": "Assam",
+      "district": "Kokrajhar",
+      "latitude": 26.4,
+      "longitude": 90.27,
+      "lat": 26.4,
+      "lng": 90.27,
+      "elevation_m": 38,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 59,
+      "name": "Karimganj",
+      "state": "Assam",
+      "district": "Karimganj",
+      "latitude": 24.87,
+      "longitude": 92.35,
+      "lat": 24.87,
+      "lng": 92.35,
+      "elevation_m": 13,
+      "location_type": "border_checkpost",
+      "is_urban": 1,
+      "risk_score": 0.18
+    },
+    {
+      "id": 60,
+      "name": "Hailakandi",
+      "state": "Assam",
+      "district": "Hailakandi",
+      "latitude": 24.68,
+      "longitude": 92.56,
+      "lat": 24.68,
+      "lng": 92.56,
+      "elevation_m": 21,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.16
+    },
+    {
+      "id": 61,
+      "name": "Diphu",
+      "state": "Assam",
+      "district": "Karbi Anglong",
+      "latitude": 25.84,
+      "longitude": 93.43,
+      "lat": 25.84,
+      "lng": 93.43,
+      "elevation_m": 186,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.22
+    },
+    {
+      "id": 111,
+      "name": "Jalukbari",
+      "state": "Assam",
+      "district": "Kamrup Metropolitan",
+      "latitude": 26.15,
+      "longitude": 91.66,
+      "lat": 26.15,
+      "lng": 91.66,
+      "elevation_m": 52,
+      "location_type": "highway_junction",
+      "is_urban": 1,
+      "risk_score": 0.06
+    },
+    {
+      "id": 112,
+      "name": "Khanapara",
+      "state": "Assam",
+      "district": "Kamrup Metropolitan",
+      "latitude": 26.11,
+      "longitude": 91.82,
+      "lat": 26.11,
+      "lng": 91.82,
+      "elevation_m": 60,
+      "location_type": "highway_junction",
+      "is_urban": 1,
+      "risk_score": 0.06
+    },
+    {
+      "id": 113,
+      "name": "Jagiroad",
+      "state": "Assam",
+      "district": "Morigaon",
+      "latitude": 26.12,
+      "longitude": 92.21,
+      "lat": 26.12,
+      "lng": 92.21,
+      "elevation_m": 50,
+      "location_type": "subdivision_town",
+      "is_urban": 1,
+      "risk_score": 0.08
+    },
+    {
+      "id": 114,
+      "name": "Raha",
+      "state": "Assam",
+      "district": "Nagaon",
+      "latitude": 26.23,
+      "longitude": 92.52,
+      "lat": 26.23,
+      "lng": 92.52,
+      "elevation_m": 52,
+      "location_type": "market_center",
+      "is_urban": 1,
+      "risk_score": 0.09
+    },
+    {
+      "id": 115,
+      "name": "Numaligarh",
+      "state": "Assam",
+      "district": "Golaghat",
+      "latitude": 26.63,
+      "longitude": 93.75,
+      "lat": 26.63,
+      "lng": 93.75,
+      "elevation_m": 85,
+      "location_type": "highway_junction",
+      "is_urban": 1,
+      "risk_score": 0.08
+    },
+    {
+      "id": 116,
+      "name": "Barpeta Road",
+      "state": "Assam",
+      "district": "Barpeta",
+      "latitude": 26.5,
+      "longitude": 90.97,
+      "lat": 26.5,
+      "lng": 90.97,
+      "elevation_m": 48,
+      "location_type": "market_center",
+      "is_urban": 1,
+      "risk_score": 0.1
+    },
+    {
+      "id": 117,
+      "name": "Digboi",
+      "state": "Assam",
+      "district": "Tinsukia",
+      "latitude": 27.38,
+      "longitude": 95.62,
+      "lat": 27.38,
+      "lng": 95.62,
+      "elevation_m": 150,
+      "location_type": "subdivision_town",
+      "is_urban": 1,
+      "risk_score": 0.12
+    },
+    {
+      "id": 118,
+      "name": "Badarpur",
+      "state": "Assam",
+      "district": "Karimganj",
+      "latitude": 24.9,
+      "longitude": 92.6,
+      "lat": 24.9,
+      "lng": 92.6,
+      "elevation_m": 25,
+      "location_type": "highway_junction",
+      "is_urban": 1,
+      "risk_score": 0.15
+    }
+  ],
+  "edges": [
+    {
+      "u": "Guwahati",
+      "v": "Dispur",
+      "origin": "Guwahati",
+      "destination": "Dispur",
+      "distance_km": 10.0,
+      "highway": "GS Road",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 30.0,
+      "fastest_time_min": 20.0,
+      "safest_cost": 17.8,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.1445,
+          91.7362
+        ],
+        [
+          26.1433,
+          91.7898
+        ]
+      ]
+    },
+    {
+      "u": "Guwahati",
+      "v": "Jalukbari",
+      "origin": "Guwahati",
+      "destination": "Jalukbari",
+      "distance_km": 12.0,
+      "highway": "NH-27 Bypass",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 12.0,
+      "safest_cost": 10.68,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.1445,
+          91.7362
+        ],
+        [
+          26.15,
+          91.66
+        ]
+      ]
+    },
+    {
+      "u": "Dispur",
+      "v": "Khanapara",
+      "origin": "Dispur",
+      "destination": "Khanapara",
+      "distance_km": 6.0,
+      "highway": "GS Road",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 30.0,
+      "fastest_time_min": 12.0,
+      "safest_cost": 10.68,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.1433,
+          91.7898
+        ],
+        [
+          26.11,
+          91.82
+        ]
+      ]
+    },
+    {
+      "u": "Khanapara",
+      "v": "Jagiroad",
+      "origin": "Khanapara",
+      "destination": "Jagiroad",
+      "distance_km": 50.0,
+      "highway": "NH-27 (4-Lane)",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 50.0,
+      "safest_cost": 44.5,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.11,
+          91.82
+        ],
+        [
+          26.12,
+          92.21
+        ]
+      ]
+    },
+    {
+      "u": "Jagiroad",
+      "v": "Raha",
+      "origin": "Jagiroad",
+      "destination": "Raha",
+      "distance_km": 40.0,
+      "highway": "NH-27 (4-Lane)",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 40.0,
+      "safest_cost": 35.6,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.12,
+          92.21
+        ],
+        [
+          26.23,
+          92.52
+        ]
+      ]
+    },
+    {
+      "u": "Raha",
+      "v": "Nagaon",
+      "origin": "Raha",
+      "destination": "Nagaon",
+      "distance_km": 20.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 20.0,
+      "safest_cost": 17.8,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.23,
+          92.52
+        ],
+        [
+          26.3452,
+          92.6835
+        ]
+      ]
+    },
+    {
+      "u": "Nagaon",
+      "v": "Tezpur",
+      "origin": "Nagaon",
+      "destination": "Tezpur",
+      "distance_km": 50.0,
+      "highway": "NH-715 (Kalia Bhomora Bridge)",
+      "terrain": "plain",
+      "slope_deg": 1.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 50.0,
+      "safest_cost": 45.5,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.3452,
+          92.6835
+        ],
+        [
+          26.6528,
+          92.7926
+        ]
+      ]
+    },
+    {
+      "u": "Tezpur",
+      "v": "Bhalukpong",
+      "origin": "Tezpur",
+      "destination": "Bhalukpong",
+      "distance_km": 60.0,
+      "highway": "NH-13",
+      "terrain": "hilly",
+      "slope_deg": 5.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 70.6,
+      "safest_cost": 83.29,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.6528,
+          92.7926
+        ],
+        [
+          27.0125,
+          92.6416
+        ]
+      ]
+    },
+    {
+      "u": "Nagaon",
+      "v": "Numaligarh",
+      "origin": "Nagaon",
+      "destination": "Numaligarh",
+      "distance_km": 115.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 1.0,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 115.0,
+      "safest_cost": 103.5,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.3452,
+          92.6835
+        ],
+        [
+          26.63,
+          93.75
+        ]
+      ]
+    },
+    {
+      "u": "Numaligarh",
+      "v": "Golaghat",
+      "origin": "Numaligarh",
+      "destination": "Golaghat",
+      "distance_km": 25.0,
+      "highway": "NH-129",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 25.0,
+      "safest_cost": 22.25,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.63,
+          93.75
+        ],
+        [
+          26.52,
+          93.97
+        ]
+      ]
+    },
+    {
+      "u": "Golaghat",
+      "v": "Jorhat",
+      "origin": "Golaghat",
+      "destination": "Jorhat",
+      "distance_km": 45.0,
+      "highway": "SH-Assam",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 45.0,
+      "fastest_time_min": 60.0,
+      "safest_cost": 53.4,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.52,
+          93.97
+        ],
+        [
+          26.7509,
+          94.2037
+        ]
+      ]
+    },
+    {
+      "u": "Numaligarh",
+      "v": "Jorhat",
+      "origin": "Numaligarh",
+      "destination": "Jorhat",
+      "distance_km": 65.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 65.0,
+      "safest_cost": 57.85,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.63,
+          93.75
+        ],
+        [
+          26.7509,
+          94.2037
+        ]
+      ]
+    },
+    {
+      "u": "Jorhat",
+      "v": "Sivasagar",
+      "origin": "Jorhat",
+      "destination": "Sivasagar",
+      "distance_km": 55.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 55.0,
+      "safest_cost": 48.95,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.7509,
+          94.2037
+        ],
+        [
+          26.98,
+          94.63
+        ]
+      ]
+    },
+    {
+      "u": "Sivasagar",
+      "v": "Dibrugarh",
+      "origin": "Sivasagar",
+      "destination": "Dibrugarh",
+      "distance_km": 75.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 75.0,
+      "safest_cost": 66.75,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.98,
+          94.63
+        ],
+        [
+          27.4728,
+          94.912
+        ]
+      ]
+    },
+    {
+      "u": "Dibrugarh",
+      "v": "Tinsukia",
+      "origin": "Dibrugarh",
+      "destination": "Tinsukia",
+      "distance_km": 48.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 48.0,
+      "safest_cost": 42.72,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.4728,
+          94.912
+        ],
+        [
+          27.4922,
+          95.3558
+        ]
+      ]
+    },
+    {
+      "u": "Tinsukia",
+      "v": "Digboi",
+      "origin": "Tinsukia",
+      "destination": "Digboi",
+      "distance_km": 35.0,
+      "highway": "NH-38",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 35.0,
+      "safest_cost": 31.15,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.4922,
+          95.3558
+        ],
+        [
+          27.38,
+          95.62
+        ]
+      ]
+    },
+    {
+      "u": "Nagaon",
+      "v": "Haflong (Jatinga)",
+      "origin": "Nagaon",
+      "destination": "Haflong (Jatinga)",
+      "distance_km": 140.0,
+      "highway": "NH-27",
+      "terrain": "steep_mountain",
+      "slope_deg": 14.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 200.0,
+      "safest_cost": 322.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.3452,
+          92.6835
+        ],
+        [
+          25.1804,
+          93.0169
+        ]
+      ]
+    },
+    {
+      "u": "Haflong (Jatinga)",
+      "v": "Silchar",
+      "origin": "Haflong (Jatinga)",
+      "destination": "Silchar",
+      "distance_km": 100.0,
+      "highway": "NH-27",
+      "terrain": "steep_mountain",
+      "slope_deg": 13.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 142.9,
+      "safest_cost": 227.14,
+      "is_urban": true,
+      "coordinates": [
+        [
+          25.1804,
+          93.0169
+        ],
+        [
+          24.8333,
+          92.7789
+        ]
+      ]
+    },
+    {
+      "u": "Jalukbari",
+      "v": "Goalpara",
+      "origin": "Jalukbari",
+      "destination": "Goalpara",
+      "distance_km": 120.0,
+      "highway": "NH-17",
+      "terrain": "plain",
+      "slope_deg": 1.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 120.0,
+      "safest_cost": 109.2,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.15,
+          91.66
+        ],
+        [
+          26.1772,
+          90.6272
+        ]
+      ]
+    },
+    {
+      "u": "Jalukbari",
+      "v": "Nalbari",
+      "origin": "Jalukbari",
+      "destination": "Nalbari",
+      "distance_km": 60.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 60.0,
+      "safest_cost": 53.4,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.15,
+          91.66
+        ],
+        [
+          26.4447,
+          91.4428
+        ]
+      ]
+    },
+    {
+      "u": "Nalbari",
+      "v": "Barpeta Road",
+      "origin": "Nalbari",
+      "destination": "Barpeta Road",
+      "distance_km": 45.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 45.0,
+      "safest_cost": 40.05,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.4447,
+          91.4428
+        ],
+        [
+          26.5,
+          90.97
+        ]
+      ]
+    },
+    {
+      "u": "Barpeta Road",
+      "v": "Barpeta",
+      "origin": "Barpeta Road",
+      "destination": "Barpeta",
+      "distance_km": 18.0,
+      "highway": "SH-Barpeta",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 45.0,
+      "fastest_time_min": 24.0,
+      "safest_cost": 21.36,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.5,
+          90.97
+        ],
+        [
+          26.32,
+          91.0
+        ]
+      ]
+    },
+    {
+      "u": "Barpeta Road",
+      "v": "Bongaigaon",
+      "origin": "Barpeta Road",
+      "destination": "Bongaigaon",
+      "distance_km": 45.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 45.0,
+      "safest_cost": 40.05,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.5,
+          90.97
+        ],
+        [
+          26.48,
+          90.56
+        ]
+      ]
+    },
+    {
+      "u": "Bongaigaon",
+      "v": "Kokrajhar",
+      "origin": "Bongaigaon",
+      "destination": "Kokrajhar",
+      "distance_km": 50.0,
+      "highway": "NH-27",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 50.0,
+      "safest_cost": 44.5,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.48,
+          90.56
+        ],
+        [
+          26.4,
+          90.27
+        ]
+      ]
+    },
+    {
+      "u": "Goalpara",
+      "v": "Dhubri",
+      "origin": "Goalpara",
+      "destination": "Dhubri",
+      "distance_km": 80.0,
+      "highway": "NH-17",
+      "terrain": "plain",
+      "slope_deg": 1.0,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 80.0,
+      "safest_cost": 72.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.1772,
+          90.6272
+        ],
+        [
+          26.02,
+          89.98
+        ]
+      ]
+    },
+    {
+      "u": "Tezpur",
+      "v": "North Lakhimpur",
+      "origin": "Tezpur",
+      "destination": "North Lakhimpur",
+      "distance_km": 170.0,
+      "highway": "NH-15",
+      "terrain": "plain",
+      "slope_deg": 1.0,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 170.0,
+      "safest_cost": 153.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.6528,
+          92.7926
+        ],
+        [
+          27.23,
+          94.1
+        ]
+      ]
+    },
+    {
+      "u": "North Lakhimpur",
+      "v": "Dhemaji",
+      "origin": "North Lakhimpur",
+      "destination": "Dhemaji",
+      "distance_km": 70.0,
+      "highway": "NH-15",
+      "terrain": "plain",
+      "slope_deg": 1.0,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 70.0,
+      "safest_cost": 63.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.23,
+          94.1
+        ],
+        [
+          27.48,
+          94.58
+        ]
+      ]
+    },
+    {
+      "u": "Dhemaji",
+      "v": "Dibrugarh",
+      "origin": "Dhemaji",
+      "destination": "Dibrugarh",
+      "distance_km": 60.0,
+      "highway": "Bogibeel Bridge / NH-15",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 60.0,
+      "safest_cost": 53.4,
+      "is_urban": true,
+      "coordinates": [
+        [
+          27.48,
+          94.58
+        ],
+        [
+          27.4728,
+          94.912
+        ]
+      ]
+    },
+    {
+      "u": "Nagaon",
+      "v": "Diphu",
+      "origin": "Nagaon",
+      "destination": "Diphu",
+      "distance_km": 115.0,
+      "highway": "NH-329",
+      "terrain": "hilly",
+      "slope_deg": 5.0,
+      "condition": "fair",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 135.3,
+      "safest_cost": 159.65,
+      "is_urban": true,
+      "coordinates": [
+        [
+          26.3452,
+          92.6835
+        ],
+        [
+          25.84,
+          93.43
+        ]
+      ]
+    },
+    {
+      "u": "Silchar",
+      "v": "Badarpur",
+      "origin": "Silchar",
+      "destination": "Badarpur",
+      "distance_km": 28.0,
+      "highway": "NH-37",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 28.0,
+      "safest_cost": 24.92,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.8333,
+          92.7789
+        ],
+        [
+          24.9,
+          92.6
+        ]
+      ]
+    },
+    {
+      "u": "Badarpur",
+      "v": "Karimganj",
+      "origin": "Badarpur",
+      "destination": "Karimganj",
+      "distance_km": 25.0,
+      "highway": "NH-37",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 60.0,
+      "fastest_time_min": 25.0,
+      "safest_cost": 22.25,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.9,
+          92.6
+        ],
+        [
+          24.87,
+          92.35
+        ]
+      ]
+    },
+    {
+      "u": "Badarpur",
+      "v": "Hailakandi",
+      "origin": "Badarpur",
+      "destination": "Hailakandi",
+      "distance_km": 25.0,
+      "highway": "SH-38",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 45.0,
+      "fastest_time_min": 33.3,
+      "safest_cost": 29.67,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.9,
+          92.6
+        ],
+        [
+          24.68,
+          92.56
+        ]
+      ]
+    },
+    {
+      "u": "Silchar",
+      "v": "Hailakandi",
+      "origin": "Silchar",
+      "destination": "Hailakandi",
+      "distance_km": 35.0,
+      "highway": "SH-38",
+      "terrain": "plain",
+      "slope_deg": 0.5,
+      "condition": "good",
+      "speed_kmh": 45.0,
+      "fastest_time_min": 46.7,
+      "safest_cost": 41.53,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.8333,
+          92.7789
+        ],
+        [
+          24.68,
+          92.56
+        ]
+      ]
+    }
+  ]
+};
+export default ASSAM_DENSE_GRAPH;

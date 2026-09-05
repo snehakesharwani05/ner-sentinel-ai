@@ -1,0 +1,514 @@
+{
+  "state": "Mizoram",
+  "state_key": "mizoram",
+  "node_count": 11,
+  "edge_count": 14,
+  "nodes": [
+    {
+      "id": 31,
+      "name": "Kolasib",
+      "state": "Mizoram",
+      "district": "Kolasib",
+      "latitude": 24.2247,
+      "longitude": 92.6781,
+      "lat": 24.2247,
+      "lng": 92.6781,
+      "elevation_m": 612,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.25
+    },
+    {
+      "id": 32,
+      "name": "Aizawl",
+      "state": "Mizoram",
+      "district": "Aizawl",
+      "latitude": 23.7271,
+      "longitude": 92.7176,
+      "lat": 23.7271,
+      "lng": 92.7176,
+      "elevation_m": 1132,
+      "location_type": "state_capital",
+      "is_urban": 1,
+      "risk_score": 0.2
+    },
+    {
+      "id": 33,
+      "name": "Lunglei",
+      "state": "Mizoram",
+      "district": "Lunglei",
+      "latitude": 22.8833,
+      "longitude": 92.7333,
+      "lat": 22.8833,
+      "lng": 92.7333,
+      "elevation_m": 722,
+      "location_type": "logistics_hub",
+      "is_urban": 1,
+      "risk_score": 0.25
+    },
+    {
+      "id": 34,
+      "name": "Champhai",
+      "state": "Mizoram",
+      "district": "Champhai",
+      "latitude": 23.456,
+      "longitude": 93.3282,
+      "lat": 23.456,
+      "lng": 93.3282,
+      "elevation_m": 1678,
+      "location_type": "border_checkpost",
+      "is_urban": 1,
+      "risk_score": 0.35
+    },
+    {
+      "id": 71,
+      "name": "Vairengte",
+      "state": "Mizoram",
+      "district": "Kolasib",
+      "latitude": 24.5,
+      "longitude": 92.76,
+      "lat": 24.5,
+      "lng": 92.76,
+      "elevation_m": 220,
+      "location_type": "border_checkpost",
+      "is_urban": 0,
+      "risk_score": 0.2
+    },
+    {
+      "id": 72,
+      "name": "Serchhip",
+      "state": "Mizoram",
+      "district": "Serchhip",
+      "latitude": 23.34,
+      "longitude": 92.85,
+      "lat": 23.34,
+      "lng": 92.85,
+      "elevation_m": 880,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.22
+    },
+    {
+      "id": 73,
+      "name": "Lawngtlai",
+      "state": "Mizoram",
+      "district": "Lawngtlai",
+      "latitude": 22.53,
+      "longitude": 92.89,
+      "lat": 22.53,
+      "lng": 92.89,
+      "elevation_m": 780,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.28
+    },
+    {
+      "id": 74,
+      "name": "Saiha",
+      "state": "Mizoram",
+      "district": "Siaha",
+      "latitude": 22.48,
+      "longitude": 92.97,
+      "lat": 22.48,
+      "lng": 92.97,
+      "elevation_m": 729,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.3
+    },
+    {
+      "id": 141,
+      "name": "Lengpui",
+      "state": "Mizoram",
+      "district": "Mamit",
+      "latitude": 23.84,
+      "longitude": 92.62,
+      "lat": 23.84,
+      "lng": 92.62,
+      "elevation_m": 420,
+      "location_type": "highway_junction",
+      "is_urban": 1,
+      "risk_score": 0.15
+    },
+    {
+      "id": 142,
+      "name": "Thenzawl",
+      "state": "Mizoram",
+      "district": "Serchhip",
+      "latitude": 23.31,
+      "longitude": 92.75,
+      "lat": 23.31,
+      "lng": 92.75,
+      "elevation_m": 780,
+      "location_type": "market_center",
+      "is_urban": 0,
+      "risk_score": 0.22
+    },
+    {
+      "id": 143,
+      "name": "Mamit",
+      "state": "Mizoram",
+      "district": "Mamit",
+      "latitude": 23.93,
+      "longitude": 92.49,
+      "lat": 23.93,
+      "lng": 92.49,
+      "elevation_m": 718,
+      "location_type": "district_hq",
+      "is_urban": 1,
+      "risk_score": 0.25
+    }
+  ],
+  "edges": [
+    {
+      "u": "Silchar",
+      "v": "Vairengte",
+      "origin": "Silchar",
+      "destination": "Vairengte",
+      "distance_km": 45.0,
+      "highway": "NH-306",
+      "terrain": "hilly",
+      "slope_deg": 4.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 52.9,
+      "safest_cost": 61.41,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.8333,
+          92.7789
+        ],
+        [
+          24.5,
+          92.76
+        ]
+      ]
+    },
+    {
+      "u": "Vairengte",
+      "v": "Kolasib",
+      "origin": "Vairengte",
+      "destination": "Kolasib",
+      "distance_km": 40.0,
+      "highway": "NH-306",
+      "terrain": "hilly",
+      "slope_deg": 5.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 47.1,
+      "safest_cost": 55.53,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.5,
+          92.76
+        ],
+        [
+          24.2247,
+          92.6781
+        ]
+      ]
+    },
+    {
+      "u": "Kolasib",
+      "v": "Lengpui",
+      "origin": "Kolasib",
+      "destination": "Lengpui",
+      "distance_km": 50.0,
+      "highway": "NH-306 Bypass",
+      "terrain": "hilly",
+      "slope_deg": 6.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 58.8,
+      "safest_cost": 70.59,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.2247,
+          92.6781
+        ],
+        [
+          23.84,
+          92.62
+        ]
+      ]
+    },
+    {
+      "u": "Lengpui",
+      "v": "Aizawl",
+      "origin": "Lengpui",
+      "destination": "Aizawl",
+      "distance_km": 35.0,
+      "highway": "NH-306",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "good",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 50.0,
+      "safest_cost": 74.5,
+      "is_urban": true,
+      "coordinates": [
+        [
+          23.84,
+          92.62
+        ],
+        [
+          23.7271,
+          92.7176
+        ]
+      ]
+    },
+    {
+      "u": "Kolasib",
+      "v": "Aizawl",
+      "origin": "Kolasib",
+      "destination": "Aizawl",
+      "distance_km": 85.0,
+      "highway": "NH-306",
+      "terrain": "steep_mountain",
+      "slope_deg": 9.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 121.4,
+      "safest_cost": 183.36,
+      "is_urban": true,
+      "coordinates": [
+        [
+          24.2247,
+          92.6781
+        ],
+        [
+          23.7271,
+          92.7176
+        ]
+      ]
+    },
+    {
+      "u": "Aizawl",
+      "v": "Mamit",
+      "origin": "Aizawl",
+      "destination": "Mamit",
+      "distance_km": 85.0,
+      "highway": "NH-108B",
+      "terrain": "hilly",
+      "slope_deg": 6.0,
+      "condition": "good",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 100.0,
+      "safest_cost": 120.0,
+      "is_urban": true,
+      "coordinates": [
+        [
+          23.7271,
+          92.7176
+        ],
+        [
+          23.93,
+          92.49
+        ]
+      ]
+    },
+    {
+      "u": "Mamit",
+      "v": "Kanchanpur",
+      "origin": "Mamit",
+      "destination": "Kanchanpur",
+      "distance_km": 60.0,
+      "highway": "Jampui Hills Road",
+      "terrain": "hilly",
+      "slope_deg": 7.0,
+      "condition": "fair",
+      "speed_kmh": 25.5,
+      "fastest_time_min": 141.2,
+      "safest_cost": 172.24,
+      "is_urban": true,
+      "coordinates": [
+        [
+          23.93,
+          92.49
+        ],
+        [
+          26.0,
+          92.0
+        ]
+      ]
+    },
+    {
+      "u": "Aizawl",
+      "v": "Thenzawl",
+      "origin": "Aizawl",
+      "destination": "Thenzawl",
+      "distance_km": 85.0,
+      "highway": "SH-Mizoram",
+      "terrain": "hilly",
+      "slope_deg": 7.0,
+      "condition": "good",
+      "speed_kmh": 38.2,
+      "fastest_time_min": 133.5,
+      "safest_cost": 162.88,
+      "is_urban": true,
+      "coordinates": [
+        [
+          23.7271,
+          92.7176
+        ],
+        [
+          23.31,
+          92.75
+        ]
+      ]
+    },
+    {
+      "u": "Thenzawl",
+      "v": "Lunglei",
+      "origin": "Thenzawl",
+      "destination": "Lunglei",
+      "distance_km": 85.0,
+      "highway": "SH-Mizoram",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "good",
+      "speed_kmh": 31.5,
+      "fastest_time_min": 161.9,
+      "safest_cost": 241.24,
+      "is_urban": true,
+      "coordinates": [
+        [
+          23.31,
+          92.75
+        ],
+        [
+          22.8833,
+          92.7333
+        ]
+      ]
+    },
+    {
+      "u": "Aizawl",
+      "v": "Serchhip",
+      "origin": "Aizawl",
+      "destination": "Serchhip",
+      "distance_km": 90.0,
+      "highway": "NH-54",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 128.6,
+      "safest_cost": 191.57,
+      "is_urban": true,
+      "coordinates": [
+        [
+          23.7271,
+          92.7176
+        ],
+        [
+          23.34,
+          92.85
+        ]
+      ]
+    },
+    {
+      "u": "Serchhip",
+      "v": "Lunglei",
+      "origin": "Serchhip",
+      "destination": "Lunglei",
+      "distance_km": 80.0,
+      "highway": "NH-54",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 114.3,
+      "safest_cost": 170.29,
+      "is_urban": true,
+      "coordinates": [
+        [
+          23.34,
+          92.85
+        ],
+        [
+          22.8833,
+          92.7333
+        ]
+      ]
+    },
+    {
+      "u": "Aizawl",
+      "v": "Champhai",
+      "origin": "Aizawl",
+      "destination": "Champhai",
+      "distance_km": 190.0,
+      "highway": "NH-102B",
+      "terrain": "steep_mountain",
+      "slope_deg": 13.0,
+      "condition": "poor",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 271.4,
+      "safest_cost": 431.57,
+      "is_urban": true,
+      "coordinates": [
+        [
+          23.7271,
+          92.7176
+        ],
+        [
+          23.456,
+          93.3282
+        ]
+      ]
+    },
+    {
+      "u": "Lunglei",
+      "v": "Lawngtlai",
+      "origin": "Lunglei",
+      "destination": "Lawngtlai",
+      "distance_km": 90.0,
+      "highway": "NH-502A",
+      "terrain": "steep_mountain",
+      "slope_deg": 8.0,
+      "condition": "fair",
+      "speed_kmh": 42.0,
+      "fastest_time_min": 128.6,
+      "safest_cost": 191.57,
+      "is_urban": true,
+      "coordinates": [
+        [
+          22.8833,
+          92.7333
+        ],
+        [
+          22.53,
+          92.89
+        ]
+      ]
+    },
+    {
+      "u": "Lawngtlai",
+      "v": "Saiha",
+      "origin": "Lawngtlai",
+      "destination": "Saiha",
+      "distance_km": 40.0,
+      "highway": "NH-54",
+      "terrain": "hilly",
+      "slope_deg": 6.0,
+      "condition": "fair",
+      "speed_kmh": 51.0,
+      "fastest_time_min": 47.1,
+      "safest_cost": 56.47,
+      "is_urban": true,
+      "coordinates": [
+        [
+          22.53,
+          92.89
+        ],
+        [
+          22.48,
+          92.97
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3670 @@
+{
+  "nodes": {
+    "Itanagar": [
+      27.0844,
+      93.6053
+    ],
+    "Naharlagun": [
+      27.1064,
+      93.6931
+    ],
+    "Bomdila": [
+      27.2646,
+      92.4159
+    ],
+    "Dirang": [
+      27.3592,
+      92.2392
+    ],
+    "Sela Pass": [
+      27.505,
+      92.1058
+    ],
+    "Tawang": [
+      27.5861,
+      91.8594
+    ],
+    "Pasighat": [
+      28.0661,
+      95.3262
+    ],
+    "Ziro": [
+      27.5949,
+      93.8385
+    ],
+    "Along (Aalo)": [
+      28.1691,
+      94.7972
+    ],
+    "Roing": [
+      28.1408,
+      95.8354
+    ],
+    "Tezu": [
+      27.9144,
+      96.1669
+    ],
+    "Namsai": [
+      27.6698,
+      95.8711
+    ],
+    "Changlang": [
+      27.1278,
+      95.7389
+    ],
+    "Khonsa": [
+      27.0203,
+      95.5683
+    ],
+    "Banderdewa": [
+      27.11,
+      93.82
+    ],
+    "Rupa": [
+      27.2,
+      92.4
+    ],
+    "Jang": [
+      27.57,
+      91.98
+    ],
+    "Miao": [
+      27.49,
+      96.2
+    ],
+    "Guwahati": [
+      26.1445,
+      91.7362
+    ],
+    "Dispur": [
+      26.1433,
+      91.7898
+    ],
+    "Tezpur": [
+      26.6528,
+      92.7926
+    ],
+    "Nagaon": [
+      26.3452,
+      92.6835
+    ],
+    "Jorhat": [
+      26.7509,
+      94.2037
+    ],
+    "Dibrugarh": [
+      27.4728,
+      94.912
+    ],
+    "Tinsukia": [
+      27.4922,
+      95.3558
+    ],
+    "Silchar": [
+      24.8333,
+      92.7789
+    ],
+    "Haflong (Jatinga)": [
+      25.1804,
+      93.0169
+    ],
+    "Bhalukpong": [
+      27.0125,
+      92.6416
+    ],
+    "Nalbari": [
+      26.4447,
+      91.4428
+    ],
+    "Goalpara": [
+      26.1772,
+      90.6272
+    ],
+    "Bongaigaon": [
+      26.48,
+      90.56
+    ],
+    "Dhubri": [
+      26.02,
+      89.98
+    ],
+    "Barpeta": [
+      26.32,
+      91.0
+    ],
+    "North Lakhimpur": [
+      27.23,
+      94.1
+    ],
+    "Dhemaji": [
+      27.48,
+      94.58
+    ],
+    "Golaghat": [
+      26.52,
+      93.97
+    ],
+    "Sivasagar": [
+      26.98,
+      94.63
+    ],
+    "Kokrajhar": [
+      26.4,
+      90.27
+    ],
+    "Karimganj": [
+      24.87,
+      92.35
+    ],
+    "Hailakandi": [
+      24.68,
+      92.56
+    ],
+    "Diphu": [
+      25.84,
+      93.43
+    ],
+    "Jalukbari": [
+      26.15,
+      91.66
+    ],
+    "Khanapara": [
+      26.11,
+      91.82
+    ],
+    "Jagiroad": [
+      26.12,
+      92.21
+    ],
+    "Raha": [
+      26.23,
+      92.52
+    ],
+    "Numaligarh": [
+      26.63,
+      93.75
+    ],
+    "Barpeta Road": [
+      26.5,
+      90.97
+    ],
+    "Digboi": [
+      27.38,
+      95.62
+    ],
+    "Badarpur": [
+      24.9,
+      92.6
+    ],
+    "Senapati": [
+      25.2683,
+      94.0186
+    ],
+    "Imphal": [
+      24.817,
+      93.9368
+    ],
+    "Churachandpur": [
+      24.3333,
+      93.6833
+    ],
+    "Jiribam": [
+      24.8014,
+      93.1186
+    ],
+    "Ukhrul": [
+      25.1167,
+      94.3667
+    ],
+    "Thoubal": [
+      24.6333,
+      93.9833
+    ],
+    "Bishnupur": [
+      24.63,
+      93.76
+    ],
+    "Kakching": [
+      24.48,
+      93.98
+    ],
+    "Moreh": [
+      24.25,
+      94.3
+    ],
+    "Kangpokpi": [
+      25.15,
+      93.97
+    ],
+    "Moirang": [
+      24.5,
+      93.77
+    ],
+    "Noney": [
+      24.83,
+      93.6
+    ],
+    "Shillong": [
+      25.5788,
+      91.8933
+    ],
+    "Cherrapunji (Sohra)": [
+      25.2702,
+      91.7323
+    ],
+    "Jowai": [
+      25.45,
+      92.2
+    ],
+    "Nongpoh": [
+      25.9036,
+      91.88
+    ],
+    "Tura": [
+      25.5138,
+      90.2202
+    ],
+    "Mawsynram": [
+      25.3,
+      91.58
+    ],
+    "Dawki": [
+      25.18,
+      92.02
+    ],
+    "Williamnagar": [
+      25.6,
+      90.62
+    ],
+    "Nongstoin": [
+      25.52,
+      91.27
+    ],
+    "Byrnihat": [
+      26.05,
+      91.85
+    ],
+    "Khliehriat": [
+      25.35,
+      92.37
+    ],
+    "Mairang": [
+      25.56,
+      91.64
+    ],
+    "Kolasib": [
+      24.2247,
+      92.6781
+    ],
+    "Aizawl": [
+      23.7271,
+      92.7176
+    ],
+    "Lunglei": [
+      22.8833,
+      92.7333
+    ],
+    "Champhai": [
+      23.456,
+      93.3282
+    ],
+    "Vairengte": [
+      24.5,
+      92.76
+    ],
+    "Serchhip": [
+      23.34,
+      92.85
+    ],
+    "Lawngtlai": [
+      22.53,
+      92.89
+    ],
+    "Saiha": [
+      22.48,
+      92.97
+    ],
+    "Lengpui": [
+      23.84,
+      92.62
+    ],
+    "Thenzawl": [
+      23.31,
+      92.75
+    ],
+    "Mamit": [
+      23.93,
+      92.49
+    ],
+    "Dimapur": [
+      25.9068,
+      93.7271
+    ],
+    "Kohima": [
+      25.6701,
+      94.1077
+    ],
+    "Mokokchung": [
+      26.3256,
+      94.5215
+    ],
+    "Wokha": [
+      26.1,
+      94.26
+    ],
+    "Tuensang": [
+      26.28,
+      94.83
+    ],
+    "Zunheboto": [
+      25.97,
+      94.52
+    ],
+    "Mon": [
+      26.75,
+      95.06
+    ],
+    "Phek": [
+      25.66,
+      94.46
+    ],
+    "Chumoukedima": [
+      25.79,
+      93.77
+    ],
+    "Medziphema": [
+      25.75,
+      93.85
+    ],
+    "Tseminyu": [
+      25.9,
+      94.21
+    ],
+    "Gangtok": [
+      27.3389,
+      88.6065
+    ],
+    "Namchi": [
+      27.1667,
+      88.35
+    ],
+    "Geyzing": [
+      27.2833,
+      88.25
+    ],
+    "Mangan": [
+      27.5,
+      88.5333
+    ],
+    "Rangpo": [
+      27.1764,
+      88.5283
+    ],
+    "Singtam": [
+      27.23,
+      88.5
+    ],
+    "Chungthang": [
+      27.6,
+      88.65
+    ],
+    "Lachung": [
+      27.69,
+      88.74
+    ],
+    "Lachen": [
+      27.72,
+      88.55
+    ],
+    "Nathu La Pass": [
+      27.3865,
+      88.831
+    ],
+    "Ravangla": [
+      27.3,
+      88.36
+    ],
+    "Jorethang": [
+      27.12,
+      88.3
+    ],
+    "Pelling": [
+      27.3,
+      88.23
+    ],
+    "Agartala": [
+      23.8315,
+      91.2868
+    ],
+    "Udaipur": [
+      23.5333,
+      91.4833
+    ],
+    "Dharmanagar": [
+      24.3833,
+      92.1667
+    ],
+    "Kailashahar": [
+      24.3333,
+      92.0
+    ],
+    "Ambassa": [
+      23.9167,
+      91.85
+    ],
+    "Belonia": [
+      23.25,
+      91.45
+    ],
+    "Sabroom": [
+      23.0,
+      91.7
+    ],
+    "Kanchanpur": [
+      23.98,
+      92.22
+    ],
+    "Teliamura": [
+      23.83,
+      91.6
+    ],
+    "Kumarghat": [
+      24.16,
+      92.02
+    ],
+    "Bishalgarh": [
+      23.68,
+      91.3
+    ],
+    "Siliguri": [
+      26.7271,
+      88.3953
+    ],
+    "Alipurduar": [
+      26.4919,
+      89.5271
+    ],
+    "Jalpaiguri": [
+      26.54,
+      88.73
+    ],
+    "Cooch Behar": [
+      26.32,
+      89.45
+    ],
+    "Darjeeling": [
+      27.041,
+      88.2663
+    ],
+    "Kalimpong": [
+      27.06,
+      88.47
+    ],
+    "Mainaguri": [
+      26.56,
+      88.82
+    ],
+    "Hasimara": [
+      26.75,
+      89.35
+    ]
+  },
+  "adj": {
+    "Itanagar": [
+      {
+        "to": "Naharlagun",
+        "dist": 15.0,
+        "risk": 0.18,
+        "highway": "NH-415",
+        "speed_kmh": 51.0,
+        "time_min": 17.6,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Ziro",
+        "dist": 110.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 157.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "North Lakhimpur",
+        "dist": 60.0,
+        "risk": 0.18,
+        "highway": "NH-415",
+        "speed_kmh": 51.0,
+        "time_min": 70.6,
+        "terrain": "hilly"
+      }
+    ],
+    "Naharlagun": [
+      {
+        "to": "Itanagar",
+        "dist": 15.0,
+        "risk": 0.18,
+        "highway": "NH-415",
+        "speed_kmh": 51.0,
+        "time_min": 17.6,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Banderdewa",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-415",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      }
+    ],
+    "Bomdila": [
+      {
+        "to": "Rupa",
+        "dist": 20.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 28.6,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Dirang",
+        "dist": 25.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 35.7,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Tezpur",
+        "dist": 155.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 221.4,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Dirang": [
+      {
+        "to": "Bomdila",
+        "dist": 25.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 35.7,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Sela Pass",
+        "dist": 42.0,
+        "risk": 0.45,
+        "highway": "NH-13",
+        "speed_kmh": 33.0,
+        "time_min": 76.4,
+        "terrain": "high_pass"
+      }
+    ],
+    "Sela Pass": [
+      {
+        "to": "Dirang",
+        "dist": 42.0,
+        "risk": 0.45,
+        "highway": "NH-13",
+        "speed_kmh": 33.0,
+        "time_min": 76.4,
+        "terrain": "high_pass"
+      },
+      {
+        "to": "Jang",
+        "dist": 45.0,
+        "risk": 0.45,
+        "highway": "NH-13",
+        "speed_kmh": 33.0,
+        "time_min": 81.8,
+        "terrain": "high_pass"
+      }
+    ],
+    "Tawang": [
+      {
+        "to": "Jang",
+        "dist": 33.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 47.1,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Pasighat": [
+      {
+        "to": "Dibrugarh",
+        "dist": 150.0,
+        "risk": 0.18,
+        "highway": "NH-515",
+        "speed_kmh": 51.0,
+        "time_min": 176.5,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Along (Aalo)",
+        "dist": 105.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 150.0,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Roing",
+        "dist": 95.0,
+        "risk": 0.08,
+        "highway": "NH-13",
+        "speed_kmh": 60.0,
+        "time_min": 95.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dhemaji",
+        "dist": 68.0,
+        "risk": 0.08,
+        "highway": "NH-515",
+        "speed_kmh": 60.0,
+        "time_min": 68.0,
+        "terrain": "plain"
+      }
+    ],
+    "Ziro": [
+      {
+        "to": "Itanagar",
+        "dist": 110.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 157.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "North Lakhimpur",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Along (Aalo)": [
+      {
+        "to": "Pasighat",
+        "dist": 105.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 150.0,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Roing": [
+      {
+        "to": "Pasighat",
+        "dist": 95.0,
+        "risk": 0.08,
+        "highway": "NH-13",
+        "speed_kmh": 60.0,
+        "time_min": 95.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Tezu",
+        "dist": 65.0,
+        "risk": 0.08,
+        "highway": "NH-13",
+        "speed_kmh": 60.0,
+        "time_min": 65.0,
+        "terrain": "plain"
+      }
+    ],
+    "Tezu": [
+      {
+        "to": "Roing",
+        "dist": 65.0,
+        "risk": 0.08,
+        "highway": "NH-13",
+        "speed_kmh": 60.0,
+        "time_min": 65.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Namsai",
+        "dist": 40.0,
+        "risk": 0.08,
+        "highway": "NH-115",
+        "speed_kmh": 60.0,
+        "time_min": 40.0,
+        "terrain": "plain"
+      }
+    ],
+    "Namsai": [
+      {
+        "to": "Tinsukia",
+        "dist": 80.0,
+        "risk": 0.08,
+        "highway": "NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 80.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Tezu",
+        "dist": 40.0,
+        "risk": 0.08,
+        "highway": "NH-115",
+        "speed_kmh": 60.0,
+        "time_min": 40.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Miao",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-215",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      }
+    ],
+    "Changlang": [
+      {
+        "to": "Miao",
+        "dist": 45.0,
+        "risk": 0.18,
+        "highway": "SH-Arunachal",
+        "speed_kmh": 38.2,
+        "time_min": 70.7,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Tinsukia",
+        "dist": 95.0,
+        "risk": 0.18,
+        "highway": "NH-215",
+        "speed_kmh": 51.0,
+        "time_min": 111.8,
+        "terrain": "hilly"
+      }
+    ],
+    "Khonsa": [
+      {
+        "to": "Dibrugarh",
+        "dist": 110.0,
+        "risk": 0.3,
+        "highway": "NH-315A",
+        "speed_kmh": 42.0,
+        "time_min": 157.1,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Banderdewa": [
+      {
+        "to": "Naharlagun",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-415",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Tezpur",
+        "dist": 130.0,
+        "risk": 0.08,
+        "highway": "NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 130.0,
+        "terrain": "plain"
+      }
+    ],
+    "Rupa": [
+      {
+        "to": "Bhalukpong",
+        "dist": 75.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 107.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Bomdila",
+        "dist": 20.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 28.6,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Jang": [
+      {
+        "to": "Sela Pass",
+        "dist": 45.0,
+        "risk": 0.45,
+        "highway": "NH-13",
+        "speed_kmh": 33.0,
+        "time_min": 81.8,
+        "terrain": "high_pass"
+      },
+      {
+        "to": "Tawang",
+        "dist": 33.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 47.1,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Miao": [
+      {
+        "to": "Namsai",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-215",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Changlang",
+        "dist": 45.0,
+        "risk": 0.18,
+        "highway": "SH-Arunachal",
+        "speed_kmh": 38.2,
+        "time_min": 70.7,
+        "terrain": "hilly"
+      }
+    ],
+    "Guwahati": [
+      {
+        "to": "Dispur",
+        "dist": 10.0,
+        "risk": 0.08,
+        "highway": "GS Road",
+        "speed_kmh": 30.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Jalukbari",
+        "dist": 12.0,
+        "risk": 0.08,
+        "highway": "NH-27 Bypass",
+        "speed_kmh": 60.0,
+        "time_min": 12.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Byrnihat",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-6 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Shillong",
+        "dist": 99.0,
+        "risk": 0.18,
+        "highway": "NH-6 / AH-1",
+        "speed_kmh": 59.5,
+        "time_min": 99.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Nongpoh",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-6",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      }
+    ],
+    "Dispur": [
+      {
+        "to": "Guwahati",
+        "dist": 10.0,
+        "risk": 0.08,
+        "highway": "GS Road",
+        "speed_kmh": 30.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Khanapara",
+        "dist": 6.0,
+        "risk": 0.08,
+        "highway": "GS Road",
+        "speed_kmh": 30.0,
+        "time_min": 12.0,
+        "terrain": "plain"
+      }
+    ],
+    "Tezpur": [
+      {
+        "to": "Banderdewa",
+        "dist": 130.0,
+        "risk": 0.08,
+        "highway": "NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 130.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Nagaon",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-715 (Kalia Bhomora Bridge)",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Bhalukpong",
+        "dist": 60.0,
+        "risk": 0.18,
+        "highway": "NH-13",
+        "speed_kmh": 51.0,
+        "time_min": 70.6,
+        "terrain": "hilly"
+      },
+      {
+        "to": "North Lakhimpur",
+        "dist": 170.0,
+        "risk": 0.08,
+        "highway": "NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 170.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Bomdila",
+        "dist": 155.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 221.4,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Nagaon": [
+      {
+        "to": "Raha",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Tezpur",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-715 (Kalia Bhomora Bridge)",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Numaligarh",
+        "dist": 115.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 115.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Haflong (Jatinga)",
+        "dist": 140.0,
+        "risk": 0.3,
+        "highway": "NH-27",
+        "speed_kmh": 42.0,
+        "time_min": 200.0,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Diphu",
+        "dist": 115.0,
+        "risk": 0.18,
+        "highway": "NH-329",
+        "speed_kmh": 51.0,
+        "time_min": 135.3,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Dimapur",
+        "dist": 160.0,
+        "risk": 0.08,
+        "highway": "NH-29 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 160.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dimapur",
+        "dist": 165.0,
+        "risk": 0.08,
+        "highway": "NH-29",
+        "speed_kmh": 60.0,
+        "time_min": 165.0,
+        "terrain": "plain"
+      }
+    ],
+    "Jorhat": [
+      {
+        "to": "Golaghat",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "SH-Assam",
+        "speed_kmh": 45.0,
+        "time_min": 60.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Numaligarh",
+        "dist": 65.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 65.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Sivasagar",
+        "dist": 55.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 55.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Mokokchung",
+        "dist": 85.0,
+        "risk": 0.18,
+        "highway": "NH-702",
+        "speed_kmh": 51.0,
+        "time_min": 100.0,
+        "terrain": "hilly"
+      }
+    ],
+    "Dibrugarh": [
+      {
+        "to": "Pasighat",
+        "dist": 150.0,
+        "risk": 0.18,
+        "highway": "NH-515",
+        "speed_kmh": 51.0,
+        "time_min": 176.5,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Khonsa",
+        "dist": 110.0,
+        "risk": 0.3,
+        "highway": "NH-315A",
+        "speed_kmh": 42.0,
+        "time_min": 157.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Sivasagar",
+        "dist": 75.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 75.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Tinsukia",
+        "dist": 48.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 48.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dhemaji",
+        "dist": 60.0,
+        "risk": 0.08,
+        "highway": "Bogibeel Bridge / NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 60.0,
+        "terrain": "plain"
+      }
+    ],
+    "Tinsukia": [
+      {
+        "to": "Namsai",
+        "dist": 80.0,
+        "risk": 0.08,
+        "highway": "NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 80.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Changlang",
+        "dist": 95.0,
+        "risk": 0.18,
+        "highway": "NH-215",
+        "speed_kmh": 51.0,
+        "time_min": 111.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Dibrugarh",
+        "dist": 48.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 48.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Digboi",
+        "dist": 35.0,
+        "risk": 0.08,
+        "highway": "NH-38",
+        "speed_kmh": 60.0,
+        "time_min": 35.0,
+        "terrain": "plain"
+      }
+    ],
+    "Silchar": [
+      {
+        "to": "Haflong (Jatinga)",
+        "dist": 100.0,
+        "risk": 0.3,
+        "highway": "NH-27",
+        "speed_kmh": 42.0,
+        "time_min": 142.9,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Badarpur",
+        "dist": 28.0,
+        "risk": 0.08,
+        "highway": "NH-37",
+        "speed_kmh": 60.0,
+        "time_min": 28.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Hailakandi",
+        "dist": 35.0,
+        "risk": 0.08,
+        "highway": "SH-38",
+        "speed_kmh": 45.0,
+        "time_min": 46.7,
+        "terrain": "plain"
+      },
+      {
+        "to": "Jiribam",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-37",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Khliehriat",
+        "dist": 105.0,
+        "risk": 0.3,
+        "highway": "NH-6 (Sonapur Tunnel Corridor)",
+        "speed_kmh": 42.0,
+        "time_min": 150.0,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Vairengte",
+        "dist": 45.0,
+        "risk": 0.18,
+        "highway": "NH-306",
+        "speed_kmh": 51.0,
+        "time_min": 52.9,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Aizawl",
+        "dist": 175.0,
+        "risk": 0.18,
+        "highway": "NH-306",
+        "speed_kmh": 51.0,
+        "time_min": 205.9,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Kolasib",
+        "dist": 95.0,
+        "risk": 0.18,
+        "highway": "NH-306",
+        "speed_kmh": 51.0,
+        "time_min": 111.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Imphal",
+        "dist": 255.0,
+        "risk": 0.3,
+        "highway": "NH-37",
+        "speed_kmh": 42.0,
+        "time_min": 364.3,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Haflong (Jatinga)": [
+      {
+        "to": "Nagaon",
+        "dist": 140.0,
+        "risk": 0.3,
+        "highway": "NH-27",
+        "speed_kmh": 42.0,
+        "time_min": 200.0,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Silchar",
+        "dist": 100.0,
+        "risk": 0.3,
+        "highway": "NH-27",
+        "speed_kmh": 42.0,
+        "time_min": 142.9,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Bhalukpong": [
+      {
+        "to": "Rupa",
+        "dist": 75.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 107.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Tezpur",
+        "dist": 60.0,
+        "risk": 0.18,
+        "highway": "NH-13",
+        "speed_kmh": 51.0,
+        "time_min": 70.6,
+        "terrain": "hilly"
+      }
+    ],
+    "Nalbari": [
+      {
+        "to": "Jalukbari",
+        "dist": 60.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 60.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Barpeta Road",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      }
+    ],
+    "Goalpara": [
+      {
+        "to": "Jalukbari",
+        "dist": 120.0,
+        "risk": 0.08,
+        "highway": "NH-17",
+        "speed_kmh": 60.0,
+        "time_min": 120.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dhubri",
+        "dist": 80.0,
+        "risk": 0.08,
+        "highway": "NH-17",
+        "speed_kmh": 60.0,
+        "time_min": 80.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Tura",
+        "dist": 110.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 129.4,
+        "terrain": "hilly"
+      }
+    ],
+    "Bongaigaon": [
+      {
+        "to": "Barpeta Road",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kokrajhar",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Alipurduar",
+        "dist": 110.0,
+        "risk": 0.08,
+        "highway": "NH-27 / AH-48",
+        "speed_kmh": 70.0,
+        "time_min": 94.3,
+        "terrain": "plain"
+      },
+      {
+        "to": "Siliguri",
+        "dist": 240.0,
+        "risk": 0.08,
+        "highway": "NH-27 / AH-48",
+        "speed_kmh": 70.0,
+        "time_min": 205.7,
+        "terrain": "plain"
+      }
+    ],
+    "Dhubri": [
+      {
+        "to": "Goalpara",
+        "dist": 80.0,
+        "risk": 0.08,
+        "highway": "NH-17",
+        "speed_kmh": 60.0,
+        "time_min": 80.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Cooch Behar",
+        "dist": 60.0,
+        "risk": 0.08,
+        "highway": "NH-17",
+        "speed_kmh": 60.0,
+        "time_min": 60.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Siliguri",
+        "dist": 215.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 215.0,
+        "terrain": "plain"
+      }
+    ],
+    "Barpeta": [
+      {
+        "to": "Barpeta Road",
+        "dist": 18.0,
+        "risk": 0.08,
+        "highway": "SH-Barpeta",
+        "speed_kmh": 45.0,
+        "time_min": 24.0,
+        "terrain": "plain"
+      }
+    ],
+    "North Lakhimpur": [
+      {
+        "to": "Ziro",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-13",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Tezpur",
+        "dist": 170.0,
+        "risk": 0.08,
+        "highway": "NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 170.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dhemaji",
+        "dist": 70.0,
+        "risk": 0.08,
+        "highway": "NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 70.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Itanagar",
+        "dist": 60.0,
+        "risk": 0.18,
+        "highway": "NH-415",
+        "speed_kmh": 51.0,
+        "time_min": 70.6,
+        "terrain": "hilly"
+      }
+    ],
+    "Dhemaji": [
+      {
+        "to": "North Lakhimpur",
+        "dist": 70.0,
+        "risk": 0.08,
+        "highway": "NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 70.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dibrugarh",
+        "dist": 60.0,
+        "risk": 0.08,
+        "highway": "Bogibeel Bridge / NH-15",
+        "speed_kmh": 60.0,
+        "time_min": 60.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Pasighat",
+        "dist": 68.0,
+        "risk": 0.08,
+        "highway": "NH-515",
+        "speed_kmh": 60.0,
+        "time_min": 68.0,
+        "terrain": "plain"
+      }
+    ],
+    "Golaghat": [
+      {
+        "to": "Numaligarh",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "NH-129",
+        "speed_kmh": 60.0,
+        "time_min": 25.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Jorhat",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "SH-Assam",
+        "speed_kmh": 45.0,
+        "time_min": 60.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dimapur",
+        "dist": 80.0,
+        "risk": 0.08,
+        "highway": "NH-129",
+        "speed_kmh": 60.0,
+        "time_min": 80.0,
+        "terrain": "plain"
+      }
+    ],
+    "Sivasagar": [
+      {
+        "to": "Jorhat",
+        "dist": 55.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 55.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dibrugarh",
+        "dist": 75.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 75.0,
+        "terrain": "plain"
+      }
+    ],
+    "Kokrajhar": [
+      {
+        "to": "Bongaigaon",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Alipurduar",
+        "dist": 70.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 70.0,
+        "terrain": "plain"
+      }
+    ],
+    "Karimganj": [
+      {
+        "to": "Badarpur",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "NH-37",
+        "speed_kmh": 60.0,
+        "time_min": 25.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dharmanagar",
+        "dist": 55.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 55.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kailashahar",
+        "dist": 55.0,
+        "risk": 0.08,
+        "highway": "NH-208",
+        "speed_kmh": 60.0,
+        "time_min": 55.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dharmanagar",
+        "dist": 68.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 68.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Agartala",
+        "dist": 195.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 195.0,
+        "terrain": "plain"
+      }
+    ],
+    "Hailakandi": [
+      {
+        "to": "Badarpur",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "SH-38",
+        "speed_kmh": 45.0,
+        "time_min": 33.3,
+        "terrain": "plain"
+      },
+      {
+        "to": "Silchar",
+        "dist": 35.0,
+        "risk": 0.08,
+        "highway": "SH-38",
+        "speed_kmh": 45.0,
+        "time_min": 46.7,
+        "terrain": "plain"
+      }
+    ],
+    "Diphu": [
+      {
+        "to": "Nagaon",
+        "dist": 115.0,
+        "risk": 0.18,
+        "highway": "NH-329",
+        "speed_kmh": 51.0,
+        "time_min": 135.3,
+        "terrain": "hilly"
+      }
+    ],
+    "Jalukbari": [
+      {
+        "to": "Guwahati",
+        "dist": 12.0,
+        "risk": 0.08,
+        "highway": "NH-27 Bypass",
+        "speed_kmh": 60.0,
+        "time_min": 12.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Goalpara",
+        "dist": 120.0,
+        "risk": 0.08,
+        "highway": "NH-17",
+        "speed_kmh": 60.0,
+        "time_min": 120.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Nalbari",
+        "dist": 60.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 60.0,
+        "terrain": "plain"
+      }
+    ],
+    "Khanapara": [
+      {
+        "to": "Dispur",
+        "dist": 6.0,
+        "risk": 0.08,
+        "highway": "GS Road",
+        "speed_kmh": 30.0,
+        "time_min": 12.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Jagiroad",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-27 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      }
+    ],
+    "Jagiroad": [
+      {
+        "to": "Khanapara",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-27 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Raha",
+        "dist": 40.0,
+        "risk": 0.08,
+        "highway": "NH-27 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 40.0,
+        "terrain": "plain"
+      }
+    ],
+    "Raha": [
+      {
+        "to": "Jagiroad",
+        "dist": 40.0,
+        "risk": 0.08,
+        "highway": "NH-27 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 40.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Nagaon",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      }
+    ],
+    "Numaligarh": [
+      {
+        "to": "Nagaon",
+        "dist": 115.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 115.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Golaghat",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "NH-129",
+        "speed_kmh": 60.0,
+        "time_min": 25.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Jorhat",
+        "dist": 65.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 65.0,
+        "terrain": "plain"
+      }
+    ],
+    "Barpeta Road": [
+      {
+        "to": "Nalbari",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Barpeta",
+        "dist": 18.0,
+        "risk": 0.08,
+        "highway": "SH-Barpeta",
+        "speed_kmh": 45.0,
+        "time_min": 24.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Bongaigaon",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      }
+    ],
+    "Digboi": [
+      {
+        "to": "Tinsukia",
+        "dist": 35.0,
+        "risk": 0.08,
+        "highway": "NH-38",
+        "speed_kmh": 60.0,
+        "time_min": 35.0,
+        "terrain": "plain"
+      }
+    ],
+    "Badarpur": [
+      {
+        "to": "Silchar",
+        "dist": 28.0,
+        "risk": 0.08,
+        "highway": "NH-37",
+        "speed_kmh": 60.0,
+        "time_min": 28.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Karimganj",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "NH-37",
+        "speed_kmh": 60.0,
+        "time_min": 25.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Hailakandi",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "SH-38",
+        "speed_kmh": 45.0,
+        "time_min": 33.3,
+        "terrain": "plain"
+      }
+    ],
+    "Senapati": [
+      {
+        "to": "Kohima",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Kangpokpi",
+        "dist": 25.0,
+        "risk": 0.18,
+        "highway": "NH-2",
+        "speed_kmh": 51.0,
+        "time_min": 29.4,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Kohima",
+        "dist": 65.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 92.9,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Imphal": [
+      {
+        "to": "Noney",
+        "dist": 60.0,
+        "risk": 0.3,
+        "highway": "NH-37",
+        "speed_kmh": 42.0,
+        "time_min": 85.7,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Kangpokpi",
+        "dist": 35.0,
+        "risk": 0.08,
+        "highway": "NH-2",
+        "speed_kmh": 60.0,
+        "time_min": 35.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Bishnupur",
+        "dist": 30.0,
+        "risk": 0.08,
+        "highway": "Tiddim Rd / NH-2",
+        "speed_kmh": 60.0,
+        "time_min": 30.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Ukhrul",
+        "dist": 85.0,
+        "risk": 0.3,
+        "highway": "NH-150",
+        "speed_kmh": 42.0,
+        "time_min": 121.4,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Thoubal",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "NH-102 (Asian Highway AH-1)",
+        "speed_kmh": 70.0,
+        "time_min": 21.4,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kohima",
+        "dist": 138.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 197.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Silchar",
+        "dist": 255.0,
+        "risk": 0.3,
+        "highway": "NH-37",
+        "speed_kmh": 42.0,
+        "time_min": 364.3,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Churachandpur": [
+      {
+        "to": "Moirang",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-2",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      }
+    ],
+    "Jiribam": [
+      {
+        "to": "Silchar",
+        "dist": 50.0,
+        "risk": 0.08,
+        "highway": "NH-37",
+        "speed_kmh": 60.0,
+        "time_min": 50.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Noney",
+        "dist": 110.0,
+        "risk": 0.3,
+        "highway": "NH-37",
+        "speed_kmh": 42.0,
+        "time_min": 157.1,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Ukhrul": [
+      {
+        "to": "Imphal",
+        "dist": 85.0,
+        "risk": 0.3,
+        "highway": "NH-150",
+        "speed_kmh": 42.0,
+        "time_min": 121.4,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Thoubal": [
+      {
+        "to": "Imphal",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "NH-102 (Asian Highway AH-1)",
+        "speed_kmh": 70.0,
+        "time_min": 21.4,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kakching",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-102",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      }
+    ],
+    "Bishnupur": [
+      {
+        "to": "Imphal",
+        "dist": 30.0,
+        "risk": 0.08,
+        "highway": "Tiddim Rd / NH-2",
+        "speed_kmh": 60.0,
+        "time_min": 30.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Moirang",
+        "dist": 15.0,
+        "risk": 0.08,
+        "highway": "NH-2",
+        "speed_kmh": 60.0,
+        "time_min": 15.0,
+        "terrain": "plain"
+      }
+    ],
+    "Kakching": [
+      {
+        "to": "Thoubal",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-102",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Moreh",
+        "dist": 65.0,
+        "risk": 0.18,
+        "highway": "NH-102",
+        "speed_kmh": 51.0,
+        "time_min": 76.5,
+        "terrain": "hilly"
+      }
+    ],
+    "Moreh": [
+      {
+        "to": "Kakching",
+        "dist": 65.0,
+        "risk": 0.18,
+        "highway": "NH-102",
+        "speed_kmh": 51.0,
+        "time_min": 76.5,
+        "terrain": "hilly"
+      }
+    ],
+    "Kangpokpi": [
+      {
+        "to": "Senapati",
+        "dist": 25.0,
+        "risk": 0.18,
+        "highway": "NH-2",
+        "speed_kmh": 51.0,
+        "time_min": 29.4,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Imphal",
+        "dist": 35.0,
+        "risk": 0.08,
+        "highway": "NH-2",
+        "speed_kmh": 60.0,
+        "time_min": 35.0,
+        "terrain": "plain"
+      }
+    ],
+    "Moirang": [
+      {
+        "to": "Bishnupur",
+        "dist": 15.0,
+        "risk": 0.08,
+        "highway": "NH-2",
+        "speed_kmh": 60.0,
+        "time_min": 15.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Churachandpur",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-2",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      }
+    ],
+    "Noney": [
+      {
+        "to": "Jiribam",
+        "dist": 110.0,
+        "risk": 0.3,
+        "highway": "NH-37",
+        "speed_kmh": 42.0,
+        "time_min": 157.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Imphal",
+        "dist": 60.0,
+        "risk": 0.3,
+        "highway": "NH-37",
+        "speed_kmh": 42.0,
+        "time_min": 85.7,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Shillong": [
+      {
+        "to": "Nongpoh",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-6 (4-Lane Bypass)",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Cherrapunji (Sohra)",
+        "dist": 54.0,
+        "risk": 0.3,
+        "highway": "SH-5",
+        "speed_kmh": 31.5,
+        "time_min": 102.9,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Mawsynram",
+        "dist": 60.0,
+        "risk": 0.3,
+        "highway": "SH-5",
+        "speed_kmh": 31.5,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Jowai",
+        "dist": 65.0,
+        "risk": 0.18,
+        "highway": "NH-6",
+        "speed_kmh": 51.0,
+        "time_min": 76.5,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Dawki",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-206",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Mairang",
+        "dist": 40.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 47.1,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Guwahati",
+        "dist": 99.0,
+        "risk": 0.18,
+        "highway": "NH-6 / AH-1",
+        "speed_kmh": 59.5,
+        "time_min": 99.8,
+        "terrain": "hilly"
+      }
+    ],
+    "Cherrapunji (Sohra)": [
+      {
+        "to": "Shillong",
+        "dist": 54.0,
+        "risk": 0.3,
+        "highway": "SH-5",
+        "speed_kmh": 31.5,
+        "time_min": 102.9,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Jowai": [
+      {
+        "to": "Shillong",
+        "dist": 65.0,
+        "risk": 0.18,
+        "highway": "NH-6",
+        "speed_kmh": 51.0,
+        "time_min": 76.5,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Khliehriat",
+        "dist": 35.0,
+        "risk": 0.18,
+        "highway": "NH-6",
+        "speed_kmh": 51.0,
+        "time_min": 41.2,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Dawki",
+        "dist": 55.0,
+        "risk": 0.18,
+        "highway": "NH-206",
+        "speed_kmh": 51.0,
+        "time_min": 64.7,
+        "terrain": "hilly"
+      }
+    ],
+    "Nongpoh": [
+      {
+        "to": "Byrnihat",
+        "dist": 30.0,
+        "risk": 0.18,
+        "highway": "NH-6 (4-Lane)",
+        "speed_kmh": 51.0,
+        "time_min": 35.3,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Shillong",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-6 (4-Lane Bypass)",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Guwahati",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-6",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      }
+    ],
+    "Tura": [
+      {
+        "to": "Williamnagar",
+        "dist": 75.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 88.2,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Goalpara",
+        "dist": 110.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 129.4,
+        "terrain": "hilly"
+      }
+    ],
+    "Mawsynram": [
+      {
+        "to": "Shillong",
+        "dist": 60.0,
+        "risk": 0.3,
+        "highway": "SH-5",
+        "speed_kmh": 31.5,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Dawki": [
+      {
+        "to": "Shillong",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-206",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Jowai",
+        "dist": 55.0,
+        "risk": 0.18,
+        "highway": "NH-206",
+        "speed_kmh": 51.0,
+        "time_min": 64.7,
+        "terrain": "hilly"
+      }
+    ],
+    "Williamnagar": [
+      {
+        "to": "Nongstoin",
+        "dist": 120.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 141.2,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Tura",
+        "dist": 75.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 88.2,
+        "terrain": "hilly"
+      }
+    ],
+    "Nongstoin": [
+      {
+        "to": "Mairang",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Williamnagar",
+        "dist": 120.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 141.2,
+        "terrain": "hilly"
+      }
+    ],
+    "Byrnihat": [
+      {
+        "to": "Guwahati",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-6 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Nongpoh",
+        "dist": 30.0,
+        "risk": 0.18,
+        "highway": "NH-6 (4-Lane)",
+        "speed_kmh": 51.0,
+        "time_min": 35.3,
+        "terrain": "hilly"
+      }
+    ],
+    "Khliehriat": [
+      {
+        "to": "Jowai",
+        "dist": 35.0,
+        "risk": 0.18,
+        "highway": "NH-6",
+        "speed_kmh": 51.0,
+        "time_min": 41.2,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Silchar",
+        "dist": 105.0,
+        "risk": 0.3,
+        "highway": "NH-6 (Sonapur Tunnel Corridor)",
+        "speed_kmh": 42.0,
+        "time_min": 150.0,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Mairang": [
+      {
+        "to": "Shillong",
+        "dist": 40.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 47.1,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Nongstoin",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-217",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      }
+    ],
+    "Kolasib": [
+      {
+        "to": "Vairengte",
+        "dist": 40.0,
+        "risk": 0.18,
+        "highway": "NH-306",
+        "speed_kmh": 51.0,
+        "time_min": 47.1,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Lengpui",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-306 Bypass",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Aizawl",
+        "dist": 85.0,
+        "risk": 0.3,
+        "highway": "NH-306",
+        "speed_kmh": 42.0,
+        "time_min": 121.4,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Silchar",
+        "dist": 95.0,
+        "risk": 0.18,
+        "highway": "NH-306",
+        "speed_kmh": 51.0,
+        "time_min": 111.8,
+        "terrain": "hilly"
+      }
+    ],
+    "Aizawl": [
+      {
+        "to": "Lengpui",
+        "dist": 35.0,
+        "risk": 0.3,
+        "highway": "NH-306",
+        "speed_kmh": 42.0,
+        "time_min": 50.0,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Kolasib",
+        "dist": 85.0,
+        "risk": 0.3,
+        "highway": "NH-306",
+        "speed_kmh": 42.0,
+        "time_min": 121.4,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Mamit",
+        "dist": 85.0,
+        "risk": 0.18,
+        "highway": "NH-108B",
+        "speed_kmh": 51.0,
+        "time_min": 100.0,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Thenzawl",
+        "dist": 85.0,
+        "risk": 0.18,
+        "highway": "SH-Mizoram",
+        "speed_kmh": 38.2,
+        "time_min": 133.5,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Serchhip",
+        "dist": 90.0,
+        "risk": 0.3,
+        "highway": "NH-54",
+        "speed_kmh": 42.0,
+        "time_min": 128.6,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Champhai",
+        "dist": 190.0,
+        "risk": 0.3,
+        "highway": "NH-102B",
+        "speed_kmh": 42.0,
+        "time_min": 271.4,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Silchar",
+        "dist": 175.0,
+        "risk": 0.18,
+        "highway": "NH-306",
+        "speed_kmh": 51.0,
+        "time_min": 205.9,
+        "terrain": "hilly"
+      }
+    ],
+    "Lunglei": [
+      {
+        "to": "Thenzawl",
+        "dist": 85.0,
+        "risk": 0.3,
+        "highway": "SH-Mizoram",
+        "speed_kmh": 31.5,
+        "time_min": 161.9,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Serchhip",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-54",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Lawngtlai",
+        "dist": 90.0,
+        "risk": 0.3,
+        "highway": "NH-502A",
+        "speed_kmh": 42.0,
+        "time_min": 128.6,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Champhai": [
+      {
+        "to": "Aizawl",
+        "dist": 190.0,
+        "risk": 0.3,
+        "highway": "NH-102B",
+        "speed_kmh": 42.0,
+        "time_min": 271.4,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Vairengte": [
+      {
+        "to": "Silchar",
+        "dist": 45.0,
+        "risk": 0.18,
+        "highway": "NH-306",
+        "speed_kmh": 51.0,
+        "time_min": 52.9,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Kolasib",
+        "dist": 40.0,
+        "risk": 0.18,
+        "highway": "NH-306",
+        "speed_kmh": 51.0,
+        "time_min": 47.1,
+        "terrain": "hilly"
+      }
+    ],
+    "Serchhip": [
+      {
+        "to": "Aizawl",
+        "dist": 90.0,
+        "risk": 0.3,
+        "highway": "NH-54",
+        "speed_kmh": 42.0,
+        "time_min": 128.6,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Lunglei",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-54",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Lawngtlai": [
+      {
+        "to": "Lunglei",
+        "dist": 90.0,
+        "risk": 0.3,
+        "highway": "NH-502A",
+        "speed_kmh": 42.0,
+        "time_min": 128.6,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Saiha",
+        "dist": 40.0,
+        "risk": 0.18,
+        "highway": "NH-54",
+        "speed_kmh": 51.0,
+        "time_min": 47.1,
+        "terrain": "hilly"
+      }
+    ],
+    "Saiha": [
+      {
+        "to": "Lawngtlai",
+        "dist": 40.0,
+        "risk": 0.18,
+        "highway": "NH-54",
+        "speed_kmh": 51.0,
+        "time_min": 47.1,
+        "terrain": "hilly"
+      }
+    ],
+    "Lengpui": [
+      {
+        "to": "Kolasib",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-306 Bypass",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Aizawl",
+        "dist": 35.0,
+        "risk": 0.3,
+        "highway": "NH-306",
+        "speed_kmh": 42.0,
+        "time_min": 50.0,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Thenzawl": [
+      {
+        "to": "Aizawl",
+        "dist": 85.0,
+        "risk": 0.18,
+        "highway": "SH-Mizoram",
+        "speed_kmh": 38.2,
+        "time_min": 133.5,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Lunglei",
+        "dist": 85.0,
+        "risk": 0.3,
+        "highway": "SH-Mizoram",
+        "speed_kmh": 31.5,
+        "time_min": 161.9,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Mamit": [
+      {
+        "to": "Aizawl",
+        "dist": 85.0,
+        "risk": 0.18,
+        "highway": "NH-108B",
+        "speed_kmh": 51.0,
+        "time_min": 100.0,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Kanchanpur",
+        "dist": 60.0,
+        "risk": 0.18,
+        "highway": "Jampui Hills Road",
+        "speed_kmh": 25.5,
+        "time_min": 141.2,
+        "terrain": "hilly"
+      }
+    ],
+    "Dimapur": [
+      {
+        "to": "Nagaon",
+        "dist": 160.0,
+        "risk": 0.08,
+        "highway": "NH-29 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 160.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Chumoukedima",
+        "dist": 14.0,
+        "risk": 0.08,
+        "highway": "NH-29 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 14.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Nagaon",
+        "dist": 165.0,
+        "risk": 0.08,
+        "highway": "NH-29",
+        "speed_kmh": 60.0,
+        "time_min": 165.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Golaghat",
+        "dist": 80.0,
+        "risk": 0.08,
+        "highway": "NH-129",
+        "speed_kmh": 60.0,
+        "time_min": 80.0,
+        "terrain": "plain"
+      }
+    ],
+    "Kohima": [
+      {
+        "to": "Senapati",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Medziphema",
+        "dist": 42.0,
+        "risk": 0.3,
+        "highway": "NH-29 (Asian Highway AH-1)",
+        "speed_kmh": 49.0,
+        "time_min": 51.4,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Tseminyu",
+        "dist": 40.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 57.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Phek",
+        "dist": 120.0,
+        "risk": 0.3,
+        "highway": "NH-29",
+        "speed_kmh": 42.0,
+        "time_min": 171.4,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Imphal",
+        "dist": 138.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 197.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Senapati",
+        "dist": 65.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 92.9,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Mokokchung": [
+      {
+        "to": "Wokha",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Tuensang",
+        "dist": 115.0,
+        "risk": 0.3,
+        "highway": "NH-702",
+        "speed_kmh": 42.0,
+        "time_min": 164.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Zunheboto",
+        "dist": 60.0,
+        "risk": 0.3,
+        "highway": "NH-702D",
+        "speed_kmh": 42.0,
+        "time_min": 85.7,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Jorhat",
+        "dist": 85.0,
+        "risk": 0.18,
+        "highway": "NH-702",
+        "speed_kmh": 51.0,
+        "time_min": 100.0,
+        "terrain": "hilly"
+      }
+    ],
+    "Wokha": [
+      {
+        "to": "Tseminyu",
+        "dist": 35.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 50.0,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Mokokchung",
+        "dist": 80.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 114.3,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Tuensang": [
+      {
+        "to": "Mokokchung",
+        "dist": 115.0,
+        "risk": 0.3,
+        "highway": "NH-702",
+        "speed_kmh": 42.0,
+        "time_min": 164.3,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Zunheboto": [
+      {
+        "to": "Mokokchung",
+        "dist": 60.0,
+        "risk": 0.3,
+        "highway": "NH-702D",
+        "speed_kmh": 42.0,
+        "time_min": 85.7,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Mon": [],
+    "Phek": [
+      {
+        "to": "Kohima",
+        "dist": 120.0,
+        "risk": 0.3,
+        "highway": "NH-29",
+        "speed_kmh": 42.0,
+        "time_min": 171.4,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Chumoukedima": [
+      {
+        "to": "Dimapur",
+        "dist": 14.0,
+        "risk": 0.08,
+        "highway": "NH-29 (4-Lane)",
+        "speed_kmh": 60.0,
+        "time_min": 14.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Medziphema",
+        "dist": 18.0,
+        "risk": 0.18,
+        "highway": "NH-29",
+        "speed_kmh": 51.0,
+        "time_min": 21.2,
+        "terrain": "hilly"
+      }
+    ],
+    "Medziphema": [
+      {
+        "to": "Chumoukedima",
+        "dist": 18.0,
+        "risk": 0.18,
+        "highway": "NH-29",
+        "speed_kmh": 51.0,
+        "time_min": 21.2,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Kohima",
+        "dist": 42.0,
+        "risk": 0.3,
+        "highway": "NH-29 (Asian Highway AH-1)",
+        "speed_kmh": 49.0,
+        "time_min": 51.4,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Tseminyu": [
+      {
+        "to": "Kohima",
+        "dist": 40.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 57.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Wokha",
+        "dist": 35.0,
+        "risk": 0.3,
+        "highway": "NH-2",
+        "speed_kmh": 42.0,
+        "time_min": 50.0,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Gangtok": [
+      {
+        "to": "Singtam",
+        "dist": 25.0,
+        "risk": 0.3,
+        "highway": "NH-10",
+        "speed_kmh": 42.0,
+        "time_min": 35.7,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Nathu La Pass",
+        "dist": 54.0,
+        "risk": 0.45,
+        "highway": "Jawaharlal Nehru Rd",
+        "speed_kmh": 38.5,
+        "time_min": 84.2,
+        "terrain": "high_pass"
+      },
+      {
+        "to": "Siliguri",
+        "dist": 115.0,
+        "risk": 0.3,
+        "highway": "NH-10",
+        "speed_kmh": 42.0,
+        "time_min": 164.3,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Namchi": [
+      {
+        "to": "Singtam",
+        "dist": 30.0,
+        "risk": 0.3,
+        "highway": "NH-710",
+        "speed_kmh": 42.0,
+        "time_min": 42.9,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Jorethang",
+        "dist": 20.0,
+        "risk": 0.18,
+        "highway": "SH-Sikkim",
+        "speed_kmh": 38.2,
+        "time_min": 31.4,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Ravangla",
+        "dist": 25.0,
+        "risk": 0.3,
+        "highway": "SH-12",
+        "speed_kmh": 31.5,
+        "time_min": 47.6,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Siliguri",
+        "dist": 95.0,
+        "risk": 0.3,
+        "highway": "NH-10 / SH",
+        "speed_kmh": 42.0,
+        "time_min": 135.7,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Geyzing": [
+      {
+        "to": "Ravangla",
+        "dist": 40.0,
+        "risk": 0.3,
+        "highway": "NH-510",
+        "speed_kmh": 42.0,
+        "time_min": 57.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Pelling",
+        "dist": 10.0,
+        "risk": 0.3,
+        "highway": "SH-Sikkim",
+        "speed_kmh": 31.5,
+        "time_min": 19.0,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Mangan": [
+      {
+        "to": "Singtam",
+        "dist": 40.0,
+        "risk": 0.3,
+        "highway": "NH-10",
+        "speed_kmh": 42.0,
+        "time_min": 57.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Chungthang",
+        "dist": 30.0,
+        "risk": 0.45,
+        "highway": "NH-10",
+        "speed_kmh": 33.0,
+        "time_min": 54.5,
+        "terrain": "high_pass"
+      }
+    ],
+    "Rangpo": [
+      {
+        "to": "Siliguri",
+        "dist": 70.0,
+        "risk": 0.3,
+        "highway": "NH-10",
+        "speed_kmh": 42.0,
+        "time_min": 100.0,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Singtam",
+        "dist": 15.0,
+        "risk": 0.18,
+        "highway": "NH-10",
+        "speed_kmh": 51.0,
+        "time_min": 17.6,
+        "terrain": "hilly"
+      }
+    ],
+    "Singtam": [
+      {
+        "to": "Rangpo",
+        "dist": 15.0,
+        "risk": 0.18,
+        "highway": "NH-10",
+        "speed_kmh": 51.0,
+        "time_min": 17.6,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Gangtok",
+        "dist": 25.0,
+        "risk": 0.3,
+        "highway": "NH-10",
+        "speed_kmh": 42.0,
+        "time_min": 35.7,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Mangan",
+        "dist": 40.0,
+        "risk": 0.3,
+        "highway": "NH-10",
+        "speed_kmh": 42.0,
+        "time_min": 57.1,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Namchi",
+        "dist": 30.0,
+        "risk": 0.3,
+        "highway": "NH-710",
+        "speed_kmh": 42.0,
+        "time_min": 42.9,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Chungthang": [
+      {
+        "to": "Mangan",
+        "dist": 30.0,
+        "risk": 0.45,
+        "highway": "NH-10",
+        "speed_kmh": 33.0,
+        "time_min": 54.5,
+        "terrain": "high_pass"
+      },
+      {
+        "to": "Lachung",
+        "dist": 24.0,
+        "risk": 0.45,
+        "highway": "NH-10",
+        "speed_kmh": 33.0,
+        "time_min": 43.6,
+        "terrain": "high_pass"
+      },
+      {
+        "to": "Lachen",
+        "dist": 28.0,
+        "risk": 0.45,
+        "highway": "NH-10",
+        "speed_kmh": 33.0,
+        "time_min": 50.9,
+        "terrain": "high_pass"
+      }
+    ],
+    "Lachung": [
+      {
+        "to": "Chungthang",
+        "dist": 24.0,
+        "risk": 0.45,
+        "highway": "NH-10",
+        "speed_kmh": 33.0,
+        "time_min": 43.6,
+        "terrain": "high_pass"
+      }
+    ],
+    "Lachen": [
+      {
+        "to": "Chungthang",
+        "dist": 28.0,
+        "risk": 0.45,
+        "highway": "NH-10",
+        "speed_kmh": 33.0,
+        "time_min": 50.9,
+        "terrain": "high_pass"
+      }
+    ],
+    "Nathu La Pass": [
+      {
+        "to": "Gangtok",
+        "dist": 54.0,
+        "risk": 0.45,
+        "highway": "Jawaharlal Nehru Rd",
+        "speed_kmh": 38.5,
+        "time_min": 84.2,
+        "terrain": "high_pass"
+      }
+    ],
+    "Ravangla": [
+      {
+        "to": "Namchi",
+        "dist": 25.0,
+        "risk": 0.3,
+        "highway": "SH-12",
+        "speed_kmh": 31.5,
+        "time_min": 47.6,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Geyzing",
+        "dist": 40.0,
+        "risk": 0.3,
+        "highway": "NH-510",
+        "speed_kmh": 42.0,
+        "time_min": 57.1,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Jorethang": [
+      {
+        "to": "Namchi",
+        "dist": 20.0,
+        "risk": 0.18,
+        "highway": "SH-Sikkim",
+        "speed_kmh": 38.2,
+        "time_min": 31.4,
+        "terrain": "hilly"
+      }
+    ],
+    "Pelling": [
+      {
+        "to": "Geyzing",
+        "dist": 10.0,
+        "risk": 0.3,
+        "highway": "SH-Sikkim",
+        "speed_kmh": 31.5,
+        "time_min": 19.0,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Agartala": [
+      {
+        "to": "Teliamura",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Bishalgarh",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Karimganj",
+        "dist": 195.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 195.0,
+        "terrain": "plain"
+      }
+    ],
+    "Udaipur": [
+      {
+        "to": "Bishalgarh",
+        "dist": 30.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 30.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Belonia",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      }
+    ],
+    "Dharmanagar": [
+      {
+        "to": "Karimganj",
+        "dist": 55.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 55.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kumarghat",
+        "dist": 30.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 30.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kanchanpur",
+        "dist": 45.0,
+        "risk": 0.18,
+        "highway": "Tripura SH",
+        "speed_kmh": 38.2,
+        "time_min": 70.7,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Karimganj",
+        "dist": 68.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 68.0,
+        "terrain": "plain"
+      }
+    ],
+    "Kailashahar": [
+      {
+        "to": "Karimganj",
+        "dist": 55.0,
+        "risk": 0.08,
+        "highway": "NH-208",
+        "speed_kmh": 60.0,
+        "time_min": 55.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kumarghat",
+        "dist": 22.0,
+        "risk": 0.08,
+        "highway": "SH-Tripura",
+        "speed_kmh": 45.0,
+        "time_min": 29.3,
+        "terrain": "plain"
+      }
+    ],
+    "Ambassa": [
+      {
+        "to": "Kumarghat",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-8",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Kanchanpur",
+        "dist": 55.0,
+        "risk": 0.18,
+        "highway": "Tripura SH",
+        "speed_kmh": 38.2,
+        "time_min": 86.4,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Teliamura",
+        "dist": 40.0,
+        "risk": 0.18,
+        "highway": "NH-8",
+        "speed_kmh": 51.0,
+        "time_min": 47.1,
+        "terrain": "hilly"
+      }
+    ],
+    "Belonia": [
+      {
+        "to": "Udaipur",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Sabroom",
+        "dist": 40.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 40.0,
+        "terrain": "plain"
+      }
+    ],
+    "Sabroom": [
+      {
+        "to": "Belonia",
+        "dist": 40.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 40.0,
+        "terrain": "plain"
+      }
+    ],
+    "Kanchanpur": [
+      {
+        "to": "Mamit",
+        "dist": 60.0,
+        "risk": 0.18,
+        "highway": "Jampui Hills Road",
+        "speed_kmh": 25.5,
+        "time_min": 141.2,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Ambassa",
+        "dist": 55.0,
+        "risk": 0.18,
+        "highway": "Tripura SH",
+        "speed_kmh": 38.2,
+        "time_min": 86.4,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Dharmanagar",
+        "dist": 45.0,
+        "risk": 0.18,
+        "highway": "Tripura SH",
+        "speed_kmh": 38.2,
+        "time_min": 70.7,
+        "terrain": "hilly"
+      }
+    ],
+    "Teliamura": [
+      {
+        "to": "Ambassa",
+        "dist": 40.0,
+        "risk": 0.18,
+        "highway": "NH-8",
+        "speed_kmh": 51.0,
+        "time_min": 47.1,
+        "terrain": "hilly"
+      },
+      {
+        "to": "Agartala",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      }
+    ],
+    "Kumarghat": [
+      {
+        "to": "Dharmanagar",
+        "dist": 30.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 30.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kailashahar",
+        "dist": 22.0,
+        "risk": 0.08,
+        "highway": "SH-Tripura",
+        "speed_kmh": 45.0,
+        "time_min": 29.3,
+        "terrain": "plain"
+      },
+      {
+        "to": "Ambassa",
+        "dist": 50.0,
+        "risk": 0.18,
+        "highway": "NH-8",
+        "speed_kmh": 51.0,
+        "time_min": 58.8,
+        "terrain": "hilly"
+      }
+    ],
+    "Bishalgarh": [
+      {
+        "to": "Agartala",
+        "dist": 20.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 20.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Udaipur",
+        "dist": 30.0,
+        "risk": 0.08,
+        "highway": "NH-8",
+        "speed_kmh": 60.0,
+        "time_min": 30.0,
+        "terrain": "plain"
+      }
+    ],
+    "Siliguri": [
+      {
+        "to": "Rangpo",
+        "dist": 70.0,
+        "risk": 0.3,
+        "highway": "NH-10",
+        "speed_kmh": 42.0,
+        "time_min": 100.0,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Jalpaiguri",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Darjeeling",
+        "dist": 65.0,
+        "risk": 0.3,
+        "highway": "NH-110",
+        "speed_kmh": 42.0,
+        "time_min": 92.9,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Kalimpong",
+        "dist": 65.0,
+        "risk": 0.3,
+        "highway": "NH-10 / NH-717A",
+        "speed_kmh": 42.0,
+        "time_min": 92.9,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Dhubri",
+        "dist": 215.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 215.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Bongaigaon",
+        "dist": 240.0,
+        "risk": 0.08,
+        "highway": "NH-27 / AH-48",
+        "speed_kmh": 70.0,
+        "time_min": 205.7,
+        "terrain": "plain"
+      },
+      {
+        "to": "Gangtok",
+        "dist": 115.0,
+        "risk": 0.3,
+        "highway": "NH-10",
+        "speed_kmh": 42.0,
+        "time_min": 164.3,
+        "terrain": "steep_mountain"
+      },
+      {
+        "to": "Namchi",
+        "dist": 95.0,
+        "risk": 0.3,
+        "highway": "NH-10 / SH",
+        "speed_kmh": 42.0,
+        "time_min": 135.7,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Alipurduar": [
+      {
+        "to": "Mainaguri",
+        "dist": 90.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 90.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Hasimara",
+        "dist": 30.0,
+        "risk": 0.08,
+        "highway": "NH-317",
+        "speed_kmh": 60.0,
+        "time_min": 30.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Cooch Behar",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "NH-317",
+        "speed_kmh": 60.0,
+        "time_min": 25.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Kokrajhar",
+        "dist": 70.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 70.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Bongaigaon",
+        "dist": 110.0,
+        "risk": 0.08,
+        "highway": "NH-27 / AH-48",
+        "speed_kmh": 70.0,
+        "time_min": 94.3,
+        "terrain": "plain"
+      }
+    ],
+    "Jalpaiguri": [
+      {
+        "to": "Siliguri",
+        "dist": 45.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 45.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Mainaguri",
+        "dist": 15.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 15.0,
+        "terrain": "plain"
+      }
+    ],
+    "Cooch Behar": [
+      {
+        "to": "Alipurduar",
+        "dist": 25.0,
+        "risk": 0.08,
+        "highway": "NH-317",
+        "speed_kmh": 60.0,
+        "time_min": 25.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Dhubri",
+        "dist": 60.0,
+        "risk": 0.08,
+        "highway": "NH-17",
+        "speed_kmh": 60.0,
+        "time_min": 60.0,
+        "terrain": "plain"
+      }
+    ],
+    "Darjeeling": [
+      {
+        "to": "Siliguri",
+        "dist": 65.0,
+        "risk": 0.3,
+        "highway": "NH-110",
+        "speed_kmh": 42.0,
+        "time_min": 92.9,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Kalimpong": [
+      {
+        "to": "Siliguri",
+        "dist": 65.0,
+        "risk": 0.3,
+        "highway": "NH-10 / NH-717A",
+        "speed_kmh": 42.0,
+        "time_min": 92.9,
+        "terrain": "steep_mountain"
+      }
+    ],
+    "Mainaguri": [
+      {
+        "to": "Jalpaiguri",
+        "dist": 15.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 15.0,
+        "terrain": "plain"
+      },
+      {
+        "to": "Alipurduar",
+        "dist": 90.0,
+        "risk": 0.08,
+        "highway": "NH-27",
+        "speed_kmh": 60.0,
+        "time_min": 90.0,
+        "terrain": "plain"
+      }
+    ],
+    "Hasimara": [
+      {
+        "to": "Alipurduar",
+        "dist": 30.0,
+        "risk": 0.08,
+        "highway": "NH-317",
+        "speed_kmh": 60.0,
+        "time_min": 30.0,
+        "terrain": "plain"
+      }
+    ]
+  },
+  "metadata": {
+    "total_nodes": 127,
+    "total_segments": 161,
+    "version": "2.0.0"
+  }
+}
