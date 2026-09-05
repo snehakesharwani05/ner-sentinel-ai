@@ -12,6 +12,7 @@ const weatherRoutes = require('./routes/weatherRoutes');
 const shipmentRoutes = require('./routes/shipmentRoutes');
 const convoyRoutes = require('./routes/convoyRoutes');
 const assistantRoutes = require('./routes/assistantRoutes');
+const roadSegmentRoutes = require('./routes/roadSegmentRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -55,7 +56,7 @@ app.use('/api/v1/weather', weatherRoutes);
 app.use('/api/v1/shipments', shipmentRoutes);
 app.use('/api/v1/convoys', convoyRoutes);
 app.use('/api/v1/assistant', assistantRoutes);
-app.use('/api/assistant', assistantRoutes);
+app.use('/api/v1/road-segments', roadSegmentRoutes);
 
 // Global Error Handler
 app.use(errorHandler);
