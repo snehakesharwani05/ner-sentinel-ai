@@ -5,6 +5,7 @@ import RiskBadge from '../components/RiskBadge';
 import LifelineTicker from '../components/LifelineTicker';
 import { DashboardDisruptionTicker } from '../components/DashboardDisruptionTicker';
 import { TacticalKpiGrid } from '../components/TacticalKpiGrid';
+import { RadialSubscriptionModal } from '../components/RadialSubscriptionModal';
 import { useAuth } from '../context/AuthContext';
 import { useAlertPin } from '../context/AlertPinContext';
 import { useRadialSmsWatcher } from '../hooks/useRadialSmsWatcher';
@@ -20,7 +21,8 @@ import {
 
 export function Dashboard() {
   const { activeZone, user } = useAuth();
-  const { config: alertPinConfig } = useAlertPin();
+  const { config: alertConfig, updateConfig: setAlertConfig } = useAlertPin();
+  const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
   const [health, setHealth] = useState(null);
   const [locations, setLocations] = useState([]);
   const [disruptions, setDisruptions] = useState([]);
@@ -32,7 +34,7 @@ export function Dashboard() {
   const [syncStatus, setSyncStatus] = useState({ isLive: true, lastSynced: new Date().toLocaleTimeString() });
 
   // Activate Real-Time Haversine Radial Proximity SMS Watcher (Solution 3)
-  useRadialSmsWatcher(disruptions, alertPinConfig);
+  useRadialSmsWatcher(disruptions, alertConfig);
 
   const isAll = !activeZone || activeZone === 'ALL';
   const stateMeta = isAll ? ALL_NER_REGION : (NER_STATES.find(s => s.id === activeZone) || NER_STATES[0]);
@@ -201,6 +203,32 @@ export function Dashboard() {
               </>
             )}
           </div>
+
+          {/* Clickable Radar Proximity Subscription Trigger */}
+          <button
+            type="button"
+            onClick={() => setIsAlertModalOpen(true)}
+            className="flex items-center space-x-1.5 bg-[#19221e] hover:bg-[#222e28] border border-stone-700/80 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-stone-200 transition-colors"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              backgroundColor: '#19221e',
+              border: '1px solid rgba(120, 113, 108, 0.8)',
+              padding: '5px 12px',
+              borderRadius: '20px',
+              fontSize: '0.78rem',
+              fontWeight: 700,
+              color: '#e7e5e4',
+              cursor: 'pointer',
+              marginLeft: '8px',
+              verticalAlign: 'middle',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+            }}
+          >
+            <span className="text-emerald-400 font-bold" style={{ color: '#34d399' }}>((o))</span>
+            <span>Radar: {alertConfig?.radiusKm || 75}km</span>
+          </button>
         </div>
 
         {/* Docked High-Density Tactical Glassmorphic 2x2 HUD Grid */}
@@ -454,6 +482,14 @@ export function Dashboard() {
           </div>
         </div>
       </div>
+
+      {/* Radial Proximity SMS Configuration Modal Overlay */}
+      <RadialSubscriptionModal 
+        isOpen={isAlertModalOpen} 
+        onClose={() => setIsAlertModalOpen(false)}
+        config={alertConfig}
+        onSaveConfig={(updatedConfig) => setAlertConfig(updatedConfig)}
+      />
     </div>
   );
 }
