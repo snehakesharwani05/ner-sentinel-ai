@@ -6,6 +6,7 @@
  */
 
 import { API_BASE_URL } from "../api/api";
+import { calculateHaversineDistance, extractDisruptionCoordinates, GeoPoint } from "../utils/geoProximity";
 
 export interface SmsPayload {
   recipientPhone: string;
@@ -130,6 +131,14 @@ export function markAlertDispatched(recipientPhone: string, corridorName: string
   }
 }
 
+export interface PinnedHubConfig {
+  hubName: string;
+  lat: number;
+  lng: number;
+  radiusKm: number;
+  enabled: boolean;
+}
+
 /**
  * Scans verified disruptions in user's active zone, filters for CRITICAL_BLOCKED,
  * and automatically dispatches SMS alerts respecting the 4-hour corridor cooldown.
@@ -170,3 +179,63 @@ export async function processAndDispatchCriticalAlerts(
 
   return { dispatchedCount, alertsSent };
 }
+
+/**
+ * Solution 3: Radial Proximity SMS Trigger
+ * Dispatches critical SMS alerts specifically for disruptions occurring within a designated
+ * radius (e.g., 50-100 km) of the citizen's pinned transit hub using Haversine calculation.
+ */
+export async function processAndDispatchProximityAlerts(
+  disruptions: any[],
+  userPhone: string,
+  pinnedHub: PinnedHubConfig
+): Promise<{ dispatchedCount: number; alertsSent: string[] }> {
+  if (!userPhone || !pinnedHub || !pinnedHub.enabled) {
+    return { dispatchedCount: 0, alertsSent: [] };
+  }
+
+  const criticalBlockages = (disruptions || []).filter(
+    d => d.severity === "CRITICAL_BLOCKED" || d.severity === "critical_blocked"
+  );
+
+  const alertsSent: string[] = [];
+  let dispatchedCount = 0;
+
+  for (const block of criticalBlockages) {
+    const coords = extractDisruptionCoordinates(block);
+    let inRadius = true;
+    let distanceKm = 0;
+
+    if (coords && typeof pinnedHub.lat === "number" && typeof pinnedHub.lng === "number") {
+      distanceKm = calculateHaversineDistance(
+        { lat: pinnedHub.lat, lng: pinnedHub.lng },
+        coords
+      );
+      inRadius = distanceKm <= pinnedHub.radiusKm;
+    }
+
+    if (!inRadius) continue;
+
+    const corridor = block.title || `${block.highway_code || 'Corridor'}`;
+    if (!isAlertInCooldown(userPhone, corridor)) {
+      const distanceLabel = distanceKm > 0 ? ` (~${Math.round(distanceKm)} km from ${pinnedHub.hubName})` : "";
+      const payload: SmsPayload = {
+        recipientPhone: userPhone,
+        corridorName: `${corridor}${distanceLabel}`,
+        stateName: block.state || pinnedHub.hubName,
+        reason: block.description || block.disruption_type || "verified physical road closure",
+        timestamp: new Date().toISOString()
+      };
+
+      const success = await sendFast2SmsAlert(payload);
+      if (success) {
+        markAlertDispatched(userPhone, corridor);
+        dispatchedCount++;
+        alertsSent.push(corridor);
+      }
+    }
+  }
+
+  return { dispatchedCount, alertsSent };
+}
+
