@@ -12,6 +12,7 @@ import AuthModal from './components/AuthModal';
 import AIAssistantDrawer from './components/AIAssistantDrawer';
 
 import { LanguageProvider } from './context/LanguageContext';
+import { AlertPinProvider } from './context/AlertPinContext';
 
 function AppContent() {
   const { isAuthenticated, user, isGuest } = useAuth();
@@ -81,7 +82,9 @@ export function App() {
   return (
     <LanguageProvider>
       <AuthProvider>
-        <AppContent />
+        <AlertPinProvider>
+          <AppContent />
+        </AlertPinProvider>
       </AuthProvider>
     </LanguageProvider>
   );
