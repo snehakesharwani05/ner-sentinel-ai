@@ -1,11 +1,12 @@
 import React from 'react';
-import { Server, Activity, User, LogOut, Shield, Wifi, WifiOff, Globe } from 'lucide-react';
+import { Server, Activity, User, LogOut, Shield, Wifi, WifiOff, Globe, MapPin } from 'lucide-react';
 import { API_BASE_URL } from '../api/api';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
+import { StateSelectorDropdown } from './StateSelectorDropdown';
 
 export function Navbar({ systemStatus = 'ONLINE' }) {
-  const { user, isAuthenticated, setIsAuthModalOpen, logout, isOnline, toggleSimulateOffline } = useAuth();
+  const { user, isAuthenticated, setIsAuthModalOpen, logout, isOnline, toggleSimulateOffline, activeZone, changeActiveZone } = useAuth();
   const { language, setLanguage, t } = useTranslation();
 
   const languages = [
@@ -46,8 +47,11 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
         </span>
       </div>
 
-      {/* Right Controls: Multilingual Selector, Online/Offline Pill, Auth User Badge */}
+      {/* Right Controls: Custom State Selector Dropdown, Multilingual Selector, Online/Offline Pill, Auth User Badge */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+        
+        {/* Dynamic Custom Floating State Selector Dropdown */}
+        <StateSelectorDropdown activeZone={activeZone} onSelectZone={changeActiveZone} />
         
         {/* Multilingual Selector (Clause h) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: '#EDE8DC', border: '1.5px solid #30483B', padding: '5px 10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>

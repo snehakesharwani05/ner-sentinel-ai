@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { Shield, User, Lock, Mail, Truck, AlertOctagon, CheckCircle2, X, Sparkles, Eye, EyeOff, Phone, Globe, ShieldCheck } from 'lucide-react';
 import RoleSelectDropdown from './RoleSelectDropdown';
 import CountryCodeDropdown from './CountryCodeDropdown';
+import { NER_STATES } from '../constants/nerLocations';
 import { 
   PublicCitizenIcon, ConvoyDriverIcon, LogisticsLeadIcon, 
   DisasterMgmtIcon, AdministratorIcon 
@@ -21,6 +22,8 @@ export function AuthModal() {
   const [regRole, setRegRole] = useState('citizen');
   const [regCountryCode, setRegCountryCode] = useState('+91');
   const [regMobile, setRegMobile] = useState('');
+  const [regState, setRegState] = useState('AS');
+  const [regCity, setRegCity] = useState('Guwahati');
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
@@ -57,7 +60,10 @@ export function AuthModal() {
         regPassword,
         regRole,
         regCountryCode,
-        regMobile.trim()
+        regMobile.trim(),
+        null,
+        regState,
+        regCity
       );
       if (!res.success) {
         setError(res.error || 'Registration failed');
@@ -68,6 +74,8 @@ export function AuthModal() {
       setLoading(false);
     }
   };
+
+  const selectedStateObj = NER_STATES.find(s => s.id === regState) || NER_STATES[0];
 
   return (
     <div style={{
@@ -376,6 +384,72 @@ export function AuthModal() {
                     }}
                   />
                 </div>
+              </div>
+            </div>
+
+            {/* Base Operating NER State & Hub City */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+              <div>
+                <label style={{ fontSize: '0.82rem', fontWeight: '700', color: '#20231F', display: 'block', marginBottom: '4px' }}>
+                  Base NER State
+                </label>
+                <select
+                  value={regState}
+                  onChange={(e) => {
+                    const stId = e.target.value;
+                    setRegState(stId);
+                    const stObj = NER_STATES.find(s => s.id === stId);
+                    if (stObj && stObj.cities?.length) {
+                      setRegCity(stObj.cities[0].name);
+                    }
+                  }}
+                  style={{
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    padding: '9px 10px',
+                    borderRadius: '8px',
+                    border: '1.5px solid #CBD0C0',
+                    backgroundColor: '#FFFFFF',
+                    color: '#20231F',
+                    fontSize: '0.88rem',
+                    outline: 'none',
+                    fontWeight: '600'
+                  }}
+                >
+                  {NER_STATES.map((st) => (
+                    <option key={st.id} value={st.id}>
+                      {st.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label style={{ fontSize: '0.82rem', fontWeight: '700', color: '#20231F', display: 'block', marginBottom: '4px' }}>
+                  Operating Hub City
+                </label>
+                <select
+                  value={regCity}
+                  onChange={(e) => setRegCity(e.target.value)}
+                  style={{
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    padding: '9px 10px',
+                    borderRadius: '8px',
+                    border: '1.5px solid #CBD0C0',
+                    backgroundColor: '#FFFFFF',
+                    color: '#20231F',
+                    fontSize: '0.88rem',
+                    outline: 'none',
+                    fontWeight: '600'
+                  }}
+                >
+                  {selectedStateObj.cities.map((ct) => (
+                    <option key={ct.name} value={ct.name}>
+                      {ct.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 

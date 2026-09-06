@@ -17,6 +17,15 @@ export function AuthProvider({ children }) {
     if (localStorage.getItem('purvasetu_simulated_offline') === 'true') return false;
     return typeof navigator !== 'undefined' ? navigator.onLine : true;
   });
+  const [activeZone, setActiveZone] = useState(() => {
+    return localStorage.getItem('purvasetu_active_zone') || 'ALL';
+  });
+
+  const changeActiveZone = (zoneId) => {
+    setActiveZone(zoneId);
+    localStorage.setItem('purvasetu_active_zone', zoneId);
+    window.dispatchEvent(new CustomEvent('purvasetu_zone_change', { detail: zoneId }));
+  };
 
   const toggleSimulateOffline = () => {
     const next = !isSimulatedOffline;
@@ -94,7 +103,7 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const register = async (name, email, password, role = 'citizen', countryCode = '+91', mobileNumber = '', serviceBadgeId = '') => {
+  const register = async (name, email, password, role = 'citizen', countryCode = '+91', mobileNumber = '', serviceBadgeId = '', nerState = 'AS', nerCity = 'Guwahati') => {
     try {
       const res = await fetch(`${API_BASE_URL}/api/v1/auth/register`, {
         method: 'POST',
@@ -106,13 +115,20 @@ export function AuthProvider({ children }) {
           role,
           country_code: countryCode,
           mobile_number: mobileNumber,
-          serviceBadgeId: serviceBadgeId ? serviceBadgeId.trim() : null
+          serviceBadgeId: serviceBadgeId ? serviceBadgeId.trim() : null,
+          ner_state: nerState,
+          ner_city: nerCity
         })
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || json.detail || 'Registration failed');
 
       const { user: userData, token: tokenData } = json.data;
+      if (nerState) {
+        userData.ner_state = nerState;
+        userData.ner_city = nerCity;
+        changeActiveZone(nerState);
+      }
       setUser(userData);
       setToken(tokenData);
       localStorage.setItem('ner_sentinel_user', JSON.stringify(userData));
@@ -159,6 +175,8 @@ export function AuthProvider({ children }) {
         isGuest: false,
         roleLabel: "Public Traveler / Citizen",
         unit: "NER Public Highway Access",
+        ner_state: "AS",
+        ner_city: "Guwahati",
         permissions: ['dashboard', 'convoy-telematics', 'route-intelligence', 'simulation', 'field-report']
       },
       driver: {
@@ -169,6 +187,8 @@ export function AuthProvider({ children }) {
         isGuest: false,
         roleLabel: "Field Convoy Driver",
         unit: "BRO Project Vartak",
+        ner_state: "AR",
+        ner_city: "Tawang",
         permissions: ['dashboard', 'convoy-telematics', 'route-intelligence', 'simulation', 'field-report']
       },
       disaster_mgmt: {
@@ -179,6 +199,8 @@ export function AuthProvider({ children }) {
         isGuest: false,
         roleLabel: "NDMA Disaster Response Lead",
         unit: "Shillong Incident Command",
+        ner_state: "ML",
+        ner_city: "Shillong",
         permissions: ['dashboard', 'convoy-telematics', 'route-intelligence', 'simulation', 'field-report']
       },
       operator: {
@@ -189,6 +211,8 @@ export function AuthProvider({ children }) {
         isGuest: false,
         roleLabel: "North East Logistics Controller",
         unit: "Central NER Dispatch",
+        ner_state: "TR",
+        ner_city: "Agartala",
         permissions: ['dashboard', 'convoy-telematics', 'route-intelligence', 'simulation', 'field-report']
       },
       admin: {
@@ -199,6 +223,8 @@ export function AuthProvider({ children }) {
         isGuest: false,
         roleLabel: "Platform Administrator",
         unit: "PurvaSetu Core",
+        ner_state: "AS",
+        ner_city: "Guwahati",
         adminAccess: true,
         permissions: ['dashboard', 'convoy-telematics', 'route-intelligence', 'simulation', 'field-report']
       }
@@ -206,6 +232,9 @@ export function AuthProvider({ children }) {
 
     const selected = presets[role] || presets.citizen;
     setUser(selected);
+    if (selected.ner_state) {
+      changeActiveZone(selected.ner_state);
+    }
     const mockToken = `mock-jwt-token-${role}-${Date.now()}`;
     setToken(mockToken);
     localStorage.setItem('ner_sentinel_user', JSON.stringify(selected));
@@ -232,6 +261,9 @@ export function AuthProvider({ children }) {
       isOnline,
       isSimulatedOffline,
       toggleSimulateOffline,
+      activeZone,
+      setActiveZone,
+      changeActiveZone,
       login,
       register,
       loginAsGuest,
