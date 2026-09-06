@@ -1,89 +1,245 @@
-import React, { useState } from "react";
-import { Radio, X, MapPin, Sliders } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Radio, X, Sliders, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { useAlertPin } from "../context/AlertPinContext";
+
+export interface AlertPinConfig {
+  phone: string;
+  hubName: string;
+  hubCoords: { lat: number; lng: number };
+  radiusKm: number;
+  alertsEnabled: boolean;
+}
 
 export const STRATEGIC_HUBS = [
   { name: "Sonapur Tunnel / East Jaintia (NH6)", lat: 25.1100, lng: 92.3600 },
-  { name: "Guwahati Freight Corridor (Assam)", lat: 26.1445, lng: 91.7362 },
-  { name: "Silchar Transit Junction (Assam)", lat: 24.8333, lng: 92.7789 },
+  { name: "Guwahati Freight Terminal (Assam)", lat: 26.1445, lng: 91.7362 },
+  { name: "Silchar Transit Hub (Assam)", lat: 24.8333, lng: 92.7789 },
   { name: "Shillong Bypass Route (Meghalaya)", lat: 25.5788, lng: 91.8933 },
-  { name: "Sela Pass High-Altitude Corridor (Arunachal)", lat: 27.5861, lng: 91.8594 },
-  { name: "Dimapur Logistics Hub (Nagaland)", lat: 25.9090, lng: 93.7266 },
+  { name: "Sela Pass High-Altitude Route (Arunachal)", lat: 27.5861, lng: 91.8594 },
+  { name: "Dimapur Logistics Corridor (Nagaland)", lat: 25.9090, lng: 93.7266 },
 ];
 
-export const RadialSubscriptionModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
+interface Props {
+  isOpen: boolean;
+  onClose: () => void;
+  config?: AlertPinConfig;
+  onSaveConfig?: (updated: AlertPinConfig) => void;
+}
+
+export const RadialSubscriptionModal: React.FC<Props> = ({
   isOpen,
   onClose,
+  config: propConfig,
+  onSaveConfig: propOnSave,
 }) => {
-  const { config, updateConfig } = useAlertPin();
-  const [phone, setPhone] = useState(config.phone);
-  const [hubName, setHubName] = useState(config.hubName);
-  const [radius, setRadius] = useState(config.radiusKm);
-  const [enabled, setEnabled] = useState(config.alertsEnabled);
+  let contextConfig: AlertPinConfig | null = null;
+  let contextUpdate: ((updated: Partial<AlertPinConfig>) => void) | null = null;
+
+  try {
+    const ctx = useAlertPin();
+    contextConfig = ctx.config;
+    contextUpdate = ctx.updateConfig;
+  } catch (e) {
+    // Context fallback if mounted outside provider
+  }
+
+  const activeConfig: AlertPinConfig = propConfig || contextConfig || {
+    phone: "",
+    hubName: STRATEGIC_HUBS[0].name,
+    hubCoords: { lat: STRATEGIC_HUBS[0].lat, lng: STRATEGIC_HUBS[0].lng },
+    radiusKm: 75,
+    alertsEnabled: true,
+  };
+
+  const [phone, setPhone] = useState(activeConfig.phone || "");
+  const [selectedHub, setSelectedHub] = useState(activeConfig.hubName || STRATEGIC_HUBS[0].name);
+  const [radius, setRadius] = useState(activeConfig.radiusKm || 75);
+  const [alertsEnabled, setAlertsEnabled] = useState(activeConfig.alertsEnabled ?? true);
+
+  useEffect(() => {
+    if (isOpen) {
+      setPhone(activeConfig.phone || "");
+      setSelectedHub(activeConfig.hubName || STRATEGIC_HUBS[0].name);
+      setRadius(activeConfig.radiusKm || 75);
+      setAlertsEnabled(activeConfig.alertsEnabled ?? true);
+    }
+  }, [isOpen, activeConfig.phone, activeConfig.hubName, activeConfig.radiusKm, activeConfig.alertsEnabled]);
 
   if (!isOpen) return null;
 
-  const handleSave = () => {
-    const hub = STRATEGIC_HUBS.find((h) => h.name === hubName) || STRATEGIC_HUBS[0];
-    updateConfig({
-      phone,
-      hubName: hub.name,
-      hubCoords: { lat: hub.lat, lng: hub.lng },
+  const handleSave = (e: React.FormEvent) => {
+    e.preventDefault();
+    const hubData = STRATEGIC_HUBS.find((h) => h.name === selectedHub) || STRATEGIC_HUBS[0];
+    const newConfig: AlertPinConfig = {
+      phone: phone.startsWith("+91") ? phone : (phone ? `+91${phone}` : ""),
+      hubName: hubData.name,
+      hubCoords: { lat: hubData.lat, lng: hubData.lng },
       radiusKm: radius,
-      alertsEnabled: enabled,
-    });
+      alertsEnabled,
+    };
+
+    if (propOnSave) {
+      propOnSave(newConfig);
+    } else if (contextUpdate) {
+      contextUpdate(newConfig);
+    }
+
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-xs p-4">
-      <div className="bg-[#161e1a] border border-stone-700/80 rounded-2xl w-full max-w-md p-5 text-stone-200 shadow-2xl">
-        <div className="flex items-center justify-between pb-3 border-b border-stone-800">
-          <div className="flex items-center space-x-2">
-            <Radio className="w-4 h-4 text-emerald-400 animate-pulse"/>
-            <h3 className="font-bold text-white text-sm">Radial Proximity SMS Alerts</h3>
+    <div 
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+      onClick={onClose}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 100,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        backdropFilter: 'blur(4px)',
+        padding: '1rem'
+      }}
+    >
+      <div 
+        className="relative w-full max-w-lg bg-[#151c18] border border-stone-700/80 rounded-2xl shadow-2xl p-6 text-stone-200 animate-in fade-in zoom-in-95 duration-200"
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: '32rem',
+          backgroundColor: '#151c18',
+          border: '1px solid rgba(120, 113, 108, 0.8)',
+          borderRadius: '1rem',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+          padding: '1.5rem',
+          color: '#e7e5e4'
+        }}
+      >
+        {/* Modal Header */}
+        <div 
+          className="flex items-center justify-between pb-4 border-b border-stone-800"
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '1rem', borderBottom: '1px solid #292524' }}
+        >
+          <div className="flex items-center space-x-2.5" style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+            <div 
+              className="p-2 rounded-lg bg-emerald-950/70 border border-emerald-800/60"
+              style={{ padding: '0.5rem', borderRadius: '0.5rem', backgroundColor: 'rgba(6, 78, 59, 0.7)', border: '1px solid rgba(6, 95, 70, 0.6)' }}
+            >
+              <Radio className="w-4 h-4 text-emerald-400 animate-pulse" size={16} color="#34d399" />
+            </div>
+            <div>
+              <h3 className="font-bold text-white text-base tracking-wide" style={{ fontWeight: 700, color: '#ffffff', fontSize: '1rem', margin: 0 }}>
+                Radial Proximity SMS Alerts
+              </h3>
+              <p className="text-[11px] text-stone-400" style={{ fontSize: '0.6875rem', color: '#a8a29e', margin: '0.15rem 0 0 0' }}>
+                Automated Twilio gateway for verified corridor closures
+              </p>
+            </div>
           </div>
-          <button onClick={onClose} className="text-stone-400 hover:text-white cursor-pointer">
-            <X className="w-4 h-4"/>
+          <button
+            onClick={onClose}
+            type="button"
+            className="p-1.5 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800/60 transition-colors"
+            style={{ padding: '0.375rem', borderRadius: '0.5rem', background: 'transparent', border: 'none', color: '#a8a29e', cursor: 'pointer' }}
+          >
+            <X className="w-5 h-5" size={20} />
           </button>
         </div>
 
-        <div className="mt-4 space-y-4 text-xs">
+        {/* Modal Form */}
+        <form onSubmit={handleSave} className="mt-5 space-y-4 text-xs" style={{ marginTop: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.75rem' }}>
+          {/* Phone Input */}
           <div>
-            <label className="font-semibold text-stone-300 block mb-1">Target Phone Number</label>
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="e.g. 9876543210"
-              className="w-full bg-[#0e1411] border border-stone-700 rounded-lg px-3 py-2 text-white font-mono focus:border-emerald-500 focus:outline-none"
-            />
+            <label className="flex items-center justify-between font-bold text-stone-300 mb-1.5" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 700, color: '#d6d3d1', marginBottom: '0.375rem' }}>
+              <span className="flex items-center gap-1.5" style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+                <Phone className="w-3.5 h-3.5 text-emerald-400" size={14} color="#34d399" />
+                Target Mobile Number
+              </span>
+              <span className="text-[10px] text-stone-500 font-normal" style={{ fontSize: '0.625rem', color: '#78716c', fontWeight: 400 }}>10-Digit Mobile (India)</span>
+            </label>
+            <div className="relative flex items-center" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+              <span className="absolute left-3 font-mono font-bold text-stone-400 select-none" style={{ position: 'absolute', left: '0.75rem', fontFamily: 'monospace', fontWeight: 700, color: '#a8a29e', userSelect: 'none' }}>
+                +91
+              </span>
+              <input
+                type="tel"
+                placeholder="9876543210"
+                value={phone.replace(/^\+91/, "")}
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                className="w-full bg-[#0d1210] border border-stone-700/80 rounded-xl pl-12 pr-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all"
+                style={{
+                  width: '100%',
+                  backgroundColor: '#0d1210',
+                  border: '1px solid rgba(120, 113, 108, 0.8)',
+                  borderRadius: '0.75rem',
+                  paddingLeft: '3rem',
+                  paddingRight: '0.75rem',
+                  paddingTop: '0.625rem',
+                  paddingBottom: '0.625rem',
+                  color: '#ffffff',
+                  fontFamily: 'monospace',
+                  fontSize: '0.875rem',
+                  outline: 'none',
+                  boxSizing: 'border-box'
+                }}
+                required
+              />
+            </div>
           </div>
 
+          {/* Operational Corridor Selector */}
           <div>
-            <label className="font-semibold text-stone-300 block mb-1">Pinned Operational Corridor</label>
-            <div className="relative">
+            <label className="flex items-center gap-1.5 font-bold text-stone-300 mb-1.5" style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontWeight: 700, color: '#d6d3d1', marginBottom: '0.375rem' }}>
+              <MapPin className="w-3.5 h-3.5 text-amber-400" size={14} color="#fbbf24" />
+              Pinned Operational Corridor
+            </label>
+            <div className="relative" style={{ position: 'relative' }}>
               <select
-                value={hubName}
-                onChange={(e) => setHubName(e.target.value)}
-                className="w-full bg-[#0e1411] border border-stone-700 rounded-lg px-3 py-2 text-white focus:border-emerald-500 focus:outline-none appearance-none cursor-pointer"
+                value={selectedHub}
+                onChange={(e) => setSelectedHub(e.target.value)}
+                className="w-full bg-[#0d1210] border border-stone-700/80 rounded-xl px-3 py-2.5 text-white text-xs font-medium focus:outline-none focus:border-emerald-500 cursor-pointer appearance-none"
+                style={{
+                  width: '100%',
+                  backgroundColor: '#0d1210',
+                  border: '1px solid rgba(120, 113, 108, 0.8)',
+                  borderRadius: '0.75rem',
+                  padding: '0.625rem 0.75rem',
+                  color: '#ffffff',
+                  fontSize: '0.75rem',
+                  fontWeight: 500,
+                  outline: 'none',
+                  cursor: 'pointer',
+                  boxSizing: 'border-box'
+                }}
               >
                 {STRATEGIC_HUBS.map((hub) => (
-                  <option key={hub.name} value={hub.name}>
+                  <option key={hub.name} value={hub.name} className="bg-[#151c18] text-white" style={{ backgroundColor: '#151c18', color: '#ffffff' }}>
                     {hub.name}
                   </option>
                 ))}
               </select>
-              <MapPin className="w-3.5 h-3.5 text-stone-400 absolute right-3 top-2.5 pointer-events-none"/>
             </div>
           </div>
 
-          <div>
-            <div className="flex justify-between items-center mb-1">
-              <label className="font-semibold text-stone-300 flex items-center gap-1.5">
-                <Sliders className="w-3.5 h-3.5 text-emerald-400"/> Watch Radius
-              </label>
-              <span className="font-mono text-emerald-400 font-bold">{radius} km</span>
+          {/* Proximity Slider */}
+          <div 
+            className="bg-[#0d1210] border border-stone-800/80 rounded-xl p-3.5 space-y-2"
+            style={{ backgroundColor: '#0d1210', border: '1px solid rgba(41, 37, 36, 0.8)', borderRadius: '0.75rem', padding: '0.875rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+          >
+            <div className="flex items-center justify-between" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span className="flex items-center gap-1.5 font-bold text-stone-300" style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontWeight: 700, color: '#d6d3d1' }}>
+                <Sliders className="w-3.5 h-3.5 text-emerald-400" size={14} color="#34d399" />
+                Proximity Radius
+              </span>
+              <span 
+                className="font-mono text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded-md"
+                style={{ fontFamily: 'monospace', fontSize: '0.75rem', fontWeight: 700, color: '#34d399', backgroundColor: 'rgba(6, 78, 59, 0.6)', border: '1px solid rgba(6, 95, 70, 0.4)', padding: '0.125rem 0.5rem', borderRadius: '0.375rem' }}
+              >
+                {radius} km
+              </span>
             </div>
             <input
               type="range"
@@ -92,35 +248,59 @@ export const RadialSubscriptionModal: React.FC<{ isOpen: boolean; onClose: () =>
               step={25}
               value={radius}
               onChange={(e) => setRadius(Number(e.target.value))}
-              className="w-full accent-emerald-500 bg-stone-800 rounded-lg h-1.5 cursor-pointer"
+              className="w-full h-1.5 bg-stone-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+              style={{ width: '100%', height: '0.375rem', accentColor: '#10b981', cursor: 'pointer' }}
             />
+            <div className="flex justify-between text-[10px] text-stone-500 font-mono" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.625rem', color: '#78716c', fontFamily: 'monospace' }}>
+              <span>25 km</span>
+              <span>75 km</span>
+              <span>150 km</span>
+            </div>
           </div>
 
-          <div className="flex items-center justify-between pt-2 border-t border-stone-800">
-            <span className="text-stone-300 font-semibold">Enable Automated Dispatch</span>
+          {/* Automated Dispatch Toggle */}
+          <label 
+            className="flex items-center justify-between p-3 bg-[#0d1210] border border-stone-800/80 rounded-xl cursor-pointer hover:border-stone-700 transition-colors"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem', backgroundColor: '#0d1210', border: '1px solid rgba(41, 37, 36, 0.8)', borderRadius: '0.75rem', cursor: 'pointer' }}
+          >
+            <div className="flex items-center space-x-2.5" style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+              <ShieldCheck className="w-4 h-4 text-emerald-400" size={16} color="#34d399" />
+              <div>
+                <p className="font-bold text-white" style={{ fontWeight: 700, color: '#ffffff', margin: 0 }}>Automated SMS Dispatch</p>
+                <p className="text-[10px] text-stone-400" style={{ fontSize: '0.625rem', color: '#a8a29e', margin: '0.1rem 0 0 0' }}>Trigger exclusively for CRITICAL_BLOCKED incidents</p>
+              </div>
+            </div>
             <input
               type="checkbox"
-              checked={enabled}
-              onChange={(e) => setEnabled(e.target.checked)}
-              className="w-4 h-4 accent-emerald-500 rounded cursor-pointer"
+              checked={alertsEnabled}
+              onChange={(e) => setAlertsEnabled(e.target.checked)}
+              className="w-4 h-4 rounded border-stone-700 bg-stone-900 accent-emerald-500 cursor-pointer"
+              style={{ width: '1rem', height: '1rem', accentColor: '#10b981', cursor: 'pointer' }}
             />
-          </div>
-        </div>
+          </label>
 
-        <div className="mt-5 flex items-center justify-end space-x-2">
-          <button
-            onClick={onClose}
-            className="px-3 py-1.5 rounded-lg border border-stone-700 text-stone-300 hover:bg-stone-800 text-xs font-semibold cursor-pointer"
+          {/* Form Actions */}
+          <div 
+            className="flex items-center justify-end space-x-2.5 pt-3 border-t border-stone-800"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.625rem', paddingTop: '0.75rem', borderTop: '1px solid #292524' }}
           >
-            Cancel
-          </button>
-          <button
-            onClick={handleSave}
-            className="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer"
-          >
-            Save & Activate
-          </button>
-        </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 rounded-xl border border-stone-700/80 text-stone-300 font-semibold hover:bg-stone-800/80 transition-colors"
+              style={{ padding: '0.5rem 1rem', borderRadius: '0.75rem', border: '1px solid rgba(120, 113, 108, 0.8)', background: 'transparent', color: '#d6d3d1', fontWeight: 600, cursor: 'pointer' }}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-950/50 transition-all"
+              style={{ padding: '0.5rem 1.25rem', borderRadius: '0.75rem', backgroundColor: '#059669', border: 'none', color: '#ffffff', fontWeight: 700, cursor: 'pointer', boxShadow: '0 10px 15px -3px rgba(6, 78, 59, 0.5)' }}
+            >
+              Save & Activate
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
