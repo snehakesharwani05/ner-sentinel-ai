@@ -488,6 +488,8 @@ export function Dashboard() {
         isOpen={isAlertModalOpen} 
         onClose={() => setIsAlertModalOpen(false)}
         config={alertConfig}
+        userPhone={user?.phone || user?.mobile}
+        userName={user?.name}
         onSaveConfig={(updatedConfig) => setAlertConfig(updatedConfig)}
       />
     </div>

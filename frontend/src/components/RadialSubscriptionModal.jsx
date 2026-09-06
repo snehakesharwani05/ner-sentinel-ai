@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Radio, X, Sliders, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { Radio, X, Sliders, MapPin, Phone, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { useAlertPin } from "../context/AlertPinContext";
+import { useAuth } from "../context/AuthContext";
 
 export const STRATEGIC_HUBS = [
   { name: "Sonapur Tunnel / East Jaintia (NH6)", lat: 25.1100, lng: 92.3600 },
@@ -16,18 +17,24 @@ export const RadialSubscriptionModal = ({
   isOpen,
   onClose,
   config: propConfig,
+  userPhone: propUserPhone,
+  userName: propUserName,
   onSaveConfig: propOnSave,
 }) => {
   let contextConfig = null;
   let contextUpdate = null;
+  let authUser = null;
 
   try {
     const ctx = useAlertPin();
     contextConfig = ctx?.config;
     contextUpdate = ctx?.updateConfig;
-  } catch (e) {
-    // Context fallback if mounted outside provider
-  }
+  } catch (e) {}
+
+  try {
+    const auth = useAuth();
+    authUser = auth?.user;
+  } catch (e) {}
 
   const activeConfig = propConfig || contextConfig || {
     phone: "",
@@ -37,8 +44,11 @@ export const RadialSubscriptionModal = ({
     alertsEnabled: true,
   };
 
+  const rawPhone = propUserPhone || authUser?.phone || authUser?.mobile || activeConfig.phone || "+91 9876543210";
+  const activeNumber = rawPhone.startsWith("+91") ? rawPhone : (rawPhone.startsWith("+") ? rawPhone : `+91 ${rawPhone.replace(/\D/g, "").slice(-10)}`);
+  const activeUserName = propUserName || authUser?.name || "Active Operator";
+
   const [mounted, setMounted] = useState(false);
-  const [phone, setPhone] = useState(activeConfig.phone || "");
   const [selectedHub, setSelectedHub] = useState(activeConfig.hubName || STRATEGIC_HUBS[0].name);
   const [radius, setRadius] = useState(activeConfig.radiusKm || 75);
   const [alertsEnabled, setAlertsEnabled] = useState(activeConfig.alertsEnabled ?? true);
@@ -47,7 +57,6 @@ export const RadialSubscriptionModal = ({
     setMounted(true);
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      setPhone(activeConfig.phone || "");
       setSelectedHub(activeConfig.hubName || STRATEGIC_HUBS[0].name);
       setRadius(activeConfig.radiusKm || 75);
       setAlertsEnabled(activeConfig.alertsEnabled ?? true);
@@ -57,7 +66,7 @@ export const RadialSubscriptionModal = ({
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [isOpen, activeConfig.phone, activeConfig.hubName, activeConfig.radiusKm, activeConfig.alertsEnabled]);
+  }, [isOpen, activeConfig.hubName, activeConfig.radiusKm, activeConfig.alertsEnabled]);
 
   if (!isOpen || !mounted || typeof document === "undefined") return null;
 
@@ -65,7 +74,7 @@ export const RadialSubscriptionModal = ({
     e.preventDefault();
     const hubData = STRATEGIC_HUBS.find((h) => h.name === selectedHub) || STRATEGIC_HUBS[0];
     const newConfig = {
-      phone: phone.startsWith("+91") ? phone : (phone ? `+91${phone}` : ""),
+      phone: activeNumber,
       hubName: hubData.name,
       hubCoords: { lat: hubData.lat, lng: hubData.lng },
       radiusKm: radius,
@@ -186,9 +195,9 @@ export const RadialSubscriptionModal = ({
             fontSize: "0.75rem",
           }}
         >
-          {/* Target Phone Number */}
+          {/* Read-Only Registered Mobile Card */}
           <div>
-            <label
+            <div
               className="flex items-center justify-between font-bold text-stone-300 mb-1.5"
               style={{
                 display: "flex",
@@ -201,42 +210,56 @@ export const RadialSubscriptionModal = ({
             >
               <span className="flex items-center gap-1.5" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
                 <Phone className="w-3.5 h-3.5 text-emerald-400" size={14} color="#34d399" />
-                Target Mobile Number
+                Recipient Mobile
               </span>
-              <span className="text-[10px] text-stone-500 font-normal" style={{ fontSize: "0.625rem", color: "#78716c", fontWeight: 400 }}>
-                10-Digit Mobile (India)
-              </span>
-            </label>
-            <div className="relative flex items-center" style={{ position: "relative", display: "flex", alignItems: "center" }}>
               <span
-                className="absolute left-3 font-mono font-bold text-stone-400 select-none"
-                style={{ position: "absolute", left: "0.75rem", fontFamily: "monospace", fontWeight: 700, color: "#a8a29e", userSelect: "none" }}
-              >
-                +91
-              </span>
-              <input
-                type="tel"
-                placeholder="9876543210"
-                value={phone.replace(/^\+91/, "")}
-                onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
-                className="w-full bg-[#0d1210] border border-stone-700/80 rounded-xl pl-12 pr-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all"
+                className="flex items-center gap-1 text-[10px] text-emerald-400 bg-emerald-950/80 border border-emerald-800/50 px-2 py-0.5 rounded-full font-medium"
                 style={{
-                  width: "100%",
-                  backgroundColor: "#0d1210",
-                  border: "1px solid rgba(120, 113, 108, 0.8)",
-                  borderRadius: "0.75rem",
-                  paddingLeft: "3rem",
-                  paddingRight: "0.75rem",
-                  paddingTop: "0.625rem",
-                  paddingBottom: "0.625rem",
-                  color: "#ffffff",
-                  fontFamily: "monospace",
-                  fontSize: "0.875rem",
-                  outline: "none",
-                  boxSizing: "border-box",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.25rem",
+                  fontSize: "0.625rem",
+                  color: "#34d399",
+                  backgroundColor: "rgba(6, 78, 59, 0.8)",
+                  border: "1px solid rgba(6, 95, 70, 0.5)",
+                  padding: "0.125rem 0.5rem",
+                  borderRadius: "9999px",
+                  fontWeight: 500,
                 }}
-                required
-              />
+              >
+                <CheckCircle2 className="w-3 h-3" size={12} color="#34d399" /> Registered Account
+              </span>
+            </div>
+            <div
+              className="flex items-center justify-between bg-[#0d1210] border border-stone-800 rounded-xl px-3.5 py-2.5"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                backgroundColor: "#0d1210",
+                border: "1px solid #292524",
+                borderRadius: "0.75rem",
+                padding: "0.625rem 0.875rem",
+              }}
+            >
+              <div className="flex items-center space-x-2.5" style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+                <div
+                  className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"
+                  style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#34d399" }}
+                />
+                <span
+                  className="font-mono font-bold text-sm text-white tracking-wider"
+                  style={{ fontFamily: "monospace", fontWeight: 700, fontSize: "0.875rem", color: "#ffffff", letterSpacing: "0.05em" }}
+                >
+                  {activeNumber}
+                </span>
+                <span className="text-stone-500 font-medium" style={{ color: "#78716c", fontWeight: 500 }}>
+                  ({activeUserName})
+                </span>
+              </div>
+              <span className="text-[10px] text-stone-400 font-medium" style={{ fontSize: "0.625rem", color: "#a8a29e", fontWeight: 500 }}>
+                Alert messages sent here
+              </span>
             </div>
           </div>
 
