@@ -6,6 +6,8 @@ import LifelineTicker from '../components/LifelineTicker';
 import { DashboardDisruptionTicker } from '../components/DashboardDisruptionTicker';
 import { TacticalKpiGrid } from '../components/TacticalKpiGrid';
 import { useAuth } from '../context/AuthContext';
+import { useAlertPin } from '../context/AlertPinContext';
+import { useRadialSmsWatcher } from '../hooks/useRadialSmsWatcher';
 import { NER_STATES, ALL_NER_REGION, TOTAL_NER_HUBS_COUNT } from '../constants/nerLocations';
 import { fetchScopedVerifiedDisruptions, sortByCityProximity } from '../services/scopedDisruptionService';
 import { startLiveDisruptionPoller, clusterTomTomIncidents } from '../services/liveDisruptionService';
@@ -18,6 +20,7 @@ import {
 
 export function Dashboard() {
   const { activeZone, user } = useAuth();
+  const { config: alertPinConfig } = useAlertPin();
   const [health, setHealth] = useState(null);
   const [locations, setLocations] = useState([]);
   const [disruptions, setDisruptions] = useState([]);
@@ -27,6 +30,9 @@ export function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [syncStatus, setSyncStatus] = useState({ isLive: true, lastSynced: new Date().toLocaleTimeString() });
+
+  // Activate Real-Time Haversine Radial Proximity SMS Watcher (Solution 3)
+  useRadialSmsWatcher(disruptions, alertPinConfig);
 
   const isAll = !activeZone || activeZone === 'ALL';
   const stateMeta = isAll ? ALL_NER_REGION : (NER_STATES.find(s => s.id === activeZone) || NER_STATES[0]);

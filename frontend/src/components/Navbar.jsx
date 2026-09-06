@@ -1,13 +1,17 @@
-import React from 'react';
-import { Server, Activity, User, LogOut, Shield, Wifi, WifiOff, Globe, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { Server, Activity, User, LogOut, Shield, Wifi, WifiOff, Globe, MapPin, Radio } from 'lucide-react';
 import { API_BASE_URL } from '../api/api';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
+import { useAlertPin } from '../context/AlertPinContext';
 import { StateSelectorDropdown } from './StateSelectorDropdown';
+import { RadialSubscriptionModal } from './RadialSubscriptionModal';
 
 export function Navbar({ systemStatus = 'ONLINE' }) {
   const { user, isAuthenticated, setIsAuthModalOpen, logout, isOnline, toggleSimulateOffline, activeZone, changeActiveZone } = useAuth();
+  const { config: alertPinConfig } = useAlertPin();
   const { language, setLanguage, t } = useTranslation();
+  const [isRadialModalOpen, setIsRadialModalOpen] = useState(false);
 
   const languages = [
     { code: 'en', label: '🇬🇧 English' },
@@ -52,6 +56,30 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
         
         {/* Dynamic Custom Floating State Selector Dropdown */}
         <StateSelectorDropdown activeZone={activeZone} onSelectZone={changeActiveZone} />
+        
+        {/* Radial Proximity SMS Alert Trigger Modal Button (Solution 3) */}
+        <button
+          onClick={() => setIsRadialModalOpen(true)}
+          title="Configure Haversine Radial Proximity SMS Alerts"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '5px 12px',
+            borderRadius: '8px',
+            backgroundColor: '#1B2420',
+            border: '1.5px solid rgba(52, 211, 153, 0.4)',
+            fontSize: '0.76rem',
+            color: '#34D399',
+            fontWeight: '700',
+            cursor: 'pointer',
+            transition: 'all 0.15s ease',
+            boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
+          }}
+        >
+          <Radio size={13} className="animate-pulse" color="#34D399" />
+          <span>{alertPinConfig?.alertsEnabled ? `Radar: ${alertPinConfig.radiusKm}km` : 'Radial Alerts'}</span>
+        </button>
         
         {/* Multilingual Selector (Clause h) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: '#EDE8DC', border: '1.5px solid #30483B', padding: '5px 10px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
@@ -193,6 +221,9 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
           </button>
         )}
       </div>
+
+      {/* Radial Proximity SMS Configuration Modal */}
+      <RadialSubscriptionModal isOpen={isRadialModalOpen} onClose={() => setIsRadialModalOpen(false)} />
     </header>
   );
 }
