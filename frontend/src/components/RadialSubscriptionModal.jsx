@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Radio, X, Sliders, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { useAlertPin } from "../context/AlertPinContext";
 
@@ -36,21 +37,29 @@ export const RadialSubscriptionModal = ({
     alertsEnabled: true,
   };
 
+  const [mounted, setMounted] = useState(false);
   const [phone, setPhone] = useState(activeConfig.phone || "");
   const [selectedHub, setSelectedHub] = useState(activeConfig.hubName || STRATEGIC_HUBS[0].name);
   const [radius, setRadius] = useState(activeConfig.radiusKm || 75);
   const [alertsEnabled, setAlertsEnabled] = useState(activeConfig.alertsEnabled ?? true);
 
   useEffect(() => {
+    setMounted(true);
     if (isOpen) {
+      document.body.style.overflow = "hidden";
       setPhone(activeConfig.phone || "");
       setSelectedHub(activeConfig.hubName || STRATEGIC_HUBS[0].name);
       setRadius(activeConfig.radiusKm || 75);
       setAlertsEnabled(activeConfig.alertsEnabled ?? true);
+    } else {
+      document.body.style.overflow = "unset";
     }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isOpen, activeConfig.phone, activeConfig.hubName, activeConfig.radiusKm, activeConfig.alertsEnabled]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted || typeof document === "undefined") return null;
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -72,54 +81,78 @@ export const RadialSubscriptionModal = ({
     onClose();
   };
 
-  return (
-    <div 
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+  const modalContent = (
+    <div
+      className="fixed inset-0 w-screen h-screen z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 overflow-y-auto"
       onClick={onClose}
       style={{
-        position: 'fixed',
+        position: "fixed",
         inset: 0,
-        zIndex: 100,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        backdropFilter: 'blur(4px)',
-        padding: '1rem'
+        width: "100vw",
+        height: "100vh",
+        zIndex: 9999,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+        backdropFilter: "blur(12px)",
+        padding: "1rem",
+        overflowY: "auto",
       }}
     >
-      <div 
-        className="relative w-full max-w-lg bg-[#151c18] border border-stone-700/80 rounded-2xl shadow-2xl p-6 text-stone-200 animate-in fade-in zoom-in-95 duration-200"
+      <div
+        className="relative w-full max-w-lg bg-[#141b18] border border-stone-700/90 rounded-2xl shadow-2xl p-6 text-stone-200 my-auto animate-in fade-in zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
         style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: '32rem',
-          backgroundColor: '#151c18',
-          border: '1px solid rgba(120, 113, 108, 0.8)',
-          borderRadius: '1rem',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-          padding: '1.5rem',
-          color: '#e7e5e4'
+          position: "relative",
+          width: "100%",
+          maxWidth: "32rem",
+          backgroundColor: "#141b18",
+          border: "1px solid rgba(120, 113, 108, 0.9)",
+          borderRadius: "1rem",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.6)",
+          padding: "1.5rem",
+          color: "#e7e5e4",
+          margin: "auto",
         }}
       >
         {/* Modal Header */}
-        <div 
+        <div
           className="flex items-center justify-between pb-4 border-b border-stone-800"
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '1rem', borderBottom: '1px solid #292524' }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingBottom: "1rem",
+            borderBottom: "1px solid #292524",
+          }}
         >
-          <div className="flex items-center space-x-2.5" style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-            <div 
+          <div
+            className="flex items-center space-x-2.5"
+            style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}
+          >
+            <div
               className="p-2 rounded-lg bg-emerald-950/70 border border-emerald-800/60"
-              style={{ padding: '0.5rem', borderRadius: '0.5rem', backgroundColor: 'rgba(6, 78, 59, 0.7)', border: '1px solid rgba(6, 95, 70, 0.6)' }}
+              style={{
+                padding: "0.5rem",
+                borderRadius: "0.5rem",
+                backgroundColor: "rgba(6, 78, 59, 0.7)",
+                border: "1px solid rgba(6, 95, 70, 0.6)",
+              }}
             >
               <Radio className="w-4 h-4 text-emerald-400 animate-pulse" size={16} color="#34d399" />
             </div>
             <div>
-              <h3 className="font-bold text-white text-base tracking-wide" style={{ fontWeight: 700, color: '#ffffff', fontSize: '1rem', margin: 0 }}>
+              <h3
+                className="font-bold text-white text-base tracking-wide"
+                style={{ fontWeight: 700, color: "#ffffff", fontSize: "1rem", margin: 0 }}
+              >
                 Radial Proximity SMS Alerts
               </h3>
-              <p className="text-[11px] text-stone-400" style={{ fontSize: '0.6875rem', color: '#a8a29e', margin: '0.15rem 0 0 0' }}>
+              <p
+                className="text-[11px] text-stone-400"
+                style={{ fontSize: "0.6875rem", color: "#a8a29e", margin: "0.15rem 0 0 0" }}
+              >
                 Automated Twilio gateway for verified corridor closures
               </p>
             </div>
@@ -128,25 +161,57 @@ export const RadialSubscriptionModal = ({
             onClick={onClose}
             type="button"
             className="p-1.5 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800/60 transition-colors"
-            style={{ padding: '0.375rem', borderRadius: '0.5rem', background: 'transparent', border: 'none', color: '#a8a29e', cursor: 'pointer' }}
+            style={{
+              padding: "0.375rem",
+              borderRadius: "0.5rem",
+              background: "transparent",
+              border: "none",
+              color: "#a8a29e",
+              cursor: "pointer",
+            }}
           >
             <X className="w-5 h-5" size={20} />
           </button>
         </div>
 
         {/* Modal Form */}
-        <form onSubmit={handleSave} className="mt-5 space-y-4 text-xs" style={{ marginTop: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.75rem' }}>
-          {/* Phone Input */}
+        <form
+          onSubmit={handleSave}
+          className="mt-5 space-y-4 text-xs"
+          style={{
+            marginTop: "1.25rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            fontSize: "0.75rem",
+          }}
+        >
+          {/* Target Phone Number */}
           <div>
-            <label className="flex items-center justify-between font-bold text-stone-300 mb-1.5" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontWeight: 700, color: '#d6d3d1', marginBottom: '0.375rem' }}>
-              <span className="flex items-center gap-1.5" style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+            <label
+              className="flex items-center justify-between font-bold text-stone-300 mb-1.5"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                fontWeight: 700,
+                color: "#d6d3d1",
+                marginBottom: "0.375rem",
+              }}
+            >
+              <span className="flex items-center gap-1.5" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
                 <Phone className="w-3.5 h-3.5 text-emerald-400" size={14} color="#34d399" />
                 Target Mobile Number
               </span>
-              <span className="text-[10px] text-stone-500 font-normal" style={{ fontSize: '0.625rem', color: '#78716c', fontWeight: 400 }}>10-Digit Mobile (India)</span>
+              <span className="text-[10px] text-stone-500 font-normal" style={{ fontSize: "0.625rem", color: "#78716c", fontWeight: 400 }}>
+                10-Digit Mobile (India)
+              </span>
             </label>
-            <div className="relative flex items-center" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-              <span className="absolute left-3 font-mono font-bold text-stone-400 select-none" style={{ position: 'absolute', left: '0.75rem', fontFamily: 'monospace', fontWeight: 700, color: '#a8a29e', userSelect: 'none' }}>
+            <div className="relative flex items-center" style={{ position: "relative", display: "flex", alignItems: "center" }}>
+              <span
+                className="absolute left-3 font-mono font-bold text-stone-400 select-none"
+                style={{ position: "absolute", left: "0.75rem", fontFamily: "monospace", fontWeight: 700, color: "#a8a29e", userSelect: "none" }}
+              >
                 +91
               </span>
               <input
@@ -156,19 +221,19 @@ export const RadialSubscriptionModal = ({
                 onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
                 className="w-full bg-[#0d1210] border border-stone-700/80 rounded-xl pl-12 pr-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all"
                 style={{
-                  width: '100%',
-                  backgroundColor: '#0d1210',
-                  border: '1px solid rgba(120, 113, 108, 0.8)',
-                  borderRadius: '0.75rem',
-                  paddingLeft: '3rem',
-                  paddingRight: '0.75rem',
-                  paddingTop: '0.625rem',
-                  paddingBottom: '0.625rem',
-                  color: '#ffffff',
-                  fontFamily: 'monospace',
-                  fontSize: '0.875rem',
-                  outline: 'none',
-                  boxSizing: 'border-box'
+                  width: "100%",
+                  backgroundColor: "#0d1210",
+                  border: "1px solid rgba(120, 113, 108, 0.8)",
+                  borderRadius: "0.75rem",
+                  paddingLeft: "3rem",
+                  paddingRight: "0.75rem",
+                  paddingTop: "0.625rem",
+                  paddingBottom: "0.625rem",
+                  color: "#ffffff",
+                  fontFamily: "monospace",
+                  fontSize: "0.875rem",
+                  outline: "none",
+                  boxSizing: "border-box",
                 }}
                 required
               />
@@ -177,31 +242,34 @@ export const RadialSubscriptionModal = ({
 
           {/* Operational Corridor Selector */}
           <div>
-            <label className="flex items-center gap-1.5 font-bold text-stone-300 mb-1.5" style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontWeight: 700, color: '#d6d3d1', marginBottom: '0.375rem' }}>
+            <label
+              className="flex items-center gap-1.5 font-bold text-stone-300 mb-1.5"
+              style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontWeight: 700, color: "#d6d3d1", marginBottom: "0.375rem" }}
+            >
               <MapPin className="w-3.5 h-3.5 text-amber-400" size={14} color="#fbbf24" />
               Pinned Operational Corridor
             </label>
-            <div className="relative" style={{ position: 'relative' }}>
+            <div className="relative" style={{ position: "relative" }}>
               <select
                 value={selectedHub}
                 onChange={(e) => setSelectedHub(e.target.value)}
                 className="w-full bg-[#0d1210] border border-stone-700/80 rounded-xl px-3 py-2.5 text-white text-xs font-medium focus:outline-none focus:border-emerald-500 cursor-pointer appearance-none"
                 style={{
-                  width: '100%',
-                  backgroundColor: '#0d1210',
-                  border: '1px solid rgba(120, 113, 108, 0.8)',
-                  borderRadius: '0.75rem',
-                  padding: '0.625rem 0.75rem',
-                  color: '#ffffff',
-                  fontSize: '0.75rem',
+                  width: "100%",
+                  backgroundColor: "#0d1210",
+                  border: "1px solid rgba(120, 113, 108, 0.8)",
+                  borderRadius: "0.75rem",
+                  padding: "0.625rem 0.75rem",
+                  color: "#ffffff",
+                  fontSize: "0.75rem",
                   fontWeight: 500,
-                  outline: 'none',
-                  cursor: 'pointer',
-                  boxSizing: 'border-box'
+                  outline: "none",
+                  cursor: "pointer",
+                  boxSizing: "border-box",
                 }}
               >
                 {STRATEGIC_HUBS.map((hub) => (
-                  <option key={hub.name} value={hub.name} className="bg-[#151c18] text-white" style={{ backgroundColor: '#151c18', color: '#ffffff' }}>
+                  <option key={hub.name} value={hub.name} className="bg-[#151c18] text-white" style={{ backgroundColor: "#151c18", color: "#ffffff" }}>
                     {hub.name}
                   </option>
                 ))}
@@ -210,18 +278,41 @@ export const RadialSubscriptionModal = ({
           </div>
 
           {/* Proximity Slider */}
-          <div 
+          <div
             className="bg-[#0d1210] border border-stone-800/80 rounded-xl p-3.5 space-y-2"
-            style={{ backgroundColor: '#0d1210', border: '1px solid rgba(41, 37, 36, 0.8)', borderRadius: '0.75rem', padding: '0.875rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+            style={{
+              backgroundColor: "#0d1210",
+              border: "1px solid rgba(41, 37, 36, 0.8)",
+              borderRadius: "0.75rem",
+              padding: "0.875rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+            }}
           >
-            <div className="flex items-center justify-between" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span className="flex items-center gap-1.5 font-bold text-stone-300" style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', fontWeight: 700, color: '#d6d3d1' }}>
+            <div
+              className="flex items-center justify-between"
+              style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
+            >
+              <span
+                className="flex items-center gap-1.5 font-bold text-stone-300"
+                style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontWeight: 700, color: "#d6d3d1" }}
+              >
                 <Sliders className="w-3.5 h-3.5 text-emerald-400" size={14} color="#34d399" />
                 Proximity Radius
               </span>
-              <span 
+              <span
                 className="font-mono text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded-md"
-                style={{ fontFamily: 'monospace', fontSize: '0.75rem', fontWeight: 700, color: '#34d399', backgroundColor: 'rgba(6, 78, 59, 0.6)', border: '1px solid rgba(6, 95, 70, 0.4)', padding: '0.125rem 0.5rem', borderRadius: '0.375rem' }}
+                style={{
+                  fontFamily: "monospace",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  color: "#34d399",
+                  backgroundColor: "rgba(6, 78, 59, 0.6)",
+                  border: "1px solid rgba(6, 95, 70, 0.4)",
+                  padding: "0.125rem 0.5rem",
+                  borderRadius: "0.375rem",
+                }}
               >
                 {radius} km
               </span>
@@ -234,9 +325,18 @@ export const RadialSubscriptionModal = ({
               value={radius}
               onChange={(e) => setRadius(Number(e.target.value))}
               className="w-full h-1.5 bg-stone-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
-              style={{ width: '100%', height: '0.375rem', accentColor: '#10b981', cursor: 'pointer' }}
+              style={{ width: "100%", height: "0.375rem", accentColor: "#10b981", cursor: "pointer" }}
             />
-            <div className="flex justify-between text-[10px] text-stone-500 font-mono" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.625rem', color: '#78716c', fontFamily: 'monospace' }}>
+            <div
+              className="flex justify-between text-[10px] text-stone-500 font-mono"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: "0.625rem",
+                color: "#78716c",
+                fontFamily: "monospace",
+              }}
+            >
               <span>25 km</span>
               <span>75 km</span>
               <span>150 km</span>
@@ -244,15 +344,34 @@ export const RadialSubscriptionModal = ({
           </div>
 
           {/* Automated Dispatch Toggle */}
-          <label 
+          <label
             className="flex items-center justify-between p-3 bg-[#0d1210] border border-stone-800/80 rounded-xl cursor-pointer hover:border-stone-700 transition-colors"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem', backgroundColor: '#0d1210', border: '1px solid rgba(41, 37, 36, 0.8)', borderRadius: '0.75rem', cursor: 'pointer' }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0.75rem",
+              backgroundColor: "#0d1210",
+              border: "1px solid rgba(41, 37, 36, 0.8)",
+              borderRadius: "0.75rem",
+              cursor: "pointer",
+            }}
           >
-            <div className="flex items-center space-x-2.5" style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+            <div
+              className="flex items-center space-x-2.5"
+              style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}
+            >
               <ShieldCheck className="w-4 h-4 text-emerald-400" size={16} color="#34d399" />
               <div>
-                <p className="font-bold text-white" style={{ fontWeight: 700, color: '#ffffff', margin: 0 }}>Automated SMS Dispatch</p>
-                <p className="text-[10px] text-stone-400" style={{ fontSize: '0.625rem', color: '#a8a29e', margin: '0.1rem 0 0 0' }}>Trigger exclusively for CRITICAL_BLOCKED incidents</p>
+                <p className="font-bold text-white" style={{ fontWeight: 700, color: "#ffffff", margin: 0 }}>
+                  Automated SMS Dispatch
+                </p>
+                <p
+                  className="text-[10px] text-stone-400"
+                  style={{ fontSize: "0.625rem", color: "#a8a29e", margin: "0.1rem 0 0 0" }}
+                >
+                  Trigger exclusively for CRITICAL_BLOCKED incidents
+                </p>
               </div>
             </div>
             <input
@@ -260,27 +379,51 @@ export const RadialSubscriptionModal = ({
               checked={alertsEnabled}
               onChange={(e) => setAlertsEnabled(e.target.checked)}
               className="w-4 h-4 rounded border-stone-700 bg-stone-900 accent-emerald-500 cursor-pointer"
-              style={{ width: '1rem', height: '1rem', accentColor: '#10b981', cursor: 'pointer' }}
+              style={{ width: "1rem", height: "1rem", accentColor: "#10b981", cursor: "pointer" }}
             />
           </label>
 
           {/* Form Actions */}
-          <div 
+          <div
             className="flex items-center justify-end space-x-2.5 pt-3 border-t border-stone-800"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.625rem', paddingTop: '0.75rem', borderTop: '1px solid #292524' }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              gap: "0.625rem",
+              paddingTop: "0.75rem",
+              borderTop: "1px solid #292524",
+            }}
           >
             <button
               type="button"
               onClick={onClose}
               className="px-4 py-2 rounded-xl border border-stone-700/80 text-stone-300 font-semibold hover:bg-stone-800/80 transition-colors"
-              style={{ padding: '0.5rem 1rem', borderRadius: '0.75rem', border: '1px solid rgba(120, 113, 108, 0.8)', background: 'transparent', color: '#d6d3d1', fontWeight: 600, cursor: 'pointer' }}
+              style={{
+                padding: "0.5rem 1rem",
+                borderRadius: "0.75rem",
+                border: "1px solid rgba(120, 113, 108, 0.8)",
+                background: "transparent",
+                color: "#d6d3d1",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
             >
               Cancel
             </button>
             <button
               type="submit"
               className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg shadow-emerald-950/50 transition-all"
-              style={{ padding: '0.5rem 1.25rem', borderRadius: '0.75rem', backgroundColor: '#059669', border: 'none', color: '#ffffff', fontWeight: 700, cursor: 'pointer', boxShadow: '0 10px 15px -3px rgba(6, 78, 59, 0.5)' }}
+              style={{
+                padding: "0.5rem 1.25rem",
+                borderRadius: "0.75rem",
+                backgroundColor: "#059669",
+                border: "none",
+                color: "#ffffff",
+                fontWeight: 700,
+                cursor: "pointer",
+                boxShadow: "0 10px 15px -3px rgba(6, 78, 59, 0.5)",
+              }}
             >
               Save & Activate
             </button>
@@ -289,6 +432,8 @@ export const RadialSubscriptionModal = ({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 export default RadialSubscriptionModal;
