@@ -240,19 +240,18 @@ export function Dashboard() {
           </button>
         </div>
 
-        {/* Upper-Right Tactical Wing: Weather Telemetry Bento Card + KPI HUD Grid */}
-        <div style={{ display: 'flex', alignItems: 'stretch', gap: '0.75rem', flexWrap: 'wrap', marginLeft: 'auto', flexShrink: 0 }}>
-          <div style={{ width: '310px', maxWidth: '100%' }}>
-            <CorridorWeatherPanel
-              hubName={alertConfig?.hubName || 'Guwahati'}
-              stateName={alertConfig?.stateName || 'Assam'}
-              weather={corridorWeather}
-              loading={weatherLoading}
-            />
-          </div>
-          <div style={{ width: '380px', maxWidth: '100%' }}>
-            <TacticalKpiGrid data={kpiData} />
-          </div>
+        {/* Right Side: Bento HUD + Weather Telemetry Wing (Stacked 420px) */}
+        <div className="flex flex-col gap-3 w-full xl:w-[420px] shrink-0" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '420px', maxWidth: '100%', flexShrink: 0, marginLeft: 'auto' }}>
+          {/* Card 1: 2x2 Tactical KPI Grid */}
+          <TacticalKpiGrid data={kpiData} />
+
+          {/* Card 2: Pinned Hub Forecast Bento Card */}
+          <CorridorWeatherPanel
+            hubName={alertConfig?.hubName || 'Guwahati'}
+            stateName={alertConfig?.stateName || 'Assam'}
+            weather={corridorWeather}
+            loading={weatherLoading}
+          />
         </div>
       </div>
 
