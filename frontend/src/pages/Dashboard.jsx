@@ -5,7 +5,7 @@ import RiskBadge from '../components/RiskBadge';
 import LifelineTicker from '../components/LifelineTicker';
 import { DashboardDisruptionTicker } from '../components/DashboardDisruptionTicker';
 import { TacticalKpiGrid } from '../components/TacticalKpiGrid';
-import { CorridorWeatherPanel } from '../components/CorridorWeatherPanel';
+import { CorridorWeatherBar } from '../components/CorridorWeatherBar';
 import { RadialSubscriptionModal } from '../components/RadialSubscriptionModal';
 import { useAuth } from '../context/AuthContext';
 import { useAlertPin } from '../context/AlertPinContext';
@@ -249,15 +249,13 @@ export function Dashboard() {
       {/* 2. REAL-TIME LIVE DISRUPTION MARQUEE TICKER (VERIFIED TOMTOM, USGS & OPEN-METEO) */}
       <DashboardDisruptionTicker disruptions={disruptions} />
 
-      {/* 2.5 DEDICATED PINNED CORRIDOR WEATHER TELEMETRY STRIP */}
-      <div style={{ marginBottom: '1.25rem' }}>
-        <CorridorWeatherPanel
-          hubName={alertConfig?.hubName || 'Guwahati'}
-          stateName={alertConfig?.stateName || 'Assam'}
-          weather={corridorWeather}
-          loading={weatherLoading}
-        />
-      </div>
+      {/* 2.5 FULL-WIDTH TACTICAL TELEMETRY BAR FOR SELECTED HUB */}
+      <CorridorWeatherBar
+        hubName={alertConfig?.hubName || 'Guwahati'}
+        stateName={alertConfig?.stateName || 'Assam'}
+        weather={corridorWeather}
+        loading={weatherLoading}
+      />
 
       {/* 3. MAIN GRID: MAP & ACTIVE DISRUPTION FEEDS */}
       <div className="grid-two-col">
