@@ -39,7 +39,7 @@ export function Dashboard() {
   useProximitySmsWatcher(disruptions, alertConfig);
 
   // Multi-Stream Live Weather Hook (Open-Meteo + Weatherstack + AccuWeather)
-  const { weather: corridorWeather } = useCorridorWeather(
+  const { weather: corridorWeather, loading: weatherLoading } = useCorridorWeather(
     alertConfig?.hubCoords?.lat || 26.1445,
     alertConfig?.hubCoords?.lng || 91.7362,
     alertConfig?.radiusKm || 75
@@ -254,9 +254,8 @@ export function Dashboard() {
         <CorridorWeatherPanel
           hubName={alertConfig?.hubName || 'Guwahati'}
           stateName={alertConfig?.stateName || 'Assam'}
-          radiusKm={alertConfig?.radiusKm || 75}
           weather={corridorWeather}
-          onOpenRadialModal={() => setIsAlertModalOpen(true)}
+          loading={weatherLoading}
         />
       </div>
 

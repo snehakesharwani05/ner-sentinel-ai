@@ -9,6 +9,7 @@ export interface ComprehensiveWeather {
   threatLevel: "GREEN_CLEAR" | "YELLOW_WATCH" | "ORANGE_WARNING" | "RED_ALERT";
   weatherDescription: string;
   source: string;
+  lightningCount?: number;
 }
 
 const WEATHERSTACK_KEY = (typeof import.meta !== "undefined" && import.meta.env?.VITE_WEATHERSTACK_KEY) || "";
@@ -104,6 +105,7 @@ export function useCorridorWeather(lat: number, lng: number, radiusKm: number = 
         threatLevel: threat,
         weatherDescription: desc,
         source: wsRes?.current ? "Weatherstack + Open-Meteo" : "Open-Meteo Stream",
+        lightningCount: lightningStrikes,
       });
 
       setLoading(false);

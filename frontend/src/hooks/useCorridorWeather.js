@@ -93,6 +93,7 @@ export function useCorridorWeather(lat, lng, radiusKm = 75) {
         threatLevel: threat,
         weatherDescription: desc,
         source: wsRes?.current ? "Weatherstack + Open-Meteo" : "Open-Meteo Stream",
+        lightningCount: lightningStrikes,
       });
 
       setLoading(false);
