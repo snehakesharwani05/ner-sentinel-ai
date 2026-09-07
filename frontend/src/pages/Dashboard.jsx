@@ -5,6 +5,7 @@ import RiskBadge from '../components/RiskBadge';
 import LifelineTicker from '../components/LifelineTicker';
 import { DashboardDisruptionTicker } from '../components/DashboardDisruptionTicker';
 import { TacticalKpiGrid } from '../components/TacticalKpiGrid';
+import { CorridorWeatherPanel } from '../components/CorridorWeatherPanel';
 import { RadialSubscriptionModal } from '../components/RadialSubscriptionModal';
 import { useAuth } from '../context/AuthContext';
 import { useAlertPin } from '../context/AlertPinContext';
@@ -159,10 +160,7 @@ export function Dashboard() {
     weatherWatch: corridorWeather?.threatLevel?.replace('_', ' ') || (maxSoil >= 0.40 ? 'ORANGE ALERT' : 'YELLOW WATCH'),
     soilSaturation: corridorWeather?.soilMoisture ?? maxSoil,
     activeConvoys: 14,
-    reroutedConvoys: 2,
-    hubName: alertConfig?.hubName || 'Guwahati',
-    temperature: corridorWeather?.temperature,
-    precipitationMm: corridorWeather?.precipitationMm
+    reroutedConvoys: 2
   };
 
   // Filter Disruption Feeds by Category
@@ -250,6 +248,17 @@ export function Dashboard() {
 
       {/* 2. REAL-TIME LIVE DISRUPTION MARQUEE TICKER (VERIFIED TOMTOM, USGS & OPEN-METEO) */}
       <DashboardDisruptionTicker disruptions={disruptions} />
+
+      {/* 2.5 DEDICATED PINNED CORRIDOR WEATHER TELEMETRY STRIP */}
+      <div style={{ marginBottom: '1.25rem' }}>
+        <CorridorWeatherPanel
+          hubName={alertConfig?.hubName || 'Guwahati'}
+          stateName={alertConfig?.stateName || 'Assam'}
+          radiusKm={alertConfig?.radiusKm || 75}
+          weather={corridorWeather}
+          onOpenRadialModal={() => setIsAlertModalOpen(true)}
+        />
+      </div>
 
       {/* 3. MAIN GRID: MAP & ACTIVE DISRUPTION FEEDS */}
       <div className="grid-two-col">
