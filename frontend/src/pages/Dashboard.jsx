@@ -5,7 +5,7 @@ import RiskBadge from '../components/RiskBadge';
 import LifelineTicker from '../components/LifelineTicker';
 import { DashboardDisruptionTicker } from '../components/DashboardDisruptionTicker';
 import { TacticalKpiGrid } from '../components/TacticalKpiGrid';
-import { CorridorWeatherBar } from '../components/CorridorWeatherBar';
+import { CorridorWeatherPanel } from '../components/CorridorWeatherPanel';
 import { RadialSubscriptionModal } from '../components/RadialSubscriptionModal';
 import { useAuth } from '../context/AuthContext';
 import { useAlertPin } from '../context/AlertPinContext';
@@ -240,22 +240,24 @@ export function Dashboard() {
           </button>
         </div>
 
-        {/* Docked High-Density Tactical Glassmorphic 2x2 HUD Grid */}
-        <div style={{ flexShrink: 0, marginLeft: 'auto' }}>
-          <TacticalKpiGrid data={kpiData} />
+        {/* Upper-Right Tactical Wing: Weather Telemetry Bento Card + KPI HUD Grid */}
+        <div style={{ display: 'flex', alignItems: 'stretch', gap: '0.75rem', flexWrap: 'wrap', marginLeft: 'auto', flexShrink: 0 }}>
+          <div style={{ width: '310px', maxWidth: '100%' }}>
+            <CorridorWeatherPanel
+              hubName={alertConfig?.hubName || 'Guwahati'}
+              stateName={alertConfig?.stateName || 'Assam'}
+              weather={corridorWeather}
+              loading={weatherLoading}
+            />
+          </div>
+          <div style={{ width: '380px', maxWidth: '100%' }}>
+            <TacticalKpiGrid data={kpiData} />
+          </div>
         </div>
       </div>
 
       {/* 2. REAL-TIME LIVE DISRUPTION MARQUEE TICKER (VERIFIED TOMTOM, USGS & OPEN-METEO) */}
       <DashboardDisruptionTicker disruptions={disruptions} />
-
-      {/* 2.5 FULL-WIDTH TACTICAL TELEMETRY BAR FOR SELECTED HUB */}
-      <CorridorWeatherBar
-        hubName={alertConfig?.hubName || 'Guwahati'}
-        stateName={alertConfig?.stateName || 'Assam'}
-        weather={corridorWeather}
-        loading={weatherLoading}
-      />
 
       {/* 3. MAIN GRID: MAP & ACTIVE DISRUPTION FEEDS */}
       <div className="grid-two-col">
