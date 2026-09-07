@@ -223,7 +223,12 @@ export function Navbar({ systemStatus = 'ONLINE' }) {
       </div>
 
       {/* Radial Proximity SMS Configuration Modal */}
-      <RadialSubscriptionModal isOpen={isRadialModalOpen} onClose={() => setIsRadialModalOpen(false)} />
+      <RadialSubscriptionModal 
+        isOpen={isRadialModalOpen} 
+        onClose={() => setIsRadialModalOpen(false)} 
+        userPhone={user?.phone || user?.mobile || "+91 9876543210"}
+        userName={user?.name || "Trishan Saha"}
+      />
     </header>
   );
 }
