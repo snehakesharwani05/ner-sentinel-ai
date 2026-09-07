@@ -8,7 +8,7 @@ import { TacticalKpiGrid } from '../components/TacticalKpiGrid';
 import { RadialSubscriptionModal } from '../components/RadialSubscriptionModal';
 import { useAuth } from '../context/AuthContext';
 import { useAlertPin } from '../context/AlertPinContext';
-import { useRadialSmsWatcher } from '../hooks/useRadialSmsWatcher';
+import { useProximitySmsWatcher } from '../hooks/useProximitySmsWatcher';
 import { NER_STATES, ALL_NER_REGION, TOTAL_NER_HUBS_COUNT } from '../constants/nerLocations';
 import { fetchScopedVerifiedDisruptions, sortByCityProximity } from '../services/scopedDisruptionService';
 import { startLiveDisruptionPoller, clusterTomTomIncidents } from '../services/liveDisruptionService';
@@ -33,8 +33,8 @@ export function Dashboard() {
   const [error, setError] = useState(null);
   const [syncStatus, setSyncStatus] = useState({ isLive: true, lastSynced: new Date().toLocaleTimeString() });
 
-  // Activate Real-Time Haversine Radial Proximity SMS Watcher (Solution 3)
-  useRadialSmsWatcher(disruptions, alertConfig);
+  // Activate Real-Time Cascading & Haversine Proximity SMS Watcher
+  useProximitySmsWatcher(disruptions, alertConfig);
 
   const isAll = !activeZone || activeZone === 'ALL';
   const stateMeta = isAll ? ALL_NER_REGION : (NER_STATES.find(s => s.id === activeZone) || NER_STATES[0]);
