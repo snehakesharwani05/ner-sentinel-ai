@@ -2,8 +2,10 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 const DEFAULT_CONFIG = {
   phone: "",
-  hubName: "Sonapur Tunnel / East Jaintia (NH6)",
-  hubCoords: { lat: 25.1100, lng: 92.3600 },
+  stateId: "AS",
+  stateName: "Assam",
+  hubName: "Guwahati",
+  hubCoords: { lat: 26.1445, lng: 91.7362 },
   radiusKm: 75,
   alertsEnabled: true,
 };

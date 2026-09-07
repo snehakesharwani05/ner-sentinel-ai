@@ -1,32 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
-import { Radio, X, Sliders, MapPin, Phone, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Radio, X, Sliders, MapPin, Phone, ShieldCheck, CheckCircle2, ChevronDown, Compass } from "lucide-react";
+import { NER_STATES } from "../constants/nerLocations";
 import { useAlertPin } from "../context/AlertPinContext";
 import { useAuth } from "../context/AuthContext";
 
 export interface AlertPinConfig {
   phone: string;
+  stateId: string;
+  stateName: string;
   hubName: string;
   hubCoords: { lat: number; lng: number };
   radiusKm: number;
   alertsEnabled: boolean;
 }
 
-export const STRATEGIC_HUBS = [
-  { name: "Sonapur Tunnel / East Jaintia (NH6)", lat: 25.1100, lng: 92.3600 },
-  { name: "Guwahati Freight Terminal (Assam)", lat: 26.1445, lng: 91.7362 },
-  { name: "Silchar Transit Hub (Assam)", lat: 24.8333, lng: 92.7789 },
-  { name: "Shillong Bypass Route (Meghalaya)", lat: 25.5788, lng: 91.8933 },
-  { name: "Sela Pass High-Altitude Route (Arunachal)", lat: 27.5861, lng: 91.8594 },
-  { name: "Dimapur Logistics Corridor (Nagaland)", lat: 25.9090, lng: 93.7266 },
-];
-
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   config?: AlertPinConfig;
-  userPhone?: string; // Passed from auth store (e.g. "+91 9876543210")
-  userName?: string;  // e.g. "Trishan Saha"
+  userPhone?: string;
+  userName?: string;
   onSaveConfig?: (updated: AlertPinConfig) => void;
 }
 
@@ -55,26 +49,45 @@ export const RadialSubscriptionModal: React.FC<Props> = ({
 
   const activeConfig: AlertPinConfig = propConfig || contextConfig || {
     phone: "",
-    hubName: STRATEGIC_HUBS[0].name,
-    hubCoords: { lat: STRATEGIC_HUBS[0].lat, lng: STRATEGIC_HUBS[0].lng },
+    stateId: "AS",
+    stateName: "Assam",
+    hubName: "Guwahati",
+    hubCoords: { lat: 26.1445, lng: 91.7362 },
     radiusKm: 75,
     alertsEnabled: true,
   };
 
+  const [mounted, setMounted] = useState(false);
   const rawPhone = propUserPhone || authUser?.phone || authUser?.mobile || activeConfig.phone || "+91 9876543210";
   const activeNumber = rawPhone.startsWith("+91") ? rawPhone : (rawPhone.startsWith("+") ? rawPhone : `+91 ${rawPhone.replace(/\D/g, "").slice(-10)}`);
   const activeUserName = propUserName || authUser?.name || "Active Operator";
 
-  const [mounted, setMounted] = useState(false);
-  const [selectedHub, setSelectedHub] = useState(activeConfig.hubName || STRATEGIC_HUBS[0].name);
-  const [radius, setRadius] = useState(activeConfig.radiusKm || 75);
-  const [alertsEnabled, setAlertsEnabled] = useState(activeConfig.alertsEnabled ?? true);
+  // Cascading Selection States
+  const [selectedStateId, setSelectedStateId] = useState<string>(activeConfig.stateId || "AS");
+  const [selectedHubName, setSelectedHubName] = useState<string>(activeConfig.hubName || "Guwahati");
+  const [radius, setRadius] = useState<number>(activeConfig.radiusKm || 75);
+  const [alertsEnabled, setAlertsEnabled] = useState<boolean>(activeConfig.alertsEnabled ?? true);
+
+  // Active state data and its respective hubs
+  const currentState = useMemo(() => {
+    return NER_STATES.find((s) => s.id === selectedStateId) || NER_STATES[0];
+  }, [selectedStateId]);
+
+  // When state changes, reset selected hub to the first city of that state
+  const handleStateChange = (newStateId: string) => {
+    setSelectedStateId(newStateId);
+    const targetState = NER_STATES.find((s) => s.id === newStateId);
+    if (targetState && targetState.cities.length > 0) {
+      setSelectedHubName(targetState.cities[0].name);
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      setSelectedHub(activeConfig.hubName || STRATEGIC_HUBS[0].name);
+      setSelectedStateId(activeConfig.stateId || "AS");
+      setSelectedHubName(activeConfig.hubName || "Guwahati");
       setRadius(activeConfig.radiusKm || 75);
       setAlertsEnabled(activeConfig.alertsEnabled ?? true);
     } else {
@@ -83,17 +96,20 @@ export const RadialSubscriptionModal: React.FC<Props> = ({
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [isOpen, activeConfig.hubName, activeConfig.radiusKm, activeConfig.alertsEnabled]);
+  }, [isOpen, activeConfig.stateId, activeConfig.hubName, activeConfig.radiusKm, activeConfig.alertsEnabled]);
 
   if (!isOpen || !mounted || typeof document === "undefined") return null;
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    const hubData = STRATEGIC_HUBS.find((h) => h.name === selectedHub) || STRATEGIC_HUBS[0];
+    const cityData = currentState.cities.find((c) => c.name === selectedHubName) || currentState.cities[0];
+
     const newConfig: AlertPinConfig = {
       phone: activeNumber,
-      hubName: hubData.name,
-      hubCoords: { lat: hubData.lat, lng: hubData.lng },
+      stateId: currentState.id,
+      stateName: currentState.name,
+      hubName: cityData.name,
+      hubCoords: { lat: cityData.lat, lng: cityData.lng },
       radiusKm: radius,
       alertsEnabled,
     };
@@ -142,7 +158,7 @@ export const RadialSubscriptionModal: React.FC<Props> = ({
           margin: "auto",
         }}
       >
-        {/* Modal Header */}
+        {/* Header */}
         <div
           className="flex items-center justify-between pb-4 border-b border-stone-800"
           style={{
@@ -200,7 +216,7 @@ export const RadialSubscriptionModal: React.FC<Props> = ({
           </button>
         </div>
 
-        {/* Modal Form */}
+        {/* Form Body */}
         <form
           onSubmit={handleSave}
           className="mt-5 space-y-4 text-xs"
@@ -280,40 +296,78 @@ export const RadialSubscriptionModal: React.FC<Props> = ({
             </div>
           </div>
 
-          {/* Operational Corridor Selector */}
-          <div>
-            <label
-              className="flex items-center gap-1.5 font-bold text-stone-300 mb-1.5"
-              style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontWeight: 700, color: "#d6d3d1", marginBottom: "0.375rem" }}
-            >
-              <MapPin className="w-3.5 h-3.5 text-amber-400" size={14} color="#fbbf24" />
-              Pinned Operational Corridor
-            </label>
-            <div className="relative" style={{ position: "relative" }}>
-              <select
-                value={selectedHub}
-                onChange={(e) => setSelectedHub(e.target.value)}
-                className="w-full bg-[#0d1210] border border-stone-700/80 rounded-xl px-3 py-2.5 text-white text-xs font-medium focus:outline-none focus:border-emerald-500 cursor-pointer appearance-none"
-                style={{
-                  width: "100%",
-                  backgroundColor: "#0d1210",
-                  border: "1px solid rgba(120, 113, 108, 0.8)",
-                  borderRadius: "0.75rem",
-                  padding: "0.625rem 0.75rem",
-                  color: "#ffffff",
-                  fontSize: "0.75rem",
-                  fontWeight: 500,
-                  outline: "none",
-                  cursor: "pointer",
-                  boxSizing: "border-box",
-                }}
-              >
-                {STRATEGIC_HUBS.map((hub) => (
-                  <option key={hub.name} value={hub.name} className="bg-[#151c18] text-white" style={{ backgroundColor: "#151c18", color: "#ffffff" }}>
-                    {hub.name}
-                  </option>
-                ))}
-              </select>
+          {/* Cascading Location Controls */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "0.75rem" }}>
+            {/* Step 1: Select State */}
+            <div>
+              <label className="flex items-center gap-1.5 font-bold text-stone-300 mb-1.5" style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontWeight: 700, color: "#d6d3d1", marginBottom: "0.375rem" }}>
+                <Compass className="w-3.5 h-3.5 text-amber-400" size={14} color="#fbbf24" />
+                Operational State
+              </label>
+              <div className="relative" style={{ position: "relative" }}>
+                <select
+                  value={selectedStateId}
+                  onChange={(e) => handleStateChange(e.target.value)}
+                  className="w-full bg-[#0d1210] border border-stone-700/80 rounded-xl px-3 py-2.5 text-white text-xs font-medium focus:outline-none focus:border-emerald-500 cursor-pointer appearance-none"
+                  style={{
+                    width: "100%",
+                    backgroundColor: "#0d1210",
+                    border: "1px solid rgba(120, 113, 108, 0.8)",
+                    borderRadius: "0.75rem",
+                    padding: "0.625rem 0.75rem",
+                    paddingRight: "2rem",
+                    color: "#ffffff",
+                    fontSize: "0.75rem",
+                    fontWeight: 500,
+                    outline: "none",
+                    cursor: "pointer",
+                    boxSizing: "border-box",
+                  }}
+                >
+                  {NER_STATES.map((state) => (
+                    <option key={state.id} value={state.id} className="bg-[#151c18] text-white" style={{ backgroundColor: "#151c18", color: "#ffffff" }}>
+                      {state.name} ({state.cities.length} Hubs)
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-3.5 h-3.5 text-stone-400 absolute right-3 top-3 pointer-events-none" size={14} color="#a8a29e" style={{ position: "absolute", right: "0.75rem", top: "0.75rem", pointerEvents: "none" }} />
+              </div>
+            </div>
+
+            {/* Step 2: Select City / Hub within that State */}
+            <div>
+              <label className="flex items-center gap-1.5 font-bold text-stone-300 mb-1.5" style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontWeight: 700, color: "#d6d3d1", marginBottom: "0.375rem" }}>
+                <MapPin className="w-3.5 h-3.5 text-rose-500" size={14} color="#f43f5e" />
+                Transit City / Hub
+              </label>
+              <div className="relative" style={{ position: "relative" }}>
+                <select
+                  value={selectedHubName}
+                  onChange={(e) => setSelectedHubName(e.target.value)}
+                  className="w-full bg-[#0d1210] border border-stone-700/80 rounded-xl px-3 py-2.5 text-white text-xs font-medium focus:outline-none focus:border-emerald-500 cursor-pointer appearance-none"
+                  style={{
+                    width: "100%",
+                    backgroundColor: "#0d1210",
+                    border: "1px solid rgba(120, 113, 108, 0.8)",
+                    borderRadius: "0.75rem",
+                    padding: "0.625rem 0.75rem",
+                    paddingRight: "2rem",
+                    color: "#ffffff",
+                    fontSize: "0.75rem",
+                    fontWeight: 500,
+                    outline: "none",
+                    cursor: "pointer",
+                    boxSizing: "border-box",
+                  }}
+                >
+                  {currentState.cities.map((city) => (
+                    <option key={city.name} value={city.name} className="bg-[#151c18] text-white" style={{ backgroundColor: "#151c18", color: "#ffffff" }}>
+                      {city.name}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-3.5 h-3.5 text-stone-400 absolute right-3 top-3 pointer-events-none" size={14} color="#a8a29e" style={{ position: "absolute", right: "0.75rem", top: "0.75rem", pointerEvents: "none" }} />
+              </div>
             </div>
           </div>
 
