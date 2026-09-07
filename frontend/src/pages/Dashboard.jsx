@@ -9,6 +9,7 @@ import { RadialSubscriptionModal } from '../components/RadialSubscriptionModal';
 import { useAuth } from '../context/AuthContext';
 import { useAlertPin } from '../context/AlertPinContext';
 import { useProximitySmsWatcher } from '../hooks/useProximitySmsWatcher';
+import { useCorridorWeather } from '../hooks/useCorridorWeather';
 import { NER_STATES, ALL_NER_REGION, TOTAL_NER_HUBS_COUNT } from '../constants/nerLocations';
 import { fetchScopedVerifiedDisruptions, sortByCityProximity } from '../services/scopedDisruptionService';
 import { startLiveDisruptionPoller, clusterTomTomIncidents } from '../services/liveDisruptionService';
@@ -35,6 +36,13 @@ export function Dashboard() {
 
   // Activate Real-Time Cascading & Haversine Proximity SMS Watcher
   useProximitySmsWatcher(disruptions, alertConfig);
+
+  // Multi-Stream Live Weather Hook (Open-Meteo + Weatherstack + AccuWeather)
+  const { weather: corridorWeather } = useCorridorWeather(
+    alertConfig?.hubCoords?.lat || 26.1445,
+    alertConfig?.hubCoords?.lng || 91.7362,
+    alertConfig?.radiusKm || 75
+  );
 
   const isAll = !activeZone || activeZone === 'ALL';
   const stateMeta = isAll ? ALL_NER_REGION : (NER_STATES.find(s => s.id === activeZone) || NER_STATES[0]);
@@ -148,8 +156,8 @@ export function Dashboard() {
     totalHubs: totalNodes,
     severedPasses: criticalBlockedCount,
     cautionPasses: highRiskCount,
-    weatherWatch: maxSoil >= 0.40 ? 'ORANGE ALERT' : 'YELLOW WATCH',
-    soilSaturation: maxSoil,
+    weatherWatch: corridorWeather?.threatLevel?.replace('_', ' ') || (maxSoil >= 0.40 ? 'ORANGE ALERT' : 'YELLOW WATCH'),
+    soilSaturation: corridorWeather?.soilMoisture ?? maxSoil,
     activeConvoys: 14,
     reroutedConvoys: 2
   };
@@ -226,8 +234,8 @@ export function Dashboard() {
               boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
             }}
           >
-            <span className="text-emerald-400 font-bold" style={{ color: '#34d399' }}>((o))</span>
-            <span>Radar: {alertConfig?.radiusKm || 75}km</span>
+            <span className="text-emerald-400 font-bold animate-pulse" style={{ color: '#34d399' }}>((o))</span>
+            <span>Radar: {alertConfig?.hubName || 'Guwahati'} ({alertConfig?.radiusKm || 75}km)</span>
           </button>
         </div>
 
