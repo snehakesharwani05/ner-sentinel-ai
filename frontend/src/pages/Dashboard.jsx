@@ -159,7 +159,10 @@ export function Dashboard() {
     weatherWatch: corridorWeather?.threatLevel?.replace('_', ' ') || (maxSoil >= 0.40 ? 'ORANGE ALERT' : 'YELLOW WATCH'),
     soilSaturation: corridorWeather?.soilMoisture ?? maxSoil,
     activeConvoys: 14,
-    reroutedConvoys: 2
+    reroutedConvoys: 2,
+    hubName: alertConfig?.hubName || 'Guwahati',
+    temperature: corridorWeather?.temperature,
+    precipitationMm: corridorWeather?.precipitationMm
   };
 
   // Filter Disruption Feeds by Category
