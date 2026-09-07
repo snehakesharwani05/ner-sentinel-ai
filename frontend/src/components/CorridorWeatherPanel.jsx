@@ -1,5 +1,5 @@
 import React from "react";
-import { CloudRain, Droplets, Wind, Zap, Compass, Radio } from "lucide-react";
+import { CloudRain, Droplets, Wind, Thermometer, Compass } from "lucide-react";
 
 export const CorridorWeatherPanel = ({
   hubName,
@@ -7,123 +7,252 @@ export const CorridorWeatherPanel = ({
   weather,
   loading = false,
 }) => {
-  const threatBadgeStyle =
-    weather?.threatLevel === "RED_ALERT"
-      ? "text-rose-300 bg-rose-950/80 border-rose-700/60"
-      : weather?.threatLevel === "ORANGE_WARNING"
-      ? "text-amber-300 bg-amber-950/80 border-amber-700/60"
-      : "text-emerald-300 bg-emerald-950/80 border-emerald-700/60";
-
   return (
-    <div
+    <div 
+      className="bg-[#101713] border border-[#223027] rounded-2xl p-3 shadow-xl w-full select-none"
       style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", -system-ui, sans-serif',
+        backgroundColor: "#101713",
+        border: "1px solid #223027",
+        borderRadius: "1rem",
+        padding: "0.75rem",
+        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)",
+        width: "100%",
+        userSelect: "none"
       }}
-      className="w-full bg-[#141b18]/95 backdrop-blur-xl border border-stone-800/90 rounded-2xl p-3.5 shadow-2xl text-stone-200 select-none transition-all"
     >
-      {/* Header Bar */}
-      <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-stone-800/80">
-        <div className="flex items-center space-x-2">
-          <div className="w-7 h-7 rounded-lg bg-[#1b2420] border border-stone-700/60 flex items-center justify-center shrink-0">
-            <Compass className="w-3.5 h-3.5 text-amber-400"/>
-          </div>
-          <div>
-            <div className="flex items-center space-x-1.5">
-              <span className="text-xs font-black tracking-wide text-white uppercase">
-                {hubName}
-              </span>
-              <span className="text-[11px] text-stone-400 font-medium">
-                ({stateName})
-              </span>
-            </div>
-            <p className="text-[9px] text-stone-500 font-mono leading-none mt-0.5">
-              Multi-Source Telemetry Feed
-            </p>
-          </div>
+      {/* Pinned Location Subtitle Header */}
+      <div 
+        className="flex items-center justify-between pb-2 mb-2 border-b border-[#223027]"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingBottom: "0.5rem",
+          marginBottom: "0.5rem",
+          borderBottom: "1px solid #223027"
+        }}
+      >
+        <div className="flex items-center space-x-1.5" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
+          <Compass className="w-3.5 h-3.5 text-emerald-400" size={14} color="#34D399" />
+          <span className="text-xs font-bold text-white tracking-wide uppercase" style={{ fontSize: "0.75rem", fontWeight: 800, color: "#FFFFFF", textTransform: "uppercase" }}>
+            {hubName} <span className="text-stone-400 font-normal" style={{ color: "#9CA3AF", fontWeight: 400 }}>({stateName})</span>
+          </span>
         </div>
-
-        <div className="flex items-center space-x-2">
-          <span
-            className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border uppercase tracking-wide ${threatBadgeStyle}`}
+        <div className="flex items-center space-x-1.5" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
+          <span 
+            className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-300 uppercase"
+            style={{
+              fontSize: "0.58rem",
+              fontFamily: "monospace",
+              fontWeight: 800,
+              padding: "2px 8px",
+              borderRadius: "9999px",
+              border: "1px solid rgba(245, 158, 11, 0.4)",
+              backgroundColor: "rgba(245, 158, 11, 0.1)",
+              color: "#FDE047",
+              textTransform: "uppercase"
+            }}
           >
             {weather?.threatLevel?.replace("_", " ") || "YELLOW WATCH"}
           </span>
           {loading && (
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
+            <span 
+              className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" 
+              style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#34D399" }}
+            />
           )}
         </div>
       </div>
 
-      {/* 4-Cell Telemetry Bento Grid */}
-      <div className="grid grid-cols-2 gap-2">
-        {/* Cell 1: Temperature */}
-        <div className="flex flex-col justify-between p-2.5 bg-[#1b2420]/90 rounded-xl border border-stone-700/40 hover:border-stone-600/60 transition-colors">
-          <div className="flex items-center justify-between">
-            <span className="text-[9px] font-bold tracking-wider text-stone-400 uppercase">
-              Temperature
+      {/* 2x2 Bento Grid (Same exact dimensions and styles as the upper box) */}
+      <div 
+        className="grid grid-cols-2 gap-2.5"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+          gap: "0.625rem"
+        }}
+      >
+        {/* Cell 1: Temperature (Mirrors Mobility Index card) */}
+        <div 
+          className="flex flex-col justify-between p-2.5 bg-[#16201b] rounded-xl border border-[#223027] hover:border-[#2f4236] transition-colors"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "0.625rem",
+            backgroundColor: "#16201b",
+            borderRadius: "0.75rem",
+            border: "1px solid #223027",
+            transition: "border-color 0.2s ease"
+          }}
+        >
+          <div className="flex items-center justify-between" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <span className="text-[10px] font-bold tracking-wider text-emerald-400 uppercase" style={{ fontSize: "0.65rem", fontWeight: 800, letterSpacing: "0.05em", color: "#34D399", textTransform: "uppercase" }}>
+              Ambient Temp
             </span>
-            <Radio className="w-3 h-3 text-emerald-400 opacity-70"/>
+            <div 
+              className="p-1 rounded-md bg-[#101713] border border-[#223027]"
+              style={{
+                padding: "0.25rem",
+                borderRadius: "0.375rem",
+                backgroundColor: "#101713",
+                border: "1px solid #223027",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <Thermometer className="w-3.5 h-3.5 text-emerald-400" size={14} color="#34D399" />
+            </div>
           </div>
-          <div className="flex items-baseline space-x-1 mt-1">
-            <span className="text-xl font-mono font-black text-white">
-              {weather?.temperature !== undefined ? Math.round(weather.temperature) : "31"}°C
-            </span>
-            <span className="text-[10px] text-stone-400 font-medium">ambient</span>
+          <div className="mt-1" style={{ marginTop: "0.25rem" }}>
+            <div className="flex items-baseline space-x-1.5" style={{ display: "flex", alignItems: "baseline", gap: "0.375rem" }}>
+              <span className="text-xl font-mono font-black text-white" style={{ fontSize: "1.25rem", fontFamily: "monospace", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.1 }}>
+                {weather?.temperature !== undefined ? Math.round(weather.temperature) : 31}°C
+              </span>
+              <span 
+                className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" 
+                style={{ display: "inline-block", width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#34D399" }}
+              />
+            </div>
+            <p className="text-[10px] text-stone-400 mt-0.5 font-medium" style={{ fontSize: "0.62rem", color: "#9CA3AF", marginTop: "0.15rem", fontWeight: 500, margin: "0.15rem 0 0 0" }}>
+              Multi-Source Telemetry
+            </p>
           </div>
         </div>
 
-        {/* Cell 2: Rainfall */}
-        <div className="flex flex-col justify-between p-2.5 bg-[#1b2420]/90 rounded-xl border border-stone-700/40 hover:border-sky-500/40 transition-colors">
-          <div className="flex items-center justify-between">
-            <span className="text-[9px] font-bold tracking-wider text-sky-400 uppercase">
-              Rainfall
+        {/* Cell 2: Precipitation (Mirrors Strategic Passes card) */}
+        <div 
+          className="flex flex-col justify-between p-2.5 bg-[#16201b] rounded-xl border border-[#223027] hover:border-[#2f4236] transition-colors"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "0.625rem",
+            backgroundColor: "#16201b",
+            borderRadius: "0.75rem",
+            border: "1px solid #223027",
+            transition: "border-color 0.2s ease"
+          }}
+        >
+          <div className="flex items-center justify-between" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <span className="text-[10px] font-bold tracking-wider text-amber-400 uppercase" style={{ fontSize: "0.65rem", fontWeight: 800, letterSpacing: "0.05em", color: "#FBBF24", textTransform: "uppercase" }}>
+              Live Rainfall
             </span>
-            <CloudRain className="w-3.5 h-3.5 text-sky-400"/>
+            <div 
+              className="p-1 rounded-md bg-[#101713] border border-[#223027]"
+              style={{
+                padding: "0.25rem",
+                borderRadius: "0.375rem",
+                backgroundColor: "#101713",
+                border: "1px solid #223027",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <CloudRain className="w-3.5 h-3.5 text-amber-400" size={14} color="#FBBF24" />
+            </div>
           </div>
-          <div className="flex items-baseline space-x-1 mt-1">
-            <span className="text-xl font-mono font-black text-sky-300">
-              {weather?.precipitationMm !== undefined ? weather.precipitationMm : "0.1"}
+          <div className="mt-1" style={{ marginTop: "0.25rem" }}>
+            <span className="text-sm font-mono font-bold text-amber-300" style={{ fontSize: "0.82rem", fontFamily: "monospace", fontWeight: 700, color: "#FDE047", lineHeight: 1.1, display: "block" }}>
+              {weather?.precipitationMm !== undefined ? weather.precipitationMm : 0.1} mm/h
             </span>
-            <span className="text-[10px] text-stone-400 font-mono">mm/h</span>
+            <p className="text-[10px] text-stone-400 truncate mt-0.5" style={{ fontSize: "0.62rem", color: "#9CA3AF", marginTop: "0.15rem", margin: "0.15rem 0 0 0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              Open-Meteo Doppler Feed
+            </p>
           </div>
         </div>
 
-        {/* Cell 3: Soil Saturation */}
-        <div className="flex flex-col justify-between p-2.5 bg-[#1b2420]/90 rounded-xl border border-stone-700/40 hover:border-amber-500/40 transition-colors">
-          <div className="flex items-center justify-between">
-            <span className="text-[9px] font-bold tracking-wider text-amber-400 uppercase">
+        {/* Cell 3: Soil Saturation (Mirrors IMD Weather Watch card) */}
+        <div 
+          className="flex flex-col justify-between p-2.5 bg-[#16201b] rounded-xl border border-[#223027] hover:border-[#2f4236] transition-colors"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "0.625rem",
+            backgroundColor: "#16201b",
+            borderRadius: "0.75rem",
+            border: "1px solid #223027",
+            transition: "border-color 0.2s ease"
+          }}
+        >
+          <div className="flex items-center justify-between" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <span className="text-[10px] font-bold tracking-wider text-sky-400 uppercase" style={{ fontSize: "0.65rem", fontWeight: 800, letterSpacing: "0.05em", color: "#38BDF8", textTransform: "uppercase" }}>
               Soil Saturation
             </span>
-            <Droplets className="w-3.5 h-3.5 text-amber-400"/>
+            <div 
+              className="p-1 rounded-md bg-[#101713] border border-[#223027]"
+              style={{
+                padding: "0.25rem",
+                borderRadius: "0.375rem",
+                backgroundColor: "#101713",
+                border: "1px solid #223027",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <Droplets className="w-3.5 h-3.5 text-sky-400" size={14} color="#38BDF8" />
+            </div>
           </div>
-          <div className="flex items-baseline space-x-1 mt-1">
-            <span className="text-base font-mono font-black text-amber-300">
-              {weather?.soilMoisture ? weather.soilMoisture.toFixed(3) : "0.347"}
+          <div className="mt-1" style={{ marginTop: "0.25rem" }}>
+            <span className="text-sm font-mono font-bold text-amber-300 uppercase" style={{ fontSize: "0.82rem", fontFamily: "monospace", fontWeight: 700, color: "#FDE047", textTransform: "uppercase", display: "block", lineHeight: 1.1 }}>
+              {weather?.soilMoisture ? weather.soilMoisture.toFixed(3) : "0.347"} m³/m³
             </span>
-            <span className="text-[10px] text-stone-400 font-mono">m³/m³</span>
+            <p className="text-[10px] text-stone-400 font-mono mt-0.5" style={{ fontSize: "0.62rem", color: "#9CA3AF", fontFamily: "monospace", marginTop: "0.15rem", margin: "0.15rem 0 0 0" }}>
+              Geotechnical Index
+            </p>
           </div>
         </div>
 
-        {/* Cell 4: Wind & Lightning */}
-        <div className="flex flex-col justify-between p-2.5 bg-[#1b2420]/90 rounded-xl border border-stone-700/40 hover:border-stone-600/60 transition-colors">
-          <div className="flex items-center justify-between">
-            <span className="text-[9px] font-bold tracking-wider text-stone-400 uppercase">
-              Wind • Probes
+        {/* Cell 4: Wind & Lightning Probes (Mirrors Active Convoys card) */}
+        <div 
+          className="flex flex-col justify-between p-2.5 bg-[#16201b] rounded-xl border border-[#223027] hover:border-[#2f4236] transition-colors"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "0.625rem",
+            backgroundColor: "#16201b",
+            borderRadius: "0.75rem",
+            border: "1px solid #223027",
+            transition: "border-color 0.2s ease"
+          }}
+        >
+          <div className="flex items-center justify-between" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <span className="text-[10px] font-bold tracking-wider text-emerald-400 uppercase" style={{ fontSize: "0.65rem", fontWeight: 800, letterSpacing: "0.05em", color: "#34D399", textTransform: "uppercase" }}>
+              Atmospheric Flow
             </span>
-            <Wind className="w-3.5 h-3.5 text-emerald-400"/>
+            <div 
+              className="p-1 rounded-md bg-[#101713] border border-[#223027]"
+              style={{
+                padding: "0.25rem",
+                borderRadius: "0.375rem",
+                backgroundColor: "#101713",
+                border: "1px solid #223027",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <Wind className="w-3.5 h-3.5 text-emerald-400" size={14} color="#34D399" />
+            </div>
           </div>
-          <div className="flex items-center justify-between mt-1 text-[11px] font-mono">
-            <span className="text-white font-bold">
-              {weather?.windSpeed ?? 8.7} km/h
-            </span>
-            <span className="flex items-center gap-0.5 text-yellow-300 font-bold">
-              <Zap className="w-3 h-3"/>
-              {weather?.lightningCount ?? 0}
-            </span>
+          <div className="mt-1" style={{ marginTop: "0.25rem" }}>
+            <div className="flex items-baseline space-x-1.5" style={{ display: "flex", alignItems: "baseline", gap: "0.375rem" }}>
+              <span className="text-xl font-mono font-black text-white" style={{ fontSize: "1.25rem", fontFamily: "monospace", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.1 }}>
+                {weather?.windSpeed ?? 8.7}
+              </span>
+              <span className="text-xs text-stone-400 font-medium" style={{ fontSize: "0.7rem", color: "#9CA3AF", fontWeight: 500 }}>
+                km/h
+              </span>
+            </div>
+            <p className="text-[10px] text-stone-400 mt-0.5 font-medium" style={{ fontSize: "0.62rem", color: "#9CA3AF", marginTop: "0.15rem", fontWeight: 500, margin: "0.15rem 0 0 0" }}>
+              Humidity: {weather?.humidity ?? 78}%
+            </p>
           </div>
         </div>
       </div>
